@@ -1,7 +1,13 @@
 ---
 layout: post
-title:  "Ruby Sample Code"
-date:   2014-04-01 08:03:50
+unique_identifier:
+ - 'http:/example.jp/bookid_in_url'
+ - 'BookID'
+ - 'URL'
+title: 'Hello Ruby!'
+subtitle: 'presented by igaiga'
+creator: 'igaiga'
+date: '2014-04-01'
 categories: 
 ---
 
