@@ -1,0 +1,7 @@
+$ bundle install
+$ cd _posts
+$ maliq *.markdown
+nav.xhtml, *.xhtml が生成されます
+
+$ maliq_gepub -o ruby-sample.epub
+*.xhtml から epub が生成されます
