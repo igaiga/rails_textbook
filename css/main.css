@@ -159,6 +159,8 @@ a:visited { color: #a0a; }
   background-color: #333;
 }
 
+/* igiaga settings */
+
 /* Ruby */
 .post pre.ruby, .post pre.ruby code {
   border: none;
@@ -169,4 +171,9 @@ a:visited { color: #a0a; }
 .post pre.bash, .post pre.bash code {
   border: none;
   background-color: #d6e9ca;
+}
+
+/* blockquote */
+blockquote {
+  text-align: right;
 }
