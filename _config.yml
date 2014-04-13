@@ -1,4 +1,4 @@
-name: Your New Jekyll Site
+name: Rails Textbook
 markdown: redcarpet
 pygments: true
 permalink: /:title.html
