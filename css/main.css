@@ -158,3 +158,15 @@ a:visited { color: #a0a; }
 .post pre.terminal code {
   background-color: #333;
 }
+
+/* Ruby */
+.post pre.ruby, .post pre.ruby code {
+  border: none;
+  background-color: #fef4f4;
+}
+
+/* Bash */
+.post pre.bash, .post pre.bash code {
+  border: none;
+  background-color: #d6e9ca;
+}
