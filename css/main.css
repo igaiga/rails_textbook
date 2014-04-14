@@ -173,6 +173,13 @@ a:visited { color: #a0a; }
   background-color: #d6e9ca;
 }
 
+/* Bash console */
+.post pre.console, .post pre.console code {
+  border: none;
+  background-color: #ebf6f7;
+}
+
+
 /* blockquote */
 blockquote {
   text-align: right;
