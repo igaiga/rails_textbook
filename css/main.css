@@ -179,8 +179,12 @@ a:visited { color: #a0a; }
   background-color: #ebf6f7;
 }
 
-
 /* blockquote */
 blockquote {
   text-align: right;
+}
+
+/* image 全部の画像が横いっぱいになるので、あとで調整するかも */
+.post p img {
+  width: 100%;
 }
