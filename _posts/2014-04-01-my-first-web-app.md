@@ -180,7 +180,7 @@ mount_uploader :picture, PictureUploader
 + <%= f.file_field :picture %>
 {% endhighlight %}
 
-もう少しです。最後に ```app/views/entries/show.html.erb``` を開いて編集します。
+あと少しです。最後に ```app/views/entries/show.html.erb``` を開いて編集します。
 
 {% highlight ruby %}
 - <%= @entry.picture %>
@@ -211,5 +211,4 @@ New Entry リンクをクリックすると、「ファイルを選択」ボタ�
 
 ![new]({{site_url}}/assets/my-first-web-app/entries_show.png)
 
-画像をアップロードできる簡易ブログアプリができあがりました。初めてのWebアプリづくりはいかがでしたか？
-
+画像をアップロードできる簡易ブログアプリができあがりました。初めてのWebアプリづくりはいかがでしたか？とてもシンプルなアプリですが、Webアプリの基本となるデータ作成、表示、更新、削除の機能や、写真投稿機能を付加するためのライブラリの使い方などがこの中につまっています。本書を読み終わる頃には、ここで書いたコードやコマンドの意味が分かるようになりますので、今はまだ分からなくて大丈夫です。（まだ何も説明していないので当たり前ですね。）次の章から、Webアプリがどうような仕組みで動作するのかを説明していきます。
