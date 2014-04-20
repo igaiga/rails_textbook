@@ -161,6 +161,19 @@ a:visited { color: #a0a; }
 
 /* igiaga settings */
 
+h1 {
+  font-size: 200%;
+  margin: 32px 0px 32px;
+}
+h2 {
+  font-size: 160%;
+  margin: 32px 0px 32px;
+}
+h3 {
+  font-size: 140%;
+  margin: 32px 0px 32px;
+}
+
 /* Ruby */
 .post pre.ruby, .post pre.ruby code {
   border: none;
