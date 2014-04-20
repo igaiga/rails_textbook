@@ -83,7 +83,7 @@ $ rails server
 
 * localhost:3000
 
-![welcome rails]({{ site.url }}/assets/welcome_rails.png)
+![welcome rails]({{ site.url }}/assets/my-first-web-app/welcome_rails.png)
 
 これは、Railsが起動し、あなたのブラウザからのリクエストを受け付けて、表示している画面です。ここまでのわずかの手順で、Webアプリをつくり、画面を表示しているのです。
 
@@ -125,7 +125,7 @@ $ rails server
 
 * http://localhost:3000/entries
 
-![entries]({{site_url}}/assets/scaffold_index.png)
+![entries]({{site_url}}/assets/my-first-web-app/scaffold_index.png)
 
 画面が表示されたら、New Entry のリンクをたどってみましょう。Title, Description などを入力し、Create Entry ボタンで保存してみてください。また、保存したデータを編集や削除をしてみてください。ここまでの作業で簡易なブログの基本機能ができました。
 
