@@ -5,7 +5,6 @@ unique_identifier:
  - 'BookID'
  - 'URL'
 title: 'Webアプリをまずはつくってみよう'
-subtitle: 'presented by igaiga'
 creator: 'igaiga'
 date: '2014-04-01'
 categories:
@@ -13,7 +12,7 @@ categories:
 
 # Webアプリをまずはつくってみよう
 
-それでは、早速Webアプリをつくってみましょう。作るのは、記事と写真が投稿できる簡易なブログアプリです。まずはWebアプリづくりがどのようなものかを体験してもらうのがこの章の目的です。それぞれのコマンドやコードの意味は、本書の中で追って説明していきます。
+それでは、早速Webアプリをつくってみましょう。作るのは、記事と写真が投稿できる簡易なブログアプリです。まずはWebアプリでどんなことができるのか、その作り方はどのようなものかを体験してもらうのがこの章の目的です。それぞれのコマンドやコードの意味は、本書の中で追って説明していきます。
 
 ## Webアプリをつくる
 
@@ -26,7 +25,7 @@ mkdir my_web_apps
 cd my_web_apps
 {% endhighlight %}
 
-mkdir はフォルダを作成するコマンド、cd はターミナル内で現在のフォルダを移動するコマンドです。(Winで普段使いなれている「コンピューター(エクスプローラー)」を起動するには、ターミナルで explorer . と打つと現在のフォルダを開くことができます。MacでFinderを開くにはターミナルから open . と打ちます。)
+mkdir はフォルダを作成するコマンド、cd はターミナル内で現在のフォルダを移動するコマンドです。(Winで普段使いなれている「コンピューター(エクスプローラー)」を起動するには、ターミナルで explorer . と打つと現在のフォルダを開くことができます。MacでFinderを開くにはターミナルから open . と打ちます。これらからフォルダを作るのと同じ働きをするコマンドが mkdir です。)
 
 続けて以下のコマンドを実行します。
 
@@ -90,7 +89,7 @@ $ rails server
 
 ### ページの作成
 
-ひきつづき、以下のコマンドを入力してください。rails server が起動している場合は、Ctrl + C ボタンで終了してからコマンドを打ちます。
+ひきつづき、以下のコマンドを入力してください。rails server が起動している場合は、Ctrl-c (controlキーを押しながらcキー)で終了してからコマンドを打ちます。
 
 {% highlight bash %}
 rails generate scaffold entry title description:text picture
@@ -130,60 +129,87 @@ $ rails server
 
 画面が表示されたら、New Entry のリンクをたどってみましょう。Title, Description などを入力し、Create Entry ボタンで保存してみてください。また、保存したデータを編集や削除をしてみてください。ここまでの作業で簡易なブログの基本機能ができました。
 
-★ここから
-
 ### 写真アップロード機能の追加
 
-Rails にファイルをアップロードする機能を追加するには、ライブラリをインストールする必要があります。
+次は、写真をアップロードできるようにしてみましょう。Rails にファイルをアップロードする機能を追加するには、ライブラリをインストールする必要があります。Railsルートフォルダ(```my_web_apps/blog_app```)内の Gemfile というファイルを開いてください。
 
-プロジェクトディレクトリ内の Gemfile を開いて、この行
-
+{% highlight ruby %}
 gem 'sqlite3'
-の直後に、次の一行を追加します。
+{% endhighlight %}
 
+という記述を探して、その下あたりに次の一行を追加して保存します。
+
+{% highlight ruby %}
 gem 'carrierwave'
+{% endhighlight %}
 
-Terminal で、次のコマンドを実行してください。 :
+追加できたら、Terminal で、次のコマンドを実行してください。 (rails server は Ctrl-c で終了させてください。)
 
+{% highlight bash %}
 bundle
-そうすると、次のコマンドでアップロードを実行するコードを生成できます。 :
-
 rails generate uploader Picture
-ここで、Terminal 上で Rails server プロセスをリスタート する必要があります。追加したライブラリをアプリにロードさせるためです。
+{% endhighlight %}
 
-app/models/idea.rb を開いて、次の行
+{% highlight console %}
+$ bundle
+Resolving dependencies...
+Using i18n (0.6.9)
+...
+Your bundle is complete!
+Use `bundle show [gemname]` to see where a bundled gem is installed.
+$ rails generate uploader Picture
+      create  app/uploaders/picture_uploader.rb
+{% endhighlight %}
 
-class Idea < ActiveRecord::Base
-の直後に、
+次にファイルを編集します。```app/models/entry.rb``` を開いて、次の行
 
+{% highlight ruby %}
+class Entry < ActiveRecord::Base
+{% endhighlight %}
+
+の直後に、以下を追加します。
+
+{% highlight ruby %}
 mount_uploader :picture, PictureUploader
+{% endhighlight %}
 
-を追加します。さらに、app/views/ideas/_form.html.erb を開いて次のように編集します。
+さらに、```app/views/entries/_form.html.erb``` を以下のように編集します。(- 記号の行を削除して、かわりに + 記号の行を追加してください。)
 
-<%= f.text_field :picture %>
-  ↓
+{% highlight ruby %}
+- <%= f.text_field :picture %>
++ <%= f.file_field :picture %>
+{% endhighlight %}
 
-<%= f.file_field :picture %>
-場合によっては、 TypeError: can’t cast ActionDispatch::Http::UploadedFile to string というエラーが起きることもあります。エラーになった場合は、 app/views/ideas/_form.html.erb の
+もう少しです。最後に ```app/views/entries/show.html.erb``` を開いて編集します。
 
-<%= form_for(@idea) do |f| %>
-上記のコードを、以下のように変更してみてください。
+{% highlight ruby %}
+- <%= @entry.picture %>
++ <%= image_tag(@entry.picture_url) if @entry.picture.present? %>
+{% endhighlight %}
 
-<%= form_for @idea, :html => {:multipart => true} do |f| %>
+rails server を起動して、ブラウザから http://localhost:3000/entries へアクセスしてみましょう。
 
-画像をアップロードするとわかりますが、これだけでは見栄えのいいものではありません。ファイルのpathだけを表示してるので、これもいじってみましょう。
+{% highlight bash %}
+rails server
+{% endhighlight %}
 
-app/views/ideas/show.html.erb を開いて編集します。
+{% highlight console %}
+$ rails server
+=> Booting WEBrick
+=> Rails 4.1.0 application starting in development on http://0.0.0.0:3000
+=> Run `rails server -h` for more startup options
+=> Notice: server is listening on all interfaces (0.0.0.0). Consider using 127.0.0.1 (--binding option)
+=> Ctrl-C to shutdown server
+[2014-04-20 14:13:23] INFO  WEBrick 1.3.1
+[2014-04-20 14:13:23] INFO  ruby 2.1.1 (2014-02-24) [x86_64-darwin13.0]
+[2014-04-20 14:13:23] INFO  WEBrick::HTTPServer#start: pid=2134 port=3000
+{% endhighlight %}
 
-<%= @idea.picture %>
-  ↓
+New Entry リンクをクリックすると、「ファイルを選択」ボタンが増えているかと思います。ボタンを押して画像ファイルを選び、アップロードしてみましょう。
 
-<%= image_tag(@idea.picture_url, width: 600) if @idea.picture.present? %>
+![new]({{site_url}}/assets/my-first-web-app/entries_new.png)
 
+![new]({{site_url}}/assets/my-first-web-app/entries_show.png)
 
-
-
-# 章
-## 節
-### 見出し
+画像をアップロードできる簡易ブログアプリができあがりました。初めてのWebアプリづくりはいかがでしたか？
 
