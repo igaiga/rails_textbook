@@ -50,14 +50,6 @@ Use `bundle show [gemname]` to see where a bundled gem is installed.
 
 ターミナルの画面にこのように"Your bundle is complete!"と表示されれば成功です。railsコマンドはたくさんのフォルダとファイルを自動で作ります。
 
-{% highlight console %}
-$ rails new blog_app
-       exist
-   identical  README.rdoc
-    conflict  Rakefile
-Overwrite /Users/igarashi/work/blog_app/Rakefile? (enter "h" for help) [Ynaqdh] 
-{% endhighlight %}
-
 次は以下のコマンドを実行してみてください。
 
 {% highlight bash %}
