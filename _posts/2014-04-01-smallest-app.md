@@ -18,7 +18,7 @@ categories:
 
 ### アプリの作成
 
-今回も最初にアプリを作ります。前の章で作成した my_web_apps の下に新しいアプリを作ってみましょう。ターミナルを起動して以下のコマンドを打ちます。
+今回も最初にアプリを作ります。ブラウザに"Hello world!"と表示させるアプリです。前の章で作成した my_web_apps の下に新しいアプリを作ってみましょう。ターミナルを起動して以下のコマンドを打ちます。
 
 {% highlight bash %}
 cd my_web_apps
@@ -36,7 +36,7 @@ Use `bundle show [gemname]` to see where a bundled gem is installed.
 * bin/rails: spring inserted
 {% endhighlight %}
 
-次に前の章と同じように以下のコマンドを実行してみましょう。
+次に、前の章と同じように以下のコマンドを実行してみましょう。
 
 {% highlight bash %}
 cd helloworld
@@ -60,13 +60,13 @@ $ rails s
 
 ![welcome rails]({{ site.url }}/assets/my-first-web-app/welcome_rails.png)
 
-前の章と同じように動作しています。ここで実行した ```rails s``` コマンドの s は server の略で、s でも server でも同じように動作します。
+前の章と同じように動作しています。ここで実行した ```rails s``` コマンドの s は server の略で、省略した s でも、省略せずに server でも、同じように動作します。
 
-TODO: rails s を停止した場合のアクセス。ポート重複時のアクセス。
+TODO: コラム：rails s を停止した場合のアクセス。ポート重複時のアクセス。
 
 ### rails g コマンドでページを作る
 
-ひきつづき、以下のコマンドを入力してください。rails server が起動している場合は、Ctrl-c (controlキーを押しながらcキー)で終了してからコマンドを打ってください。
+ひきつづき、以下のコマンドを入力してみましょう。rails server が起動している場合は、Ctrl-c (controlキーを押しながらcキー)で終了してからコマンドを打ってください。
 
 {% highlight bash %}
 rails g controller hello index
@@ -113,8 +113,26 @@ $ rails s
 
 ![entries]({{site_url}}/assets/smallest-app/hello_index.png)
 
-この画面が出れば、ここまで意図通りに動作しています。
+この画面が出れば、ここまで意図通りに動作しています。さきほど実行した rails g コマンドはこのページ、/hello/index を作るものでした。どのような仕組みで動作しているかは後ほどまた説明しますので、今は先にこのページに"Hello world!"と表示させてみることにします。
+
+```app/views/hello/index.html.erb``` ファイルをエディタで開いてみてください。以下のような内容になっています。
+
+{% highlight erb %}
+<h1>Hello#index</h1>
+<p>Find me in app/views/hello/index.html.erb</p>
+{% endhighlight %}
+
+これを以下のように変更して、ブラウザで同じURLへアクセスしてみてください。(rails s は起動したままで大丈夫です。もし、 rails s を一度終了していた場合は、rails s コマンドでもう一度起動してからアクセスしてください。)
+
+{% highlight erb %}
+<p>Hello world!</p>
+{% endhighlight %}
+
+![entries]({{site_url}}/assets/smallest-app/helloworld.png)
+
+"Hello world!"の文字が表示されましたか？これで一番小さなRailsアプリが完成しました。それでは次は、このアプリがどのように動作しているのかを見ていきましょう。
+
+## Railsアプリはどのように動作しているか
 
 
-
-## TODO？:コラム bin/rails
+##TODO？:コラム bin/rails
