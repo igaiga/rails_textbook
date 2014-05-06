@@ -122,7 +122,7 @@ $ rails s
 <p>Find me in app/views/hello/index.html.erb</p>
 {% endhighlight %}
 
-これを以下のように変更して、ブラウザで同じURLへアクセスしてみてください。(rails s は起動したままで大丈夫です。もし、 rails s を一度終了していた場合は、rails s コマンドでもう一度起動してからアクセスしてください。)
+これを以下のように変更して、ブラウザで同じURLへアクセスしてみてください。(rails s は起動したままで大丈夫です。もしも rails s を一度終了していた場合は、rails s コマンドでもう一度起動してからアクセスしてください。)
 
 {% highlight erb %}
 <p>Hello world!</p>
@@ -133,6 +133,10 @@ $ rails s
 "Hello world!"の文字が表示されましたか？これで一番小さなRailsアプリが完成しました。それでは次は、このアプリがどのように動作しているのかを見ていきましょう。
 
 ## Railsアプリはどのように動作しているか
+
+![entries]({{site_url}}/assets/smallest-app/request.png)
+
+![entries]({{site_url}}/assets/smallest-app/response.png)
 
 
 ##TODO？:コラム bin/rails
