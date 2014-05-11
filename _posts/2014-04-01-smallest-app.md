@@ -93,6 +93,8 @@ $ rails g controller hello index
       create      app/assets/stylesheets/hello.css.scss
 {% endhighlight %}
 
+もしもrails g コマンドを打ち間違えて違うファイルを作ってしまった場合は、打ち間違えたコマンドの g の部分を d にして再実行すると、rails g コマンドで作成したファイルをまとめて削除してくれます。たとえば、``` rails g controller hell index``` とhelloをhellと打ち間違えた場合は、``` rails d controller hell index``` コマンドを実行することで間違えて作ったファイル群を削除することができます。（ターミナルでカーソルキーの↑キーを押すと、さきほど入力した内容が出てくるので、それを利用して g を d に直すと楽に実行できます。）
+
 再びrails server を起動させましょう。
 {% highlight bash %}
 rails s
@@ -194,4 +196,29 @@ HTMLはブラウザからも見ることができます。Chromeの場合は、�
 
 ## Railsでの開発の進め方
 
-★ここから
+Railsでの基本的な開発の進め方は以下の2つを繰り返すサイクルになります。
+
+* ひな形になるファイル（ソースコードや設定ファイル）の生成
+* つくっているアプリ用にファイルを変更、追記
+
+実は、さきほどつくったアプリもこの手順で進めていました。
+
+{% highlight bash %}
+rails new helloworld
+rails g controller hello index
+{% endhighlight %}
+
+これらのコマンドは「ひな形になるファイルの生成」を行っていました。そのあと、```app/views/hello/index.html.erb``` を編集して、
+
+{% highlight erb %}
+<p>Hello world!</p>
+{% endhighlight %}
+
+という内容に変更しました。このように、rails g コマンドなどでひな形となるファイルを生成し、それをそのアプリで使いたい形へ変えていく、Railsアプリ開発ではこれを繰り返してつくっていきます。
+
+rails g コマンドはひな形を作成しますが、場合によってはこの手順を飛ばして、ゼロから手で書いても構いません。どちらの手順をつかっても、アプリをつくることが可能です。多くの場合、rails g コマンドを使った方が、速くつくれたり、ミスをしづらくなるので便利です。
+
+## Railsが生成するファイル
+
+
+
