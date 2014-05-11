@@ -10,8 +10,6 @@ date: '2014-04-01'
 categories:
 ---
 
-TODO:図にキャプション入れる
-
 # 一番小さなRailsアプリづくり
 
 ここではできるだけ小さい構成のRailsアプリを作ってみます。Railsアプリがどのように動作するのかの説明と、Railsが作るファイルがどのような役割なのか、機能と関連づけて説明していきます。
@@ -20,7 +18,7 @@ TODO:図にキャプション入れる
 
 ### アプリの作成
 
-今回も最初にアプリを作ります。ブラウザに"Hello world!"と表示させるアプリです。前の章で作成した my_web_apps の下に新しいアプリを作ってみましょう。ターミナルを起動して以下のコマンドを打ちます。
+今回も最初にアプリを作ります。ブラウザに"Hello world!"と表示させるアプリです。前の章で作成した ```my_web_apps``` の下に新しいアプリを作ってみましょう。ターミナルを起動して以下のコマンドを打ちます。
 
 {% highlight bash %}
 cd my_web_apps
@@ -60,9 +58,11 @@ $ rails s
 
 * http://localhost:3000
 
-![welcome rails]({{ site.url }}/assets/my-first-web-app/welcome_rails.png)
+![Welcome rails]({{ site.url }}/assets/my-first-web-app/welcome_rails.png)
 
-前の章と同じように動作しています。ここで実行した ```rails s``` コマンドの s は server の略で、省略した s でも、省略せずに server でも、同じように動作します。
+図 : Welcome rails
+
+前の章と同じように動作しています。ここで実行したコマンド ```rails s``` の s は server の略で、省略した s でも、省略せずに server でも、同じように動作します。
 
 TODO: コラム：rails s を停止した場合のアクセス。ポート重複時のアクセス。
 
@@ -113,7 +113,9 @@ $ rails s
 
 * http://localhost:3000/hello/index
 
-![entries]({{site_url}}/assets/smallest-app/hello_index.png)
+![hello/index]({{site_url}}/assets/smallest-app/hello_index.png)
+
+図 : hello/index
 
 この画面が出れば、ここまで意図通りに動作しています。さきほど実行した rails g コマンドはこのページ、/hello/index を作るものでした。どのような仕組みで動作しているかは後ほどまた説明しますので、今は先にこのページに"Hello world!"と表示させてみることにします。
 
@@ -130,30 +132,66 @@ $ rails s
 <p>Hello world!</p>
 {% endhighlight %}
 
-![entries]({{site_url}}/assets/smallest-app/helloworld.png)
+![Hello world]({{site_url}}/assets/smallest-app/helloworld.png)
 
-"Hello world!"の文字が表示されましたか？これで一番小さなRailsアプリが完成しました。それでは次は、このアプリがどのように動作しているのかを見ていきましょう。
+図 : Hello world
+
+"Hello world!"の文字が表示されましたか？これで一番小さなRailsアプリができあがりました。それでは次は、このアプリがどのように動作しているのかを見ていきましょう。
 
 ## Webアプリはどのように動作しているか
 
-ここで、みなさんが普段ブラウザからつかっているWebアプリがどのように動作しているかを見てみましょう。アドレス入力欄にURLを入力してエンターキーを押すと、「リクエスト」がURL先のサーバへ向けて飛んでいきます。たとえば ```http://cookpad.com/``` と入力した場合は、クックパッドのサーバへ向けてリクエストが飛んでいきます。リクエストは追って説明していきますが、ざっくりとは「そのページを見たいという要求（リクエスト）」とイメージしてもらえばOKです。
+ここで、みなさんが普段ブラウザからつかっているWebアプリがどのように動作しているかを見てみましょう。アドレス入力欄にURLを入力してエンターキーを押すと、「リクエスト」がURL先のサーバへ向けて飛んでいきます。たとえば ```http://cookpad.com/``` と入力した場合は、クックパッドのサーバへ向けてリクエストが飛んでいきます。リクエストは追って説明していきますが、ざっくりと「そのページを見たいという要求（リクエスト）」とイメージしてもらえばOKです。
 
-![entries]({{site_url}}/assets/smallest-app/request.png)
+![リクエスト]({{site_url}}/assets/smallest-app/request.png)
 
-Webサーバ上で動作しているWebアプリはリクエストを受け取ると、「レスポンス」としてHTMLで書かれたテキストを作ってブラウザへ返します。レスポンスは「Webアプリが返してきた情報群（HTMLで書かれた表示するの情報を含む）」とイメージできます。HTMLは HyperText Markup Language のことで、Webページを記述するための言語です。ブラウザはHTMLを解釈して、私たちの見易い、そしていつも見慣れたWebページを表示します。
+図 : リクエスト
 
-![entries]({{site_url}}/assets/smallest-app/response.png)
+Webサーバ上で動作しているWebアプリはリクエストを受け取ると、「レスポンス」としてHTMLで書かれたテキストを作ってブラウザへ返します。レスポンスは「Webアプリが返してきた情報群（HTMLで書かれた表示するの情報を含む）」とイメージできます。HTMLは HyperText Markup Language のことで、Webページを記述するための言語です。ブラウザはHTMLを解釈して、私たちの見易い、いつも見慣れたWebページを表示します。
+
+![レスポンス]({{site_url}}/assets/smallest-app/response.png)
+
+図 : レスポンス
+
+コラム：Webサーバ
+Webサーバとはなにものなのでしょうか？Webサーバは「Webサービスを提供する場合に必要な共通の機能を提供するもの」と言えます。Webアプリはブラウザとのやりとりで必要な機能のうち、どのサービスでも使う機能はWebサーバに仕事をまかせ、自分のサービスで必要なオリジナルな機能を提供することになります。Rubyには標準でWEBrick というWebサーバが用意されていて、rails s をしたときに起動するようになっています。実際のWebサービスを運用して提供する場合は、EnginxやApacheといったWebサーバが使われることが多いです。
 
 HTMLはブラウザからも見ることができます。Chromeの場合は、どこかのサイト(たとえば ```http://cookpad.com/``` ) へアクセスしたあと、右クリックメニューから「ページのソースを表示」を選ぶとHTMLで書かれたそのページを閲覧することができます。
 
-![entries]({{site_url}}/assets/smallest-app/right_click.png)
+![右クリック]({{site_url}}/assets/smallest-app/right_click.png)
 
 図 : 右クリックしてHTMLを表示する
 
-![entries]({{site_url}}/assets/smallest-app/html.png)
+![HTML]({{site_url}}/assets/smallest-app/html.png)
 
 図 : HTML(抜粋)
 
-ここまで説明してきたのが、ブラウザの大きな仕事2つです。TODO：★ここから
+ここまで説明してきた以下の2つが、ブラウザの主な仕事です。
 
-##TODO？:コラム bin/rails
+* リクエストをWebサーバへ投げる
+* レスポンスで返ってきたHTMLを解釈して表示する
+
+## インターネットの向こう側とこちら側
+
+ブラウザからWebサービスにアクセスする場合、通常はWebアプリはインターネット上にあります。ブラウザだけが自分のPCにあります。
+
+![インターネット上のサービスにアクセス]({{site_url}}/assets/smallest-app/internet_and_local.png)
+
+図 : インターネット上のサービスにアクセス
+
+しかし、開発中は自分が作っているアプリをわざわざインターネット上へ置く必要はなく、自分のPCでWebアプリを動作させ、同じく自分のPCにあるブラウザからアクセス可能です。
+
+![開発中のアプリにアクセス]({{site_url}}/assets/smallest-app/local.png)
+
+図 : 開発中は自分のPCでつくることができる
+
+## 今回つくったRailsアプリの動作まとめ
+
+今回つくったRailsアプリの動作を図に描いてみました。
+
+![今回つくったRailsアプリの動作]({{site_url}}/assets/smallest-app/smallest_app.png)
+
+ブラウザのURL欄にアドレスを入力してEnterを押すとリクエストが飛びます。リクエストを受け取ったRailsアプリはHTMLをつくり、レスポンスとして返します。レスポンスを受け取ったブラウザはHTMLを解釈し、画面に表示します。
+
+## Railsでの開発の進め方
+
+★ここから
