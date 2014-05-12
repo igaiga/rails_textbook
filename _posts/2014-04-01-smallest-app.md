@@ -216,9 +216,87 @@ rails g controller hello index
 
 という内容に変更しました。このように、rails g コマンドなどでひな形となるファイルを生成し、それをそのアプリで使いたい形へ変えていく、Railsアプリ開発ではこれを繰り返してつくっていきます。
 
-rails g コマンドはひな形を作成しますが、場合によってはこの手順を飛ばして、ゼロから手で書いても構いません。どちらの手順をつかっても、アプリをつくることが可能です。多くの場合、rails g コマンドを使った方が、速くつくれたり、ミスをしづらくなるので便利です。
+rails g コマンドはひな形を作成しますが、場合によってはこの手順を飛ばして、ゼロから手で書いても構いません。どちらの手順をつかっても、アプリをつくることが可能です。多くの場合、rails g コマンドを使った方が、楽につくれたり、ミスをしづらくなるので便利です。
 
 ## Railsが生成するファイル
 
+### rails new コマンド
+
+では、Railsはどのようなファイルを生成するのでしょうか。最初の rails new コマンドを実行したとき、以下のように create ... という表示がずらっとされたと思います。railsが生成したファイルとフォルダの名前を表示していたのです。
+
+{% highlight console %}
+$ rails new helloworld
+create
+create  README.rdoc
+create  Rakefile
+create  config.ru
+create  .gitignore
+create  Gemfile
+create  app
+create  app/assets/javascripts/application.js
+create  app/assets/stylesheets/application.css
+create  app/controllers/application_controller.rb
+create  app/helpers/application_helper.rb
+create  app/views/layouts/application.html.erb
+create  app/assets/images/.keep
+create  app/mailers/.keep
+create  app/models/.keep
+... (略)
+{% endhighlight %}
+
+これらのファイル群によって、rails new をしただけで（何もコードを書かなくても）webアプリとして動作します。たくさんのファイルがつくられていますね。Railsアプリの基本的なフォルダとファイル群は以下の図のものです。いきなり全てを説明するのは難しいので、順番に説明していきます。役割ごとにフォルダが分かれています。それぞれの役割についてはこの後説明していきます。
+
+![Railsアプリの基本的なフォルダ・ファイル群]({{site_url}}/assets/smallest-app/rails_files.png)
 
 
+図 : Railsアプリの基本的なフォルダ・ファイル群
+
+### rails g コマンド
+
+次に実行した rails g コマンドで作られたファイルを見てみましょう。
+
+{% highlight bash %}
+rails g controller hello index
+{% endhighlight %}
+
+{% highlight console %}
+$ rails g controller hello index
+create  app/controllers/hello_controller.rb
+ route  get 'hello/index'
+invoke  erb
+create    app/views/hello
+create    app/views/hello/index.html.erb
+invoke  test_unit
+create    test/controllers/hello_controller_test.rb
+invoke  helper
+create    app/helpers/hello_helper.rb
+invoke    test_unit
+create      test/helpers/hello_helper_test.rb
+invoke  assets
+invoke    coffee
+create      app/assets/javascripts/hello.js.coffee
+invoke    scss
+create      app/assets/stylesheets/hello.css.scss
+{% endhighlight %}
+
+ここで実行した rails g controller コマンドは、URLのパスが /hello/index であるページを表示するためのファイル群を生成します。g は generate の略です。rails g controller の後ろの hello と index が、生成するページのパスを指定していることが分かります。
+
+ちなみに、前にやった rails g scaffold もgenerateの種類の1つです。scaffold は編集、更新、削除といったたくさんの機能を一度につくりますが、rails g controller の場合は生成するページをつくるシンプルなものです。そのほかにもいくつかの generate コマンドが用意されています。もしも、コマンドを間違えて生成したファイルをまとめて削除したい場合は、 g を d に替えたコマンドを実行すると、まとめて削除することができます。d は destroy の略です。
+
+ここで生成されたファイルのうち、特に重要なのは以下の3つのファイルです。
+
+* app/controllers/hello_controller.rb
+* app/views/hello/index.html.erb
+* config/routes.rb
+
+![rails g controller]({{site_url}}/assets/smallest-app/rails_g_controller.png)
+
+図 : rails g controller hello index コマンドで生成されるファイル
+
+これらのファイルがどのような働きをしているのかを、次の節でRailsがリクエストを受けてからレスポンスを返すまでの基本的な処理の順序を追いかけながら説明していきます。
+
+## Rails がリクエストを受けてからレスポンスを返すまでの流れ
+
+★ここから
+
+流れを見せてからTime.nowしてみる。
