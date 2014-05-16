@@ -297,6 +297,22 @@ create      app/assets/stylesheets/hello.css.scss
 
 ## Rails がリクエストを受けてからレスポンスを返すまでの流れ
 
+ブラウザからアクセスしたときに、Railsアプリはどのように動作しているのでしょうか？以下の図は、今回つくったRailsアプリの動作を示したものです。前に出てきた動作の図から少しだけ詳しく書き加えてあります。
+
+![Railsアプリの動作]({{site_url}}/assets/smallest-app/rails_app_semantics.png)
+
+図 : Railsアプリの動作
+
+ここでは、この図のRailsAppの部分について詳しく説明していきます。ここから、対象箇所を抜き出したのが次の図です。
+
+![リクエストを受けてレスポンスを返すまで]({{site_url}}/assets/smallest-app/rails_app_mvc.png)
+
+図 : リクエストを受けてレスポンスを返すまで
+
+リクエストを受けたRailsアプリは、Routes, Controller, View の各所で処理を行い、レスポンスとしてHTMLを生成して返します。各所ではそれぞれ仕事の分担が決まっていて、自分の担当の処理を行います。Routes, Controller, View でそれぞれどのような処理が行われているのか、順に見ていきましょう。
+
+### Routes
+
 ★ここから
 
 流れを見せてからTime.nowしてみる。
