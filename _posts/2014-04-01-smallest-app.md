@@ -305,7 +305,7 @@ create      app/assets/stylesheets/hello.css.scss
 
 ここでは、この図のRailsAppの部分について詳しく説明していきます。ここから、対象箇所を抜き出したのが次の図です。
 
-![リクエストを受けてレスポンスを返すまで]({{site_url}}/assets/smallest-app/rails_app_mvc.png)
+![リクエストを受けてレスポンスを返すまで]({{site_url}}/assets/smallest-app/rails_app_request_to_response.png)
 
 図 : リクエストを受けてレスポンスを返すまで
 
@@ -313,6 +313,32 @@ create      app/assets/stylesheets/hello.css.scss
 
 ### Routes
 
-★ここから
+Routesは「リクエストのURLとHTTPメソッド」に応じて次に処理を行う先を決めるのが仕事です。URLは前に出てきましたが、HTTPメソッドとは何でしょうか？
+
+* リクエスト
+ * URL : http://localhost:3000/hello/index
+ * HTTPメソッド：GET
+
+リクエストを構成する要素のうち、重要なものがURLとHTTPメソッドです。URLはアドレスということもあるように、インターネット上の住所を表します。URLでアクセスする先を指定するのです。もう一方のHTTPメソッドは、そのURLに対して「何をするか」を指示するものです。ブラウザのアドレス欄へURLを入力しEnterを押すと、HTTPメソッド "GET" でリクエストが飛びます。GETは「ページを取得する」の意です。GETのほかにも、HTTPメソッドはいくつかあり、Railsアプリでよく使うものは4つほどです。GET以外のHTTPメソッドは次の章以降で説明していきます。
+
+まとめると、リクエストは「URL」でアクセス先を、「HTTPメソッド」で行うことを指定します。
+
+Routesの処理を、HTTPメソッドを加えてもう少し詳しくみてみましょう。最初に説明した通り、Routesは「リクエストのURLとHTTPメソッド」に応じて次に処理を行う先を決めるのが仕事です。RailsではRoutesの処理が終わると、次はControllerのアクションへ処理が移ります。アクションはControllerのメソッドのうち、Routesから呼び出されるもののことです。RoutesはリクエストのURLとHTTPメソッドから、処理の進み先であるContollerのアクションを決定します。RoutesはリクエストとController のアクションとの対応表と言えます。
+
+では、Routesの対応表を見て見ましょう。rails server を起動させて以下へアクセスすると、Routesの対応表が表示されます。（図参照）
+
+* http://localhost:3000/rails/info/routes
+
+![Routes]({{site_url}}/assets/smallest-app/routes.png)
+
+図 : Routes
+
+"HTTP Verb" がHTTPメソッドです。"Path"はURLの後半部分に相当します。URLが"http://localhost:3000/hello/index"である場合、パスは"/hello/index"になります。(表示されたPathの後半部分の "(.:format)" は省略できる記述で、ここでは詳しく説明しません。概略だけお話すると、レスポンスで返すフォーマットを指定するための機能で、普通のWebアプリではHTMLを返すことが多いので、省略するとHTMLを指定したことにすることが多いです。)
+
+右端の"Controller#Action"が処理が移るコントローラとアクションを示しています。ここでは "hello#index" と書かれていますが、#より左側がコントローラ名、右側がアクション名です。この場合は、「HelloControllerのindexアクション」を示しています。
+
+まとめると、この対応表は「リクエストのHTTPメソッドが"GET"、パスが"/hello/index"のとき、次の処理は"HelloController"の"index"アクションになる」という意味になります。
+
+ここで表示されたRoutesは`config/routes.rb`ファイルから生成されます。★TODO★ここから
 
 流れを見せてからTime.nowしてみる。
