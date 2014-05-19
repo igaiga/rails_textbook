@@ -201,3 +201,8 @@ blockquote {
 .post p img {
   width: 100%;
 }
+
+/* 1行目が右にずれるのを抑制 */
+.post code {
+  padding: 0;
+}
