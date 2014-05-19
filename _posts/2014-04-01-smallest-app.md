@@ -323,7 +323,7 @@ Routesは「リクエストのURLとHTTPメソッド」に応じて次に処理�
 
 まとめると、リクエストは「URL」でアクセス先を、「HTTPメソッド」で行うことを指定します。
 
-Routesの処理を、HTTPメソッドを加えてもう少し詳しくみてみましょう。最初に説明した通り、Routesは「リクエストのURLとHTTPメソッド」に応じて次に処理を行う先を決めるのが仕事です。RailsではRoutesの処理が終わると、次はControllerのアクションへ処理が移ります。アクションはControllerのメソッドのうち、Routesから呼び出されるもののことです。RoutesはリクエストのURLとHTTPメソッドから、処理の進み先であるContollerのアクションを決定します。RoutesはリクエストとController のアクションとの対応表と言えます。
+Routesの処理を、HTTPメソッドを加えてもう少し詳しくみてみましょう。最初に説明した通り、Routesは「リクエストのURLとHTTPメソッド」に応じて次に処理を行う先を決めるのが仕事です。RailsではRoutesの処理が終わると、次はControllerのアクションへ処理が移ります。アクションとはControllerのメソッドのうち、Routesから呼び出されるもののことです。RoutesはリクエストのURLとHTTPメソッドから、処理の進み先であるContollerのアクションを決定します。RoutesはリクエストとController のアクションとの対応表と言えます。
 
 では、Routesの対応表を見て見ましょう。rails server を起動させて以下へアクセスすると、Routesの対応表が表示されます。（図参照）
 
@@ -333,12 +333,39 @@ Routesの処理を、HTTPメソッドを加えてもう少し詳しくみてみ�
 
 図 : Routes
 
-"HTTP Verb" がHTTPメソッドです。"Path"はURLの後半部分に相当します。URLが"http://localhost:3000/hello/index"である場合、パスは"/hello/index"になります。(表示されたPathの後半部分の "(.:format)" は省略できる記述で、ここでは詳しく説明しません。概略だけお話すると、レスポンスで返すフォーマットを指定するための機能で、普通のWebアプリではHTMLを返すことが多いので、省略するとHTMLを指定したことにすることが多いです。)
+"HTTP Verb" がHTTPメソッドです。"Path"はURLの後半部分に相当します。URLが"http://localhost:3000/hello/index"である場合、パスは"/hello/index"になります。(表示されたPathの後半部分の "(.:format)" は省略できる記述で、、レスポンスで返すフォーマットを指定するための機能です。多くのRailsアプリでは省略するとHTMLを返します。)
 
 右端の"Controller#Action"が処理が移るコントローラとアクションを示しています。ここでは "hello#index" と書かれていますが、#より左側がコントローラ名、右側がアクション名です。この場合は、「HelloControllerのindexアクション」を示しています。
 
 まとめると、この対応表は「リクエストのHTTPメソッドが"GET"、パスが"/hello/index"のとき、次の処理は"HelloController"の"index"アクションになる」という意味になります。
 
-ここで表示されたRoutesは`config/routes.rb`ファイルから生成されます。★TODO★ここから
+ここで表示されたRoutesは`config/routes.rb`ファイルから生成されます。このファイルを開くと以下のような記述があります。
 
-流れを見せてからTime.nowしてみる。
+{% highlight ruby %}
+get 'hello/index'
+{% endhighlight %}
+
+
+これがRoutesのコード部分で、この1行からさきほど説明した対応表が生成されています。「パス"hello/index"へのGETでのアクセスでHelloControllerのindexアクションが呼ばれる」という文です。Routesの書き方はまた追って説明していきます。
+
+それでは次に、処理が進む先となるコントローラをみてみましょう。
+
+### コントローラ
+
+コントローラはさまざまな処理を行い、次のビューに処理を渡します。さきほどのRoutesで指定されたHelloControllerはapp/controller/hello_controller.rb というファイルです。
+
+```
+class HelloController < ApplicationController
+  def index
+  end
+end
+```
+
+`def index`から`end`までがindexアクションです。HelloControllerのindexアクションが呼び出されますが、ここでは何も書かれているコードはありません。特に何もせずに次のビューに処理が移ります。
+
+どのビューへ処理が進むかはコントローラで指定可能ですが、今回のように何も指定が無い場合は、コントローラと同名のビューを選択します。今回はHelloControllerのindexアクションなので、対応するビューのファイルはapp/views/hello/index.html.erb になります。
+
+★流れを見せてからTime.nowか、最初にTime.nowか。最初かなー。
+
+
+
