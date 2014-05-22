@@ -138,7 +138,19 @@ $ rails s
 
 図 : Hello world
 
-"Hello world!"の文字が表示されましたか？これで一番小さなRailsアプリができあがりました。それでは次は、このアプリがどのように動作しているのかを見ていきましょう。
+"Hello world!"の文字が表示されましたか？これで一番小さなRailsアプリができあがりました。ここへ、少しだけRubyのコードを書いて、現在時刻を表示する機能を追加してみましょう。
+
+{% highlight erb %}
+<p>Hello world!</p>
++ <p>現在時刻: <%= Time.now %></p>
+{% endhighlight %}
+
+![現在時刻表示]({{site_url}}/assets/smallest-app/time_now.png)
+
+表示されましたか？ブラウザをリロードすると、現在時刻が更新されます。アクセスしたそのときの時刻が表示されるアプリになりました。最後に、このままでもいいのですが、コードをプログラムのロジックの部分は★TODO
+
+
+それでは次は、このアプリがどのように動作しているのかを見ていきましょう。
 
 ## Webアプリはどのように動作しているか
 
@@ -352,14 +364,14 @@ get 'hello/index'
 
 ### コントローラ
 
-コントローラはさまざまな処理を行い、次のビューに処理を渡します。さきほどのRoutesで指定されたHelloControllerはapp/controller/hello_controller.rb というファイルです。
+コントローラはさまざまな処理を行い、次のビューに処理を渡します。コントローラのファイルは`app/controllers/`へ置きます。さきほどのRoutesで指定されたHelloControllerは`app/controller/hello_controller.rb` というファイルです。
 
-```
+{% highlight ruby %}
 class HelloController < ApplicationController
   def index
   end
 end
-```
+{% endhighlight %}
 
 `def index`から`end`までがindexアクションです。HelloControllerのindexアクションが呼び出されますが、ここでは何も書かれているコードはありません。特に何もせずに次のビューに処理が移ります。
 
