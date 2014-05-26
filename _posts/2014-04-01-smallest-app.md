@@ -147,10 +147,30 @@ $ rails s
 
 ![現在時刻表示]({{site_url}}/assets/smallest-app/time_now.png)
 
-表示されましたか？ブラウザをリロードすると、現在時刻が更新されます。アクセスしたそのときの時刻が表示されるアプリになりました。最後に、このままでもいいのですが、コードをプログラムのロジックの部分は★TODO
+表示されましたか？ブラウザをリロードすると、現在時刻が更新されます。アクセスしたそのときの時刻が表示されるアプリになりました。最後に、このままでもいいのですが、コードのロジックの部分をビューに書くのではなく、コントローラで書くことにしましょう。動作は同じまま、コードを書き換えます。
 
+コントローラを次のように変更します。
 
-それでは次は、このアプリがどのように動作しているのかを見ていきましょう。
+`app/controllers/hello_controller.rb`
+{% highlight ruby %}
+class HelloController < ApplicationController
+  def index
++   @time = Time.now
+  end
+end
+{% endhighlight %}
+
+そして、ビューを変更します。
+
+`app/views/hello/index.html.erb`
+{% highlight erb %}
+- <p>現在時刻: <%= Time.now %></p>
++ <p>現在時刻: <%= @time %></p>
+{% endhighlight %}
+
+これでブラウザからアクセスすると、先ほどと同じように現在時刻が表示されているかと思います。
+
+次の節から、このアプリがどのように動作しているのかを説明していきます。
 
 ## Webアプリはどのように動作しているか
 
@@ -369,15 +389,12 @@ get 'hello/index'
 {% highlight ruby %}
 class HelloController < ApplicationController
   def index
+    @time = Time.now
   end
 end
 {% endhighlight %}
 
-`def index`から`end`までがindexアクションです。HelloControllerのindexアクションが呼び出されますが、ここでは何も書かれているコードはありません。特に何もせずに次のビューに処理が移ります。
+`def index`から`end`までがindexアクションです。HelloControllerのindexアクションが呼び出されます。★TODO
+
 
 どのビューへ処理が進むかはコントローラで指定可能ですが、今回のように何も指定が無い場合は、コントローラと同名のビューを選択します。今回はHelloControllerのindexアクションなので、対応するビューのファイルはapp/views/hello/index.html.erb になります。
-
-★流れを見せてからTime.nowか、最初にTime.nowか。最初かなー。
-
-
-
