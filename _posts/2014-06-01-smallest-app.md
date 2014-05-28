@@ -6,7 +6,7 @@ unique_identifier:
  - 'URL'
 title: '一番小さなRailsアプリづくり'
 creator: 'igaiga'
-date: '2014-04-01'
+date: '2014-06-01'
 categories:
 ---
 

@@ -6,7 +6,7 @@ unique_identifier:
  - 'URL'
 title: 'Webアプリをまずはつくってみよう'
 creator: 'igaiga'
-date: '2014-04-01'
+date: '2014-05-01'
 categories:
 ---
 
