@@ -2,3 +2,7 @@ name: Rails Textbook
 markdown: redcarpet
 pygments: true
 permalink: /:title.html
+# for github pages
+safe: true
+lsi: false
+baseurl: /rails_textbook
