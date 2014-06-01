@@ -7,7 +7,7 @@ title: Rails Textbook
   <ul class="posts">
     {% assign sorted_posts = site.posts | sort:"date" %}
     {% for post in sorted_posts %}
-      <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+      <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
     {% endfor %}
   </ul>
 </div>
