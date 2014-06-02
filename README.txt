@@ -1,5 +1,5 @@
 ■Webで閲覧
-http://igaiga.github.io/rails_textbook/
+http://igarashikuniaki.net/rails_textbook/
 
 ■ローカルで閲覧
 $ git clone https://github.com/igaiga/rails_textbook.git
