@@ -115,9 +115,7 @@ $ rails s
 
 * http://localhost:3000/hello/index
 
-![hello/index]({{site_url}}/assets/smallest-app/hello_index.png)
-
-図 : hello/index
+{% image path: assets/smallest-app/hello_index.png, description: hello/index %}
 
 この画面が出れば、ここまで意図通りに動作しています。さきほど実行した rails g コマンドはこのページ、/hello/index を作るものでした。どのような仕組みで動作しているかは後ほどまた説明しますので、今は先にこのページに"Hello world!"と表示させてみることにします。
 
@@ -134,9 +132,7 @@ $ rails s
 <p>Hello world!</p>
 {% endhighlight %}
 
-![Hello world]({{site_url}}/assets/smallest-app/helloworld.png)
-
-図 : Hello world
+{% image path: assets/smallest-app/helloworld.png, description: Hello world %}
 
 "Hello world!"の文字が表示されましたか？これで一番小さなRailsアプリができあがりました。ここへ、少しだけRubyのコードを書いて、現在時刻を表示する機能を追加してみましょう。
 
@@ -145,7 +141,7 @@ $ rails s
 + <p>現在時刻: <%= Time.now %></p>
 {% endhighlight %}
 
-![現在時刻表示]({{site_url}}/assets/smallest-app/time_now.png)
+{% image path: assets/smallest-app/time_now.png, description: 現在時刻表示 %}
 
 表示されましたか？ブラウザをリロードすると、現在時刻が更新されます。アクセスしたそのときの時刻が表示されるアプリになりました。最後に、このままでもいいのですが、コードのロジックの部分をビューに書くのではなく、コントローラで書くことにしましょう。動作は同じまま、コードを書き換えます。
 
