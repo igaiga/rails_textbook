@@ -75,7 +75,7 @@ $ rails server
 
 * localhost:3000
 
-![welcome rails]({{ site.url }}/assets/my-first-web-app/welcome_rails.png)
+{% image path: assets/my-first-web-app/welcome_rails.png, description: welcome rails  %}
 
 これは、Railsが起動し、あなたのブラウザからのリクエストを受け付けて、表示している画面です。ここまでのわずかの手順で、Webアプリをつくり、画面を表示しているのです。
 
@@ -117,7 +117,8 @@ $ rails server
 
 * http://localhost:3000/entries
 
-![entries]({{site_url}}/assets/my-first-web-app/scaffold_index.png)
+{% image path: assets/my-first-web-app/scaffold_index.png, description: entries %}
+
 
 画面が表示されたら、New Entry のリンクをたどってみましょう。Title, Description などを入力し、Create Entry ボタンで保存してみてください。また、保存したデータを編集や削除をしてみてください。ここまでの作業で簡易なブログの基本機能ができました。
 
@@ -199,8 +200,8 @@ $ rails server
 
 New Entry リンクをクリックすると、「ファイルを選択」ボタンが増えているかと思います。ボタンを押して画像ファイルを選び、アップロードしてみましょう。
 
-![new]({{site_url}}/assets/my-first-web-app/entries_new.png)
+{% image path: assets/my-first-web-app/entries_new.png, description: new %}
 
-![new]({{site_url}}/assets/my-first-web-app/entries_show.png)
+{% image path: assets/my-first-web-app/entries_show.png, description: show %}
 
 画像をアップロードできる簡易ブログアプリができあがりました。初めてのWebアプリづくりはいかがでしたか？とてもシンプルなアプリですが、Webアプリの基本となるデータ作成、表示、更新、削除の機能や、写真投稿機能を付加するためのライブラリの使い方などがこの中につまっています。本書を読み終わる頃には、ここで書いたコードやコマンドの意味が分かるようになりますので、今はまだ分からなくて大丈夫です。（まだ何も説明していないので当たり前ですね。）次の章から、Webアプリがどうような仕組みで動作するのかを説明していきます。
