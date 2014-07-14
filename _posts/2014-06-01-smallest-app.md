@@ -5,7 +5,7 @@ unique_identifier:
  - 'BookID'
  - 'URL'
 title: '一番小さなRailsアプリづくり'
-creator: 'igaiga'
+creator: '五十嵐邦明'
 date: '2014-06-01'
 categories:
 ---

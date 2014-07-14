@@ -5,7 +5,7 @@ unique_identifier:
  - 'BookID'
  - 'URL'
 title: 'Webアプリをまずはつくってみよう'
-creator: 'igaiga'
+creator: '五十嵐邦明'
 date: '2014-05-01'
 categories:
 ---
