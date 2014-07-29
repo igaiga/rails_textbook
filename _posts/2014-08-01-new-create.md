@@ -116,8 +116,30 @@ render メソッドは別のビューファイルを埋め込みます。埋め�
 
 {% image path: assets/new-create/new-view-form-submit-2.png, description: submitボタンを押すとリクエストが飛ぶ %}
 
-Create Book ボタンを押すと、form内の情報、ここでは Book に関する情報、入力したタイトルとメモを送信します。では、具体的にどんなリクエストが飛ぶのか試してみましょう。
+Create Book ボタンを押すと、form内の情報、ここでは Book に関する情報、入力したタイトルとメモをリクエストに含んで送信します。ここで送信されたタイトルとメモが後の行程で登録されるのです。では、具体的にどんなリクエストが飛ぶのかを観察してみましょう。
+
+### リクエストを観察する
+
+Chromeのデベロッパーツールを使うと、どのようなリクエストがサーバへ送信されたかを見ることができます。
+
+{% image path: assets/new-create/create-request-1.png, description: Chromeでリクエストを観察する(準備) %}
+
+new画面を表示させ、タイトル欄とメモ欄にBookの情報を入力します。Chromeのメニューからデベロッパーツールを起動します。Networkと書かれたタブを選択します。CreateBookボタンを押し、リクエストを送信してみましょう。
+
+{% image path: assets/new-create/create-request-2.png, description: Chromeでリクエストを観察する(リクエスト送信) %}
+
+たくさん表示されました。一番最初の books と書かれた行が先ほどボタンを押して発行されたリクエストです。books の行をクリックして詳細を見てみましょう。
+
+{% image path: assets/new-create/create-request-3.png, description: Chromeでリクエストを観察する(リクエストの中身) %}
+
+最初にURLとHTTPメソッドが書いてあります。いつもRoutesで使っている情報がここに載っています。
+
+下の方へスクロールすると、Form Data という欄にbook[title]とbook[memo]の情報があることが分かります。さきほどnew画面で入力した内容がここに表示されていることを確認してみてください。次は、飛んだこのリクエストがどのように処理されるかを見ていきましょう。
+
+## Create アクション
+### リクエストとRoutes
 
 
-
-
+{% comment %}
+★TODO: コラム new画面のHTTPメソッドはGET？
+{% endcomment %}
