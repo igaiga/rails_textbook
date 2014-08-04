@@ -137,9 +137,85 @@ new画面を表示させ、タイトル欄とメモ欄にBookの情報を入力�
 下の方へスクロールすると、Form Data という欄にbook[title]とbook[memo]の情報があることが分かります。さきほどnew画面で入力した内容がここに表示されていることを確認してみてください。次は、飛んだこのリクエストがどのように処理されるかを見ていきましょう。
 
 ## Create アクション
-### リクエストとRoutes
+### 新たなリクエスト
 
+new画面でCreate book ボタンを押すと新たなリクエストが飛ぶことが分かりました。次は、この2つ目のリクエストを追いかけます。リクエストの内容は、さきほどChromeで確認したように以下の図のようになっています。
+
+{% image path: assets/new-create/create-flow-request.png, description: 新たなリクエスト %}
+
+### Routes
+
+いつものように最初の処理はroutesです。
+
+{% image path: assets/new-create/create-routes.png, description: routes %}
+
+URLのパスは /books 、HTTPメソッドは POST なので books#create 、つまりBooksControllerのcreateアクションが呼び出されます。
+
+### コントローラ
+
+コントローラのソースファイルは `app/controllers/books_controller.rb` です。
+
+{% image path: assets/new-create/create-controller-1.png, description: コントローラ %}
+
+ここでやっていることは大きく3つです。
+
+{% image path: assets/new-create/create-controller-2.png, description: コントローラ - 3つの処理 %}
+
+3つの処理を順に見ていきます。
+
+{% image path: assets/new-create/create-controller-3.png, description: コントローラ - 処理1 %}
+
+最初は `@book = Book.new(book_params)` です。
+
+{% image path: assets/new-create/create-controller-4.png, description: コントローラ - book_params %}
+
+`Book.new` メソッドの引数に渡している `book_params` はメソッドを呼び出しています。このメソッドはファイルの後半に定義されています。`book_params` の中を見てみましょう。
+
+### パラメータ
+
+{% image path: assets/new-create/create-controller-params-1.png, description: パラメータ %}
+
+`book_params` メソッドはパラメータに関する処理を行っています。パラメータとは、ブラウザから飛んでくるリクエストの中に含まれる情報で、たとえばユーザーが入力した値が格納されています。前にChromeを使って見たものです。
+
+パラメータは `params` で取得できます。次は`params`にどんな情報が、どのように入っているかを見てみましょう。
+
+{% image path: assets/new-create/create-controller-params-2.png, description: パラメータの中身を表示するコード %}
+
+コードを変更して、ブラウザから新規登録画面を表示し、テキストボックス欄に入力し、Create Book ボタンを押します。その後、rails s のshellを流れた文字列から ************ を探してみてください。
+
+{% image path: assets/new-create/create-controller-params-3.png, description: パラメータの中身の表示結果 %}
+
+実行結果を見ると、確かに `params` の中にHashの形式でブラウザで入力した値が入っていることが分かりました。
+
+これを、少し前にブラウザのデベロッパーツールで表示させた内容と比較してみましょう。
+
+{% image path: assets/new-create/create-controller-params-4.png, description: パラメータの送信側と受信側 %}
+
+ここで出力した `params` の値と、さきほどブラウザのデベロッパーツールで表示させたパラメータの値が同じになっていることが分かります。ブラウザのでデベロッパーツールはパラメータを送信している部分です。一方でRailsのアプリ側はパラメータを受信している部分です。ブラウザがユーザーの入力データをパラメータとして送信し、私たちが作成しているアプリがそのデータを受け取っていることを確認できました。
+
+`book_params`の説明に戻って、`params`の後ろについている、 require, permit とはなんでしょうか？
+
+{% image path: assets/new-create/create-strong-parameters.png, description: Strong Parameters %}
+
+params以降のrequire, permitメソッドは、パラメータの内容を制限しています。意図していないデータが入ってくるのを防ぐために使用します。ここでは、book の title, memo だけを受け取るようにしています。
+
+このパラメータを制限する仕組みは Strong Parameters と呼ばれます。なぜこれが必要かと言うと、ブラウザから飛ばすパラメータはユーザーの手によって改ざんすることも可能だからです。つまり、任意のパラメータを飛ばす攻撃をすることができます。この1つ前のnewの画面にないパラメータが飛んでくる可能性があるので、ここで変更を許可するパラメータを絞っているのです。
+
+## まとめ
+
+{% image path: assets/new-create/create-model.png, description: create - 本のデータを作る %}
+
+ここまでで見て来たように `book_params` でパラメータの情報を取れることが分かりました。これを使って本のデータを作ります。
+
+本のデータは Book.new で作ります。newはクラスのインスタンスを作るメソッドです。実はBookは「モデル」という種族に属する便利な機能を持ったクラスです。モデルについての説明は次の章で行います。
+
+{% image path: assets/new-create/create-summary.png, description: create - ここまでの流れ %}
+
+このあと、本の情報を保存し(2.の部分)、その結果により表示する画面を切り替えます(3.の部分)。ここまでで 1.の途中まで、create アクションにパラメータ(params)が届いたのを確認したところまでやりました。
+
+続きは次の章で説明します。
 
 {% comment %}
 ★TODO: コラム new画面のHTTPメソッドはGET？
+★TODO: ？　コラム newとcreateは独立、CSRF
 {% endcomment %}
