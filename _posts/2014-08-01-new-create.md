@@ -226,6 +226,7 @@ params以降のrequire, permitメソッドは、パラメータの内容を制�
 - Railsアプリでは params 変数で渡ってきたパラメータを取得できる
 - セキュリティ問題対策のためStrongParameterを利用してparamsに制限をかける
 
+次の章ではモデルについて説明します。
 
 {% comment %}
 ★TODO: コラム new画面のHTTPメソッドはGET？
