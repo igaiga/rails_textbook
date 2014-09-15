@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @entry.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @entry.description %>
+</p>
+
+<p>
+  <strong>Picture:</strong>
+  <%= image_tag(@entry.picture_url) if @entry.picture.present? %>
+</p>
+
+<%= link_to 'Edit', edit_entry_path(@entry) %> |
+<%= link_to 'Back', entries_path %>
