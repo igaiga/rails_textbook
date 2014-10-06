@@ -1,4 +1,4 @@
-name: Rails Textbook
+name: Railsの教科書
 markdown: redcarpet
 pygments: true
 permalink: /:title.html
