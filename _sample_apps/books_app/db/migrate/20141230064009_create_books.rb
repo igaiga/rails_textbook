@@ -4,7 +4,7 @@ class CreateBooks < ActiveRecord::Migration
       t.string :title
       t.text :memo
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end
