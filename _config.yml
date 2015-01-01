@@ -1,6 +1,6 @@
 name: Railsの教科書
 markdown: redcarpet
-pygments: true
+highlighter: pygments
 permalink: /:title.html
 # for static pages
 baseurl: /rails_textbook
