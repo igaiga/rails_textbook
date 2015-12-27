@@ -44,14 +44,15 @@ rails s
 {% endhighlight %}
 {% highlight console %}
 $ rails s
-=> Booting WEBrick
-=> Rails 4.1.0 application starting in development on http://0.0.0.0:3000
+=> Booting Puma
+=> Rails 5.0.0.beta1 application starting in development on http://localhost:3000
 => Run `rails server -h` for more startup options
-=> Notice: server is listening on all interfaces (0.0.0.0). Consider using 127.0.0.1 (--binding option)
 => Ctrl-C to shutdown server
-[2014-05-05 10:22:56] INFO  WEBrick 1.3.1
-[2014-05-05 10:22:56] INFO  ruby 2.1.1 (2014-02-24) [x86_64-darwin13.0]
-[2014-05-05 10:22:56] INFO  WEBrick::HTTPServer#start: pid=30940 port=3000
+I, [2015-12-27T16:12:41.951554 #82200]  INFO -- : Celluloid 0.17.2 is running in BACKPORTED mode. [ http://git.io/vJf3J ]
+Puma 2.15.3 starting...
+* Min threads: 0, max threads: 16
+* Environment: development
+* Listening on tcp://localhost:3000
 {% endhighlight %}
 
 ブラウザを起動して以下のURLを入力してアクセスしてみます。
@@ -62,8 +63,6 @@ $ rails s
 
 前の章と同じように動作しています。ここで実行したコマンド ```rails s``` の s は server の略で、省略した s でも、省略せずに server でも、同じように動作します。
 
-TODO: コラム：rails s を停止した場合のアクセス。ポート重複時のアクセス。
-
 ### rails g コマンドでページを作る
 
 ひきつづき、以下のコマンドを入力してみましょう。rails server が起動している場合は、Ctrl-c (controlキーを押しながらcキー)で終了してからコマンドを打ってください。
@@ -73,6 +72,7 @@ rails g controller hello index
 {% endhighlight %}
 {% highlight console %}
 $ rails g controller hello index
+Running via Spring preloader in process 82284
       create  app/controllers/hello_controller.rb
        route  get 'hello/index'
       invoke  erb
@@ -83,12 +83,11 @@ $ rails g controller hello index
       invoke  helper
       create    app/helpers/hello_helper.rb
       invoke    test_unit
-      create      test/helpers/hello_helper_test.rb
       invoke  assets
       invoke    coffee
-      create      app/assets/javascripts/hello.js.coffee
-      invoke    scss
-      create      app/assets/stylesheets/hello.css.scss
+      create      app/assets/javascripts/hello.coffee
+      invoke    css
+      create      app/assets/stylesheets/hello.css
 {% endhighlight %}
 
 もしもrails g コマンドを打ち間違えて違うファイルを作ってしまった場合は、打ち間違えたコマンドの g の部分を d にして再実行すると、rails g コマンドで作成したファイルをまとめて削除してくれます。たとえば、``` rails g controller hell index``` とhelloをhellと打ち間違えた場合は、``` rails d controller hell index``` コマンドを実行することで間違えて作ったファイル群を削除することができます。（ターミナルでカーソルキーの↑キーを押すと、さきほど入力した内容が出てくるので、それを利用して g を d に直すと楽に実行できます。）
@@ -99,14 +98,15 @@ rails s
 {% endhighlight %}
 {% highlight console %}
 $ rails s
-=> Booting WEBrick
-=> Rails 4.1.0 application starting in development on http://0.0.0.0:3000
+=> Booting Puma
+=> Rails 5.0.0.beta1 application starting in development on http://localhost:3000
 => Run `rails server -h` for more startup options
-=> Notice: server is listening on all interfaces (0.0.0.0). Consider using 127.0.0.1 (--binding option)
 => Ctrl-C to shutdown server
-[2014-05-05 10:22:56] INFO  WEBrick 1.3.1
-[2014-05-05 10:22:56] INFO  ruby 2.1.1 (2014-02-24) [x86_64-darwin13.0]
-[2014-05-05 10:22:56] INFO  WEBrick::HTTPServer#start: pid=30940 port=3000
+I, [2015-12-27T16:15:34.755524 #82318]  INFO -- : Celluloid 0.17.2 is running in BACKPORTED mode. [ http://git.io/vJf3J ]
+Puma 2.15.3 starting...
+* Min threads: 0, max threads: 16
+* Environment: development
+* Listening on tcp://localhost:3000
 {% endhighlight %}
 
 ブラウザを使い、以下のURLへアクセスします。
