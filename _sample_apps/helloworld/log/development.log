@@ -1,0 +1,179 @@
+
+
+Started GET "/" for 127.0.0.1 at 2014-09-15 10:32:55 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/igarashi/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/railties-4.1.6/lib/rails/templates/rails/welcome/index.html.erb (1.3ms)
+Completed 200 OK in 14ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/hello/index" for 127.0.0.1 at 2014-09-15 10:33:02 +0900
+Processing by HelloController#index as HTML
+  Rendered hello/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 836ms (Views: 835.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/hello.css?body=1" for 127.0.0.1 at 2014-09-15 10:33:03 +0900
+
+
+Started GET "/assets/hello.js?body=1" for 127.0.0.1 at 2014-09-15 10:33:03 +0900
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-09-15 10:33:03 +0900
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-09-15 10:33:03 +0900
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-09-15 10:33:03 +0900
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-09-15 10:33:03 +0900
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-09-15 10:33:03 +0900
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-09-15 10:33:03 +0900
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-09-15 10:33:03 +0900
+
+
+Started GET "/hello/index" for 127.0.0.1 at 2014-09-15 10:33:34 +0900
+Processing by HelloController#index as HTML
+  Rendered hello/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 70ms (Views: 62.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/hello.css?body=1" for 127.0.0.1 at 2014-09-15 10:33:34 +0900
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-09-15 10:33:34 +0900
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-09-15 10:33:34 +0900
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-09-15 10:33:34 +0900
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-09-15 10:33:34 +0900
+
+
+Started GET "/assets/hello.js?body=1" for 127.0.0.1 at 2014-09-15 10:33:34 +0900
+
+
+Started GET "/hello/index" for 127.0.0.1 at 2014-09-15 10:33:34 +0900
+Processing by HelloController#index as HTML
+  Rendered hello/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 39ms (Views: 38.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-09-15 10:33:34 +0900
+
+
+Started GET "/assets/hello.css?body=1" for 127.0.0.1 at 2014-09-15 10:33:34 +0900
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-09-15 10:33:34 +0900
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-09-15 10:33:34 +0900
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-09-15 10:33:34 +0900
+
+
+Started GET "/hello/index" for 127.0.0.1 at 2014-09-15 10:34:28 +0900
+Processing by HelloController#index as HTML
+  Rendered hello/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 37ms (Views: 36.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/hello.css?body=1" for 127.0.0.1 at 2014-09-15 10:34:28 +0900
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-09-15 10:34:28 +0900
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-09-15 10:34:28 +0900
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-09-15 10:34:28 +0900
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-09-15 10:34:28 +0900
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-09-15 10:34:28 +0900
+
+
+Started GET "/assets/hello.js?body=1" for 127.0.0.1 at 2014-09-15 10:34:28 +0900
+
+
+Started GET "/" for ::1 at 2015-04-14 12:03:24 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/igarashi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/railties-4.2.1/lib/rails/templates/rails/welcome/index.html.erb (1.5ms)
+Completed 200 OK in 15ms (Views: 7.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/hello" for ::1 at 2015-04-14 12:03:28 +0900
+
+ActionController::RoutingError (No route matches [GET] "/hello"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/igarashi/.rbenv/versions/2.2.2/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/igarashi/.rbenv/versions/2.2.2/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/igarashi/.rbenv/versions/2.2.2/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/igarashi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /Users/igarashi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.8ms)
+  Rendered /Users/igarashi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (6.4ms)
+  Rendered /Users/igarashi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/igarashi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (97.9ms)
+
+
+Started GET "/hello/index" for ::1 at 2015-04-14 12:03:35 +0900
+Processing by HelloController#index as HTML
+  Rendered hello/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 1195ms (Views: 1194.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for ::1 at 2015-04-14 12:03:37 +0900
+
+
+Started GET "/assets/hello.css?body=1" for ::1 at 2015-04-14 12:03:37 +0900
+
+
+Started GET "/assets/jquery.js?body=1" for ::1 at 2015-04-14 12:03:37 +0900
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for ::1 at 2015-04-14 12:03:37 +0900
+
+
+Started GET "/assets/turbolinks.js?body=1" for ::1 at 2015-04-14 12:03:37 +0900
+
+
+Started GET "/assets/application.js?body=1" for ::1 at 2015-04-14 12:03:37 +0900
+
+
+Started GET "/assets/hello.js?body=1" for ::1 at 2015-04-14 12:03:37 +0900

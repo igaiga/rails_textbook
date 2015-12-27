@@ -1,0 +1,246 @@
+
+
+Started GET "/" for 127.0.0.1 at 2014-09-15 10:26:18 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/igarashi/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/railties-4.1.6/lib/rails/templates/rails/welcome/index.html.erb (1.2ms)
+Completed 200 OK in 14ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateEntries (20140915012635)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "picture" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140915012635"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/entries" for 127.0.0.1 at 2014-09-15 10:26:57 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by EntriesController#index as HTML
+  [1m[35mEntry Load (0.1ms)[0m  SELECT "entries".* FROM "entries"
+  Rendered entries/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 870ms (Views: 861.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/entries.css?body=1" for 127.0.0.1 at 2014-09-15 10:26:58 +0900
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-09-15 10:26:58 +0900
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-09-15 10:26:58 +0900
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-09-15 10:26:58 +0900
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-09-15 10:26:58 +0900
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-09-15 10:26:58 +0900
+
+
+Started GET "/assets/entries.js?body=1" for 127.0.0.1 at 2014-09-15 10:26:58 +0900
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-09-15 10:26:58 +0900
+
+
+Started GET "/entries/new" for 127.0.0.1 at 2014-09-15 10:27:13 +0900
+Processing by EntriesController#new as HTML
+  Rendered entries/_form.html.erb (16.1ms)
+  Rendered entries/new.html.erb within layouts/application (19.3ms)
+Completed 200 OK in 58ms (Views: 56.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/entries" for 127.0.0.1 at 2014-09-15 10:27:17 +0900
+Processing by EntriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"s26LvNuyxhUnpLRJ+3aZ+No5tV98J1dr2f6e27FRo3Y=", "entry"=>{"title"=>"aaa", "description"=>"aaa", "picture"=>"aaa"}, "commit"=>"Create Entry"}
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "entries" ("created_at", "description", "picture", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-15 01:27:17.627345"], ["description", "aaa"], ["picture", "aaa"], ["title", "aaa"], ["updated_at", "2014-09-15 01:27:17.627345"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/entries/1
+Completed 302 Found in 7ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/entries/1" for 127.0.0.1 at 2014-09-15 10:27:17 +0900
+Processing by EntriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mEntry Load (0.2ms)[0m  SELECT  "entries".* FROM "entries"  WHERE "entries"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered entries/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 45ms (Views: 42.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/entries.css?body=1" for 127.0.0.1 at 2014-09-15 10:27:17 +0900
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-09-15 10:27:17 +0900
+
+
+Started GET "/assets/entries.js?body=1" for 127.0.0.1 at 2014-09-15 10:27:17 +0900
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-09-15 10:27:17 +0900
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-09-15 10:27:17 +0900
+
+
+Started GET "/entries" for 127.0.0.1 at 2014-09-15 10:29:09 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by EntriesController#index as HTML
+  [1m[35mEntry Load (0.1ms)[0m  SELECT "entries".* FROM "entries"
+  Rendered entries/index.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 97ms (Views: 86.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/entries/new" for 127.0.0.1 at 2014-09-15 10:29:10 +0900
+Processing by EntriesController#new as HTML
+  Rendered entries/_form.html.erb (16.0ms)
+  Rendered entries/new.html.erb within layouts/application (19.0ms)
+Completed 200 OK in 58ms (Views: 57.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/entries" for 127.0.0.1 at 2014-09-15 10:29:22 +0900
+Processing by EntriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"s26LvNuyxhUnpLRJ+3aZ+No5tV98J1dr2f6e27FRo3Y=", "entry"=>{"title"=>"bbb", "description"=>"bbb", "picture"=>#<ActionDispatch::Http::UploadedFile:0x007f7f98119f58 @tempfile=#<Tempfile:/var/folders/cr/7xtxcnzn2ts4b4k2cw4f6gnc0000gn/T/RackMultipart20140915-3641-1ywmm4o>, @original_filename="fft_wallpaper005.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"entry[picture]\"; filename=\"fft_wallpaper005.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Entry"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "entries" ("created_at", "description", "picture", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-15 01:29:22.651491"], ["description", "bbb"], ["picture", "fft_wallpaper005.jpg"], ["title", "bbb"], ["updated_at", "2014-09-15 01:29:22.651491"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/entries/2
+Completed 302 Found in 12ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/entries/2" for 127.0.0.1 at 2014-09-15 10:29:22 +0900
+Processing by EntriesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mEntry Load (0.3ms)[0m  SELECT  "entries".* FROM "entries"  WHERE "entries"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered entries/show.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 48ms (Views: 45.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/entries.css?body=1" for 127.0.0.1 at 2014-09-15 10:29:22 +0900
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-09-15 10:29:22 +0900
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-09-15 10:29:22 +0900
+
+
+Started GET "/assets/entries.js?body=1" for 127.0.0.1 at 2014-09-15 10:29:22 +0900
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-09-15 10:29:22 +0900
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-09-15 10:29:22 +0900
+
+
+Started GET "/" for ::1 at 2015-04-14 12:04:39 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/igarashi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/railties-4.2.1/lib/rails/templates/rails/welcome/index.html.erb (1.5ms)
+Completed 200 OK in 15ms (Views: 7.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/info/routes" for ::1 at 2015-04-14 12:04:50 +0900
+Processing by Rails::InfoController#routes as HTML
+  Rendered /Users/igarashi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.1ms)
+  Rendered /Users/igarashi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (6.4ms)
+  Rendered /Users/igarashi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/railties-4.2.1/lib/rails/templates/rails/info/routes.html.erb within layouts/application (15.9ms)
+Completed 200 OK in 25ms (Views: 24.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/entries" for ::1 at 2015-04-14 12:04:59 +0900
+Processing by EntriesController#index as HTML
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:Entry> at /Users/igarashi/github_repos/github.com/igaiga/rails_textbook/_sample_apps/blog_app/app/models/entry.rb:2)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:Entry> at /Users/igarashi/github_repos/github.com/igaiga/rails_textbook/_sample_apps/blog_app/app/models/entry.rb:2)
+  [1m[35mEntry Load (0.4ms)[0m  SELECT "entries".* FROM "entries"
+  Rendered entries/index.html.erb within layouts/application (8.1ms)
+Completed 200 OK in 1252ms (Views: 1245.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/entries.css?body=1" for ::1 at 2015-04-14 12:05:00 +0900
+
+
+Started GET "/assets/scaffolds.css?body=1" for ::1 at 2015-04-14 12:05:00 +0900
+
+
+Started GET "/assets/application.css?body=1" for ::1 at 2015-04-14 12:05:00 +0900
+
+
+Started GET "/assets/jquery.js?body=1" for ::1 at 2015-04-14 12:05:00 +0900
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for ::1 at 2015-04-14 12:05:00 +0900
+
+
+Started GET "/assets/entries.js?body=1" for ::1 at 2015-04-14 12:05:00 +0900
+
+
+Started GET "/assets/turbolinks.js?body=1" for ::1 at 2015-04-14 12:05:00 +0900
+
+
+Started GET "/assets/application.js?body=1" for ::1 at 2015-04-14 12:05:00 +0900
+
+
+Started GET "/entries/new" for ::1 at 2015-04-14 12:05:03 +0900
+Processing by EntriesController#new as HTML
+  Rendered entries/_form.html.erb (12.9ms)
+  Rendered entries/new.html.erb within layouts/application (16.5ms)
+Completed 200 OK in 72ms (Views: 71.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/entries" for ::1 at 2015-04-14 12:05:14 +0900
+Processing by EntriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"BcgH6Z+gN8hAFXs2P6mI506JRVFv/8Cz0fo8kdVc68O603gkQY5SY95ibzNRuvZ+XVo1NFJ264dTGeXyqaVXig==", "entry"=>{"title"=>"ccc", "description"=>"ccc", "picture"=>#<ActionDispatch::Http::UploadedFile:0x007fe1f9b26438 @tempfile=#<Tempfile:/var/folders/cr/7xtxcnzn2ts4b4k2cw4f6gnc0000gn/T/RackMultipart20150414-99451-1no2swb.png>, @original_filename="bg-2014.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"entry[picture]\"; filename=\"bg-2014.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Create Entry"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "entries" ("title", "description", "picture", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "ccc"], ["description", "ccc"], ["picture", "bg-2014.png"], ["created_at", "2015-04-14 03:05:14.352006"], ["updated_at", "2015-04-14 03:05:14.352006"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/entries/3
+Completed 302 Found in 14ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/entries/3" for ::1 at 2015-04-14 12:05:14 +0900
+Processing by EntriesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mEntry Load (0.2ms)[0m  SELECT  "entries".* FROM "entries" WHERE "entries"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered entries/show.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 67ms (Views: 60.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for ::1 at 2015-04-14 12:05:14 +0900
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for ::1 at 2015-04-14 12:05:14 +0900
+
+
+Started GET "/assets/jquery.js?body=1" for ::1 at 2015-04-14 12:05:14 +0900
+
+
+Started GET "/assets/turbolinks.js?body=1" for ::1 at 2015-04-14 12:05:14 +0900
+
+
+Started GET "/assets/application.js?body=1" for ::1 at 2015-04-14 12:05:14 +0900
+
+
+Started GET "/entries" for ::1 at 2015-04-14 12:05:18 +0900
+Processing by EntriesController#index as HTML
+  [1m[36mEntry Load (0.2ms)[0m  [1mSELECT "entries".* FROM "entries"[0m
+  Rendered entries/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 40ms (Views: 39.5ms | ActiveRecord: 0.2ms)
