@@ -6,7 +6,7 @@
 - $ cd rails_textbook
 - $ bundle install
 - $ jekyll serve --watch --baseurl ''
-- http://localhost:4000/ へアクセス
+- http://localhost:4000/rails_textbook/ へアクセス
 
 ## コントリビュートの方法
 以下のコントリビュートポリシーにご同意いただいて、igaiga へご連絡いただくか、 pull request ください。
