@@ -69,15 +69,52 @@ newアクションは `@books = Book.new` の1行です。Book.new でBookクラ
 
 ビューのコード `views/books/new.html.erb` を見てみましょう。
 
-{% image path: assets/new-create/new-view-1.png, description: ビュー %}
+{% highlight ruby %}
+<h1>New Book</h1>
 
-これだけしかありません。随分とあっさりしています。実は、下の図中の枠線部分は別のファイルに書いてあり、 `<%= render 'form' %>` で埋め込まれるようになっています。
+<%= render 'form', book: @book %>
+
+<%= link_to 'Back', books_path %>
+{% endhighlight %}
+
+
+これだけしかありません。随分とあっさりしています。実は、下の図中の枠線部分は別のファイルに書いてあり、 `<%= render 'form', book: @book %>` で埋め込まれるようになっています。
 
 {% image path: assets/new-create/new-view-render.png, description: render の説明 %}
 
-render メソッドは別のビューファイルを埋め込みます。埋め込む用のビューファイルをパーシャルと言います。埋め込むファイル名には1つルールがあり、render で書いた文字列の先頭に _ を付けたファイル名にします。つまり、 `<%= render 'form' %>` で埋め込まれるファイルは `_form.html.erb` になります。(わざわざ別のファイルに書いてある理由は、他の画面でも同じ部品を共用したいからです。
+render メソッドは別のビューファイルを埋め込みます。埋め込む用のビューファイルをパーシャルと言います。埋め込むファイル名には1つルールがあり、render で書いた文字列の先頭に _ を付けたファイル名にします。つまり、 `<%= render 'form', book: @book %>` で埋め込まれるファイルは `_form.html.erb` になります。(わざわざ別のファイルに書いてある理由は、他の画面でも同じ部品を共用したいからです。
 
-{% image path: assets/new-create/new-view-2.png, description: 2つのビューファイルからページが作られている %}
+また、`<%= render 'form', book: @book %>` の `book: @book` の部分は、 `@book` 変数を埋め込み先のパーシャルファイル内では `book` 変数として使うように渡す指示です。
+
+{% highlight ruby %}
+<%= form_for(book) do |f| %>
+  <% if book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+      <ul>
+      <% book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :memo %>
+    <%= f.text_area :memo %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+{% endhighlight %}
 
 このように、2つのビューファイルからページが作られています。
 
@@ -104,7 +141,7 @@ render メソッドは別のビューファイルを埋め込みます。埋め�
 
 {% image path: assets/new-create/new-view-form-title-rails.png, description: タイトル(Railsコード) %}
 
-`f.label :title` で "Title"という文字列を表示しています。その名の通り、ラベルの部分です。`f.text_field :title` はその下にあるテキスト入力欄です。f はformブロック内の変数で、ここでは @book に関するformを記述するために使っています。(ここはそう書くものだと思ってもらえれば・・・)
+`f.label :title` で "Title"という文字列を表示しています。その名の通り、ラベルの部分です。`f.text_field :title` はその下にあるテキスト入力欄です。f はformブロック内の変数で、ここでは book に関するformを記述するために使っています。(ここはそう書くものだと思ってもらえれば・・・)
 
 {% image path: assets/new-create/new-view-form-memo.png, description: メモ %}
 
