@@ -61,14 +61,15 @@ rails server
 
 {% highlight console %}
 $ rails server
-=> Booting WEBrick
-=> Rails 4.1.0 application starting in development on http://0.0.0.0:3000
+=> Booting Puma
+=> Rails 5.0.0.beta1 application starting in development on http://localhost:3000
 => Run `rails server -h` for more startup options
-=> Notice: server is listening on all interfaces (0.0.0.0). Consider using 127.0.0.1 (--binding option)
 => Ctrl-C to shutdown server
-[2014-04-14 09:26:25] INFO  WEBrick 1.3.1
-[2014-04-14 09:26:25] INFO  ruby 2.1.1 (2014-02-24) [x86_64-darwin13.0]
-[2014-04-14 09:26:25] INFO  WEBrick::HTTPServer#start: pid=3855 port=3000
+I, [2015-12-27T15:39:46.449421 #79231]  INFO -- : Celluloid 0.17.2 is running in BACKPORTED mode. [ http://git.io/vJf3J ]
+Puma 2.15.3 starting...
+* Min threads: 0, max threads: 16
+* Environment: development
+* Listening on tcp://localhost:3000
 {% endhighlight %}
 
 では、ブラウザを起動して以下のURLを入力してアクセスしてみましょう。
@@ -91,26 +92,27 @@ rails server
 
 {% highlight console %}
 $ rails generate scaffold entry title description:text picture
+Running via Spring preloader in process 79311
       invoke  active_record
-      create    db/migrate/20140414232433_create_entries.rb
-      create    app/models/entry.rb
+      create    db/migrate/20151227064132_create_entries.rb
 ...(略)
 
 $ rake db:migrate
-== 20140414232433 CreateEntries: migrating ====================================
+== 20151227064132 CreateEntries: migrating ====================================
 -- create_table(:entries)
-   -> 0.0009s
-== 20140414232433 CreateEntries: migrated (0.0010s) ===========================
+   -> 0.0012s
+== 20151227064132 CreateEntries: migrated (0.0012s) ===========================
 
 $ rails server
-=> Booting WEBrick
-=> Rails 4.1.0 application starting in development on http://0.0.0.0:3000
+=> Booting Puma
+=> Rails 5.0.0.beta1 application starting in development on http://localhost:3000
 => Run `rails server -h` for more startup options
-=> Notice: server is listening on all interfaces (0.0.0.0). Consider using 127.0.0.1 (--binding option)
 => Ctrl-C to shutdown server
-[2014-04-15 08:24:53] INFO  WEBrick 1.3.1
-[2014-04-15 08:24:53] INFO  ruby 2.1.1 (2014-02-24) [x86_64-darwin13.0]
-[2014-04-15 08:24:53] INFO  WEBrick::HTTPServer#start: pid=5929 port=3000
+I, [2015-12-27T15:42:43.062862 #79399]  INFO -- : Celluloid 0.17.2 is running in BACKPORTED mode. [ http://git.io/vJf3J ]
+Puma 2.15.3 starting...
+* Min threads: 0, max threads: 16
+* Environment: development
+* Listening on tcp://localhost:3000
 {% endhighlight %}
 
 ここでまたブラウザを使い、以下のURLを表示させます。
@@ -145,19 +147,24 @@ rails generate uploader Picture
 
 {% highlight console %}
 $ bundle
+Fetching gem metadata from https://rubygems.org/...........
+Fetching version metadata from https://rubygems.org/...
+Fetching dependency metadata from https://rubygems.org/..
 Resolving dependencies...
-Using i18n (0.6.9)
+Using rake 10.4.2
 ...
-Your bundle is complete!
+Installing carrierwave 0.10.0
+Bundle complete! 13 Gemfile dependencies, 67 gems now installed.
 Use `bundle show [gemname]` to see where a bundled gem is installed.
 $ rails generate uploader Picture
+Running via Spring preloader in process 80021
       create  app/uploaders/picture_uploader.rb
 {% endhighlight %}
 
 次にファイルを編集します。```app/models/entry.rb``` を開いて、次の行
 
 {% highlight ruby %}
-class Entry < ActiveRecord::Base
+class Entry < ApplicationRecord
 {% endhighlight %}
 
 の直後に、以下を追加します。
@@ -188,14 +195,15 @@ rails server
 
 {% highlight console %}
 $ rails server
-=> Booting WEBrick
-=> Rails 4.1.0 application starting in development on http://0.0.0.0:3000
+=> Booting Puma
+=> Rails 5.0.0.beta1 application starting in development on http://localhost:3000
 => Run `rails server -h` for more startup options
-=> Notice: server is listening on all interfaces (0.0.0.0). Consider using 127.0.0.1 (--binding option)
 => Ctrl-C to shutdown server
-[2014-04-20 14:13:23] INFO  WEBrick 1.3.1
-[2014-04-20 14:13:23] INFO  ruby 2.1.1 (2014-02-24) [x86_64-darwin13.0]
-[2014-04-20 14:13:23] INFO  WEBrick::HTTPServer#start: pid=2134 port=3000
+I, [2015-12-27T15:50:47.054387 #80069]  INFO -- : Celluloid 0.17.2 is running in BACKPORTED mode. [ http://git.io/vJf3J ]
+Puma 2.15.3 starting...
+* Min threads: 0, max threads: 16
+* Environment: development
+* Listening on tcp://localhost:3000
 {% endhighlight %}
 
 New Entry リンクをクリックすると、「ファイルを選択」ボタンが増えているかと思います。ボタンを押して画像ファイルを選び、アップロードしてみましょう。
