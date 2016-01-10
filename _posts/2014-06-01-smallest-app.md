@@ -409,3 +409,8 @@ Railsアプリがリクエストを受けてレスポンスを返すまでの動
 * コントローラからビューへ情報を伝える場合は@はじまりのインスタンス変数を使う
 
 {% image path: assets/smallest-app/rails_app_request_to_response.png, description: リクエストを受けてレスポンスを返すまで %}
+
+## さらに学びたい場合は
+
+- [Rails Guides : Action View の概要](http://railsguides.jp/action_view_overview.html)
+  - ビューについての詳しい解説です。

@@ -261,11 +261,11 @@ params以降のrequire, permitメソッドは、パラメータの内容を制�
 - create アクションではデータを保存し、サーバのデータ変更を伴うため HTTPメソッド POST を使う
 - ユーザーがブラウザでフォームへ入力した内容はリクエスト内のパラメータとしてRailsアプリへ届く
 - Railsアプリでは params 変数で渡ってきたパラメータを取得できる
-- セキュリティ問題対策のためStrongParameterを利用してparamsに制限をかける
+- セキュリティ問題対策のためStrongParametersを利用してparamsに制限をかける
 
 次の章ではモデルについて説明します。
 
-{% comment %}
-★TODO: コラム new画面のHTTPメソッドはGET？
-★TODO: ？　コラム newとcreateは独立、CSRF
-{% endcomment %}
+## さらに学びたい場合は
+
+- [Rails Guides : Action Controller の概要](http://railsguides.jp/action_controller_overview.html)
+  - 前章でも紹介した、コントローラについての詳しい解説のページです。StrongParametersに関する説明もここに書いてあります。
