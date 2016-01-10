@@ -84,9 +84,11 @@ Puma 2.15.3 starting...
 
 ひきつづき、以下のコマンドを入力してください。rails server が起動している場合は、Ctrl-c (controlキーを押しながらcキー)で終了してからコマンドを打ちます。
 
+(※Rails4.2以前では `rails db:migrate` の替わりに `bin/rake db:migrate` と実行してください。)
+
 {% highlight bash %}
 rails generate scaffold entry title description:text picture
-rake db:migrate
+rails db:migrate
 rails server
 {% endhighlight %}
 
@@ -97,7 +99,7 @@ Running via Spring preloader in process 79311
       create    db/migrate/20151227064132_create_entries.rb
 ...(略)
 
-$ rake db:migrate
+$ rails db:migrate
 == 20151227064132 CreateEntries: migrating ====================================
 -- create_table(:entries)
    -> 0.0012s
