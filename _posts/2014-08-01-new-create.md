@@ -20,11 +20,11 @@ categories:
 
 前の章での「CRUD遷移図」において、new とcreate はこの部分になります。
 
-{% image path: assets/new-create/crud-transition-diagram-new-create.png, description: CRUD画面遷移図(newとcreate) %}
+{% image path: assets/new-create/kn/crud-transition-diagram-new-create.png, description: CRUD画面遷移図(newとcreate) %}
 
 おおまかな流れは以下のようになります。
 
-{% image path: assets/new-create/new-create-overview.png, description: おおまかな流れ %}
+{% image path: assets/new-create/kn/new-create-overview.png, description: おおまかな流れ %}
 
 まず、newアクションが実行され新規入力画面が表示されます。ここで本のタイトルとメモを入力します。Create Book ボタンを押すと、次に画面のない create アクションが実行されます。createアクションで、前のステップで入力されたタイトルとメモで本のデータを新規登録します。
 
@@ -34,24 +34,26 @@ categories:
 
 新規入力画面が表示されるまでの処理の流れを見ていきましょう。
 
-{% image path: assets/new-create/new-page.png, description: 新規入力画面 %}
+{% image path: assets/new-create/kn/new-page.png, description: 新規入力画面 %}
 
 新規入力画面は new アクションで表示されます。Railsアプリは前章で説明した通り、Routes、コントローラ、ビューの各処理を経て画面が表示されます。
 
-{% image path: assets/new-create/new-flow.png, description: new(新規入力)画面が表示されるまで %}
+{% image path: assets/new-create/kn/new-flow.png, description: new(新規入力)画面が表示されるまで %}
+
+最初はRoutesで処理が行われます。
 
 ### Routes
 
-{% image path: assets/new-create/new-flow-routes.png, description: Routes %}
+{% image path: assets/new-create/kn/new-flow-routes.png, description: Routes %}
 
 
 最初はRoutesにて、リクエストに対して処理されるコントローラとアクションが決まります。`http://localhost:3000/rails/info/routes`へアクセスしてRoutesの対応表を見てみましょう。今回のリクエストはパスが /books/new 、HTTPメソッドが GET なので、BooksController の new アクションへ処理が進みます。（図の下線部に該当します。）
 
-{% image path: assets/new-create/new-routes.png, description: Routes %}
+{% image path: assets/new-create/kn/new-routes.png, description: Routes %}
 
 ### コントローラ
 
-{% image path: assets/new-create/new-flow-controller.png, description: コントローラ %}
+{% image path: assets/new-create/kn/new-flow-controller.png, description: コントローラ %}
 
 BooksControllerのnewアクションのコードを見てみましょう。ファイルは `app/controllers/books_controller.rb` です。
 
