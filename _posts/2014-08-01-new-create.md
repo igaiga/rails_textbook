@@ -44,7 +44,7 @@ categories:
 
 ### Routes
 
-{% image path: assets/new-create/kn/new-flow-routes.png, description: Routes %}
+{% image path: assets/new-create/kn/new-flow-routes.png, description: 新規入力画面の処理の流れ - Routes %}
 
 
 最初はRoutesにて、リクエストに対して処理されるコントローラとアクションが決まります。`http://localhost:3000/rails/info/routes`へアクセスしてRoutesの対応表を見てみましょう。今回のリクエストはパスが /books/new 、HTTPメソッドが GET なので、BooksController の new アクションへ処理が進みます。（図の下線部に該当します。）
@@ -53,25 +53,30 @@ categories:
 
 ### コントローラ
 
-{% image path: assets/new-create/kn/new-flow-controller.png, description: コントローラ %}
+{% image path: assets/new-create/kn/new-flow-controller.png, description: 新規入力画面の処理の流れ - コントローラ %}
 
 BooksControllerのnewアクションのコードを見てみましょう。ファイルは `app/controllers/books_controller.rb` です。
 
-{% image path: assets/new-create/new-controller.png, description: コントローラ %}
+{% highlight ruby %}
+def new
+  @book = Book.new
+end
+{% endhighlight %}
 
-newアクションは `@books = Book.new` の1行です。Book.new でBookクラスのインスタンス（データは空っぽ）を作り、@bookインスタンス変数へ代入します。Bookクラスのインスタンスはタイトルとメモを格納できるようになっています。
 
-インスタンスとはクラスという設計図からつくる実際に仕事をするオブジェクトです。「たい焼き」に例えると、クラスは「たい焼きの型」、インスタンスは「焼いた鯛焼き」です。Bookクラスには色々と便利な機能があるのですが、それは後ほど説明します。ここでは、Bookに関してビューで使う情報をつくってインスタンス変数へ代入してビューへ送る、と考えてください。
+newアクションは `@books = Book.new` の1行です。Book.new でBookクラスのインスタンス（データは空っぽ）を作り、@bookインスタンス変数へ代入し、ビューへ渡します。Book.new でつくった Bookクラスのインスタンスはタイトルとメモを格納できるようになっています。
+
+インスタンスとはクラスという設計図からつくる実際に仕事をするオブジェクトです。「たい焼き」に例えると、クラスは「たい焼きの型」、インスタンスは「焼いた鯛焼き」です。Bookクラスには色々と便利な機能があるのですが、それは後ほど説明します。ここでは、Bookに関するビューで使う情報をつくり、インスタンス変数へ代入してビューへ送る、と考えると良いでしょう。
 
 コントローラの処理が終わると次はビューです。ここでは進むビューの指示がないため、デフォルトの `views/books/new.html.erb` へ処理が進みます。
 
 ### ビュー
 
-{% image path: assets/new-create/new-flow-view.png, description: ビュー %}
+{% image path: assets/new-create/kn/new-flow-view.png, description: 新規入力画面の処理の流れ - ビュー %}
 
 ビューのコード `views/books/new.html.erb` を見てみましょう。
 
-{% highlight ruby %}
+{% highlight erb %}
 <h1>New Book</h1>
 
 <%= render 'form', book: @book %>
@@ -82,13 +87,15 @@ newアクションは `@books = Book.new` の1行です。Book.new でBookクラ
 
 これだけしかありません。随分とあっさりしています。実は、下の図中の枠線部分は別のファイルに書いてあり、 `<%= render 'form', book: @book %>` で埋め込まれるようになっています。
 
-{% image path: assets/new-create/new-view-render.png, description: render の説明 %}
+{% image path: assets/new-create/kn/new-view-render.png, description: render の説明 %}
 
 render メソッドは別のビューファイルを埋め込みます。埋め込む用のビューファイルをパーシャルと言います。埋め込むファイル名には1つルールがあり、render で書いた文字列の先頭に _ を付けたファイル名にします。つまり、 `<%= render 'form', book: @book %>` で埋め込まれるファイルは `_form.html.erb` になります。(わざわざ別のファイルに書いてある理由は、他の画面でも同じ部品を共用したいからです。
 
-また、`<%= render 'form', book: @book %>` の `book: @book` の部分は、 `@book` 変数を埋め込み先のパーシャルファイル内では `book` 変数として使うように渡す指示です。
+また、`<%= render 'form', book: @book %>` の `book: @book` の部分は、 `@book` 変数を埋め込み先のパーシャル内では `book` 変数として使うように渡す指示です。
 
-{% highlight ruby %}
+埋め込まれるパーシャルビュー `_form.html.erb` は以下のようになっています。
+
+{% highlight erb %}
 <%= form_for(book) do |f| %>
   <% if book.errors.any? %>
     <div id="error_explanation">
@@ -118,9 +125,7 @@ render メソッドは別のビューファイルを埋め込みます。埋め�
 <% end %>
 {% endhighlight %}
 
-このように、2つのビューファイルからページが作られています。
-
-この中で、下図の枠線部分はエラー表示の部分です。
+`new.html.erb` と `_form.html.erb` の2つのファイルでこの画面はつくられています。では、`_form.html.erb` の中を解説していきます。この中で、下図の枠線部分はエラー表示の部分です。
 
 {% image path: assets/new-create/new-view-error.png, description: エラー表示の部分 %}
 
