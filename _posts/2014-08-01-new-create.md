@@ -125,30 +125,44 @@ render メソッドは別のビューファイルを埋め込みます。埋め�
 <% end %>
 {% endhighlight %}
 
-`new.html.erb` と `_form.html.erb` の2つのファイルでこの画面はつくられています。では、`_form.html.erb` の中を解説していきます。この中で、下図の枠線部分はエラー表示の部分です。
+`new.html.erb` と `_form.html.erb` の2つのファイルでこの画面はつくられています。
 
-{% image path: assets/new-create/new-view-error.png, description: エラー表示の部分 %}
+では、`_form.html.erb` の中を解説していきます。この中で、前半2行目からのこの部分はエラーを表示するコードです。ここでは説明を省略して、それ以外の基本となる部分を説明します。
 
-基本的な流れの部分について説明していきます。前のページの基本的な流れの部分を抜き出した下図を見てください。
+{% highlight erb %}
+<% if book.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+   <ul>
+    <% book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+{% endhighlight %}
 
-{% image path: assets/new-create/new-view-form.png, description: コードとページの部品の対応 %}
+残りの部分について説明していきます。最初に下図を見てください。
 
-それぞれ矢印の先の部品を作っています。また、全体としては form という名の部品になってます。formはHTMLでブラウザからサーバへ情報を送信する部品の1つです。
+{% image path: assets/new-create/kn/new-view-form.png, description: コードとページの部品の対応 %}
+
+それぞれ矢印の先の部品を作っています。また、全体としては form という名の部品になってます。formはHTMLでブラウザからサーバへ情報を送信する仕組みの1つです。
 
 まずは部品の1つ、タイトルのところを見てみましょう。
 
-{% image path: assets/new-create/new-view-form-title-html.png, description: タイトル(HTML) %}
+{% image path: assets/new-create/kn/new-view-form-title-html.png, description: タイトル部品 %}
 
+枠線内がタイトルの部分です。全体はHTMLですが、 <%= %> で囲まれた黄色の部分がその中に埋め込まれたRailsコードです。
 
-枠線内がタイトルの部分です。白色の部分がHTML、<%= %> で囲まれた黄色の部分がRailsコードの部分です。
+&lt;div&gt;&lt;/div&gt;は中のHTML要素をグルーピングするための要素です。それだけだと特に見た目を変えませんが、CSSで修飾する要素を指定するためによく使います。ここでは "field" というHTMLでのclass名をつけてCSSで修飾できるようにしています。
 
-&lt;div&gt;&lt;/div&gt;は中のHTML要素をグルーピングするための要素です。それだけだと特に見た目を変えませんが、CSSで修飾する要素を指定するためによく使います。ここでは "field" というclass名をつけてCSSで修飾できるようにしています。&lt;br /&gt; は改行を入れるHTML要素です。
+次はRailsコードの部分をもう少し詳しく見てみましょう。
 
-次はRailsコードの部分を見てみましょう。
+{% image path: assets/new-create/kn/new-view-form-title-rails.png, description: タイトル(Railsコード) %}
 
-{% image path: assets/new-create/new-view-form-title-rails.png, description: タイトル(Railsコード) %}
+`f.label :title` で "Title"という文字列を表示しています。その名の通り、ラベルの部分です。`f.text_field :title` はその下にあるテキスト入力欄です。f はformブロック内の変数で、ここでは book に関するformを記述するために使っています。(見慣れない書き方ですが、ここはそう書くものだと思ってもらえれば大丈夫です。)
 
-`f.label :title` で "Title"という文字列を表示しています。その名の通り、ラベルの部分です。`f.text_field :title` はその下にあるテキスト入力欄です。f はformブロック内の変数で、ここでは book に関するformを記述するために使っています。(ここはそう書くものだと思ってもらえれば・・・)
+次はその下のメモの部分を見てみましょう。
 
 {% image path: assets/new-create/new-view-form-memo.png, description: メモ %}
 
