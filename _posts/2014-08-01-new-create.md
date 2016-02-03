@@ -164,15 +164,17 @@ render メソッドは別のビューファイルを埋め込みます。埋め�
 
 次はその下のメモの部分を見てみましょう。
 
-{% image path: assets/new-create/new-view-form-memo.png, description: メモ %}
+{% image path: assets/new-create/kn/new-view-form-memo.png, description: メモ %}
 
 メモの部分も同様です。`f.label :memo` が "Memo" を表示する部分です。`f.text_area :memo` がその下のテキスト入力欄を作ります。`text_area` は先ほどの `text_field` よりも広くて改行を入力できるテキスト入力欄を作るメソッドです。
 
-{% image path: assets/new-create/new-view-form-submit-1.png, description: submit %}
+最後は投稿するボタンの部分です。
+
+{% image path: assets/new-create/kn/new-view-form-submit-1.png, description: submit %}
 
 `f.submit` は投稿ボタン(Create Book ボタン)を作ります。このボタンを押すとform内の情報をまとめてサーバへ送信（リクエストを送信）します。つまり・・・
 
-{% image path: assets/new-create/new-view-form-submit-2.png, description: submitボタンを押すとリクエストが飛ぶ %}
+{% image path: assets/new-create/kn/new-view-form-submit-2.png, description: submitボタンを押すとリクエストが飛ぶ %}
 
 Create Book ボタンを押すと、form内の情報、ここでは Book に関する情報、入力したタイトルとメモをリクエストに含んで送信します。ここで送信されたタイトルとメモが後の行程で登録されるのです。では、具体的にどんなリクエストが飛ぶのかを観察してみましょう。
 
