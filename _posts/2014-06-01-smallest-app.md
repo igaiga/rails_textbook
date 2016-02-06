@@ -20,12 +20,12 @@ categories:
 
 今回も最初にアプリを作ります。ブラウザに"Hello world!"と表示させるアプリです。前の章で作成した ```my_web_apps``` の下に新しいアプリを作ってみましょう。ターミナルを起動して以下のコマンドを打ちます。
 
-{% highlight bash %}
+```bash
 cd my_web_apps
 rails new helloworld
-{% endhighlight %}
+```
 
-{% highlight console %}
+```console
 $ rails new helloworld
       create
 ... (略)
@@ -34,15 +34,16 @@ Use `bundle show [gemname]` to see where a bundled gem is installed.
          run  bundle exec spring binstub --all
 * bin/rake: spring inserted
 * bin/rails: spring inserted
-{% endhighlight %}
+```
 
 次に、前の章と同じように以下のコマンドを実行してみましょう。
 
-{% highlight bash %}
+```bash
 cd helloworld
 rails s
-{% endhighlight %}
-{% highlight console %}
+```
+
+```console
 $ rails s
 => Booting Puma
 => Rails 5.0.0.beta1 application starting in development on http://localhost:3000
@@ -53,13 +54,13 @@ Puma 2.15.3 starting...
 * Min threads: 0, max threads: 16
 * Environment: development
 * Listening on tcp://localhost:3000
-{% endhighlight %}
+```
 
 ブラウザを起動して以下のURLを入力してアクセスしてみます。
 
 * http://localhost:3000
 
-{% image path: assets/my-first-web-app/welcome_rails.png, description: Welcome rails %}
+![Welcome rails](my-first-web-app/welcome_rails.png)
 
 前の章と同じように動作しています。ここで実行したコマンド ```rails s``` の s は server の略で、省略した s でも、省略せずに server でも、同じように動作します。
 
@@ -67,10 +68,11 @@ Puma 2.15.3 starting...
 
 ひきつづき、以下のコマンドを入力してみましょう。rails server が起動している場合は、Ctrl-c (controlキーを押しながらcキー)で終了してからコマンドを打ってください。
 
-{% highlight bash %}
+```bash
 rails g controller hello index
-{% endhighlight %}
-{% highlight console %}
+```
+
+```console
 $ rails g controller hello index
 Running via Spring preloader in process 82284
       create  app/controllers/hello_controller.rb
@@ -88,15 +90,16 @@ Running via Spring preloader in process 82284
       create      app/assets/javascripts/hello.coffee
       invoke    css
       create      app/assets/stylesheets/hello.css
-{% endhighlight %}
+```
 
 もしもrails g コマンドを打ち間違えて違うファイルを作ってしまった場合は、打ち間違えたコマンドの g の部分を d にして再実行すると、rails g コマンドで作成したファイルをまとめて削除してくれます。たとえば、``` rails g controller hell index``` とhelloをhellと打ち間違えた場合は、``` rails d controller hell index``` コマンドを実行することで間違えて作ったファイル群を削除することができます。（ターミナルでカーソルキーの↑キーを押すと、さきほど入力した内容が出てくるので、それを利用して g を d に直すと楽に実行できます。）
 
 再びrails server を起動させましょう。
-{% highlight bash %}
+```bash
 rails s
-{% endhighlight %}
-{% highlight console %}
+```
+
+```console
 $ rails s
 => Booting Puma
 => Rails 5.0.0.beta1 application starting in development on http://localhost:3000
@@ -107,60 +110,61 @@ Puma 2.15.3 starting...
 * Min threads: 0, max threads: 16
 * Environment: development
 * Listening on tcp://localhost:3000
-{% endhighlight %}
+```
 
 ブラウザを使い、以下のURLへアクセスします。
 
 * http://localhost:3000/hello/index
 
-{% image path: assets/smallest-app/hello_index.png, description: hello/index %}
+![hello/index](smallest-app/hello_index.png)
+
 
 この画面が出れば、ここまで意図通りに動作しています。さきほど実行した rails g コマンドはこのページ、/hello/index を作るものでした。どのような仕組みで動作しているかは後ほどまた説明しますので、今は先にこのページに"Hello world!"と表示させてみることにします。
 
 ```app/views/hello/index.html.erb``` ファイルをエディタで開いてみてください。以下のような内容になっています。
 
-{% highlight erb %}
+```erb
 <h1>Hello#index</h1>
 <p>Find me in app/views/hello/index.html.erb</p>
-{% endhighlight %}
+```
 
 これを以下のように変更して、ブラウザで同じURLへアクセスしてみてください。(rails s は起動したままで大丈夫です。もしも rails s を一度終了していた場合は、rails s コマンドでもう一度起動してからアクセスしてください。)
 
-{% highlight erb %}
+```erb
 <p>Hello world!</p>
-{% endhighlight %}
+```
 
-{% image path: assets/smallest-app/helloworld.png, description: Hello world %}
+![Hello world](smallest-app/helloworld.png)
 
 "Hello world!"の文字が表示されましたか？これで一番小さなRailsアプリができあがりました。ここへ、少しだけRubyのコードを書いて、現在時刻を表示する機能を追加してみましょう。
 
-{% highlight erb %}
+```diff
 <p>Hello world!</p>
 + <p>現在時刻: <%= Time.now %></p>
-{% endhighlight %}
+```
 
-{% image path: assets/smallest-app/time_now.png, description: 現在時刻表示 %}
+![現在時刻表示](smallest-app/time_now.png)
 
 表示されましたか？ブラウザをリロードすると、現在時刻が更新されます。アクセスしたそのときの時刻が表示されるアプリになりました。最後に、このままでもいいのですが、コードのロジックの部分をビューに書くのではなく、コントローラで書くことにしましょう。動作は同じまま、コードを書き換えます。
 
 コントローラを次のように変更します。
 
 `app/controllers/hello_controller.rb`
-{% highlight ruby %}
+```diff
 class HelloController < ApplicationController
   def index
 +   @time = Time.now
   end
 end
-{% endhighlight %}
+```
 
 そして、ビューを変更します。
 
 `app/views/hello/index.html.erb`
-{% highlight erb %}
+```diff
 - <p>現在時刻: <%= Time.now %></p>
 + <p>現在時刻: <%= @time %></p>
-{% endhighlight %}
+```
 
 これでブラウザからアクセスすると、先ほどと同じように現在時刻が表示されているかと思います。
 
@@ -170,20 +174,20 @@ end
 
 ここで、みなさんが普段ブラウザからつかっているWebアプリがどのように動作しているかを見てみましょう。アドレス入力欄にURLを入力してエンターキーを押すと、「リクエスト」がURL先のサーバへ向けて飛んでいきます。たとえば ```http://cookpad.com/``` と入力した場合は、クックパッドのサーバへ向けてリクエストが飛んでいきます。リクエストは追って説明していきますが、ざっくりと「そのページを見たいという要求（リクエスト）」とイメージしてもらえばOKです。
 
-{% image path: assets/smallest-app/kn/request.png, description: リクエスト %}
+![リクエスト](smallest-app/kn/request.png)
 
 Webサーバ上で動作しているWebアプリはリクエストを受け取ると、「レスポンス」としてHTMLで書かれたテキストを作ってブラウザへ返します。レスポンスは「Webアプリが返してきた情報群（HTMLで書かれた表示するの情報を含む）」とイメージできます。HTMLは HyperText Markup Language のことで、Webページを記述するための言語です。ブラウザはHTMLを解釈して、私たちの見易い、いつも見慣れたWebページを表示します。
 
-{% image path: assets/smallest-app/kn/response.png, description: レスポンス %}
+![レスポンス](smallest-app/kn/response.png)
 
 コラム：Webサーバ
 Webサーバとはなにものなのでしょうか？Webサーバは「Webサービスを提供する場合に必要な共通の機能を提供するもの」と言えます。Webアプリはブラウザとのやりとりで必要な機能のうち、どのサービスでも使う機能はWebサーバに仕事をまかせ、自分のサービスで必要なオリジナルな機能を提供することになります。Rubyには標準でWEBrick というWebサーバが用意されていて、rails s をしたときに起動するようになっています。実際のWebサービスを運用して提供する場合は、EnginxやApacheといったWebサーバが使われることが多いです。
 
 HTMLはブラウザからも見ることができます。Chromeの場合は、どこかのサイト(たとえば ```http://cookpad.com/``` ) へアクセスしたあと、右クリックメニューから「ページのソースを表示」を選ぶとHTMLで書かれたそのページを閲覧することができます。
 
-{% image path: assets/smallest-app/right_click.png, description: 右クリック %}
+![右クリック](smallest-app/right_click.png)
 
-{% image path: assets/smallest-app/html.png, description: HTML(抜粋) %}
+![HTML(抜粋)](smallest-app/html.png)
 
 ここまで説明してきた以下の2つが、ブラウザの主な仕事です。
 
@@ -194,17 +198,17 @@ HTMLはブラウザからも見ることができます。Chromeの場合は、�
 
 ブラウザからWebサービスにアクセスする場合、通常はWebアプリはインターネット上にあります。ブラウザだけが自分のPCにあります。
 
-{% image path: assets/smallest-app/kn/internet_and_local.png, description: インターネット上のサービスにアクセス %}
+![インターネット上のサービスにアクセス](smallest-app/kn/internet_and_local.png)
 
 しかし、開発中は自分が作っているアプリをわざわざインターネット上へ置く必要はなく、自分のPCでWebアプリを動作させ、同じく自分のPCにあるブラウザからアクセス可能です。
 
-{% image path: assets//smallest-app/kn/local.png, description: 開発中は自分のPCでつくることができる %}
+![開発中は自分のPCでつくることができる](/smallest-app/kn/local.png)
 
 ## 今回つくったRailsアプリの動作まとめ
 
 今回つくったRailsアプリの動作を図に描いてみました。
 
-{% image path: assets/smallest-app/kn/smallest_app.png, description: 今回つくったRailsアプリの動作 %}
+![今回つくったRailsアプリの動作](smallest-app/kn/smallest_app.png)
 
 ブラウザのURL欄にアドレスを入力してEnterを押すとリクエストが飛びます。リクエストを受け取ったRailsアプリはHTMLをつくり、レスポンスとして返します。レスポンスを受け取ったブラウザはHTMLを解釈し、画面に表示します。
 
@@ -217,16 +221,16 @@ Railsでの基本的な開発の進め方は以下の2つを繰り返すサイ�
 
 実は、さきほどつくったアプリもこの手順で進めていました。
 
-{% highlight bash %}
+```bash
 rails new helloworld
 rails g controller hello index
-{% endhighlight %}
+```
 
 これらのコマンドは「ひな形になるファイルの生成」を行っていました。そのあと、```app/views/hello/index.html.erb``` を編集して、
 
-{% highlight erb %}
+```erb
 <p>Hello world!</p>
-{% endhighlight %}
+```
 
 という内容に変更しました。このように、rails g コマンドなどでひな形となるファイルを生成し、それをそのアプリで使いたい形へ変えていく、Railsアプリ開発ではこれを繰り返してつくっていきます。
 
@@ -238,7 +242,7 @@ rails g コマンドはひな形を作成しますが、場合によってはこ
 
 では、Railsはどのようなファイルを生成するのでしょうか。最初の rails new コマンドを実行したとき、以下のように create ... という表示がずらっとされたと思います。railsが生成したファイルとフォルダの名前を表示していたのです。
 
-{% highlight console %}
+```console
 $ rails new helloworld
 create
 create  README.rdoc
@@ -256,21 +260,21 @@ create  app/assets/images/.keep
 create  app/mailers/.keep
 create  app/models/.keep
 ... (略)
-{% endhighlight %}
+```
 
 これらのファイル群によって、rails new をしただけで（何もコードを書かなくても）webアプリとして動作します。たくさんのファイルがつくられていますね。Railsアプリの基本的なフォルダとファイル群は以下の図のものです。いきなり全てを説明するのは難しいので、順番に説明していきます。役割ごとにフォルダが分かれています。それぞれの役割についてはこの後説明していきます。
 
-{% image path: assets/smallest-app/kn/rails_files.png, description: Railsアプリの基本的なフォルダ・ファイル群 %}
+![Railsアプリの基本的なフォルダ・ファイル群](smallest-app/kn/rails_files.png)
 
 ### rails g コマンド
 
 次に実行した rails g コマンドで作られたファイルを見てみましょう。
 
-{% highlight bash %}
+```bash
 rails g controller hello index
-{% endhighlight %}
+```
 
-{% highlight console %}
+```console
 $ rails g controller hello index
 create  app/controllers/hello_controller.rb
  route  get 'hello/index'
@@ -288,7 +292,7 @@ invoke    coffee
 create      app/assets/javascripts/hello.js.coffee
 invoke    scss
 create      app/assets/stylesheets/hello.css.scss
-{% endhighlight %}
+```
 
 ここで実行した rails g controller コマンドは、URLのパスが /hello/index であるページを表示するためのファイル群を生成します。g は generate の略です。rails g controller の後ろの hello と index が、生成するページのパスを指定していることが分かります。
 
@@ -300,7 +304,7 @@ create      app/assets/stylesheets/hello.css.scss
 * app/views/hello/index.html.erb
 * config/routes.rb
 
-{% image path: assets/smallest-app/kn/rails_g_controller.png, description: rails g controller hello index コマンドで生成されるファイル %}
+![rails g controller hello index コマンドで生成されるファイル](smallest-app/kn/rails_g_controller.png)
 
 これらのファイルがどのような働きをしているのかを、次の節でRailsがリクエストを受けてからレスポンスを返すまでの基本的な処理の順序を追いかけながら説明していきます。
 
@@ -308,11 +312,11 @@ create      app/assets/stylesheets/hello.css.scss
 
 ブラウザからアクセスしたときに、Railsアプリはどのように動作しているのでしょうか？以下の図は、今回つくったRailsアプリの動作を示したものです。前に出てきた動作の図から少しだけ詳しく書き加えてあります。
 
-{% image path: assets/smallest-app/kn/rails_app_semantics.png, description: Railsアプリの動作 %}
+![Railsアプリの動作](smallest-app/kn/rails_app_semantics.png)
 
 ここでは、この図のRailsAppの部分について詳しく説明していきます。ここから、対象箇所を抜き出したのが次の図です。
 
-{% image path: assets/smallest-app/kn/rails_app_request_to_response.png, description: Railsアプリがリクエストを受けてレスポンスを返すまで %}
+![Railsアプリがリクエストを受けてレスポンスを返すまで](smallest-app/kn/rails_app_request_to_response.png)
 
 リクエストを受けたRailsアプリは、Routes, Controller, View の各所で処理を行い、レスポンスとしてHTMLを生成して返します。各所ではそれぞれ仕事の分担が決まっていて、自分の担当の処理を行います。Routes, Controller, View でそれぞれどのような処理が行われているのか、順に見ていきましょう。
 
@@ -328,7 +332,7 @@ Routesは「リクエストのURLとHTTPメソッド」に応じて次に処理�
 
 まとめると、リクエストは「URL」でアクセス先を、「HTTPメソッド」で行うことを指定します。
 
-{% image path: assets/smallest-app/kn/routes_mapping.png, description: Routes %}
+[Routes](smallest-app/kn/routes_mapping.png)
 
 Routesの処理を、HTTPメソッドを加えてもう少し詳しくみてみましょう。最初に説明した通り、Routesは「リクエストのURLとHTTPメソッド」に応じて次に処理を行う先を決めるのが仕事です。RailsではRoutesの処理が終わると、次はControllerのアクションへ処理が移ります。
 
@@ -338,7 +342,7 @@ Routesの処理を、HTTPメソッドを加えてもう少し詳しくみてみ�
 
 * http://localhost:3000/rails/info/routes
 
-{% image path: assets/smallest-app/kn/routes.png, description: Routes対応表 %}
+![Routes対応表](smallest-app/kn/routes.png)
 
 表中の "HTTP Verb" がHTTPメソッドです。"Path"はURLの後半部分に相当します。URLが"http://localhost:3000/hello/index"である場合、パスは"/hello/index"になります。(表示されたPathの後半部分の "(.:format)" は省略できる記述で、レスポンスで返すフォーマットを指定するための機能です。省略した場合はHTMLを返すのが普通です。)
 
@@ -348,9 +352,9 @@ Routesの処理を、HTTPメソッドを加えてもう少し詳しくみてみ�
 
 ここで表示されたRoutesは`config/routes.rb`ファイルから生成されます。このファイルを開くと以下のような記述があります。
 
-{% highlight ruby %}
+```ruby
 get 'hello/index'
-{% endhighlight %}
+```
 
 
 これがRoutesのコード部分で、この1行からさきほど説明した対応表が生成されています。「パス"hello/index"へのGETでのアクセスでHelloControllerのindexアクションが呼ばれる」という文です。Routesの書き方はまた追って説明していきます。
@@ -361,23 +365,23 @@ get 'hello/index'
 
 コントローラはさまざまな処理を行い、次のビューに処理を渡します。コントローラのファイルは`app/controllers/`へ置きます。さきほどのRoutesで指定されたHelloControllerは`app/controller/hello_controller.rb` というファイルです。
 
-{% highlight ruby %}
+```ruby
 class HelloController < ApplicationController
   def index
     @time = Time.now
   end
 end
-{% endhighlight %}
+```
 
 HelloControllerのindexアクションが呼び出されます。`def index`から`end`までがindexアクションです。ここでは @time というインスタンス変数に現在時刻を代入しています。
 
 変数は荷札のようなもので、あとから代入したものにアクセスできるように名前をつける仕組みです。変数のうち、@はじまりの変数のことをインスタンス変数といいます。インスタンス変数を使うと、コントローラから（このあと処理する箇所である）ビューへ情報を伝えることができます。ちなみに、@はじまりではない変数はローカル変数と呼ばれるもので、このメソッド（アクション）を抜けると役目を終えて参照できなくなります。つまり、ローカル変数はビューから参照することができません。ビューから参照するためには@はじまりのインスタンス変数を利用します。
 
-{% image path: assets/smallest-app/kn/instance_variable.png, description: インスタンス変数を使うとビューへ情報を渡すことができる %}
+![インスタンス変数を使うとビューへ情報を渡すことができる](smallest-app/kn/instance_variable.png)
 
 どのビューへ処理が進むかはコントローラで指定可能ですが、今回のように何も指定が無い場合は、コントローラおよびアクションと同名のビューを選択します。今回はHelloControllerのindexアクションなので、対応するビューのファイルはapp/views/hello/index.html.erb になります。
 
-{% image path: assets/smallest-app/kn/controller.png, description: コントローラの動作 %}
+![コントローラの動作](smallest-app/kn/controller.png)
 
 ### ビュー
 
@@ -392,11 +396,11 @@ index.html.erb は、HTMLのもとになるファイルです。ブラウザで�
 
 HTMLのpタグがあります。その中にHTMLにはない `<%=` と `%>` というタグがあります。これがRubyのコードを実行するためのタグです。ここではその中にはある `@time` が実行されます。@time はコントローラのところで作られたインスタンス変数です。実行すると、変数が指しているもの、つまりコントローラで実行された `Time.now` の結果で置き換えられます。このビューで作られたHTMLは、ブラウザで確認することができます。さきほどブラウザから見たように、現在時刻が表示されます。（実際には、ビューが作ったHTMLに、Railsがその他の加工を加えて送出します。）
 
-{% image path: assets/smallest-app/time_now.png, description: ブラウザからビューがつくったHTMLを確認 %}
+![ブラウザからビューがつくったHTMLを確認](smallest-app/time_now.png)
 
 ビューについての動作をまとめると以下のようになります。
 
-{% image path: assets/smallest-app/kn/view.png, description: ビュー %}
+![ビュー](smallest-app/kn/view.png)
 
 ### まとめ
 
@@ -408,7 +412,7 @@ Railsアプリがリクエストを受けてレスポンスを返すまでの動
 * ビューはテンプレートに埋め込んであるRubyのコードを実行してHTMLを作る
 * コントローラからビューへ情報を伝える場合は@はじまりのインスタンス変数を使う
 
-{% image path: assets/smallest-app/kn/rails_app_request_to_response.png, description: Railsアプリがリクエストを受けてレスポンスを返すまで %}
+![Railsアプリがリクエストを受けてレスポンスを返すまで](smallest-app/kn/rails_app_request_to_response.png)
 
 ## さらに学びたい場合は
 

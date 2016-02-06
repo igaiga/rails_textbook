@@ -20,22 +20,22 @@ categories:
 
 まずはターミナルを起動して以下のコマンドを打ってみましょう。
 
-{% highlight bash %}
+```bash
 mkdir my_web_apps
 cd my_web_apps
-{% endhighlight %}
+```
 
 mkdir はフォルダを作成するコマンド、cd はターミナル内で現在のフォルダを移動するコマンドです。(Winで普段使いなれている「コンピューター(エクスプローラー)」を起動するには、ターミナルで explorer . と打つと現在のフォルダを開くことができます。MacでFinderを開くにはターミナルから open . と打ちます。これらからフォルダを作るのと同じ働きをするコマンドが mkdir です。)
 
 続けて以下のコマンドを実行します。
 
-{% highlight bash %}
+```bash
 rails new blog_app
-{% endhighlight %}
+```
 
 以下のような結果が表示されるでしょうか。(実行には少し時間がかかります)
 
-{% highlight console %}
+```console
 $ rails new blog_app
       create
       create  README.rdoc
@@ -46,16 +46,16 @@ Use `bundle show [gemname]` to see where a bundled gem is installed.
          run  bundle exec spring binstub --all
 * bin/rake: spring inserted
 * bin/rails: spring inserted
-{% endhighlight %}
+```
 
 ターミナルの画面にこのように"Your bundle is complete!"と表示されれば成功です。railsコマンドはたくさんのフォルダとファイルを自動で作ります。
 
 次は以下のコマンドを実行してみてください。
 
-{% highlight bash %}
+```bash
 cd blog_app
 rails server
-{% endhighlight %}
+```
 
 うまく動作している場合は、以下のような表示になります。
 
@@ -76,7 +76,7 @@ Puma 2.15.3 starting...
 
 * localhost:3000
 
-{% image path: assets/my-first-web-app/welcome_rails.png, description: welcome rails  %}
+![welcome rails](my-first-web-app/welcome_rails.png)
 
 これは、Railsが起動し、あなたのブラウザからのリクエストを受け付けて、表示している画面です。ここまでのわずかの手順で、Webアプリをつくり、画面を表示しているのです。
 
@@ -86,13 +86,13 @@ Puma 2.15.3 starting...
 
 (※Rails4.2以前では `rails db:migrate` の替わりに `bin/rake db:migrate` と実行してください。)
 
-{% highlight bash %}
+```bash
 rails generate scaffold entry title description:text picture
 rails db:migrate
 rails server
-{% endhighlight %}
+```
 
-{% highlight console %}
+```console
 $ rails generate scaffold entry title description:text picture
 Running via Spring preloader in process 79311
       invoke  active_record
@@ -115,13 +115,13 @@ Puma 2.15.3 starting...
 * Min threads: 0, max threads: 16
 * Environment: development
 * Listening on tcp://localhost:3000
-{% endhighlight %}
+```
 
 ここでまたブラウザを使い、以下のURLを表示させます。
 
 * http://localhost:3000/entries
 
-{% image path: assets/my-first-web-app/scaffold_index.png, description: entries %}
+![entries](my-first-web-app/scaffold_index.png)
 
 
 画面が表示されたら、New Entry のリンクをたどってみましょう。Title, Description などを入力し、Create Entry ボタンで保存してみてください。また、保存したデータを編集や削除をしてみてください。ここまでの作業で簡易なブログの基本機能ができました。
@@ -130,24 +130,24 @@ Puma 2.15.3 starting...
 
 次は、写真をアップロードできるようにしてみましょう。Rails にファイルをアップロードする機能を追加するには、ライブラリをインストールする必要があります。Railsルートフォルダ(```my_web_apps/blog_app```)内の Gemfile というファイルを開いてください。
 
-{% highlight ruby %}
+```ruby
 gem 'sqlite3'
-{% endhighlight %}
+```
 
 という記述を探して、その下あたりに次の一行を追加して保存します。
 
-{% highlight ruby %}
+```ruby
 gem 'carrierwave'
-{% endhighlight %}
+```
 
 追加できたら、Terminal で、次のコマンドを実行してください。 (rails server は Ctrl-c で終了させてください。)
 
-{% highlight bash %}
+```bash
 bundle
 rails generate uploader Picture
-{% endhighlight %}
+```
 
-{% highlight console %}
+```console
 $ bundle
 Fetching gem metadata from https://rubygems.org/...........
 Fetching version metadata from https://rubygems.org/...
@@ -161,41 +161,41 @@ Use `bundle show [gemname]` to see where a bundled gem is installed.
 $ rails generate uploader Picture
 Running via Spring preloader in process 80021
       create  app/uploaders/picture_uploader.rb
-{% endhighlight %}
+```
 
 次にファイルを編集します。```app/models/entry.rb``` を開いて、次の行
 
-{% highlight ruby %}
+```ruby
 class Entry < ApplicationRecord
-{% endhighlight %}
+```
 
 の直後に、以下を追加します。
 
-{% highlight ruby %}
+```ruby
 mount_uploader :picture, PictureUploader
-{% endhighlight %}
+```
 
 さらに、```app/views/entries/_form.html.erb``` を以下のように編集します。(- 記号の行を削除して、かわりに + 記号の行を追加してください。)
 
-{% highlight ruby %}
+```diff
 - <%= f.text_field :picture %>
 + <%= f.file_field :picture %>
-{% endhighlight %}
+```
 
 あと少しです。最後に ```app/views/entries/show.html.erb``` を開いて編集します。
 
-{% highlight ruby %}
+```diff
 - <%= @entry.picture %>
 + <%= image_tag(@entry.picture_url) if @entry.picture.present? %>
-{% endhighlight %}
+```
 
 rails server を起動して、ブラウザから http://localhost:3000/entries へアクセスしてみましょう。
 
-{% highlight bash %}
+```bash
 rails server
-{% endhighlight %}
+```
 
-{% highlight console %}
+```console
 $ rails server
 => Booting Puma
 => Rails 5.0.0.beta1 application starting in development on http://localhost:3000
@@ -206,12 +206,12 @@ Puma 2.15.3 starting...
 * Min threads: 0, max threads: 16
 * Environment: development
 * Listening on tcp://localhost:3000
-{% endhighlight %}
+```
 
 New Entry リンクをクリックすると、「ファイルを選択」ボタンが増えているかと思います。ボタンを押して画像ファイルを選び、アップロードしてみましょう。
 
-{% image path: assets/my-first-web-app/entries_new.png, description: new %}
+![new](my-first-web-app/entries_new.png)
 
-{% image path: assets/my-first-web-app/entries_show.png, description: show %}
+![show](my-first-web-app/entries_show.png)
 
 画像をアップロードできる簡易ブログアプリができあがりました。初めてのWebアプリづくりはいかがでしたか？とてもシンプルなアプリですが、Webアプリの基本となるデータ作成、表示、更新、削除の機能や、写真投稿機能を付加するためのライブラリの使い方などがこの中につまっています。本書を読み終わる頃には、ここで書いたコードやコマンドの意味が分かるようになりますので、今はまだ分からなくて大丈夫です。（まだ何も説明していないので当たり前ですね。）次の章から、Webアプリがどうような仕組みで動作するのかを説明していきます。
