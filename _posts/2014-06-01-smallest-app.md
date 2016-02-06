@@ -60,7 +60,7 @@ Puma 2.15.3 starting...
 
 * http://localhost:3000
 
-![Welcome rails](my-first-web-app/welcome_rails.png)
+![Welcome rails](assets/my-first-web-app/welcome_rails.png)
 
 前の章と同じように動作しています。ここで実行したコマンド ```rails s``` の s は server の略で、省略した s でも、省略せずに server でも、同じように動作します。
 
@@ -116,7 +116,7 @@ Puma 2.15.3 starting...
 
 * http://localhost:3000/hello/index
 
-![hello/index](smallest-app/hello_index.png)
+![hello/index](assets/smallest-app/hello_index.png)
 
 
 この画面が出れば、ここまで意図通りに動作しています。さきほど実行した rails g コマンドはこのページ、/hello/index を作るものでした。どのような仕組みで動作しているかは後ほどまた説明しますので、今は先にこのページに"Hello world!"と表示させてみることにします。
@@ -134,7 +134,7 @@ Puma 2.15.3 starting...
 <p>Hello world!</p>
 ```
 
-![Hello world](smallest-app/helloworld.png)
+![Hello world](assets/smallest-app/helloworld.png)
 
 "Hello world!"の文字が表示されましたか？これで一番小さなRailsアプリができあがりました。ここへ、少しだけRubyのコードを書いて、現在時刻を表示する機能を追加してみましょう。
 
@@ -143,7 +143,7 @@ Puma 2.15.3 starting...
 + <p>現在時刻: <%= Time.now %></p>
 ```
 
-![現在時刻表示](smallest-app/time_now.png)
+![現在時刻表示](assets/smallest-app/time_now.png)
 
 表示されましたか？ブラウザをリロードすると、現在時刻が更新されます。アクセスしたそのときの時刻が表示されるアプリになりました。最後に、このままでもいいのですが、コードのロジックの部分をビューに書くのではなく、コントローラで書くことにしましょう。動作は同じまま、コードを書き換えます。
 
@@ -174,20 +174,20 @@ end
 
 ここで、みなさんが普段ブラウザからつかっているWebアプリがどのように動作しているかを見てみましょう。アドレス入力欄にURLを入力してエンターキーを押すと、「リクエスト」がURL先のサーバへ向けて飛んでいきます。たとえば ```http://cookpad.com/``` と入力した場合は、クックパッドのサーバへ向けてリクエストが飛んでいきます。リクエストは追って説明していきますが、ざっくりと「そのページを見たいという要求（リクエスト）」とイメージしてもらえばOKです。
 
-![リクエスト](smallest-app/kn/request.png)
+![リクエスト](assets/smallest-app/kn/request.png)
 
 Webサーバ上で動作しているWebアプリはリクエストを受け取ると、「レスポンス」としてHTMLで書かれたテキストを作ってブラウザへ返します。レスポンスは「Webアプリが返してきた情報群（HTMLで書かれた表示するの情報を含む）」とイメージできます。HTMLは HyperText Markup Language のことで、Webページを記述するための言語です。ブラウザはHTMLを解釈して、私たちの見易い、いつも見慣れたWebページを表示します。
 
-![レスポンス](smallest-app/kn/response.png)
+![レスポンス](assets/smallest-app/kn/response.png)
 
 コラム：Webサーバ
 Webサーバとはなにものなのでしょうか？Webサーバは「Webサービスを提供する場合に必要な共通の機能を提供するもの」と言えます。Webアプリはブラウザとのやりとりで必要な機能のうち、どのサービスでも使う機能はWebサーバに仕事をまかせ、自分のサービスで必要なオリジナルな機能を提供することになります。Rubyには標準でWEBrick というWebサーバが用意されていて、rails s をしたときに起動するようになっています。実際のWebサービスを運用して提供する場合は、EnginxやApacheといったWebサーバが使われることが多いです。
 
 HTMLはブラウザからも見ることができます。Chromeの場合は、どこかのサイト(たとえば ```http://cookpad.com/``` ) へアクセスしたあと、右クリックメニューから「ページのソースを表示」を選ぶとHTMLで書かれたそのページを閲覧することができます。
 
-![右クリック](smallest-app/right_click.png)
+![右クリック](assets/smallest-app/right_click.png)
 
-![HTML(抜粋)](smallest-app/html.png)
+![HTML(抜粋)](assets/smallest-app/html.png)
 
 ここまで説明してきた以下の2つが、ブラウザの主な仕事です。
 
@@ -198,17 +198,17 @@ HTMLはブラウザからも見ることができます。Chromeの場合は、�
 
 ブラウザからWebサービスにアクセスする場合、通常はWebアプリはインターネット上にあります。ブラウザだけが自分のPCにあります。
 
-![インターネット上のサービスにアクセス](smallest-app/kn/internet_and_local.png)
+![インターネット上のサービスにアクセス](assets/smallest-app/kn/internet_and_local.png)
 
 しかし、開発中は自分が作っているアプリをわざわざインターネット上へ置く必要はなく、自分のPCでWebアプリを動作させ、同じく自分のPCにあるブラウザからアクセス可能です。
 
-![開発中は自分のPCでつくることができる](/smallest-app/kn/local.png)
+![開発中は自分のPCでつくることができる](/assets/smallest-app/kn/local.png)
 
 ## 今回つくったRailsアプリの動作まとめ
 
 今回つくったRailsアプリの動作を図に描いてみました。
 
-![今回つくったRailsアプリの動作](smallest-app/kn/smallest_app.png)
+![今回つくったRailsアプリの動作](assets/smallest-app/kn/smallest_app.png)
 
 ブラウザのURL欄にアドレスを入力してEnterを押すとリクエストが飛びます。リクエストを受け取ったRailsアプリはHTMLをつくり、レスポンスとして返します。レスポンスを受け取ったブラウザはHTMLを解釈し、画面に表示します。
 
@@ -264,7 +264,7 @@ create  app/models/.keep
 
 これらのファイル群によって、rails new をしただけで（何もコードを書かなくても）webアプリとして動作します。たくさんのファイルがつくられていますね。Railsアプリの基本的なフォルダとファイル群は以下の図のものです。いきなり全てを説明するのは難しいので、順番に説明していきます。役割ごとにフォルダが分かれています。それぞれの役割についてはこの後説明していきます。
 
-![Railsアプリの基本的なフォルダ・ファイル群](smallest-app/kn/rails_files.png)
+![Railsアプリの基本的なフォルダ・ファイル群](assets/smallest-app/kn/rails_files.png)
 
 ### rails g コマンド
 
@@ -304,7 +304,7 @@ create      app/assets/stylesheets/hello.css.scss
 * app/views/hello/index.html.erb
 * config/routes.rb
 
-![rails g controller hello index コマンドで生成されるファイル](smallest-app/kn/rails_g_controller.png)
+![rails g controller hello index コマンドで生成されるファイル](assets/smallest-app/kn/rails_g_controller.png)
 
 これらのファイルがどのような働きをしているのかを、次の節でRailsがリクエストを受けてからレスポンスを返すまでの基本的な処理の順序を追いかけながら説明していきます。
 
@@ -312,11 +312,11 @@ create      app/assets/stylesheets/hello.css.scss
 
 ブラウザからアクセスしたときに、Railsアプリはどのように動作しているのでしょうか？以下の図は、今回つくったRailsアプリの動作を示したものです。前に出てきた動作の図から少しだけ詳しく書き加えてあります。
 
-![Railsアプリの動作](smallest-app/kn/rails_app_semantics.png)
+![Railsアプリの動作](assets/smallest-app/kn/rails_app_semantics.png)
 
 ここでは、この図のRailsAppの部分について詳しく説明していきます。ここから、対象箇所を抜き出したのが次の図です。
 
-![Railsアプリがリクエストを受けてレスポンスを返すまで](smallest-app/kn/rails_app_request_to_response.png)
+![Railsアプリがリクエストを受けてレスポンスを返すまで](assets/smallest-app/kn/rails_app_request_to_response.png)
 
 リクエストを受けたRailsアプリは、Routes, Controller, View の各所で処理を行い、レスポンスとしてHTMLを生成して返します。各所ではそれぞれ仕事の分担が決まっていて、自分の担当の処理を行います。Routes, Controller, View でそれぞれどのような処理が行われているのか、順に見ていきましょう。
 
@@ -332,7 +332,7 @@ Routesは「リクエストのURLとHTTPメソッド」に応じて次に処理�
 
 まとめると、リクエストは「URL」でアクセス先を、「HTTPメソッド」で行うことを指定します。
 
-[Routes](smallest-app/kn/routes_mapping.png)
+[Routes](assets/smallest-app/kn/routes_mapping.png)
 
 Routesの処理を、HTTPメソッドを加えてもう少し詳しくみてみましょう。最初に説明した通り、Routesは「リクエストのURLとHTTPメソッド」に応じて次に処理を行う先を決めるのが仕事です。RailsではRoutesの処理が終わると、次はControllerのアクションへ処理が移ります。
 
@@ -342,7 +342,7 @@ Routesの処理を、HTTPメソッドを加えてもう少し詳しくみてみ�
 
 * http://localhost:3000/rails/info/routes
 
-![Routes対応表](smallest-app/kn/routes.png)
+![Routes対応表](assets/smallest-app/kn/routes.png)
 
 表中の "HTTP Verb" がHTTPメソッドです。"Path"はURLの後半部分に相当します。URLが"http://localhost:3000/hello/index"である場合、パスは"/hello/index"になります。(表示されたPathの後半部分の "(.:format)" は省略できる記述で、レスポンスで返すフォーマットを指定するための機能です。省略した場合はHTMLを返すのが普通です。)
 
@@ -377,11 +377,11 @@ HelloControllerのindexアクションが呼び出されます。`def index`か�
 
 変数は荷札のようなもので、あとから代入したものにアクセスできるように名前をつける仕組みです。変数のうち、@はじまりの変数のことをインスタンス変数といいます。インスタンス変数を使うと、コントローラから（このあと処理する箇所である）ビューへ情報を伝えることができます。ちなみに、@はじまりではない変数はローカル変数と呼ばれるもので、このメソッド（アクション）を抜けると役目を終えて参照できなくなります。つまり、ローカル変数はビューから参照することができません。ビューから参照するためには@はじまりのインスタンス変数を利用します。
 
-![インスタンス変数を使うとビューへ情報を渡すことができる](smallest-app/kn/instance_variable.png)
+![インスタンス変数を使うとビューへ情報を渡すことができる](assets/smallest-app/kn/instance_variable.png)
 
 どのビューへ処理が進むかはコントローラで指定可能ですが、今回のように何も指定が無い場合は、コントローラおよびアクションと同名のビューを選択します。今回はHelloControllerのindexアクションなので、対応するビューのファイルはapp/views/hello/index.html.erb になります。
 
-![コントローラの動作](smallest-app/kn/controller.png)
+![コントローラの動作](assets/smallest-app/kn/controller.png)
 
 ### ビュー
 
@@ -396,11 +396,11 @@ index.html.erb は、HTMLのもとになるファイルです。ブラウザで�
 
 HTMLのpタグがあります。その中にHTMLにはない `<%=` と `%>` というタグがあります。これがRubyのコードを実行するためのタグです。ここではその中にはある `@time` が実行されます。@time はコントローラのところで作られたインスタンス変数です。実行すると、変数が指しているもの、つまりコントローラで実行された `Time.now` の結果で置き換えられます。このビューで作られたHTMLは、ブラウザで確認することができます。さきほどブラウザから見たように、現在時刻が表示されます。（実際には、ビューが作ったHTMLに、Railsがその他の加工を加えて送出します。）
 
-![ブラウザからビューがつくったHTMLを確認](smallest-app/time_now.png)
+![ブラウザからビューがつくったHTMLを確認](assets/smallest-app/time_now.png)
 
 ビューについての動作をまとめると以下のようになります。
 
-![ビュー](smallest-app/kn/view.png)
+![ビュー](assets/smallest-app/kn/view.png)
 
 ### まとめ
 
@@ -412,7 +412,7 @@ Railsアプリがリクエストを受けてレスポンスを返すまでの動
 * ビューはテンプレートに埋め込んであるRubyのコードを実行してHTMLを作る
 * コントローラからビューへ情報を伝える場合は@はじまりのインスタンス変数を使う
 
-![Railsアプリがリクエストを受けてレスポンスを返すまで](smallest-app/kn/rails_app_request_to_response.png)
+![Railsアプリがリクエストを受けてレスポンスを返すまで](assets/smallest-app/kn/rails_app_request_to_response.png)
 
 ## さらに学びたい場合は
 
