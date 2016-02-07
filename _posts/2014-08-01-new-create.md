@@ -182,19 +182,21 @@ Create Book ボタンを押すと、form内の情報、ここでは Book に関�
 
 Chromeのデベロッパーツールを使うと、どのようなリクエストがサーバへ送信されたかを見ることができます。
 
-![Chromeでリクエストを観察する(準備)](assets/new-create/create-request-1.png)
+![Chromeでリクエストを観察する(準備)](assets/new-create/kn/create-request-1.png)
 
 new画面を表示させ、タイトル欄とメモ欄にBookの情報を入力します。Chromeのメニューからデベロッパーツールを起動します。Networkと書かれたタブを選択します。CreateBookボタンを押し、リクエストを送信してみましょう。
 
-![Chromeでリクエストを観察する(リクエスト送信)](assets/new-create/create-request-2.png)
+![Chromeでリクエストを観察する(リクエスト送信)](assets/new-create/kn/create-request-2.png)
 
 たくさん表示されました。一番最初の books と書かれた行が先ほどボタンを押して発行されたリクエストです。books の行をクリックして詳細を見てみましょう。
 
-![Chromeでリクエストを観察する(リクエストの中身)](assets/new-create/create-request-3.png)
+![Chromeでリクエストを観察する(リクエストの中身)](assets/new-create/kn/create-request-3.png)
 
-最初にURLとHTTPメソッドが書いてあります。いつもRoutesで使っている情報がここに載っています。
+最初にURLとHTTPメソッドが書いてあります。Routesで使う情報がここに載っています。
 
-下の方へスクロールすると、Form Data という欄にbook[title]とbook[memo]の情報があることが分かります。さきほどnew画面で入力した内容がここに表示されていることを確認してみてください。次は、飛んだこのリクエストがどのように処理されるかを見ていきましょう。
+下の方へスクロールすると、Form Data という欄にbook[title]とbook[memo]の情報があることが分かります。さきほどnew画面で入力した内容がここに表示されていることを確認してみてください。
+
+次は、飛んだこのリクエストがどのように処理されるかを見ていきましょう。
 
 ## Create アクション
 ### 新たなリクエスト
