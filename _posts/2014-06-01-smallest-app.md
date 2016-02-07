@@ -150,6 +150,7 @@ Puma 2.15.3 starting...
 コントローラを次のように変更します。
 
 `app/controllers/hello_controller.rb`
+
 ```diff
 class HelloController < ApplicationController
   def index
@@ -161,6 +162,7 @@ end
 そして、ビューを変更します。
 
 `app/views/hello/index.html.erb`
+
 ```diff
 - <p>現在時刻: <%= Time.now %></p>
 + <p>現在時刻: <%= @time %></p>
@@ -202,7 +204,7 @@ HTMLはブラウザからも見ることができます。Chromeの場合は、�
 
 しかし、開発中は自分が作っているアプリをわざわざインターネット上へ置く必要はなく、自分のPCでWebアプリを動作させ、同じく自分のPCにあるブラウザからアクセス可能です。
 
-![開発中は自分のPCでつくることができる](/assets/smallest-app/kn/local.png)
+![開発中は自分のPCでつくることができる](assets/smallest-app/kn/local.png)
 
 ## 今回つくったRailsアプリの動作まとめ
 
@@ -332,7 +334,7 @@ Routesは「リクエストのURLとHTTPメソッド」に応じて次に処理�
 
 まとめると、リクエストは「URL」でアクセス先を、「HTTPメソッド」で行うことを指定します。
 
-[Routes](assets/smallest-app/kn/routes_mapping.png)
+![Routes](assets/smallest-app/kn/routes_mapping.png)
 
 Routesの処理を、HTTPメソッドを加えてもう少し詳しくみてみましょう。最初に説明した通り、Routesは「リクエストのURLとHTTPメソッド」に応じて次に処理を行う先を決めるのが仕事です。RailsではRoutesの処理が終わると、次はControllerのアクションへ処理が移ります。
 
