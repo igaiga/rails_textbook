@@ -203,13 +203,13 @@ new画面を表示させ、タイトル欄とメモ欄にBookの情報を入力�
 
 new画面でCreate book ボタンを押すと新たなリクエストが飛ぶことが分かりました。次は、この2つ目のリクエストを追いかけます。リクエストの内容は、さきほどChromeで確認したように以下の図のようになっています。
 
-![新たなリクエスト](assets/new-create/create-flow-request.png)
+![新たなリクエスト](assets/new-create/kn/create-flow-request.png)
 
 ### Routes
 
 いつものように最初の処理はroutesです。
 
-![routes](assets/new-create/create-routes.png)
+![routes](assets/new-create/kn/create-routes.png)
 
 URLのパスは /books 、HTTPメソッドは POST なので books#create 、つまりBooksControllerのcreateアクションが呼び出されます。
 
@@ -219,11 +219,24 @@ HTTPメソッドの POST は今回のようなデータの新規作成時に使�
 
 コントローラのソースファイルは `app/controllers/books_controller.rb` です。
 
-![コントローラ](assets/new-create/create-controller-1.png)
+```ruby
+def create
+  @book = Book.new(book_params)
+  respond_to do |format|
+    if @book.save
+      format.html { redirect_to @book, notice: 'Book was successfully created.' }
+      format.json { render :show, status: :created, location: @book }
+    else
+      format.html { render :new }
+      format.json { render json: @book.errors, status: :unprocessable_entity }
+    end
+  end
+end
+```
 
 ここでやっていることは大きく3つです。
 
-![コントローラ - 3つの処理 ](assets/new-create/create-controller-2.png)
+![コントローラ - 3つの処理](assets/new-create/kn/create-controller.png)
 
 3つの処理を順に見ていきます。
 
