@@ -240,27 +240,42 @@ end
 
 3つの処理を順に見ていきます。
 
-![コントローラ - 処理1 ](assets/new-create/create-controller-3.png)
-
 最初は `@book = Book.new(book_params)` です。
 
-![コントローラ - book_params](assets/new-create/create-controller-4.png)
+```ruby
+def create
+  @book = Book.new(book_params)
+  ...
+```
 
 `Book.new` メソッドの引数に渡している `book_params` はメソッドを呼び出しています。このメソッドはファイルの後半に定義されています。`book_params` の中を見てみましょう。
 
 ### パラメータ
 
-![パラメータ](assets/new-create/create-controller-params-1.png)
+`app/controllers/books_controller.rb`
 
-`book_params` メソッドはパラメータに関する処理を行っています。パラメータとは、ブラウザから飛んでくるリクエストの中に含まれる情報で、たとえばユーザーが入力した値が格納されています。前にChromeを使って見たものです。
+```ruby
+def book_params
+  params.require(:book).permit(:title, :memo)
+end
+```
+
+
+`book_params` メソッドはパラメータに関する処理を行っています。パラメータとは、ブラウザから飛んでくるリクエストの中に含まれる情報で、たとえばユーザーが入力した値が格納されています。さきほどChromeを使って見たものです。
 
 パラメータは `params` で取得できます。次は`params`にどんな情報が、どのように入っているかを見てみましょう。
 
-![パラメータの中身を表示するコード](assets/new-create/create-controller-params-2.png)
+```diff
+def book_params
++ p "**********" # 見つけ易くするための目印。何でも良い。
++ p params # paramsの中身を表示
+  params.require(:book).permit(:title, :memo)
+end
+```
 
-コードを変更して、ブラウザから新規登録画面を表示し、テキストボックス欄に入力し、Create Book ボタンを押します。その後、rails s のshellを流れた文字列から ************ を探してみてください。
+コードを変更して、ブラウザから新規登録画面を表示し、テキストボックス欄に入力し、Create Book ボタンを押します。その後、rails server のshellに流れた文字列から ************ を探してみてください。
 
-![パラメータの中身の表示結果](assets/new-create/create-controller-params-3.png)
+![パラメータの中身の表示 実行結果](assets/new-create/kn/create-controller-params.png)
 
 実行結果を見ると、確かに `params` の中にHashの形式でブラウザで入力した値が入っていることが分かりました。
 
