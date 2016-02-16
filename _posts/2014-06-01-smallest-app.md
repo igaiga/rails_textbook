@@ -95,6 +95,7 @@ Running via Spring preloader in process 82284
 もしもrails g コマンドを打ち間違えて違うファイルを作ってしまった場合は、打ち間違えたコマンドの g の部分を d にして再実行すると、rails g コマンドで作成したファイルをまとめて削除してくれます。たとえば、``` rails g controller hell index``` とhelloをhellと打ち間違えた場合は、``` rails d controller hell index``` コマンドを実行することで間違えて作ったファイル群を削除することができます。（ターミナルでカーソルキーの↑キーを押すと、さきほど入力した内容が出てくるので、それを利用して g を d に直すと楽に実行できます。）
 
 再びrails server を起動させましょう。
+
 ```bash
 rails s
 ```
