@@ -93,6 +93,7 @@ render メソッドは別のビューファイルを埋め込みます。埋め�
 また、`<%= render 'form', book: @book %>` の `book: @book` の部分は、 `@book` 変数を埋め込み先のパーシャル内では `book` 変数として使うように渡す指示です。
 
 埋め込まれるパーシャルビュー `_form.html.erb` は以下のようになっています。
+ファイルは`app/views/books/_form.html.erb`です。
 
 ```erb
 <%= form_for(book) do |f| %>
