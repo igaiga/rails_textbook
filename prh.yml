@@ -1,0 +1,91 @@
+# techbooster editor lint!!
+# C89 冬コミ開始前時点で利用している版だよ！
+version: 1
+rules:
+  # 記号
+  # 半角括弧を全角括弧に
+  - expected: （$1）
+    pattern:  /\((.+?)\)/
+    specs:
+      - from: そうですね(笑)
+        to:   そうですね（笑）
+      - from: (@<fn>{test})
+        to:   （@<fn>{test}）
+      - from: "(ほげ)ほげ)"
+        to:   "（ほげ）ほげ)"
+    prh: 半角カッコの代わりに全角カッコを使うこと。文字のバランスが崩れるためです
+  # TODO 英単語の前後の空白を殺す
+
+  # 開き
+  - expected: さまざま
+    pattern:  様々
+    prh: 漢字で書かず、ひらがなで書くと読みやすくなります
+  - expected: さらに
+    pattern:  更に
+    prh: 漢字で書かず、ひらがなで書くと読みやすくなります
+  - expected: すでに
+    pattern:  既に
+    prh: 漢字で書かず、ひらがなで書くと読みやすくなります
+  - expected: すべて
+    pattern:  全て
+    prh: 漢字で書かず、ひらがなで書くと読みやすくなります
+  - expected: たとえば
+    pattern:  例えば
+    prh: 漢字で書かず、ひらがなで書くと読みやすくなります
+  - expected: 他の
+    pattern:  ほかの
+    prh: ひらがなで書かず、漢字で書くと読みやすくなります
+  - expected: 分かる
+    pattern:  わかる
+    prh: ひらがなで書かず、漢字で書くと読みやすくなります
+  - expected: きれい
+    pattern:  綺麗
+    prh: 漢字で書かず、ひらがなで書くと読みやすくなります
+  - expected: こと$1
+    pattern:  /[ぁ-ん]事(が|を|で|に|は|と)/
+    prh: 漢字で書かず、ひらがなで書くと読みやすくなります
+  - expected: でき$1
+    pattern:  /出来(る|て|た|ま|上が)/
+    specs:
+      - from: 出来上がった
+        to:   でき上がった
+    prh: 漢字で書かず、ひらがなで書くと読みやすくなります
+  - expected: $1ように
+    pattern:  /(の)様に/
+    prh: 漢字で書かず、ひらがなで書くと読みやすくなります
+  - expected: なる
+    pattern:  成る
+    prh: 漢字で書かず、ひらがなで書くと読みやすくなります
+  - expected: あらかじめ
+    pattern:  予め
+    prh: 漢字で書かず、ひらがなで書くと読みやすくなります
+  - expected: なぜ
+    pattern:  何故
+    prh: 漢字で書かず、ひらがなで書くと読みやすくなります
+  - expected: ゆえに
+    pattern:  故に
+    prh: 漢字で書かず、ひらがなで書くと読みやすくなります
+  - expected: うまく
+    pattern:  巧く
+    prh: 漢字で書かず、ひらがなで書くと読みやすくなります
+  - expected: もっぱら
+    pattern:  専ら
+    prh: 漢字で書かず、ひらがなで書くと読みやすくなります
+  - expected: もっとも
+    pattern:  最も
+    prh: 漢字で書かず、ひらがなで書くと読みやすくなります
+  - expected: ちょうど
+    pattern:  丁度
+    prh: 漢字で書かず、ひらがなで書くと読みやすくなります
+
+  # 本文中の半角スペースは排除したい
+
+  # 横文字
+  - expected: API Level
+    pattern:  API level
+    prh: APIドキュメントでも揺れてますが、Levelで統一してます
+  - expected: Web
+  - expected: jQuery
+  - expected: ライブラリ
+    pattern:  ラブライブ # C87でやらかした人がいましたね？
+    prh: C87でざきさんがやらかした思い出

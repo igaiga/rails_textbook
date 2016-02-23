@@ -8,6 +8,20 @@
 - $ jekyll serve --watch --baseurl ''
 - http://localhost:4000/rails_textbook/ へアクセス
 
+## textlintで文章をチェック
+
+### コマンドラインでの実行
+
+- $ `npm i`             ## textlintのインストール
+- $ `npm test`          ## 文章全体のチェック(しばらくは数百のエラーが出るので心が折れないよう気をつける)
+- $ `npm run textlint _posts/2014-04-01-preface.md`  ## 単独のファイルをチェック
+
+### atomエディタでの実行
+
+- $ `apm install linter`
+- $ `apm install linter-textlint`
+- atomエディタでファイルを開く→画面下部にエラーが表示される
+
 ## コントリビュートの方法
 以下のコントリビュートポリシーにご同意いただいて、igaiga へご連絡いただくか、 pull request ください。
 
