@@ -71,11 +71,13 @@ Puma 2.16.0 starting...
 * Listening on tcp://localhost:3000
 ```
 
-では、ブラウザを起動して以下のURLを入力してアクセスしてみましょう。
+では、ブラウザを起動して以下のURLを入力してアクセスしてみましょう。（Railsのバージョンにより以下のどちらかが表示されます。）
 
 * localhost:3000
 
-![welcome rails](assets/my-first-web-app/welcome_rails.png)
+![welcome rails(Rails5.0.0beta2以降)](assets/my-first-web-app/welcome_rails.png)
+
+![welcome rails(Rails4.2まで)](assets/my-first-web-app/welcome_rails_42.png)
 
 これは、Railsが起動し、あなたのブラウザからのリクエストを受け付けて、表示している画面です。ここまでのわずかの手順で、Webアプリをつくり、画面を表示しているのです。
 
