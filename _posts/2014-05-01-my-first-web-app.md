@@ -59,18 +59,17 @@ rails server
 
 うまく動作している場合は、以下のような表示になります。
 
-{% highlight console %}
+```console
 $ rails server
 => Booting Puma
-=> Rails 5.0.0.beta1 application starting in development on http://localhost:3000
+=> Rails 5.0.0.beta2 application starting in development on http://localhost:3000
 => Run `rails server -h` for more startup options
 => Ctrl-C to shutdown server
-I, [2015-12-27T15:39:46.449421 #79231]  INFO -- : Celluloid 0.17.2 is running in BACKPORTED mode. [ http://git.io/vJf3J ]
-Puma 2.15.3 starting...
+Puma 2.16.0 starting...
 * Min threads: 0, max threads: 16
 * Environment: development
 * Listening on tcp://localhost:3000
-{% endhighlight %}
+```
 
 では、ブラウザを起動して以下のURLを入力してアクセスしてみましょう。
 
@@ -87,31 +86,30 @@ Puma 2.15.3 starting...
 (※Rails4.2以前では `rails db:migrate` の替わりに `bin/rake db:migrate` と実行してください。)
 
 ```bash
-rails generate scaffold entry title description:text picture
+rails g scaffold entry title description:text picture
 rails db:migrate
 rails server
 ```
 
 ```console
-$ rails generate scaffold entry title description:text picture
+$ rails g scaffold entry title description:text picture
 Running via Spring preloader in process 79311
       invoke  active_record
-      create    db/migrate/20151227064132_create_entries.rb
+      create    db/migrate/20160223234829_create_entries.rb
 ...(略)
 
 $ rails db:migrate
-== 20151227064132 CreateEntries: migrating ====================================
+== 20160223234829 CreateEntries: migrating ====================================
 -- create_table(:entries)
-   -> 0.0012s
-== 20151227064132 CreateEntries: migrated (0.0012s) ===========================
+   -> 0.0010s
+== 20160223234829 CreateEntries: migrated (0.0011s) ===========================
 
 $ rails server
 => Booting Puma
-=> Rails 5.0.0.beta1 application starting in development on http://localhost:3000
+=> Rails 5.0.0.beta2 application starting in development on http://localhost:3000
 => Run `rails server -h` for more startup options
 => Ctrl-C to shutdown server
-I, [2015-12-27T15:42:43.062862 #79399]  INFO -- : Celluloid 0.17.2 is running in BACKPORTED mode. [ http://git.io/vJf3J ]
-Puma 2.15.3 starting...
+Puma 2.16.0 starting...
 * Min threads: 0, max threads: 16
 * Environment: development
 * Listening on tcp://localhost:3000
@@ -144,7 +142,7 @@ gem 'carrierwave'
 
 ```bash
 bundle
-rails generate uploader Picture
+rails g uploader Picture
 ```
 
 ```console
@@ -153,17 +151,17 @@ Fetching gem metadata from https://rubygems.org/...........
 Fetching version metadata from https://rubygems.org/...
 Fetching dependency metadata from https://rubygems.org/..
 Resolving dependencies...
-Using rake 10.4.2
+Using rake 10.5.9
 ...
 Installing carrierwave 0.10.0
-Bundle complete! 13 Gemfile dependencies, 67 gems now installed.
+Bundle complete! 15 Gemfile dependencies, 59 gems now installed.
 Use `bundle show [gemname]` to see where a bundled gem is installed.
-$ rails generate uploader Picture
+$ rails g uploader Picture
 Running via Spring preloader in process 80021
       create  app/uploaders/picture_uploader.rb
 ```
 
-次にファイルを編集します。```app/models/entry.rb``` を開いて、次の行
+次にファイルを編集します。`app/models/entry.rb`を開いて、次の行
 
 ```ruby
 class Entry < ApplicationRecord
@@ -175,14 +173,14 @@ class Entry < ApplicationRecord
 mount_uploader :picture, PictureUploader
 ```
 
-さらに、```app/views/entries/_form.html.erb``` を以下のように編集します。(- 記号の行を削除して、かわりに + 記号の行を追加してください。)
+さらに、`app/views/entries/_form.html.erb`を以下のように編集します。(- 記号の行を削除して、かわりに + 記号の行を追加してください。)
 
 ```diff
 - <%= f.text_field :picture %>
 + <%= f.file_field :picture %>
 ```
 
-あと少しです。最後に ```app/views/entries/show.html.erb``` を開いて編集します。
+あと少しです。最後に`app/views/entries/show.html.erb`を開いて編集します。
 
 ```diff
 - <%= @entry.picture %>
@@ -198,11 +196,10 @@ rails server
 ```console
 $ rails server
 => Booting Puma
-=> Rails 5.0.0.beta1 application starting in development on http://localhost:3000
+=> Rails 5.0.0.beta2 application starting in development on http://localhost:3000
 => Run `rails server -h` for more startup options
 => Ctrl-C to shutdown server
-I, [2015-12-27T15:50:47.054387 #80069]  INFO -- : Celluloid 0.17.2 is running in BACKPORTED mode. [ http://git.io/vJf3J ]
-Puma 2.15.3 starting...
+Puma 2.16.0 starting...
 * Min threads: 0, max threads: 16
 * Environment: development
 * Listening on tcp://localhost:3000
