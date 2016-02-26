@@ -25,7 +25,7 @@ mkdir my_web_apps
 cd my_web_apps
 ```
 
-mkdir はフォルダを作成するコマンド、cd はターミナル内で現在のフォルダを移動するコマンドです。(Winで普段使いなれている「コンピューター(エクスプローラー)」を起動するには、ターミナルで explorer . と打つと現在のフォルダを開くことができます。MacでFinderを開くにはターミナルから open . と打ちます。これらからフォルダを作るのと同じ働きをするコマンドが mkdir です。)
+mkdirはフォルダを作成するコマンド、cdはターミナル内で現在のフォルダを移動するコマンドです（Winで普段使いなれている「コンピューター（エクスプローラー）」を起動するには、ターミナルでexplorer .と打つと現在のフォルダを開くことができます。MacでFinderを開くにはターミナルからopen . と打ちます。これらからフォルダを作るのと同じ働きをするコマンドがmkdirです）。
 
 続けて以下のコマンドを実行します。
 
@@ -33,7 +33,7 @@ mkdir はフォルダを作成するコマンド、cd はターミナル内で�
 rails new blog_app
 ```
 
-以下のような結果が表示されるでしょうか。(実行には少し時間がかかります)
+以下のような結果が表示されるでしょうか（実行には少し時間がかかります）。
 
 ```console
 $ rails new blog_app
@@ -71,7 +71,7 @@ Puma 2.16.0 starting...
 * Listening on tcp://localhost:3000
 ```
 
-では、ブラウザを起動して以下のURLを入力してアクセスしてみましょう。（Railsのバージョンにより以下のどちらかが表示されます。）
+では、ブラウザを起動して以下のURLを入力してアクセスしてみましょう（Railsのバージョンにより以下のどちらかが表示されます）。
 
 * localhost:3000
 
@@ -83,9 +83,9 @@ Puma 2.16.0 starting...
 
 ### ページの作成
 
-ひきつづき、以下のコマンドを入力してください。rails server が起動している場合は、Ctrl-c (controlキーを押しながらcキー)で終了してからコマンドを打ちます。
+ひきつづき、以下のコマンドを入力してください。rails serverが起動している場合は、Ctrl-c（controlキーを押しながらcキー）で終了してからコマンドを打ちます。
 
-(※Rails4.2以前では `rails db:migrate` の替わりに `bin/rake db:migrate` と実行してください。)
+（※Rails4.2以前では `rails db:migrate` の替わりに `bin/rake db:migrate` と実行してください）。
 
 ```bash
 rails g scaffold entry title description:text picture
@@ -124,11 +124,11 @@ Puma 2.16.0 starting...
 ![entries](assets/my-first-web-app/scaffold_index.png)
 
 
-画面が表示されたら、New Entry のリンクをたどってみましょう。Title, Description などを入力し、Create Entry ボタンで保存してみてください。また、保存したデータを編集や削除をしてみてください。ここまでの作業で簡易なブログの基本機能ができました。
+画面が表示されたら、New Entryのリンクをたどってみましょう。Title, Descriptionなどを入力し、Create Entryボタンで保存してみてください。また、保存したデータを編集や削除をしてみてください。ここまでの作業で簡易なブログの基本機能ができました。
 
 ### 写真アップロード機能の追加
 
-次は、写真をアップロードできるようにしてみましょう。Rails にファイルをアップロードする機能を追加するには、ライブラリをインストールする必要があります。Railsルートフォルダ(```my_web_apps/blog_app```)内の Gemfile というファイルを開いてください。
+次は、写真をアップロードできるようにしてみましょう。Railsにファイルをアップロードする機能を追加するには、ライブラリをインストールする必要があります。Railsルートフォルダ（```my_web_apps/blog_app```）内のGemfileというファイルを開いてください。
 
 ```ruby
 gem 'sqlite3'
@@ -140,7 +140,7 @@ gem 'sqlite3'
 gem 'carrierwave'
 ```
 
-追加できたら、Terminal で、次のコマンドを実行してください。 (rails server は Ctrl-c で終了させてください。)
+追加できたら、Terminalで、次のコマンドを実行してください（rails serverはCtrl-cで終了させてください）。
 
 ```bash
 bundle
@@ -175,7 +175,7 @@ class Entry < ApplicationRecord
 mount_uploader :picture, PictureUploader
 ```
 
-さらに、`app/views/entries/_form.html.erb`を以下のように編集します。(- 記号の行を削除して、かわりに + 記号の行を追加してください。)
+さらに、`app/views/entries/_form.html.erb`を以下のように編集します（- 記号の行を削除して、かわりに + 記号の行を追加してください）。
 
 ```diff
 - <%= f.text_field :picture %>
@@ -189,7 +189,7 @@ mount_uploader :picture, PictureUploader
 + <%= image_tag(@entry.picture_url) if @entry.picture.present? %>
 ```
 
-rails server を起動して、ブラウザから http://localhost:3000/entries へアクセスしてみましょう。
+rails serverを起動して、ブラウザから http://localhost:3000/entries へアクセスしてみましょう。
 
 ```bash
 rails server
@@ -207,10 +207,10 @@ Puma 2.16.0 starting...
 * Listening on tcp://localhost:3000
 ```
 
-New Entry リンクをクリックすると、「ファイルを選択」ボタンが増えているかと思います。ボタンを押して画像ファイルを選び、アップロードしてみましょう。
+New Entryリンクをクリックすると、「ファイルを選択」ボタンが増えているかと思います。ボタンを押して画像ファイルを選び、アップロードしてみましょう。
 
 ![new](assets/my-first-web-app/entries_new.png)
 
 ![show](assets/my-first-web-app/entries_show.png)
 
-画像をアップロードできる簡易ブログアプリができあがりました。初めてのWebアプリづくりはいかがでしたか？とてもシンプルなアプリですが、Webアプリの基本となるデータ作成、表示、更新、削除の機能や、写真投稿機能を付加するためのライブラリの使い方などがこの中につまっています。本書を読み終わる頃には、ここで書いたコードやコマンドの意味が分かるようになりますので、今はまだ分からなくて大丈夫です。（まだ何も説明していないので当たり前ですね。）次の章から、Webアプリがどうような仕組みで動作するのかを説明していきます。
+画像をアップロードできる簡易ブログアプリができあがりました。初めてのWebアプリづくりはいかがでしたか？とてもシンプルなアプリですが、Webアプリの基本となるデータ作成、表示、更新、削除の機能や、写真投稿機能を付加するためのライブラリの使い方などがこの中につまっています。本書を読み終わる頃には、ここで書いたコードやコマンドの意味が分かるようになりますので、今はまだ分からなくて大丈夫です（まだ何も説明していないので当たり前ですね）。次の章から、Webアプリがどうような仕組みで動作するのかを説明していきます。
