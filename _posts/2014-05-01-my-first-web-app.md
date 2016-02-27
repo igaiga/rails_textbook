@@ -50,17 +50,17 @@ Use `bundle show [gemname]` to see where a bundled gem is installed.
 
 ターミナルの画面にこのように"Your bundle is complete!"と表示されれば成功です。railsコマンドはたくさんのフォルダとファイルを自動で作ります。
 
-次は以下のコマンドを実行してみてください。
+次は以下のコマンドを実行してみてください。`rails s`コマンドはwebサーバを起動するコマンドで、sはserverの略です。
 
 ```bash
 cd blog_app
-rails server
+rails s
 ```
 
 うまく動作している場合は、以下のような表示になります。
 
 ```console
-$ rails server
+$ rails s
 => Booting Puma
 => Rails 5.0.0.beta2 application starting in development on http://localhost:3000
 => Run `rails server -h` for more startup options
@@ -90,7 +90,7 @@ Puma 2.16.0 starting...
 ```bash
 rails g scaffold entry title description:text picture
 rails db:migrate
-rails server
+rails s
 ```
 
 ```console
@@ -106,7 +106,7 @@ $ rails db:migrate
    -> 0.0010s
 == 20160223234829 CreateEntries: migrated (0.0011s) ===========================
 
-$ rails server
+$ rails s
 => Booting Puma
 => Rails 5.0.0.beta2 application starting in development on http://localhost:3000
 => Run `rails server -h` for more startup options
@@ -140,7 +140,7 @@ gem 'sqlite3'
 gem 'carrierwave'
 ```
 
-追加できたら、Terminalで、次のコマンドを実行してください（rails serverはCtrl-cで終了させてください）。
+追加できたら、Terminalで、次のコマンドを実行してください（rails sはCtrl-cで終了させてください）。
 
 ```bash
 bundle
@@ -192,11 +192,11 @@ mount_uploader :picture, PictureUploader
 rails serverを起動して、ブラウザから http://localhost:3000/entries へアクセスしてみましょう。
 
 ```bash
-rails server
+rails s
 ```
 
 ```console
-$ rails server
+$ rails s
 => Booting Puma
 => Rails 5.0.0.beta2 application starting in development on http://localhost:3000
 => Run `rails server -h` for more startup options
