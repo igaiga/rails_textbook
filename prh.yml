@@ -85,6 +85,7 @@ rules:
     pattern:  API level
     prh: APIドキュメントでも揺れてますが、Levelで統一してます
   - expected: Web
+    pattern: WEB([^A-Za-z])
   - expected: jQuery
   - expected: ライブラリ
     pattern:  ラブライブ # C87でやらかした人がいましたね？
