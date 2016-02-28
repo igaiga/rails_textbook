@@ -62,7 +62,7 @@ Puma 2.15.3 starting...
 
 ![Welcome rails](assets/my-first-web-app/welcome_rails.png)
 
-前の章と同じように動作しています。ここで実行したコマンド ```rails s``` のsはserverの略で、省略したsでも、省略せずにserverでも、同じように動作します。
+前の章と同じように動作しているかと思います（Rails4.2ではWelcome aboardという画面になります）。ここで実行したコマンド ```rails s``` のsはserverの略で、省略したsでも、省略せずにserverでも、同じように動作します。
 
 ### rails gコマンドでページを作る
 
