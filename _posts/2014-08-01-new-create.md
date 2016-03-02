@@ -172,7 +172,7 @@ renderメソッドは別のビューファイルを埋め込みます。埋め�
 
 ![submit](assets/new-create/kn/new-view-form-submit-1.png)
 
-`f.submit` は投稿ボタン（Create Bookボタン）を作ります。このボタンを押すとform内の情報をまとめてサーバへ送信（リクエストを送信）します。つまり……
+`f.submit` は投稿ボタン（Create Bookボタン）を作ります。このボタンを押すとform内の情報をまとめてサーバへ送信（リクエストを送信）します。つまり…
 
 ![submitボタンを押すとリクエストが飛ぶ](assets/new-create/kn/new-view-form-submit-2.png)
 
