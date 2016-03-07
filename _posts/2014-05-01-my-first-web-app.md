@@ -83,9 +83,9 @@ Puma 2.16.0 starting...
 
 ### ページの作成
 
-ひきつづき、以下のコマンドを入力してください。rails serverが起動している場合は、Ctrl-c（controlキーを押しながらcキー）で終了してからコマンドを打ちます。
+ひきつづき、以下のコマンドを入力してください。rails serverが起動している場合は、Ctrl-c（controlキーを押しながらcキー）で終了してからコマンドを打ちます[^1]。
 
-（※Rails4.2以前では `rails db:migrate` の替わりに `bin/rake db:migrate` と実行してください）。
+[^1]: Rails4.2以前では `rails db:migrate` の替わりに `bin/rake db:migrate` と実行してください。
 
 ```bash
 rails g scaffold entry title description:text picture
