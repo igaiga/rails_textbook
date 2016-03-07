@@ -1,5 +1,7 @@
 name: Railsの教科書
 markdown: redcarpet
+redcarpet:
+  extensions: [footnotes]
 highlighter: pygments
 permalink: /:title.html
 # for static pages
