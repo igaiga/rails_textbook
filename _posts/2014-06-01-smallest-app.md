@@ -46,14 +46,15 @@ rails s
 ```console
 $ rails s
 => Booting Puma
-=> Rails 5.0.0.beta1 application starting in development on http://localhost:3000
+=> Rails 5.0.0.beta3 application starting in development on http://localhost:3000
 => Run `rails server -h` for more startup options
 => Ctrl-C to shutdown server
-I, [2015-12-27T16:12:41.951554 #82200]  INFO -- : Celluloid 0.17.2 is running in BACKPORTED mode. [ http://git.io/vJf3J ]
-Puma 2.15.3 starting...
-* Min threads: 0, max threads: 16
+Puma starting in single mode...
+* Version 3.2.0 (ruby 2.3.0-p0), codename: Spring Is A Heliocentric Viewpoint
+* Min threads: 5, max threads: 5
 * Environment: development
 * Listening on tcp://localhost:3000
+Use Ctrl-C to stop
 ```
 
 ブラウザを起動して以下のURLを入力してアクセスしてみます。
@@ -103,14 +104,15 @@ rails s
 ```console
 $ rails s
 => Booting Puma
-=> Rails 5.0.0.beta1 application starting in development on http://localhost:3000
+=> Rails 5.0.0.beta3 application starting in development on http://localhost:3000
 => Run `rails server -h` for more startup options
 => Ctrl-C to shutdown server
-I, [2015-12-27T16:15:34.755524 #82318]  INFO -- : Celluloid 0.17.2 is running in BACKPORTED mode. [ http://git.io/vJf3J ]
-Puma 2.15.3 starting...
-* Min threads: 0, max threads: 16
+Puma starting in single mode...
+* Version 3.2.0 (ruby 2.3.0-p0), codename: Spring Is A Heliocentric Viewpoint
+* Min threads: 5, max threads: 5
 * Environment: development
 * Listening on tcp://localhost:3000
+Use Ctrl-C to stop
 ```
 
 ブラウザを使い、以下のURLへアクセスします。
@@ -129,15 +131,17 @@ Puma 2.15.3 starting...
 <p>Find me in app/views/hello/index.html.erb</p>
 ```
 
-これを以下のように変更して、ブラウザで同じURLへアクセスしてみてください（rails sは起動したままで大丈夫です。もしもrails sを一度終了していた場合は、rails sコマンドでもう一度起動してからアクセスしてください）。
+これを以下のように変更して、ブラウザで同じURLへアクセスしてみてください。-の行を削除して、+の行を追加してください。先頭の-や+は入力しません。（rails sは起動したままで大丈夫です。もしもrails sを一度終了していた場合は、rails sコマンドでもう一度起動してからアクセスしてください）。
 
-```erb
-<p>Hello world!</p>
+```diff
+- <h1>Hello#index</h1>
+- <p>Find me in app/views/hello/index.html.erb</p>
++ <p>Hello world!</p>
 ```
 
 ![Hello world](assets/smallest-app/helloworld.png)
 
-"Hello world!"の文字が表示されましたか？これで一番小さなRailsアプリができあがりました。ここへ、少しだけRubyのコードを書いて、現在時刻を表示する機能を追加してみましょう。
+"Hello world!"の文字が表示されましたか？これで一番小さなRailsアプリができあがりました。ここへ、少しだけRubyのコードを書いて、現在時刻を表示する機能を追加してみましょう。以下のように、+の行を追加してください。
 
 ```diff
 <p>Hello world!</p>

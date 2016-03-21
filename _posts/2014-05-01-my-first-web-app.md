@@ -62,20 +62,22 @@ rails s
 ```console
 $ rails s
 => Booting Puma
-=> Rails 5.0.0.beta2 application starting in development on http://localhost:3000
+=> Rails 5.0.0.beta3 application starting in development on http://localhost:3000
 => Run `rails server -h` for more startup options
 => Ctrl-C to shutdown server
-Puma 2.16.0 starting...
-* Min threads: 0, max threads: 16
+Puma starting in single mode...
+* Version 3.2.0 (ruby 2.3.0-p0), codename: Spring Is A Heliocentric Viewpoint
+* Min threads: 5, max threads: 5
 * Environment: development
 * Listening on tcp://localhost:3000
+Use Ctrl-C to stop
 ```
 
 では、ブラウザを起動して以下のURLを入力してアクセスしてみましょう（Railsのバージョンにより以下のどちらかが表示されます）。
 
 * localhost:3000
 
-![welcome rails(Rails5.0.0beta2以降)](assets/my-first-web-app/welcome_rails.png)
+![welcome rails(Rails5.0.0beta3以降)](assets/my-first-web-app/welcome_rails.png)
 
 ![welcome rails(Rails4.2まで)](assets/my-first-web-app/welcome_rails_42.png)
 
@@ -97,24 +99,26 @@ rails s
 $ rails g scaffold entry title description:text picture
 Running via Spring preloader in process 79311
       invoke  active_record
-      create    db/migrate/20160223234829_create_entries.rb
+      create    db/migrate/20160321073712_create_entries.rb
 ...(略)
 
 $ rails db:migrate
-== 20160223234829 CreateEntries: migrating ====================================
+== 20160321073712 CreateEntries: migrating ====================================
 -- create_table(:entries)
-   -> 0.0010s
-== 20160223234829 CreateEntries: migrated (0.0011s) ===========================
+   -> 0.0011s
+== 20160321073712 CreateEntries: migrated (0.0011s) ===========================
 
 $ rails s
 => Booting Puma
-=> Rails 5.0.0.beta2 application starting in development on http://localhost:3000
+=> Rails 5.0.0.beta3 application starting in development on http://localhost:3000
 => Run `rails server -h` for more startup options
 => Ctrl-C to shutdown server
-Puma 2.16.0 starting...
-* Min threads: 0, max threads: 16
+Puma starting in single mode...
+* Version 3.2.0 (ruby 2.3.0-p0), codename: Spring Is A Heliocentric Viewpoint
+* Min threads: 5, max threads: 5
 * Environment: development
 * Listening on tcp://localhost:3000
+Use Ctrl-C to stop
 ```
 
 ここでまたブラウザを使い、以下のURLを表示させます。
@@ -153,10 +157,10 @@ Fetching gem metadata from https://rubygems.org/...........
 Fetching version metadata from https://rubygems.org/...
 Fetching dependency metadata from https://rubygems.org/..
 Resolving dependencies...
-Using rake 10.5.9
+Using rake 11.1.1
 ...
 Installing carrierwave 0.10.0
-Bundle complete! 15 Gemfile dependencies, 59 gems now installed.
+Bundle complete! 16 Gemfile dependencies, 64 gems now installed.
 Use `bundle show [gemname]` to see where a bundled gem is installed.
 $ rails g uploader Picture
 Running via Spring preloader in process 80021
@@ -172,7 +176,7 @@ class Entry < ApplicationRecord
 の直後に、以下を追加します。
 
 ```ruby
-mount_uploader :picture, PictureUploader
+  mount_uploader :picture, PictureUploader
 ```
 
 さらに、`app/views/entries/_form.html.erb`を以下のように編集します（- 記号の行を削除して、かわりに + 記号の行を追加してください）。
@@ -198,13 +202,15 @@ rails s
 ```console
 $ rails s
 => Booting Puma
-=> Rails 5.0.0.beta2 application starting in development on http://localhost:3000
+=> Rails 5.0.0.beta3 application starting in development on http://localhost:3000
 => Run `rails server -h` for more startup options
 => Ctrl-C to shutdown server
-Puma 2.16.0 starting...
-* Min threads: 0, max threads: 16
+Puma starting in single mode...
+* Version 3.2.0 (ruby 2.3.0-p0), codename: Spring Is A Heliocentric Viewpoint
+* Min threads: 5, max threads: 5
 * Environment: development
 * Listening on tcp://localhost:3000
+Use Ctrl-C to stop
 ```
 
 New Entryリンクをクリックすると、「ファイルを選択」ボタンが増えているかと思います。ボタンを押して画像ファイルを選び、アップロードしてみましょう。

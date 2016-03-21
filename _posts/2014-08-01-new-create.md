@@ -132,8 +132,8 @@ renderメソッドは別のビューファイルを埋め込みます。埋め�
 ```erb
 <% if book.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
-   <ul>
+  <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+  <ul>
     <% book.errors.full_messages.each do |message| %>
       <li><%= message %></li>
     <% end %>
