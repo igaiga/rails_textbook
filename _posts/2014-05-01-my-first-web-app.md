@@ -77,7 +77,7 @@ Use Ctrl-C to stop
 
 * localhost:3000
 
-![welcome rails(Rails5.0.0beta3以降)](assets/my-first-web-app/welcome_rails.png)
+![welcome rails(Rails5.0.0beta2以降)](assets/my-first-web-app/welcome_rails.png)
 
 ![welcome rails(Rails4.2まで)](assets/my-first-web-app/welcome_rails_42.png)
 
