@@ -1,7 +1,16 @@
+# Railsの教科書
+
 ## Webで閲覧
 - http://igarashikuniaki.net/rails_textbook/
 
-## ローカルで閲覧
+## 内容に誤りをみつけた場合は
+
+このページのissuesまでご報告いただくか、pull requestください。
+
+### コントリビュートポリシー
+ご報告、コントリビュートいただきありがとうございます。本資料は書籍版とWeb版で情報を共有しております。原則として、両方へ変更が反映されていきます。ご了承の上コントリビュートいただければと思います。
+
+## ローカルで閲覧する方法
 - $ git clone https://github.com/igaiga/rails_textbook.git
 - $ cd rails_textbook
 - $ bundle install
@@ -21,9 +30,3 @@
 - $ `apm install linter`
 - $ `apm install linter-textlint`
 - atomエディタでファイルを開く→画面下部にエラーが表示される
-
-## コントリビュートの方法
-以下のコントリビュートポリシーにご同意いただいて、igaigaへご連絡いただくか、pull requestください。
-
-### コントリビュートポリシー
-コントリビュートいただきありがとうございます。本資料は将来、有料または無料の書籍にする可能性があります。その際には私の名前（と権利と責任）で書籍化しますので、ご了承の上コントリビュートいただければと思います。
