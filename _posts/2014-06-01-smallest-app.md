@@ -282,7 +282,7 @@ rails g controller hello index
 ```
 
 ```console
-$ rails g controller hello index                      [helloworld:2.3.1:master]
+$ rails g controller hello index
 Running via Spring preloader in process 50811
   create  app/controllers/hello_controller.rb
    route  get 'hello/index'
