@@ -29,7 +29,7 @@ rails new helloworld
 $ rails new helloworld
       create
 ... (略)
-Your bundle is complete!
+Bundle complete! 15 Gemfile dependencies, 63 gems now installed.
 Use `bundle show [gemname]` to see where a bundled gem is installed.
          run  bundle exec spring binstub --all
 * bin/rake: spring inserted
@@ -46,11 +46,10 @@ rails s
 ```console
 $ rails s
 => Booting Puma
-=> Rails 5.0.0.beta3 application starting in development on http://localhost:3000
+=> Rails 5.0.0 application starting in development on http://localhost:3000
 => Run `rails server -h` for more startup options
-=> Ctrl-C to shutdown server
 Puma starting in single mode...
-* Version 3.2.0 (ruby 2.3.0-p0), codename: Spring Is A Heliocentric Viewpoint
+* Version 3.4.0 (ruby 2.3.1-p112), codename: Owl Bowl Brawl
 * Min threads: 5, max threads: 5
 * Environment: development
 * Listening on tcp://localhost:3000
@@ -75,7 +74,7 @@ rails g controller hello index
 
 ```console
 $ rails g controller hello index
-Running via Spring preloader in process 82284
+Running via Spring preloader in process 50811
       create  app/controllers/hello_controller.rb
        route  get 'hello/index'
       invoke  erb
@@ -89,8 +88,8 @@ Running via Spring preloader in process 82284
       invoke  assets
       invoke    coffee
       create      app/assets/javascripts/hello.coffee
-      invoke    css
-      create      app/assets/stylesheets/hello.css
+      invoke    scss
+      create      app/assets/stylesheets/hello.scss
 ```
 
 もしもrails gコマンドを打ち間違えて違うファイルを作ってしまった場合は、打ち間違えたコマンドのgの部分をdにして再実行すると、rails gコマンドで作成したファイルをまとめて削除してくれます。たとえば、``` rails g controller hell index``` とhelloをhellと打ち間違えた場合は、``` rails d controller hell index``` コマンドを実行することで間違えて作ったファイル群を削除することができます（ターミナルでカーソルキーの↑キーを押すと、さきほど入力した内容が出てくるので、それを利用してgをdに直すと楽に実行できます）。
@@ -104,11 +103,10 @@ rails s
 ```console
 $ rails s
 => Booting Puma
-=> Rails 5.0.0.beta3 application starting in development on http://localhost:3000
+=> Rails 5.0.0 application starting in development on http://localhost:3000
 => Run `rails server -h` for more startup options
-=> Ctrl-C to shutdown server
 Puma starting in single mode...
-* Version 3.2.0 (ruby 2.3.0-p0), codename: Spring Is A Heliocentric Viewpoint
+* Version 3.4.0 (ruby 2.3.1-p112), codename: Owl Bowl Brawl
 * Min threads: 5, max threads: 5
 * Environment: development
 * Listening on tcp://localhost:3000
@@ -254,20 +252,20 @@ rails gコマンドはひな形を作成しますが、場合によってはこ�
 ```console
 $ rails new helloworld
 create
-create  README.rdoc
+create  README.md
 create  Rakefile
 create  config.ru
 create  .gitignore
 create  Gemfile
 create  app
+create  app/assets/config/manifest.js
 create  app/assets/javascripts/application.js
+create  app/assets/javascripts/cable.js
 create  app/assets/stylesheets/application.css
+create  app/channels/application_cable/channel.rb
+create  app/channels/application_cable/connection.rb
 create  app/controllers/application_controller.rb
 create  app/helpers/application_helper.rb
-create  app/views/layouts/application.html.erb
-create  app/assets/images/.keep
-create  app/mailers/.keep
-create  app/models/.keep
 ... (略)
 ```
 
@@ -284,30 +282,30 @@ rails g controller hello index
 ```
 
 ```console
-$ rails g controller hello index
-create  app/controllers/hello_controller.rb
- route  get 'hello/index'
-invoke  erb
-create    app/views/hello
-create    app/views/hello/index.html.erb
-invoke  test_unit
-create    test/controllers/hello_controller_test.rb
-invoke  helper
-create    app/helpers/hello_helper.rb
-invoke    test_unit
-create      test/helpers/hello_helper_test.rb
-invoke  assets
-invoke    coffee
-create      app/assets/javascripts/hello.js.coffee
-invoke    scss
-create      app/assets/stylesheets/hello.css.scss
+$ rails g controller hello index                      [helloworld:2.3.1:master]
+Running via Spring preloader in process 50811
+  create  app/controllers/hello_controller.rb
+   route  get 'hello/index'
+  invoke  erb
+  create    app/views/hello
+  create    app/views/hello/index.html.erb
+  invoke  test_unit
+  create    test/controllers/hello_controller_test.rb
+  invoke  helper
+  create    app/helpers/hello_helper.rb
+  invoke    test_unit
+  invoke  assets
+  invoke    coffee
+  create      app/assets/javascripts/hello.coffee
+  invoke    scss
+  create      app/assets/stylesheets/hello.scss
 ```
 
 ここで実行したrails g controllerコマンドは、URLのパスが/hello/indexであるページを表示するためのファイル群を生成します。gはgenerateの略です。rails g controllerの後ろのhelloとindexが、生成するページのパスを指定していることが分かります。
 
 ちなみに、前にやったrails g scaffoldもgenerateの種類の1つです。scaffoldは編集、更新、削除といったたくさんの機能を一度につくりますが、rails g controllerの場合は生成するページをつくるシンプルなものです。そのほかにもいくつかのgenerateコマンドが用意されています。もしも、コマンドを間違えて生成したファイルをまとめて削除したい場合は、gをdに替えたコマンドを実行すると、まとめて削除することができます。dはdestroyの略です。
 
-ここで生成されたファイルのうち、特に重要なのは以下の3つのファイルです。
+ここで生成、追記されたファイルのうち、特に重要なのは以下の3つのファイルです。
 
 * app/controllers/hello_controller.rb
 * app/views/hello/index.html.erb
