@@ -190,7 +190,9 @@ class Entry < ApplicationRecord
 + <%= image_tag(@entry.picture_url) if @entry.picture.present? %>
 ```
 
-rails serverを起動して、ブラウザから http://localhost:3000/entries へアクセスしてみましょう。
+rails serverを起動して、ブラウザから http://localhost:3000/entries へアクセスしてみましょう[^2]。
+
+[^2]: PictureUploader が見つからない旨のエラー("Unable to autoload constant PictureUploader"など)が発生した場合は、rails serverを一度止め、 `bin/spring stop` コマンドを実行してからrails serverをもう一度起動して、再アクセスしてみてください。また、 `app/uploaders/picture_uploader.rb` ファイルが存在するかも確認してみてください。存在しない場合は `rails g uploader Picture` コマンドが実行されていないケースが考えられます。
 
 ```bash
 rails s
