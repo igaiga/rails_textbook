@@ -274,7 +274,7 @@ def book_params
 end
 ```
 
-コードを変更して、ブラウザから新規登録画面を表示し、テキストボックス欄に入力し、Create Bookボタンを押します。その後、rails serverのshellに流れた文字列から************を探してみてください。
+コードを変更して、ブラウザから新規登録画面を表示し、テキストボックス欄に入力し、Create Bookボタンを押します。その後、rails serverのshellに流れた文字列から************を探してみてください。表示されていない場合は、rails serverを再起動してみてください。
 
 ![パラメータの中身の表示 実行結果](assets/new-create/kn/create-controller-params.png)
 
