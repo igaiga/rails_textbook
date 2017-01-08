@@ -28,8 +28,7 @@ rails new helloworld
 ```console
 $ rails new helloworld
       create
-... (略)
-Bundle complete! 15 Gemfile dependencies, 63 gems now installed.
+...（略）
 Use `bundle show [gemname]` to see where a bundled gem is installed.
          run  bundle exec spring binstub --all
 * bin/rake: spring inserted
@@ -46,12 +45,7 @@ rails s
 ```console
 $ rails s
 => Booting Puma
-=> Rails 5.0.0 application starting in development on http://localhost:3000
-=> Run `rails server -h` for more startup options
-Puma starting in single mode...
-* Version 3.4.0 (ruby 2.3.1-p112), codename: Owl Bowl Brawl
-* Min threads: 5, max threads: 5
-* Environment: development
+...（略）
 * Listening on tcp://localhost:3000
 Use Ctrl-C to stop
 ```
@@ -66,7 +60,7 @@ Use Ctrl-C to stop
 
 ### rails gコマンドでページを作る
 
-ひきつづき、以下のコマンドを入力してみましょう。rails serverが起動している場合は、Ctrl-c（controlキーを押しながらcキー）で終了してからコマンドを打ってください。
+ひきつづき、以下のコマンドを入力してみましょう（メッセージ中"in process 50811"の数字は実行するごとに異なります）。rails serverが起動している場合は、Ctrl-c（controlキーを押しながらcキー）で終了してからコマンドを打ってください。
 
 ```bash
 rails g controller hello index
@@ -103,12 +97,7 @@ rails s
 ```console
 $ rails s
 => Booting Puma
-=> Rails 5.0.0 application starting in development on http://localhost:3000
-=> Run `rails server -h` for more startup options
-Puma starting in single mode...
-* Version 3.4.0 (ruby 2.3.1-p112), codename: Owl Bowl Brawl
-* Min threads: 5, max threads: 5
-* Environment: development
+...（略）
 * Listening on tcp://localhost:3000
 Use Ctrl-C to stop
 ```
