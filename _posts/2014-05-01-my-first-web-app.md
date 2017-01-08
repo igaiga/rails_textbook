@@ -48,7 +48,7 @@ Use `bundle show [gemname]` to see where a bundled gem is installed.
 * bin/rails: spring inserted
 ```
 
-ターミナルの画面にこのように"Bundle complete!"と表示されれば成功です。railsコマンドはたくさんのフォルダとファイルを自動で作ります。
+ターミナルの画面にこのように"Bundle complete!"と表示されれば成功です（メッセージ中"15 Gemfile dependencies, 62 gems now installed."の15や62という数字は異なる場合があります）。railsコマンドはたくさんのフォルダとファイルを自動で作ります。
 
 次は以下のコマンドを実行してみてください。`rails s`コマンドはwebサーバを起動するコマンドで、sはserverの略です。
 
@@ -57,7 +57,7 @@ cd blog_app
 rails s
 ```
 
-うまく動作している場合は、以下のような表示になります。
+うまく動作している場合は、以下のような表示になります（メッセージ中"Version 3.6.2"の数字は異なる場合があります）。
 
 ```console
 $ rails s
@@ -76,15 +76,15 @@ Use Ctrl-C to stop
 
 * localhost:3000
 
-![welcome rails(Rails5.0.0以降)](assets/my-first-web-app/welcome_rails.png)
+![welcome rails（Rails5.0.0以降）](assets/my-first-web-app/welcome_rails.png)
 
-![welcome rails(Rails4.2まで)](assets/my-first-web-app/welcome_rails_42.png)
+![welcome rails（Rails4.2まで）](assets/my-first-web-app/welcome_rails_42.png)
 
 これは、Railsが起動し、あなたのブラウザからのリクエストを受け付けて、表示している画面です。ここまでのわずかの手順で、Webアプリをつくり、画面を表示しているのです。
 
 ### ページの作成
 
-ひきつづき、以下のコマンドを入力してください。rails serverが起動している場合は、Ctrl-c（controlキーを押しながらcキー）で終了してからコマンドを打ちます[^1]。
+ひきつづき、以下のコマンドを入力してください（メッセージ中"process 45698"、"20170108042052"、"0.0008s"らの数字は実行するごとに異なります）。rails serverが起動している場合は、Ctrl-c（controlキーを押しながらcキー）で終了してからコマンドを打ちます[^1]。
 
 [^1]: Rails4.2以前では `rails db:migrate` の替わりに `bin/rake db:migrate` と実行してください。
 
@@ -142,7 +142,7 @@ gem 'sqlite3'
 gem 'carrierwave'
 ```
 
-追加できたら、Terminalで、次のコマンドを実行してください（rails sはCtrl-cで終了させてください）。
+追加できたら、Terminalで、次のコマンドを実行してください（rails sはCtrl-cで終了させてください。また、メッセージ中"Installing carrierwave 1.0.0"、"Running via Spring preloader in process 67309"の数字は異なる場合があります。）。
 
 ```bash
 bundle
@@ -198,7 +198,7 @@ class Entry < ApplicationRecord
 
 rails serverを起動して、ブラウザから http://localhost:3000/entries へアクセスしてみましょう[^2]。
 
-[^2]: PictureUploader が見つからない旨のエラー("Unable to autoload constant PictureUploader"など)が発生した場合は、rails serverを一度止め、 `bin/spring stop` コマンドを実行してからrails serverをもう一度起動して、再アクセスしてみてください。また、 `app/uploaders/picture_uploader.rb` ファイルが存在するかも確認してみてください。存在しない場合は `rails g uploader Picture` コマンドが実行されていないケースが考えられます。
+[^2]: PictureUploader が見つからない旨のエラー（"Unable to autoload constant PictureUploader"など）が発生した場合は、rails serverを一度止め、 `bin/spring stop` コマンドを実行してからrails serverをもう一度起動して、再アクセスしてみてください。また、 `app/uploaders/picture_uploader.rb` ファイルが存在するかも確認してみてください。存在しない場合は `rails g uploader Picture` コマンドが実行されていないケースが考えられます。
 
 ```bash
 rails s
