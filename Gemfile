@@ -9,9 +9,4 @@ gem 'pygments.rb'
 # For Github pages
 gem "github-pages"
 
-# For epub
-gem "maliq"
-gem "ruby-aaws"
-gem "iconv"
-
 

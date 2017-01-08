@@ -29,9 +29,6 @@ GEM
     ffi (1.9.14)
     forwardable-extended (2.6.0)
     gemoji (2.1.0)
-    gepub (0.6.9.2)
-      nokogiri (~> 1.6.1)
-      rubyzip (>= 1.1.1)
     github-pages (112)
       activesupport (= 4.2.7)
       github-pages-health-check (= 1.3.0)
@@ -84,7 +81,6 @@ GEM
       activesupport (>= 2)
       nokogiri (>= 1.4)
     i18n (0.7.0)
-    iconv (1.0.4)
     jekyll (3.3.1)
       addressable (~> 2.4)
       colorator (~> 1.0)
@@ -169,11 +165,6 @@ GEM
     listen (3.0.6)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9.7)
-    maliq (0.0.11)
-      gepub
-      liquid
-      rdiscount
-      trollop
     mercenary (0.3.6)
     mini_portile2 (2.1.0)
     minima (2.0.0)
@@ -193,11 +184,8 @@ GEM
     rb-fsevent (0.9.8)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
-    rdiscount (2.2.0.1)
     redcarpet (3.4.0)
     rouge (1.11.1)
-    ruby-aaws (0.7.0)
-    rubyzip (1.2.0)
     safe_yaml (1.0.4)
     sass (3.4.23)
     sawyer (0.8.1)
@@ -206,7 +194,6 @@ GEM
     terminal-table (1.7.3)
       unicode-display_width (~> 1.1.1)
     thread_safe (0.3.5)
-    trollop (2.1.2)
     typhoeus (0.8.0)
       ethon (>= 0.8.0)
     tzinfo (1.2.2)
@@ -218,13 +205,10 @@ PLATFORMS
 
 DEPENDENCIES
   github-pages
-  iconv
   jekyll
   json!
-  maliq
   pygments.rb
   redcarpet
-  ruby-aaws
 
 BUNDLED WITH
    1.13.7
