@@ -41,7 +41,7 @@ $ rails new blog_app
       create  README.rdoc
       create  Rakefile
 ... (略)
-Bundle complete! 15 Gemfile dependencies, 63 gems now installed.
+Bundle complete! 15 Gemfile dependencies, 62 gems now installed.
 Use `bundle show [gemname]` to see where a bundled gem is installed.
          run  bundle exec spring binstub --all
 * bin/rake: spring inserted
@@ -62,10 +62,10 @@ rails s
 ```console
 $ rails s
 => Booting Puma
-=> Rails 5.0.0 application starting in development on http://localhost:3000
+=> Rails 5.0.1 application starting in development on http://localhost:3000
 => Run `rails server -h` for more startup options
 Puma starting in single mode...
-* Version 3.4.0 (ruby 2.3.1-p112), codename: Owl Bowl Brawl
+* Version 3.6.2 (ruby 2.4.0-p0), codename: Sleepy Sunday Serenity
 * Min threads: 5, max threads: 5
 * Environment: development
 * Listening on tcp://localhost:3000
@@ -98,21 +98,21 @@ rails s
 $ rails g scaffold entry title description:text picture
 Running via Spring preloader in process 45698
       invoke  active_record
-      create    db/migrate/20160702012758_create_entries.rb
+      create    db/migrate/20170108042052_create_entries.rb
 ...(略)
 
 $ rails db:migrate
-== 20160702012758 CreateEntries: migrating ====================================
+== 20170108042052 CreateEntries: migrating ====================================
 -- create_table(:entries)
-   -> 0.0012s
-== 20160702012758 CreateEntries: migrated (0.0013s) ===========================
+   -> 0.0008s
+== 20170108042052 CreateEntries: migrated (0.0008s) ===========================
 
 $ rails s
 => Booting Puma
-=> Rails 5.0.0 application starting in development on http://localhost:3000
+=> Rails 5.0.1 application starting in development on http://localhost:3000
 => Run `rails server -h` for more startup options
 Puma starting in single mode...
-* Version 3.4.0 (ruby 2.3.1-p112), codename: Owl Bowl Brawl
+* Version 3.6.2 (ruby 2.4.0-p0), codename: Sleepy Sunday Serenity
 * Min threads: 5, max threads: 5
 * Environment: development
 * Listening on tcp://localhost:3000
@@ -136,7 +136,7 @@ Use Ctrl-C to stop
 gem 'sqlite3'
 ```
 
-という記述を探して、その下あたりに次の一行を追加して保存します。
+という記述を探して、その下に次の一行を追加して保存します。
 
 ```ruby
 gem 'carrierwave'
@@ -146,6 +146,7 @@ gem 'carrierwave'
 
 ```bash
 bundle
+bin/spring stop
 rails g uploader Picture
 ```
 
@@ -156,11 +157,16 @@ Fetching version metadata from https://rubygems.org/...
 Fetching dependency metadata from https://rubygems.org/..
 Resolving dependencies...
 ...
-Installing carrierwave 0.11.2
-Bundle complete! 16 Gemfile dependencies, 66 gems now installed.
+Installing carrierwave 1.0.0
+Bundle complete! 16 Gemfile dependencies, 63 gems now installed.
 Use `bundle show [gemname]` to see where a bundled gem is installed.
+
+$ bin/spring stop
+Spring stopped.
+
 $ rails g uploader Picture
-Running via Spring preloader in process 47336
+Running via Spring preloader in process 67309
+Expected string default value for '--jbuilder'; got true (boolean)
       create  app/uploaders/picture_uploader.rb
 ```
 
@@ -201,10 +207,10 @@ rails s
 ```console
 $ rails s
 => Booting Puma
-=> Rails 5.0.0 application starting in development on http://localhost:3000
+=> Rails 5.0.1 application starting in development on http://localhost:3000
 => Run `rails server -h` for more startup options
 Puma starting in single mode...
-* Version 3.4.0 (ruby 2.3.1-p112), codename: Owl Bowl Brawl
+* Version 3.6.2 (ruby 2.4.0-p0), codename: Sleepy Sunday Serenity
 * Min threads: 5, max threads: 5
 * Environment: development
 * Listening on tcp://localhost:3000
