@@ -71,7 +71,7 @@ $ rails db:migrate
 gem 'carrierwave'
 ```
 
-Gemfileの内容でgemを利用できるようにbundleコマンドをターミナルで実行します。
+Gemfileの内容でgemを利用できるようにbundleコマンドをターミナルで実行します（メッセージ中"Installing carrierwave 1.0.0"の数字は異なる場合があります）。
 
 ```bash
 bundle
@@ -84,8 +84,8 @@ Fetching version metadata from https://rubygems.org/...
 Fetching dependency metadata from https://rubygems.org/..
 Resolving dependencies...
 ...
-Installing carrierwave 0.11.2
-Bundle complete! 16 Gemfile dependencies, 66 gems now installed.
+Installing carrierwave 1.0.0
+Bundle complete! 17 Gemfile dependencies, 67 gems now installed.
 Use `bundle show [gemname]` to see where a bundled gem is installed.
 ```
 
@@ -94,10 +94,14 @@ bundleコマンドを実行するとGemfileに書かれたgemを存在しなけ�
 続いて、carrier_waveを利用可能にするために、carrier_waveが提供する以下のコマンドを実行して必要なファイルを作成します。
 
 ```bash
+$ bin/spring stop
 $ rails g uploader Picture
 ```
 
 ```console
+$ bin/spring stop
+Spring stopped.
+
 $ rails g uploader Picture
 Running via Spring preloader in process 47336
       create  app/uploaders/picture_uploader.rb
@@ -254,12 +258,7 @@ rails s
 ```console
 $ rails s
 => Booting Puma
-=> Rails 5.0.0.1 application starting in development on http://localhost:3000
-=> Run `rails server -h` for more startup options
-Puma starting in single mode...
-* Version 3.6.0 (ruby 2.3.1-p112), codename: Sleepy Sunday Serenity
-* Min threads: 5, max threads: 5
-* Environment: development
+...（略）
 * Listening on tcp://localhost:3000
 Use Ctrl-C to stop
 ```
