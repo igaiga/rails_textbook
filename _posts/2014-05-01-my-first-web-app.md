@@ -41,14 +41,14 @@ $ rails new blog_app
       create  README.rdoc
       create  Rakefile
 ... (略)
-Bundle complete! 15 Gemfile dependencies, 63 gems now installed.
+Bundle complete! 15 Gemfile dependencies, 62 gems now installed.
 Use `bundle show [gemname]` to see where a bundled gem is installed.
          run  bundle exec spring binstub --all
 * bin/rake: spring inserted
 * bin/rails: spring inserted
 ```
 
-ターミナルの画面にこのように"Bundle complete!"と表示されれば成功です。railsコマンドはたくさんのフォルダとファイルを自動で作ります。
+ターミナルの画面にこのように"Bundle complete!"と表示されれば成功です（メッセージ中"15 Gemfile dependencies, 62 gems now installed."の15や62という数字は異なる場合があります）。railsコマンドはたくさんのフォルダとファイルを自動で作ります。
 
 次は以下のコマンドを実行してみてください。`rails s`コマンドはwebサーバを起動するコマンドで、sはserverの略です。
 
@@ -57,15 +57,15 @@ cd blog_app
 rails s
 ```
 
-うまく動作している場合は、以下のような表示になります。
+うまく動作している場合は、以下のような表示になります（メッセージ中"Version 3.6.2"の数字は異なる場合があります）。
 
 ```console
 $ rails s
 => Booting Puma
-=> Rails 5.0.0 application starting in development on http://localhost:3000
+=> Rails 5.0.1 application starting in development on http://localhost:3000
 => Run `rails server -h` for more startup options
 Puma starting in single mode...
-* Version 3.4.0 (ruby 2.3.1-p112), codename: Owl Bowl Brawl
+* Version 3.6.2 (ruby 2.4.0-p0), codename: Sleepy Sunday Serenity
 * Min threads: 5, max threads: 5
 * Environment: development
 * Listening on tcp://localhost:3000
@@ -76,15 +76,15 @@ Use Ctrl-C to stop
 
 * localhost:3000
 
-![welcome rails(Rails5.0.0以降)](assets/my-first-web-app/welcome_rails.png)
+![welcome rails（Rails5.0.0以降）](assets/my-first-web-app/welcome_rails.png)
 
-![welcome rails(Rails4.2まで)](assets/my-first-web-app/welcome_rails_42.png)
+![welcome rails（Rails4.2まで）](assets/my-first-web-app/welcome_rails_42.png)
 
 これは、Railsが起動し、あなたのブラウザからのリクエストを受け付けて、表示している画面です。ここまでのわずかの手順で、Webアプリをつくり、画面を表示しているのです。
 
 ### ページの作成
 
-ひきつづき、以下のコマンドを入力してください。rails serverが起動している場合は、Ctrl-c（controlキーを押しながらcキー）で終了してからコマンドを打ちます[^1]。
+ひきつづき、以下のコマンドを入力してください（メッセージ中"process 45698"、"20170108042052"、"0.0008s"らの数字は実行するごとに異なります）。rails serverが起動している場合は、Ctrl-c（controlキーを押しながらcキー）で終了してからコマンドを打ちます[^1]。
 
 [^1]: Rails4.2以前では `rails db:migrate` の替わりに `bin/rake db:migrate` と実行してください。
 
@@ -98,21 +98,21 @@ rails s
 $ rails g scaffold entry title description:text picture
 Running via Spring preloader in process 45698
       invoke  active_record
-      create    db/migrate/20160702012758_create_entries.rb
+      create    db/migrate/20170108042052_create_entries.rb
 ...(略)
 
 $ rails db:migrate
-== 20160702012758 CreateEntries: migrating ====================================
+== 20170108042052 CreateEntries: migrating ====================================
 -- create_table(:entries)
-   -> 0.0012s
-== 20160702012758 CreateEntries: migrated (0.0013s) ===========================
+   -> 0.0008s
+== 20170108042052 CreateEntries: migrated (0.0008s) ===========================
 
 $ rails s
 => Booting Puma
-=> Rails 5.0.0 application starting in development on http://localhost:3000
+=> Rails 5.0.1 application starting in development on http://localhost:3000
 => Run `rails server -h` for more startup options
 Puma starting in single mode...
-* Version 3.4.0 (ruby 2.3.1-p112), codename: Owl Bowl Brawl
+* Version 3.6.2 (ruby 2.4.0-p0), codename: Sleepy Sunday Serenity
 * Min threads: 5, max threads: 5
 * Environment: development
 * Listening on tcp://localhost:3000
@@ -136,16 +136,17 @@ Use Ctrl-C to stop
 gem 'sqlite3'
 ```
 
-という記述を探して、その下あたりに次の一行を追加して保存します。
+という記述を探して、その下に次の一行を追加して保存します。
 
 ```ruby
 gem 'carrierwave'
 ```
 
-追加できたら、Terminalで、次のコマンドを実行してください（rails sはCtrl-cで終了させてください）。
+追加できたら、Terminalで、次のコマンドを実行してください（rails sはCtrl-cで終了させてください。また、メッセージ中"Installing carrierwave 1.0.0"、"Running via Spring preloader in process 67309"の数字は異なる場合があります。）。
 
 ```bash
 bundle
+bin/spring stop
 rails g uploader Picture
 ```
 
@@ -156,11 +157,16 @@ Fetching version metadata from https://rubygems.org/...
 Fetching dependency metadata from https://rubygems.org/..
 Resolving dependencies...
 ...
-Installing carrierwave 0.11.2
-Bundle complete! 16 Gemfile dependencies, 66 gems now installed.
+Installing carrierwave 1.0.0
+Bundle complete! 16 Gemfile dependencies, 63 gems now installed.
 Use `bundle show [gemname]` to see where a bundled gem is installed.
+
+$ bin/spring stop
+Spring stopped.
+
 $ rails g uploader Picture
-Running via Spring preloader in process 47336
+Running via Spring preloader in process 67309
+Expected string default value for '--jbuilder'; got true (boolean)
       create  app/uploaders/picture_uploader.rb
 ```
 
@@ -192,7 +198,7 @@ class Entry < ApplicationRecord
 
 rails serverを起動して、ブラウザから http://localhost:3000/entries へアクセスしてみましょう[^2]。
 
-[^2]: PictureUploader が見つからない旨のエラー("Unable to autoload constant PictureUploader"など)が発生した場合は、rails serverを一度止め、 `bin/spring stop` コマンドを実行してからrails serverをもう一度起動して、再アクセスしてみてください。また、 `app/uploaders/picture_uploader.rb` ファイルが存在するかも確認してみてください。存在しない場合は `rails g uploader Picture` コマンドが実行されていないケースが考えられます。
+[^2]: PictureUploader が見つからない旨のエラー（"Unable to autoload constant PictureUploader"など）が発生した場合は、rails serverを一度止め、 `bin/spring stop` コマンドを実行してからrails serverをもう一度起動して、再アクセスしてみてください。また、 `app/uploaders/picture_uploader.rb` ファイルが存在するかも確認してみてください。存在しない場合は `rails g uploader Picture` コマンドが実行されていないケースが考えられます。
 
 ```bash
 rails s
@@ -201,10 +207,10 @@ rails s
 ```console
 $ rails s
 => Booting Puma
-=> Rails 5.0.0 application starting in development on http://localhost:3000
+=> Rails 5.0.1 application starting in development on http://localhost:3000
 => Run `rails server -h` for more startup options
 Puma starting in single mode...
-* Version 3.4.0 (ruby 2.3.1-p112), codename: Owl Bowl Brawl
+* Version 3.6.2 (ruby 2.4.0-p0), codename: Sleepy Sunday Serenity
 * Min threads: 5, max threads: 5
 * Environment: development
 * Listening on tcp://localhost:3000
