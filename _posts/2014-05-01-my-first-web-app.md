@@ -41,7 +41,7 @@ $ rails new blog_app
       create  README.rdoc
       create  Rakefile
 ... (略)
-Bundle complete! 15 Gemfile dependencies, 63 gems now installed.
+Bundle complete! 15 Gemfile dependencies, 62 gems now installed.
 Use `bundle show [gemname]` to see where a bundled gem is installed.
          run  bundle exec spring binstub --all
 * bin/rake: spring inserted
@@ -62,10 +62,10 @@ rails s
 ```console
 $ rails s
 => Booting Puma
-=> Rails 5.0.0 application starting in development on http://localhost:3000
+=> Rails 5.0.1 application starting in development on http://localhost:3000
 => Run `rails server -h` for more startup options
 Puma starting in single mode...
-* Version 3.4.0 (ruby 2.3.1-p112), codename: Owl Bowl Brawl
+* Version 3.6.2 (ruby 2.4.0-p0), codename: Sleepy Sunday Serenity
 * Min threads: 5, max threads: 5
 * Environment: development
 * Listening on tcp://localhost:3000
