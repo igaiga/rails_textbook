@@ -25,7 +25,7 @@ mkdir my_web_apps
 cd my_web_apps
 ```
 
-mkdirはフォルダを作成するコマンド、cdはターミナル内で現在のフォルダを移動するコマンドです（Winで普段使いなれている「コンピューター（エクスプローラー）」を起動するには、ターミナルでexplorer .と打つと現在のフォルダを開くことができます。MacでFinderを開くにはターミナルからopen . と打ちます。これらからフォルダを作るのと同じ働きをするコマンドがmkdirです）。
+mkdirはフォルダを作成するコマンド、cdはターミナル内で現在のフォルダを移動するコマンドです（Winで普段使いなれている「コンピューター（エクスプローラー）」を起動するには、ターミナルで`explorer .`と打つと現在のフォルダを開くことができます。MacでFinderを開くにはターミナルから`open .`と打ちます。これらからフォルダを作るのと同じ働きをするコマンドがmkdirです）。
 
 続けて以下のコマンドを実行します。
 
@@ -74,7 +74,7 @@ Use Ctrl-C to stop
 
 では、ブラウザを起動して以下のURLを入力してアクセスしてみましょう（Railsのバージョンにより以下のどちらかが表示されます）。
 
-* localhost:3000
+* http://localhost:3000
 
 ![welcome rails（Rails5.0.0以降）](assets/my-first-web-app/welcome_rails.png)
 
@@ -218,6 +218,8 @@ Use Ctrl-C to stop
 ```
 
 New Entryリンクをクリックすると、「ファイルを選択」ボタンが増えているかと思います。ボタンを押して画像ファイルを選び、アップロードしてみましょう。
+
+* http://localhost:3000/entries
 
 ![new](assets/my-first-web-app/entries_new.png)
 

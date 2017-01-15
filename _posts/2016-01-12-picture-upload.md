@@ -65,7 +65,7 @@ $ rails db:migrate
 
 ## carrierwave gemを追加
 
-次は画像upload機能を持つライブラリcarrier_wave gemを追加します。gemを追加する場合はGemfileへ追記します。記述する場所はどこでも良いのですが、今回は一番最後の行に追記することにします。Gemfileへ次の一行を追加して保存します。
+次は画像upload機能を持つライブラリcarrierwave gemを追加します。gemを追加する場合はGemfileへ追記します。記述する場所はどこでも良いのですが、今回は一番最後の行に追記することにします。Gemfileへ次の一行を追加して保存します。
 
 ```ruby
 gem 'carrierwave'
@@ -91,7 +91,7 @@ Use `bundle show [gemname]` to see where a bundled gem is installed.
 
 bundleコマンドを実行するとGemfileに書かれたgemを存在しなければインストールし、利用可能にします。また、Gemfile.lockに利用するバージョンが書き込まれます。
 
-続いて、carrier_waveを利用可能にするために、carrier_waveが提供する以下のコマンドを実行して必要なファイルを作成します。
+続いて、carrierwaveを利用可能にするために、carrierwaveが提供する以下のコマンドを実行して必要なファイルを作成します。`bin/spring stop`コマンドはspringというキャッシュの仕組みを再起動します（このコマンドは環境によって実行不要な場合がほとんどですが、確実に成功するように実行しています）。`rails g uploader Picture`コマンドはcarrierwaveを利用するのに必要なファイルを生成します。
 
 ```bash
 $ bin/spring stop
@@ -109,7 +109,7 @@ Running via Spring preloader in process 47336
 
 ## モデルの変更
 
-次にモデルからcarrier_waveを利用して画像を扱えるように編集します。`app/models/book.rb`を開いて、次の行、
+次にモデルからcarrierwaveを利用して画像を扱えるように編集します。`app/models/book.rb`を開いて、次の行、
 
 ```ruby
 class Book < ApplicationRecord
