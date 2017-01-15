@@ -17,9 +17,9 @@
 
 ### コマンドラインでの実行
 
-- $ `npm i`             ## textlintのインストール
-- $ `npm test`          ## 文章全体のチェック
-- $ `npm run textlint _posts/2014-04-01-preface.md`  ## 単独のファイルをチェック
+- $ `npm i textlint`   # textlintのインストール
+- $ `npm test`         # 文章全体のチェック
+- $ `npm run textlint _posts/2014-04-01-preface.md`  # 単独のファイルをチェック
 
 ### atomエディタでの実行
 
