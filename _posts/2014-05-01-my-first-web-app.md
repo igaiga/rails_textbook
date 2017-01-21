@@ -142,7 +142,7 @@ gem 'sqlite3'
 gem 'carrierwave'
 ```
 
-追加できたら、Terminalで、次のコマンドを実行してください（rails sはCtrl-cで終了させてください。また、メッセージ中"Installing carrierwave 1.0.0"、"Running via Spring preloader in process 67309"の数字は異なる場合があります。）。
+追加できたら、Terminalで、次のコマンドを実行してください（`rails s`はCtrl-cで終了させてください。また、メッセージ中"Installing carrierwave 1.0.0"、"Running via Spring preloader in process 67309"の数字は異なる場合があります。）。
 
 ```bash
 bundle
@@ -198,7 +198,7 @@ class Entry < ApplicationRecord
 
 rails serverを起動して、ブラウザから http://localhost:3000/entries へアクセスしてみましょう[^2]。
 
-[^2]: PictureUploader が見つからない旨のエラー（"Unable to autoload constant PictureUploader"など）が発生した場合は、rails serverを一度止め、 `bin/spring stop` コマンドを実行してからrails serverをもう一度起動して、再アクセスしてみてください。また、 `app/uploaders/picture_uploader.rb` ファイルが存在するかも確認してみてください。存在しない場合は `rails g uploader Picture` コマンドが実行されていないケースが考えられます。
+[^2]: PictureUploaderが見つからない旨のエラー（"Unable to autoload constant PictureUploader"など）が発生した場合は、rails serverを一度止め、 `bin/spring stop` コマンドを実行してからrails serverをもう一度起動して、再アクセスしてみてください。また、 `app/uploaders/picture_uploader.rb` ファイルが存在するかも確認してみてください。存在しない場合は `rails g uploader Picture` コマンドが実行されていないケースが考えられます。
 
 ```bash
 rails s
