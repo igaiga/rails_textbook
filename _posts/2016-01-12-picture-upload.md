@@ -14,7 +14,7 @@ categories:
 
 アプリに画像アップロード機能を追加します。画像情報を格納するためのDBカラムを追加し、carrierwave gemを利用して画像アップロード機能を実装します。
 
-この章では「CRUDの基礎とindexアクション」で作ったbooks_appを引き続き題材に使っていきます。(モデルの章の後半で行ったbooksテーブルにauthorカラムを追加したあとの状態を想定していますが、authorカラムの追加作業は行わなくてもこの章の内容は実行可能です。)
+この章では「CRUDの基礎とindexアクション」で作ったbooks_appを引き続き題材に使っていきます。（モデルの章の後半で行ったbooksテーブルにauthorカラムを追加したあとの状態を想定していますが、authorカラムの追加作業は行わなくてもこの章の内容は実行可能です。）
 
 ## 画像情報を格納するためのDBカラムを追加
 
@@ -248,7 +248,7 @@ end
 
 rails serverを起動して、ブラウザから http://localhost:3000/books へアクセスしてみましょう[^2]。
 
-[^2]: PictureUploader が見つからない旨のエラー("Unable to autoload constant PictureUploader"など)が発生した場合は、rails serverを一度止め、 `bin/spring stop` コマンドを実行してからrails serverをもう一度起動して、再アクセスしてみてください。また、 `app/uploaders/picture_uploader.rb` ファイルが存在するかも確認してみてください。存在しない場合は `rails g uploader Picture` コマンドが実行されていないケースが考えられます。
+[^2]: PictureUploaderが見つからない旨のエラー（"Unable to autoload constant PictureUploader"など）が発生した場合は、rails serverを一度止め、 `bin/spring stop` コマンドを実行してからrails serverをもう一度起動して、再アクセスしてみてください。また、 `app/uploaders/picture_uploader.rb` ファイルが存在するかも確認してみてください。存在しない場合は `rails g uploader Picture` コマンドが実行されていないケースが考えられます。
 
 
 ```bash
@@ -277,4 +277,4 @@ uploadした画像ファイルがブラウザに表示されているのを確�
 
 - carrierwave gemを使うと画像アップロード機能を追加できる
 - Gemfileに新しいgemを追加した後、bundleコマンドでインストールする
-- マイグレーションファイルの生成は rails g migration Addカラム名Toテーブル名 カラム名:型名
+- マイグレーションファイルの生成はrails g migration Addカラム名Toテーブル名 カラム名:型名
