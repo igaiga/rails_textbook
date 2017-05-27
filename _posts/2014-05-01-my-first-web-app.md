@@ -76,17 +76,13 @@ Use Ctrl-C to stop
 
 * http://localhost:3000
 
-![welcome rails（Rails5.0.0以降）](assets/my-first-web-app/welcome_rails.png)
-
-![welcome rails（Rails4.2まで）](assets/my-first-web-app/welcome_rails_42.png)
+![welcome rails](assets/my-first-web-app/welcome_rails.png)
 
 これは、Railsが起動し、あなたのブラウザからのリクエストを受け付けて、表示している画面です。ここまでのわずかの手順で、Webアプリをつくり、画面を表示しているのです。
 
 ### ページの作成
 
-ひきつづき、以下のコマンドを入力してください（メッセージ中"process 45698"、"20170108042052"、"0.0008s"らの数字は実行するごとに異なります）。rails serverが起動している場合は、Ctrl-c（controlキーを押しながらcキー）で終了してからコマンドを打ちます[^1]。
-
-[^1]: Rails4.2以前では `rails db:migrate` の替わりに `bin/rake db:migrate` と実行してください。
+ひきつづき、以下のコマンドを入力してください（メッセージ中"process 45698"、"20170108042052"、"0.0008s"らの数字は実行するごとに異なります）。rails serverが起動している場合は、Ctrl-c（controlキーを押しながらcキー）で終了してからコマンドを打ちます。
 
 ```bash
 rails g scaffold entry title description:text picture
