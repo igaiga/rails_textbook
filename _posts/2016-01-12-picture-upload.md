@@ -44,7 +44,7 @@ Running via Spring preloader in process 6111
 ```
 
 ```ruby
-class AddPictureToBooks < ActiveRecord::Migration[5.0]
+class AddPictureToBooks < ActiveRecord::Migration[5.1]
   def change
     add_column :books, :picture, :string
   end
@@ -143,30 +143,30 @@ end
 `app/views/books/_form.html.erb`
 
 ```diff
-<%= form_for(book) do |f| %>
+<%= form_with(model: book, local: true) do |form| %>
 ...
   <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :book_title %>
   </div>
 
   <div class="field">
-    <%= f.label :memo %>
-    <%= f.text_area :memo %>
+    <%= form.label :memo %>
+    <%= form.text_area :memo, id: :book_memo %>
   </div>
 
   <div class="field">
-    <%= f.label :author %><br>
-    <%= f.text_field :author %>
+    <%= form.label :author %>
+    <%= form.text_field :author, id: :book_author %>
   </div>
 
 +  <div class="field">
-+    <%= f.label :picture %><br>
-+    <%= f.file_field :picture %>
++    <%= form.label :picture %>
++    <%= form.file_field :picture, id: :book_picture %>
 +  </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= form.submit %>
   </div>
 <% end %>
 ```
