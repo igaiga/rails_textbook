@@ -41,14 +41,14 @@ $ rails new blog_app
       create  README.rdoc
       create  Rakefile
 ... (略)
-Bundle complete! 15 Gemfile dependencies, 62 gems now installed.
+Bundle complete! 16 Gemfile dependencies, 70 gems now installed.
 Use `bundle show [gemname]` to see where a bundled gem is installed.
          run  bundle exec spring binstub --all
 * bin/rake: spring inserted
 * bin/rails: spring inserted
 ```
 
-ターミナルの画面にこのように"Bundle complete!"と表示されれば成功です（メッセージ中"15 Gemfile dependencies, 62 gems now installed."の15や62という数字は異なる場合があります）。railsコマンドはたくさんのフォルダとファイルを自動で作ります。
+ターミナルの画面にこのように"Bundle complete!"と表示されれば成功です（メッセージ中"16 Gemfile dependencies, 70 gems now installed."の16や70という数字は異なる場合があります）。railsコマンドはたくさんのフォルダとファイルを自動で作ります。
 
 次は以下のコマンドを実行してみてください。`rails s`コマンドはwebサーバを起動するコマンドで、sはserverの略です。
 
@@ -57,36 +57,32 @@ cd blog_app
 rails s
 ```
 
-うまく動作している場合は、以下のような表示になります（メッセージ中"Version 3.6.2"の数字は異なる場合があります）。
+うまく動作している場合は、以下のような表示になります（メッセージ中"Version 3.8.2"の数字は異なる場合があります）。
 
 ```console
 $ rails s
 => Booting Puma
-=> Rails 5.0.1 application starting in development on http://localhost:3000
+=> Rails 5.1.1 application starting in development on http://localhost:3000
 => Run `rails server -h` for more startup options
 Puma starting in single mode...
-* Version 3.6.2 (ruby 2.4.0-p0), codename: Sleepy Sunday Serenity
+* Version 3.8.2 (ruby 2.4.1-p111), codename: Sassy Salamander
 * Min threads: 5, max threads: 5
 * Environment: development
-* Listening on tcp://localhost:3000
+* Listening on tcp://0.0.0.0:3000
 Use Ctrl-C to stop
 ```
 
-では、ブラウザを起動して以下のURLを入力してアクセスしてみましょう（Railsのバージョンにより以下のどちらかが表示されます）。
+では、ブラウザを起動して以下のURLを入力してアクセスしてみましょう。
 
 * http://localhost:3000
 
-![welcome rails（Rails5.0.0以降）](assets/my-first-web-app/welcome_rails.png)
-
-![welcome rails（Rails4.2まで）](assets/my-first-web-app/welcome_rails_42.png)
+![welcome rails](assets/my-first-web-app/welcome_rails.png)
 
 これは、Railsが起動し、あなたのブラウザからのリクエストを受け付けて、表示している画面です。ここまでのわずかの手順で、Webアプリをつくり、画面を表示しているのです。
 
 ### ページの作成
 
-ひきつづき、以下のコマンドを入力してください（メッセージ中"process 45698"、"20170108042052"、"0.0008s"らの数字は実行するごとに異なります）。rails serverが起動している場合は、Ctrl-c（controlキーを押しながらcキー）で終了してからコマンドを打ちます[^1]。
-
-[^1]: Rails4.2以前では `rails db:migrate` の替わりに `bin/rake db:migrate` と実行してください。
+ひきつづき、以下のコマンドを入力してください（メッセージ中"process 45698"、"20170108042052"、"0.0008s"らの数字は実行するごとに異なります）。rails serverが起動している場合は、Ctrl-c（controlキーを押しながらcキー）で終了してからコマンドを打ちます。
 
 ```bash
 rails g scaffold entry title description:text picture
@@ -109,13 +105,13 @@ $ rails db:migrate
 
 $ rails s
 => Booting Puma
-=> Rails 5.0.1 application starting in development on http://localhost:3000
+=> Rails 5.1.1 application starting in development on http://localhost:3000
 => Run `rails server -h` for more startup options
 Puma starting in single mode...
-* Version 3.6.2 (ruby 2.4.0-p0), codename: Sleepy Sunday Serenity
+* Version 3.8.2 (ruby 2.4.1-p111), codename: Sassy Salamander
 * Min threads: 5, max threads: 5
 * Environment: development
-* Listening on tcp://localhost:3000
+* Listening on tcp://0.0.0.0:3000
 Use Ctrl-C to stop
 ```
 
@@ -158,7 +154,7 @@ Fetching dependency metadata from https://rubygems.org/..
 Resolving dependencies...
 ...
 Installing carrierwave 1.0.0
-Bundle complete! 16 Gemfile dependencies, 63 gems now installed.
+Bundle complete! 17 Gemfile dependencies, 71 gems now installed.
 Use `bundle show [gemname]` to see where a bundled gem is installed.
 
 $ bin/spring stop
@@ -166,7 +162,6 @@ Spring stopped.
 
 $ rails g uploader Picture
 Running via Spring preloader in process 67309
-Expected string default value for '--jbuilder'; got true (boolean)
       create  app/uploaders/picture_uploader.rb
 ```
 
@@ -185,8 +180,8 @@ class Entry < ApplicationRecord
 さらに、`app/views/entries/_form.html.erb`の以下の部分を編集します（- 記号の行を削除して、かわりに + 記号の行を追加してください）。
 
 ```diff
-- <%= f.text_field :picture %>
-+ <%= f.file_field :picture %>
+- <%= form.text_field :picture, id: :entry_picture %>
++ <%= form.file_field :picture, id: :entry_picture %>
 ```
 
 あと少しです。最後に`app/views/entries/show.html.erb`を開いて編集します。
@@ -207,13 +202,13 @@ rails s
 ```console
 $ rails s
 => Booting Puma
-=> Rails 5.0.1 application starting in development on http://localhost:3000
+=> Rails 5.1.1 application starting in development on http://localhost:3000
 => Run `rails server -h` for more startup options
 Puma starting in single mode...
-* Version 3.6.2 (ruby 2.4.0-p0), codename: Sleepy Sunday Serenity
+* Version 3.8.2 (ruby 2.4.1-p111), codename: Sassy Salamander
 * Min threads: 5, max threads: 5
 * Environment: development
-* Listening on tcp://localhost:3000
+* Listening on tcp://0.0.0.0:3000
 Use Ctrl-C to stop
 ```
 

@@ -96,15 +96,13 @@ renderメソッドは別のビューファイルを埋め込みます。わざ�
 
 埋め込むファイル名には1つルールがあり、renderで書いた文字列の先頭に_を付けたファイル名にします。つまり、`<%= render 'form', book: @book %>`で埋め込まれるファイルは ` _form.html.erb` になります。
 
-また、`<%= render 'form', book: @book %>`の`book: @book`の部分は、`@book`変数を埋め込み先のパーシャル内で`book`変数として使うための指示です（パーシャル内でも@はじまりのインスタンス変数を利用することも可能です。それでもわざわざbook変数として渡しているのは、パーシャル内で利用する変数を明示すること、他のコントローラでパーシャルを流用する時にインスタンス変数名を揃える必要がないことなどのメリットがあります。）[^1]。
-
-[^1]: Rails 4.2では変数を渡さず、パーシャル内でインスタンス変数を使うコードが生成されます。
+また、`<%= render 'form', book: @book %>`の`book: @book`の部分は、`@book`変数を埋め込み先のパーシャル内で`book`変数として使うための指示です（パーシャル内でも@はじまりのインスタンス変数を利用することも可能です。それでもわざわざbook変数として渡しているのは、パーシャル内で利用する変数を明示すること、他のコントローラでパーシャルを流用する時にインスタンス変数名を揃える必要がないことなどのメリットがあります。）。
 
 埋め込まれるパーシャルビュー `_form.html.erb` は以下のようになっています。
 ファイルは`app/views/books/_form.html.erb`です。
 
 ```erb
-<%= form_for(book) do |f| %>
+<%= form_with(model: book, local: true) do |form| %>
   <% if book.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
@@ -118,30 +116,30 @@ renderメソッドは別のビューファイルを埋め込みます。わざ�
   <% end %>
 
   <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :book_title %>
   </div>
 
   <div class="field">
-    <%= f.label :memo %>
-    <%= f.text_area :memo %>
+    <%= form.label :memo %>
+    <%= form.text_area :memo, id: :book_memo %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= form.submit %>
   </div>
 <% end %>
 ```
 
 `new.html.erb` と `_form.html.erb` の2つのファイルでこの画面はつくられています。
 
-では、`_form.html.erb` の中を解説していきます。この中で、前半2行目からのこの部分はエラーを表示するコードです。ここでは説明を省略して、それ以外の基本となる部分を説明します。
+では、`_form.html.erb` の中を解説していきます。この中で、2行目からの以下の部分はエラーを表示するコードです。ここでは説明を省略して、それ以外の基本となる部分を説明します。
 
 ```erb
 <% if book.errors.any? %>
   <div id="error_explanation">
-  <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
-  <ul>
+    <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+    <ul>
     <% book.errors.full_messages.each do |message| %>
       <li><%= message %></li>
     <% end %>
@@ -168,19 +166,19 @@ renderメソッドは別のビューファイルを埋め込みます。わざ�
 
 ![タイトル(Railsコード)](assets/new-create/kn/new-view-form-title-rails.png)
 
-`f.label :title` で "Title"という文字列を表示しています。その名の通り、ラベルの部分です。`f.text_field :title` はその下にあるテキスト入力欄です。fはformブロック内の変数で、ここではbookに関するformを記述するために使っています（見慣れない書き方ですが、ここはそう書くものだと思ってもらえれば大丈夫です）。
+`form.label :title` で "Title"という文字列を表示しています。その名の通り、ラベルの部分です。`form.text_field :title, id: :book_title` はその下にあるテキスト入力欄です。`form` はformブロック内の変数で、ここではbookに関するformを記述するために使っています。見慣れない書き方かもしれませんが、ここはそう書くものだと思ってもらえれば大丈夫です。`id: :book_title` は作成されるテキスト入力欄(inputタグになります)のHTMLのidとして"book_title"を指定しています。
 
 次はその下のメモの部分を見てみましょう。
 
 ![メモ](assets/new-create/kn/new-view-form-memo.png)
 
-メモの部分も同様です。`f.label :memo` が "Memo" を表示する部分です。`f.text_area :memo`がその下のテキスト入力欄を作ります。`text_area` は先ほどの `text_field` よりも広くて改行を入力できるテキスト入力欄を作るメソッドです。
+メモの部分も同様です。`form.label :memo` が "Memo" を表示する部分です。`form.text_area :memo, id: :book_memo` がその下のテキスト入力欄を作ります。`text_area` は先ほどの `text_field` よりも広くて改行を入力できるテキスト入力欄を作るメソッドです。
 
 最後は投稿するボタンの部分です。
 
 ![submit](assets/new-create/kn/new-view-form-submit-1.png)
 
-`f.submit` は投稿ボタン（Create Bookボタン）を作ります。このボタンを押すとform内の情報をまとめてサーバへ送信（リクエストを送信）します。つまり…
+`form.submit` は投稿ボタン（Create Bookボタン）を作ります。このボタンを押すとform内の情報をまとめてサーバへ送信（リクエストを送信）します。つまり…
 
 ![submitボタンを押すとリクエストが飛ぶ](assets/new-create/kn/new-view-form-submit-2.png)
 
@@ -306,7 +304,9 @@ end
 
 params以降のrequire, permitメソッドは、パラメータの内容を制限しています。意図していないデータが入ってくるのを防ぐために使用します。ここでは、bookのtitle, memoだけを受け取るようにしています。requireには対象となるモデル名（モデルについては次章で説明します）を、permitには更新を許可するカラム名を指定します。
 
-このパラメータを制限する仕組みはStrong Parametersと呼ばれます。これが必要な理由は、攻撃に対する防御、つまりセキュリティのためです。ブラウザから飛ばすパラメータは、ユーザーの手によって改ざんすることも可能です。つまり、任意のパラメータを飛ばす攻撃をすることができます。この1つ前のnewの画面で用意したフォームに存在しないパラメータが飛んでくる可能性があるので、ここで変更を許可するパラメータを絞っています（もう少し説明すると、ここで使われている`Book.new(book_params)`に関係しています。newメソッドは、引数で受け取った値を自分のカラムへ代入します。たとえば、titleだけを更新したいケースがあったとして、book_paramsにtitleの情報だけがやってくればいいのですが、攻撃者はmemoの情報もパラメータとして飛ばすこともあります。StrongParametersで受け取り可能なパラメータを絞っていないと、プログラマの意図しないカラムが更新されてしまうことになります）。
+このパラメータを制限する仕組みはStrong Parametersと呼ばれます。これが必要な理由は、攻撃に対する防御、つまりセキュリティ対策です。ブラウザから飛ばすパラメータは、ユーザーの手によって改ざんすることも可能です。つまり、任意のパラメータを飛ばす攻撃をすることができます。この1つ前のnewの画面で用意したフォームに存在しないパラメータが飛んでくる可能性があるので、ここで変更を許可するパラメータを絞っています。
+
+もう少し説明すると、ここで使われている`Book.new(book_params)`に関係しています。newメソッドは、引数で受け取った値を自分のカラムへ代入します。たとえば、titleだけを更新したいケースがあったとして、book_paramsにtitleの情報だけがやってくればいいのですが、攻撃者はmemoの情報もパラメータとして飛ばすこともあります。StrongParametersで受け取り可能なパラメータを絞っていないと、プログラマの意図しないカラムが更新されてしまうことになります。
 
 ## まとめ
 

@@ -56,7 +56,7 @@ Use Ctrl-C to stop
 
 ![Welcome rails](assets/my-first-web-app/welcome_rails.png)
 
-前の章と同じように動作しているかと思います（Rails4.2ではWelcome aboardという画面になります）。ここで実行したコマンド ```rails s``` のsはserverの略で、省略したsでも、省略せずにserverでも、同じように動作します。
+前の章と同じように動作しているかと思います。ここで実行したコマンド ```rails s``` のsはserverの略で、省略したsでも、省略せずにserverでも、同じように動作します。
 
 ### rails gコマンドでページを作る
 
@@ -132,12 +132,23 @@ Use Ctrl-C to stop
 
 ```diff
 <p>Hello world!</p>
-+ <p>現在時刻: <%= Time.now %></p>
++ <p>現在時刻: <%= Time.current %></p>
 ```
 
-![現在時刻表示](assets/smallest-app/time_now.png)
+![現在時刻表示](assets/smallest-app/time_utc.png)
 
-表示されましたか？ブラウザをリロードすると、現在時刻が更新されます。アクセスしたそのときの時刻が表示されるアプリになりました。
+表示されましたか？ブラウザをリロードすると、現在時刻が更新される、アクセスしたそのときの時刻が表示されるアプリになりました。
+
+ところで、現在時刻が9時間ずれていると思われた方もいるかと思います。これは異なるタイムゾーンで表示されているためです。この時刻はUTCタイムゾーンでの時刻です。UTCは協定世界時と呼ばれ、基準となるタイムゾーンとして使われています。日本での時刻はUTCよりも9時間早い時刻になります。プログラムを書き換えて、日本時間での現在時刻を表示させてみましょう[^1]。
+
+[^1]: 日本でだけ使うアプリであれば、アプリ全体でデフォルトとなるタイムゾーンを日本時間に設定してしまった方が便利です。その場合はconfig/application.rbファイル中で `config.time_zone = 'Asia/Tokyo'` と設定します。
+
+```diff
+- <p>現在時刻: <%= Time.current %></p>
++ <p>現在時刻: <%= Time.current.in_time_zone('Asia/Tokyo') %></p>
+```
+
+![現在時刻表示](assets/smallest-app/time_jst.png)
 
 最後に、このままでもいいのですが、コードのロジックの部分をビューに書くのではなく、コントローラで書くことにしましょう。動作は同じまま、コードを書き換えます。
 
@@ -148,7 +159,7 @@ Use Ctrl-C to stop
 ```diff
 class HelloController < ApplicationController
   def index
-+   @time = Time.now
++   @time = Time.current.in_time_zone('Asia/Tokyo')
   end
 end
 ```
@@ -158,7 +169,7 @@ end
 `app/views/hello/index.html.erb`
 
 ```diff
-- <p>現在時刻: <%= Time.now %></p>
+- <p>現在時刻: <%= Time.current.in_time_zone('Asia/Tokyo') %></p>
 + <p>現在時刻: <%= @time %></p>
 ```
 
@@ -366,7 +377,7 @@ get 'hello/index'
 ```ruby
 class HelloController < ApplicationController
   def index
-    @time = Time.now
+    @time = Time.current.in_time_zone('Asia/Tokyo')
   end
 end
 ```
@@ -393,9 +404,9 @@ index.html.erbは、HTMLのもとになるファイルです。ブラウザで�
 <p>現在時刻: <%= @time %></p>
 ```
 
-HTMLのpタグがあります。その中にHTMLにはない `<%=` と `%>` というタグがあります。これがRubyのコードを実行するためのタグです。ここではその中にある `@time` が実行されます。@timeはコントローラのところで作られたインスタンス変数です。実行すると、変数が指しているもの、つまりコントローラで実行された `Time.now` の結果で置き換えられます。このビューで作られたHTMLは、ブラウザで確認することができます。さきほどブラウザから見たように、現在時刻が表示されます（実際には、ビューが作ったHTMLに、Railsがその他の加工を加えて送出します）。
+HTMLのpタグがあります。その中にHTMLにはない `<%=` と `%>` というタグがあります。これがRubyのコードを実行するためのタグです。ここではその中にある `@time` が実行されます。@timeはコントローラのところで作られたインスタンス変数です。実行すると、変数が指しているもの、つまりコントローラで実行された `Time.current.in_time_zone('Asia/Tokyo')` の結果で置き換えられます。このビューで作られたHTMLは、ブラウザで確認することができます。さきほどブラウザから見たように、現在時刻が表示されます（実際には、ビューが作ったHTMLに、Railsがその他の加工を加えて送出します）。
 
-![ブラウザからビューがつくったHTMLを確認](assets/smallest-app/time_now.png)
+![ブラウザからビューがつくったHTMLを確認](assets/smallest-app/time_jst.png)
 
 ビューについての動作をまとめると以下のようになります。
 
