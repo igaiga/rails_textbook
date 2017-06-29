@@ -12,7 +12,7 @@ categories:
 
 # Webアプリをまずはつくってみよう
 
-それでは、早速Webアプリをつくってみましょう。作るのは、記事と写真が投稿できる簡易なブログアプリです。まずはWebアプリでどんなことができるのか、その作り方はどのようなものかを体験してもらうのがこの章の目的です。それぞれのコマンドやコードの意味は、本書の中で追って説明していきます。
+それでは、早速Webアプリをつくってみましょう。作るのは、タイトルなどの情報と画像が投稿できる簡易な書籍管理アプリです。まずはWebアプリでどんなことができるのか、その作り方はどのようなものかを体験してもらうのがこの章の目的です。それぞれのコマンドやコードの意味は、本書の中で追って説明していきます。
 
 ## Webアプリをつくる
 
@@ -30,13 +30,13 @@ mkdirはフォルダを作成するコマンド、cdはターミナル内で現�
 続けて以下のコマンドを実行します。
 
 ```bash
-rails new blog_app
+rails new first_books_app
 ```
 
 以下のような結果が表示されるでしょうか（実行には少し時間がかかります）。
 
 ```console
-$ rails new blog_app
+$ rails new first_books_app
       create
       create  README.rdoc
       create  Rakefile
@@ -53,7 +53,7 @@ Use `bundle show [gemname]` to see where a bundled gem is installed.
 次は以下のコマンドを実行してみてください。`rails s`コマンドはwebサーバを起動するコマンドで、sはserverの略です。
 
 ```bash
-cd blog_app
+cd books_app
 rails s
 ```
 
@@ -85,30 +85,30 @@ Use Ctrl-C to stop
 ひきつづき、以下のコマンドを入力してください（メッセージ中"process 45698"、"20170108042052"、"0.0008s"らの数字は実行するごとに異なります）。rails serverが起動している場合は、Ctrl-c（controlキーを押しながらcキー）で終了してからコマンドを打ちます。
 
 ```bash
-rails g scaffold entry title description:text picture
+rails g scaffold book title memo:text author picture
 rails db:migrate
 rails s
 ```
 
 ```console
-$ rails g scaffold entry title description:text picture
+$ rails g scaffold book title memo:text author picture
 Running via Spring preloader in process 45698
       invoke  active_record
-      create    db/migrate/20170108042052_create_entries.rb
+      create    db/migrate/20170629002457_create_books.rb
 ...(略)
 
 $ rails db:migrate
-== 20170108042052 CreateEntries: migrating ====================================
--- create_table(:entries)
-   -> 0.0008s
-== 20170108042052 CreateEntries: migrated (0.0008s) ===========================
+== 20170629002457 CreateBooks: migrating ======================================
+-- create_table(:books)
+   -> 0.0006s
+== 20170629002457 CreateBooks: migrated (0.0007s) =============================
 
 $ rails s
 => Booting Puma
-=> Rails 5.1.1 application starting in development on http://localhost:3000
+=> Rails 5.1.2 application starting in development on http://localhost:3000
 => Run `rails server -h` for more startup options
 Puma starting in single mode...
-* Version 3.8.2 (ruby 2.4.1-p111), codename: Sassy Salamander
+* Version 3.9.1 (ruby 2.4.1-p111), codename: Private Caller
 * Min threads: 5, max threads: 5
 * Environment: development
 * Listening on tcp://0.0.0.0:3000
@@ -117,12 +117,12 @@ Use Ctrl-C to stop
 
 ここでまたブラウザを使い、以下のURLを表示させます。
 
-* http://localhost:3000/entries
+* http://localhost:3000/books
 
-![entries](assets/my-first-web-app/scaffold_index.png)
+![books](assets/my-first-web-app/scaffold_index.png)
 
 
-画面が表示されたら、New Entryのリンクをたどってみましょう。Title, Descriptionなどを入力し、Create Entryボタンで保存してみてください。また、保存したデータを編集や削除をしてみてください。ここまでの作業で簡易なブログの基本機能ができました。
+画面が表示されたら、New Bookのリンクをたどってみましょう。Title, Memoなどを入力し、Create Bookボタンで保存してみてください。また、保存したデータを編集や削除をしてみてください。ここまでの作業で簡易なブログの基本機能ができました。
 
 ### 写真アップロード機能の追加
 
@@ -165,10 +165,10 @@ Running via Spring preloader in process 67309
       create  app/uploaders/picture_uploader.rb
 ```
 
-次にファイルを編集します。`app/models/entry.rb`を開いて、次の行、
+次にファイルを編集します。`app/models/book.rb`を開いて、次の行、
 
 ```ruby
-class Entry < ApplicationRecord
+class Book < ApplicationRecord
 ```
 
 の直後に、以下を追加します。
@@ -177,21 +177,21 @@ class Entry < ApplicationRecord
   mount_uploader :picture, PictureUploader
 ```
 
-さらに、`app/views/entries/_form.html.erb`の以下の部分を編集します（- 記号の行を削除して、かわりに + 記号の行を追加してください）。
+さらに、`app/views/books/_form.html.erb`の以下の部分を編集します（- 記号の行を削除して、かわりに + 記号の行を追加してください）。
 
 ```diff
-- <%= form.text_field :picture, id: :entry_picture %>
-+ <%= form.file_field :picture, id: :entry_picture %>
+- <%= form.text_field :picture, id: :book_picture %>
++ <%= form.file_field :picture, id: :book_picture %>
 ```
 
-あと少しです。最後に`app/views/entries/show.html.erb`を開いて編集します。
+あと少しです。最後に`app/views/books/show.html.erb`を開いて編集します。
 
 ```diff
-- <%= @entry.picture %>
-+ <%= image_tag(@entry.picture_url) if @entry.picture.present? %>
+- <%= @book.picture %>
++ <%= image_tag(@book.picture_url) if @book.picture.present? %>
 ```
 
-rails serverを起動して、ブラウザから http://localhost:3000/entries へアクセスしてみましょう[^2]。
+rails serverを起動して、ブラウザから http://localhost:3000/books へアクセスしてみましょう[^2]。
 
 [^2]: PictureUploaderが見つからない旨のエラー（"Unable to autoload constant PictureUploader"など）が発生した場合は、rails serverを一度止め、 `bin/spring stop` コマンドを実行してからrails serverをもう一度起動して、再アクセスしてみてください。また、 `app/uploaders/picture_uploader.rb` ファイルが存在するかも確認してみてください。存在しない場合は `rails g uploader Picture` コマンドが実行されていないケースが考えられます。
 
@@ -202,22 +202,22 @@ rails s
 ```console
 $ rails s
 => Booting Puma
-=> Rails 5.1.1 application starting in development on http://localhost:3000
+=> Rails 5.1.2 application starting in development on http://localhost:3000
 => Run `rails server -h` for more startup options
 Puma starting in single mode...
-* Version 3.8.2 (ruby 2.4.1-p111), codename: Sassy Salamander
+* Version 3.9.1 (ruby 2.4.1-p111), codename: Private Caller
 * Min threads: 5, max threads: 5
 * Environment: development
 * Listening on tcp://0.0.0.0:3000
 Use Ctrl-C to stop
 ```
 
-New Entryリンクをクリックすると、「ファイルを選択」ボタンが増えているかと思います。ボタンを押して画像ファイルを選び、アップロードしてみましょう。
+New Bookリンクをクリックすると、「ファイルを選択」ボタンが増えているかと思います。ボタンを押して画像ファイルを選び、アップロードしてみましょう。
+★TODOここから
+* http://localhost:3000/books
 
-* http://localhost:3000/entries
+![new](assets/my-first-web-app/new_page.png)
 
-![new](assets/my-first-web-app/entries_new.png)
-
-![show](assets/my-first-web-app/entries_show.png)
+![show](assets/my-first-web-app/show_page.png)
 
 画像をアップロードできる簡易ブログアプリができあがりました。初めてのWebアプリづくりはいかがでしたか？とてもシンプルなアプリですが、Webアプリの基本となるデータ作成、表示、更新、削除の機能や、写真投稿機能を付加するためのライブラリの使い方などがこの中につまっています。本書を読み終わる頃には、ここで書いたコードやコマンドの意味が分かるようになりますので、今はまだ分からなくて大丈夫です（まだ何も説明していないので当たり前ですね）。次の章から、Webアプリがどうような仕組みで動作するのかを説明していきます。
