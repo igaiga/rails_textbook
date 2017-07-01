@@ -62,10 +62,10 @@ rails s
 ```console
 $ rails s
 => Booting Puma
-=> Rails 5.1.1 application starting in development on http://localhost:3000
+=> Rails 5.1.2 application starting in development on http://localhost:3000
 => Run `rails server -h` for more startup options
 Puma starting in single mode...
-* Version 3.8.2 (ruby 2.4.1-p111), codename: Sassy Salamander
+* Version 3.9.1 (ruby 2.4.1-p111), codename: Private Caller
 * Min threads: 5, max threads: 5
 * Environment: development
 * Listening on tcp://0.0.0.0:3000
@@ -213,7 +213,7 @@ Use Ctrl-C to stop
 ```
 
 New Bookリンクをクリックすると、「ファイルを選択」ボタンが増えているかと思います。ボタンを押して画像ファイルを選び、アップロードしてみましょう。
-★TODOここから
+
 * http://localhost:3000/books
 
 ![new](assets/my-first-web-app/new_page.png)

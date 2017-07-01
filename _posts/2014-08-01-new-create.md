@@ -166,7 +166,7 @@ renderメソッドは別のビューファイルを埋め込みます。わざ�
 
 ![タイトル(Railsコード)](assets/new-create/kn/new-view-form-title-rails.png)
 
-`form.label :title` で "Title"という文字列を表示しています。その名の通り、ラベルの部分です。`form.text_field :title, id: :book_title` はその下にあるテキスト入力欄です。`form` はformブロック内の変数で、ここではbookに関するformを記述するために使っています。見慣れない書き方かもしれませんが、ここはそう書くものだと思ってもらえれば大丈夫です。`id: :book_title` は作成されるテキスト入力欄(inputタグになります)のHTMLのidとして"book_title"を指定しています。
+`form.label :title` で "Title"という文字列を表示しています。その名の通り、ラベルの部分です。`form.text_field :title, id: :book_title` はその下にあるテキスト入力欄です。`form` はformブロック内の変数で、ここではbookに関するformを記述するために使っています。見慣れない書き方かもしれませんが、ここはそう書くものだと思ってもらえれば大丈夫です。`id: :book_title` は作成されるテキスト入力欄（inputタグになります）のHTMLのidとして"book_title"を指定しています。
 
 次はその下のメモの部分を見てみましょう。
 
