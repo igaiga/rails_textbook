@@ -53,7 +53,7 @@ Use `bundle show [gemname]` to see where a bundled gem is installed.
 次は以下のコマンドを実行してみてください。`rails s`コマンドはwebサーバを起動するコマンドで、sはserverの略です。
 
 ```bash
-cd books_app
+cd first_books_app
 rails s
 ```
 
