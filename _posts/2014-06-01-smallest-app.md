@@ -16,7 +16,16 @@ categories:
 
 ## 一番小さなRailsアプリをつくる
 
-### アプリの作成
+### アプリの作成とWelcome画面
+
+まずはターミナルを起動して以下のコマンドを打ってみましょう。
+
+```bash
+mkdir my_web_apps
+cd my_web_apps
+```
+
+mkdirはフォルダを作成するコマンド、cdはターミナル内で現在のフォルダを移動するコマンドです（Winで普段使いなれている「コンピューター（エクスプローラー）」を起動するには、ターミナルで`explorer .`と打つと現在のフォルダを開くことができます。MacでFinderを開くにはターミナルから`open .`と打ちます。これらからフォルダを作るのと同じ働きをするコマンドがmkdirです）。
 
 今回も最初にアプリを作ります。ブラウザに"Hello world!"と表示させるアプリです。前の章で作成した ```my_web_apps``` の下に新しいアプリを作ってみましょう。ターミナルを起動して以下のコマンドを打ちます。
 
@@ -24,6 +33,16 @@ categories:
 cd my_web_apps
 rails new helloworld
 ```
+
+続けて以下のコマンドを実行します。
+
+```bash
+rails new helloworld
+```
+
+以下のような結果が表示されるでしょうか（実行には少し時間がかかります）。
+
+TODO: 置き換え
 
 ```console
 $ rails new helloworld
@@ -35,28 +54,39 @@ Use `bundle show [gemname]` to see where a bundled gem is installed.
 * bin/rails: spring inserted
 ```
 
-次に、前の章と同じように以下のコマンドを実行してみましょう。
+ターミナルの画面にこのように"Bundle complete!"と表示されれば成功です（メッセージ中"16 Gemfile dependencies, 70 gems now installed."の16や70という数字は異なる場合があります）。railsコマンドはたくさんのフォルダとファイルを自動で作ります。
+
+次は以下のコマンドを実行してみてください。`rails s`コマンドはwebサーバを起動するコマンドで、sはserverの略です。
 
 ```bash
 cd helloworld
 rails s
 ```
 
+うまく動作している場合は、以下のような表示になります（メッセージ中"Version 3.9.1"の数字は異なる場合があります）。
+
 ```console
 $ rails s
 => Booting Puma
-...（略）
-* Listening on tcp://localhost:3000
+=> Rails 5.1.2 application starting in development on http://localhost:3000
+=> Run `rails server -h` for more startup options
+Puma starting in single mode...
+* Version 3.9.1 (ruby 2.4.1-p111), codename: Private Caller
+* Min threads: 5, max threads: 5
+* Environment: development
+* Listening on tcp://0.0.0.0:3000
 Use Ctrl-C to stop
 ```
 
-ブラウザを起動して以下のURLを入力してアクセスしてみます。
+では、ブラウザを起動して以下のURLを入力してアクセスしてみましょう。
 
 * http://localhost:3000
 
-![Welcome rails](assets/my-first-web-app/welcome_rails.png)
+![welcome rails](assets/smallest-app/welcome_rails.png)
 
-前の章と同じように動作しているかと思います。ここで実行したコマンド ```rails s``` のsはserverの略で、省略したsでも、省略せずにserverでも、同じように動作します。
+これは、Railsが起動し、あなたのブラウザからのリクエストを受け付けて、表示している画面です。ここまでのわずかの手順で、Webアプリをつくり、画面を表示しているのです。
+
+ここで実行したコマンド ```rails s``` のsはserverの略で、省略したsでも、省略せずにserverでも、同じように動作します。
 
 ### rails gコマンドでページを作る
 
