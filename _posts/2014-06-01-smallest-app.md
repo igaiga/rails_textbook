@@ -42,19 +42,17 @@ rails new helloworld
 
 以下のような結果が表示されるでしょうか（実行には少し時間がかかります）。
 
-TODO: 置き換え
-
 ```console
 $ rails new helloworld
       create
-...（略）
-Use `bundle show [gemname]` to see where a bundled gem is installed.
-         run  bundle exec spring binstub --all
-* bin/rake: spring inserted
-* bin/rails: spring inserted
+      create  README.md
+      create  Rakefile
+ ...（略）
+✨  Done in 3.83s.
+Webpacker successfully installed 🎉 🍰
 ```
 
-ターミナルの画面にこのように"Bundle complete!"と表示されれば成功です（メッセージ中"16 Gemfile dependencies, 70 gems now installed."の16や70という数字は異なる場合があります）。railsコマンドはたくさんのフォルダとファイルを自動で作ります。
+ターミナルの画面にこのように"Webpacker successfully installed"と表示されれば成功です（メッセージ中"Done in 3.83s."の3.83sは所用時間なので、実行するごとに変化します）。railsコマンドはたくさんのフォルダとファイルを自動で作ります。
 
 次は以下のコマンドを実行してみてください。`rails s`コマンドはwebサーバを起動するコマンドで、sはserverの略です。
 
@@ -63,18 +61,18 @@ cd helloworld
 rails s
 ```
 
-うまく動作している場合は、以下のような表示になります（メッセージ中"Version 3.9.1"の数字は異なる場合があります）。
+うまく動作している場合は、以下のような表示になります（メッセージ中"Version 3.12.1"の数字は異なる場合があります）。
 
 ```console
 $ rails s
 => Booting Puma
-=> Rails 5.1.2 application starting in development on http://localhost:3000
-=> Run `rails server -h` for more startup options
+=> Rails 6.0.0 application starting in development
+=> Run `rails server --help` for more startup options
 Puma starting in single mode...
-* Version 3.9.1 (ruby 2.4.1-p111), codename: Private Caller
+* Version 3.12.1 (ruby 2.6.5-p114), codename: Llamas in Pajamas
 * Min threads: 5, max threads: 5
 * Environment: development
-* Listening on tcp://0.0.0.0:3000
+* Listening on tcp://localhost:3000
 Use Ctrl-C to stop
 ```
 
@@ -88,19 +86,20 @@ Use Ctrl-C to stop
 
 ここで実行したコマンド ```rails s``` のsはserverの略で、省略したsでも、省略せずにserverでも、同じように動作します。
 
+コラム： ```rails new``` コマンドでやっていること
+TODO: あとで書く
+
 ### rails gコマンドでページを作る
 
-ひきつづき、以下のコマンドを入力してみましょう（メッセージ中"in process 50811"の数字は実行するごとに異なります）。rails serverが起動している場合は、Ctrl-c（controlキーを押しながらcキー）で終了してからコマンドを打ってください。
+ひきつづき、以下のコマンドを入力してみましょう（メッセージ中"in process 9959"の数字は実行するごとに異なります）。rails serverが起動している場合は、Ctrl-c（controlキーを押しながらcキー）で終了してからコマンドを打ってください。
 
 ```bash
 rails g controller hello index
 ```
 
-TODO: コマンド結果置き換え
-
 ```console
 $ rails g controller hello index
-Running via Spring preloader in process 50811
+Running via Spring preloader in process 9959
       create  app/controllers/hello_controller.rb
        route  get 'hello/index'
       invoke  erb
@@ -112,8 +111,6 @@ Running via Spring preloader in process 50811
       create    app/helpers/hello_helper.rb
       invoke    test_unit
       invoke  assets
-      invoke    coffee
-      create      app/assets/javascripts/hello.coffee
       invoke    scss
       create      app/assets/stylesheets/hello.scss
 ```
@@ -223,8 +220,6 @@ Webサーバ上で動作しているWebアプリはリクエストを受け取�
 Webサーバとはなにものなのでしょうか？Webサーバは「Webサービスを提供する場合に必要な共通の機能を提供するもの」と言えます。Webアプリはブラウザとのやりとりで必要な機能のうち、どのサービスでも使う機能はWebサーバに仕事をまかせ、自分のサービスで必要なオリジナルな機能を提供することに注力します。Railsで開発するときにはpumaというWebサーバを利用する設定になっていて、`rails s`を実行すると起動します。実際のWebサービスを運用する場合は、nginxやApacheといったWebサーバを組み合わせて使うことが多いです。
 
 HTMLはブラウザからも見ることができます。Chromeの場合は、どこかのサイト（たとえば ```http://cookpad.com/```）へアクセスしたあと、右クリックメニューから「ページのソースを表示」を選ぶとHTMLで書かれたそのページを閲覧することができます。
-
-TODO: Cookpadスクショ＆スクショ作成HTML置き換え
 
 ![右クリック](assets/smallest-app/right_click.png)
 
