@@ -158,7 +158,7 @@ Use Ctrl-C to stop
 + <p>Hello world!</p>
 ```
 
-![Hello world](assets/smallest-app/helloworld.png)
+![Hello world](assets/smallest-app/hello_world.png)
 
 "Hello world!"の文字が表示されましたか？これで一番小さなRailsアプリができあがりました。ここへ、少しだけRubyのコードを書いて、現在時刻を表示する機能を追加してみましょう。以下のように、+の行を追加してください。
 
