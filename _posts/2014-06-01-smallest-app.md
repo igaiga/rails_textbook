@@ -96,6 +96,8 @@ Use Ctrl-C to stop
 rails g controller hello index
 ```
 
+TODO: コマンド結果置き換え
+
 ```console
 $ rails g controller hello index
 Running via Spring preloader in process 50811
@@ -171,14 +173,14 @@ Use Ctrl-C to stop
 
 ところで、現在時刻が9時間ずれていると思われた方もいるかと思います。これは異なるタイムゾーンで表示されているためです。この時刻はUTCタイムゾーンでの時刻です。UTCは協定世界時と呼ばれ、基準となるタイムゾーンとして使われています。日本での時刻はUTCよりも9時間早い時刻になります。プログラムを書き換えて、日本時間での現在時刻を表示させてみましょう[^1]。
 
-[^1]: 日本でだけ使うアプリであれば、アプリ全体でデフォルトとなるタイムゾーンを日本時間に設定してしまった方が便利です。その場合はconfig/application.rbファイル中で `config.time_zone = 'Asia/Tokyo'` と設定します。
-
 ```diff
 - <p>現在時刻: <%= Time.current %></p>
 + <p>現在時刻: <%= Time.current.in_time_zone('Asia/Tokyo') %></p>
 ```
 
 ![現在時刻表示](assets/smallest-app/time_jst.png)
+
+コラム：今回の方法のほかに、アプリ全体でタイムゾーンを日本時間に設定してしまう方法もあります。その場合はconfig/application.rbファイル中に `config.time_zone = 'Asia/Tokyo'` と設定します。この方法の利点は、プログラムの中のあちこちで `in_time_zone('Asia/Tokyo')` を書かずに済み、config/application.rbファイルの1カ所にまとめることができることです。
 
 最後に、このままでもいいのですが、コードのロジックの部分をビューに書くのではなく、コントローラで書くことにしましょう。動作は同じまま、コードを書き換えます。
 
@@ -221,6 +223,8 @@ Webサーバ上で動作しているWebアプリはリクエストを受け取�
 Webサーバとはなにものなのでしょうか？Webサーバは「Webサービスを提供する場合に必要な共通の機能を提供するもの」と言えます。Webアプリはブラウザとのやりとりで必要な機能のうち、どのサービスでも使う機能はWebサーバに仕事をまかせ、自分のサービスで必要なオリジナルな機能を提供することに注力します。Railsで開発するときにはpumaというWebサーバを利用する設定になっていて、`rails s`を実行すると起動します。実際のWebサービスを運用する場合は、nginxやApacheといったWebサーバを組み合わせて使うことが多いです。
 
 HTMLはブラウザからも見ることができます。Chromeの場合は、どこかのサイト（たとえば ```http://cookpad.com/```）へアクセスしたあと、右クリックメニューから「ページのソースを表示」を選ぶとHTMLで書かれたそのページを閲覧することができます。
+
+TODO: Cookpadスクショ＆スクショ作成HTML置き換え
 
 ![右クリック](assets/smallest-app/right_click.png)
 
