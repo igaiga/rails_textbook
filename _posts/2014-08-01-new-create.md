@@ -20,9 +20,13 @@ categories:
 
 前の章での「CRUD遷移図」において、newとcreateはこの部分になります。
 
+TODO: 新図置き換え
+
 ![CRUD画面遷移図(newとcreate)](assets/new-create/kn/crud-transition-diagram-new-create.png)
 
 おおまかな流れは以下のようになります。
+
+TODO: 新図を切り貼りして作成
 
 ![おおまかな流れ](assets/new-create/kn/new-create-overview.png)
 
@@ -34,9 +38,13 @@ categories:
 
 新規入力画面が表示されるまでの処理の流れを見ていきましょう。
 
+TODO: 題字とスクショに分解
+
 ![新規入力画面](assets/new-create/kn/new-page.png)
 
 新規入力画面はnewアクションで表示されます。Railsアプリは前章で説明した通り、Routes、コントローラ、ビューの各処理を経て画面が表示されます。
+
+TODO: 新図置き換え
 
 ![new(新規入力)画面が表示されるまで](assets/new-create/kn/new-flow.png)
 
@@ -44,10 +52,13 @@ categories:
 
 ### Routes
 
+TODO: 新図置き換え
+
 ![新規入力画面の処理の流れ](assets/new-create/kn/new-flow-routes.png)
 
-
 最初はRoutesにて、リクエストに対して処理されるコントローラとアクションが決まります。`http://localhost:3000/rails/info/routes`へアクセスしてRoutesの対応表を見てみましょう。今回のリクエストはパスが /books/new 、HTTPメソッドがGETなので、BooksControllerのnewアクションへ処理が進みます（図の下線部に該当します）。
+
+TODO: 新図置き換え
 
 ![Routes](assets/new-create/kn/new-routes.png)
 
@@ -65,7 +76,9 @@ end
 
 newアクションは `@book = Book.new` の1行です。Book.newでBookクラスのインスタンス（データは空っぽ）を作り、@bookインスタンス変数へ代入し、ビューへ渡します。Book.newでつくったBookクラスのインスタンスはタイトルとメモを格納できるようになっています。
 
-インスタンスとはクラスという設計図からつくる実際に仕事をするオブジェクトです。「たい焼き」に例えると、クラスは「たい焼きの型」、インスタンスは「焼いた鯛焼き」です。Bookクラスには色々と便利な機能があるのですが、それは後ほど説明します。ここでは、Bookに関するビューで使う情報をつくり、インスタンス変数へ代入してビューへ送る、と考えると良いでしょう。
+インスタンスとはクラスから作られたオブジェクトのことです。オブジェクトとほぼ同じ意味で使われますが、「クラスから作ったオブジェクトである」「そのクラスに属する」ということを強調したいときに使います。クラスはその種族に属するオブジェクト（これをインスタンスと呼びます）を作ることができる工場のようなものです。そのクラス自身が仕事をすることもあれば、そのクラスから作ったオブジェクトが仕事をすることもあります。
+
+Bookクラスには色々と便利な機能があるのですが、それは後ほど説明します。ここでは、Bookに関するビューで使う情報をつくり、インスタンス変数へ代入し、ビューへ送る、と考えると良いでしょう。
 
 コントローラの処理が終わると次はビューです。ここでは進むビューの指示がないため、デフォルトの `views/books/new.html.erb` へ処理が進みます。
 
@@ -108,21 +121,21 @@ renderメソッドは別のビューファイルを埋め込みます。わざ�
       <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
 
       <ul>
-      <% book.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
   <div class="field">
     <%= form.label :title %>
-    <%= form.text_field :title, id: :book_title %>
+    <%= form.text_field :title %>
   </div>
 
   <div class="field">
     <%= form.label :memo %>
-    <%= form.text_area :memo, id: :book_memo %>
+    <%= form.text_area :memo %>
   </div>
 
   <div class="actions">
@@ -140,9 +153,9 @@ renderメソッドは別のビューファイルを埋め込みます。わざ�
   <div id="error_explanation">
     <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
     <ul>
-    <% book.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
+      <% book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
     </ul>
   </div>
 <% end %>
@@ -150,11 +163,15 @@ renderメソッドは別のビューファイルを埋め込みます。わざ�
 
 残りの部分について説明していきます。最初に下図を見てください。
 
+TODO: 新図置き換え（Rails6.0はtext_fieldにid指定不要になってた）
+
 ![コードとページの部品の対応](assets/new-create/kn/new-view-form.png)
 
 それぞれ矢印の先の部品を作っています。また、全体としてはformという名の部品になってます。formはHTMLでブラウザからサーバへ情報を送信する仕組みの1つです。
 
 まずは部品の1つ、タイトルのところを見てみましょう。
+
+TODO: 新図置き換え
 
 ![タイトル部品](assets/new-create/kn/new-view-form-title-html.png)
 
@@ -166,35 +183,41 @@ renderメソッドは別のビューファイルを埋め込みます。わざ�
 
 ![タイトル(Railsコード)](assets/new-create/kn/new-view-form-title-rails.png)
 
-`form.label :title` で "Title"という文字列を表示しています。その名の通り、ラベルの部分です。`form.text_field :title, id: :book_title` はその下にあるテキスト入力欄です。`form` はformブロック内の変数で、ここではbookに関するformを記述するために使っています。見慣れない書き方かもしれませんが、ここはそう書くものだと思ってもらえれば大丈夫です。`id: :book_title` は作成されるテキスト入力欄（inputタグになります）のHTMLのidとして"book_title"を指定しています。
+`form.label :title` で "Title"という文字列を表示しています。その名の通り、ラベルの部分です。`form.text_field :title` はその下にあるテキスト入力欄です。`form` はformブロック内の変数で、ここではbookに関するformを記述するために使っています。見慣れない書き方かもしれませんが、ここはそう書くものだと思ってもらえれば大丈夫です。
 
 次はその下のメモの部分を見てみましょう。
 
+TODO: 新図置き換え
+
 ![メモ](assets/new-create/kn/new-view-form-memo.png)
 
-メモの部分も同様です。`form.label :memo` が "Memo" を表示する部分です。`form.text_area :memo, id: :book_memo` がその下のテキスト入力欄を作ります。`text_area` は先ほどの `text_field` よりも広くて改行を入力できるテキスト入力欄を作るメソッドです。
+メモの部分も同様です。`form.label :memo` が "Memo" を表示する部分です。`form.text_area :memo` がその下のテキスト入力欄を作ります。`text_area` は先ほどの `text_field` よりも広くて改行を入力できるテキスト入力欄を作るメソッドです。
 
 最後は投稿するボタンの部分です。
 
+TODO: 新図置き換え
+
 ![submit](assets/new-create/kn/new-view-form-submit-1.png)
 
-`form.submit` は投稿ボタン（Create Bookボタン）を作ります。このボタンを押すとform内の情報をまとめてサーバへ送信（リクエストを送信）します。つまり…
-
-![submitボタンを押すとリクエストが飛ぶ](assets/new-create/kn/new-view-form-submit-2.png)
-
-Create Bookボタンを押すと、form内の情報、ここではBookに関する情報、入力したタイトルとメモをリクエストに含んで送信します。ここで送信されたタイトルとメモが後の行程で登録されるのです。では、具体的にどんなリクエストが飛ぶのかを観察してみましょう。
+`form.submit` は投稿ボタン（Create Bookボタン）を作ります。このボタンを押すとform内の情報をまとめてサーバへ送信（リクエストを送信）します。ここでは、Bookに関する情報、入力したタイトルとメモをリクエストに含んで送信します。ここで送信されたタイトルとメモが後の行程で登録されるのです。では、具体的にどんなリクエストが飛ぶのかを観察してみましょう。
 
 ### リクエストを観察する
 
 Chromeのデベロッパーツールを使うと、どのようなリクエストがサーバへ送信されたかを見ることができます。
 
+TODO: スクショ置き換え、データ置き換え
+
 ![Chromeでリクエストを観察する(準備)](assets/new-create/kn/create-request-1.png)
 
 new画面を表示させ、タイトル欄とメモ欄にBookの情報を入力します。Chromeのメニューからデベロッパーツールを起動します。Networkと書かれたタブを選択します。CreateBookボタンを押し、リクエストを送信してみましょう。
 
+TODO: スクショ置き換え、データ置き換え
+
 ![Chromeでリクエストを観察する(リクエスト送信)](assets/new-create/kn/create-request-2.png)
 
 たくさん表示されました。一番最初のbooksと書かれた行が先ほどボタンを押して発行されたリクエストです。booksの行をクリックして詳細を見てみましょう。
+
+TODO: スクショ置き換え、データ置き換え
 
 ![Chromeでリクエストを観察する(リクエストの中身)](assets/new-create/kn/create-request-3.png)
 
@@ -214,6 +237,8 @@ new画面でCreate bookボタンを押すと新たなリクエストを飛ばす
 ### Routes
 
 いつものように最初の処理はroutesです。
+
+TODO: 新図置き換え
 
 ![routes](assets/new-create/kn/create-routes.png)
 
@@ -241,6 +266,8 @@ end
 ```
 
 ここでやっていることは大きく3つです。
+
+TODO: 新図置き換え
 
 ![コントローラ - 3つの処理](assets/new-create/kn/create-controller.png)
 
@@ -280,11 +307,15 @@ end
 
 コードを変更して、ブラウザから新規登録画面を表示し、テキストボックス欄に入力し、Create Bookボタンを押します。その後、rails serverのshellに流れた文字列から************を探してみてください。表示されていない場合は、rails serverを再起動してみてください。
 
+TODO: 以下の図は削除して本文へ移動
+
 ![パラメータの中身の表示 実行結果](assets/new-create/kn/create-controller-params.png)
 
 実行結果を見ると、確かに `params` の中にHashの形式でブラウザにて入力した値が入っていることが分かりました。
 
 これを、少し前にブラウザのデベロッパーツールで表示させた内容と比較してみましょう。
+
+TODO: 以下の図も編集しやすい形へ調整
 
 ![パラメータの送信側と受信側](assets/new-create/kn/create-controller-params-2.png)
 
@@ -322,6 +353,8 @@ def book_params
   params.require(:book).permit(:title, :memo)
 end
 ```
+
+TODO: 新図置き換え
 
 ![create - ここまでの流れ](assets/new-create/kn/create-controller.png)
 
