@@ -210,9 +210,13 @@ end
 
 ここで、みなさんが普段ブラウザからつかっているWebアプリがどのように動作しているかを見てみましょう。アドレス入力欄にURLを入力してエンターキーを押すと、「リクエスト」がURL先のサーバへ向けて飛んでいきます。たとえば ```http://cookpad.com/``` と入力した場合は、クックパッドのサーバへ向けてリクエストが飛んでいきます。リクエストは追って説明していきますが、ざっくりと「そのページを見たいという要求（リクエスト）」とイメージしてもらえばOKです。
 
+TODO: 新図置き換え
+
 ![リクエスト](assets/smallest-app/kn/request.png)
 
 Webサーバ上で動作しているWebアプリはリクエストを受け取ると、「レスポンス」としてHTMLで書かれたテキストを作ってブラウザへ返します。レスポンスは「Webアプリが返してきた情報群（HTMLで書かれた表示する情報を含む）」とイメージできます。HTMLはHyperText Markup Languageのことで、Webページを記述するための言語です。ブラウザはHTMLを解釈して、私たちの見易い、いつも見慣れたWebページを表示します。
+
+TODO: 新図置き換え
 
 ![レスポンス](assets/smallest-app/kn/response.png)
 
@@ -234,15 +238,21 @@ HTMLはブラウザからも見ることができます。Chromeの場合は、�
 
 ブラウザからWebサービスにアクセスするとき、通常、Webアプリはインターネット上にあります。ブラウザだけが自分のPCにあります。
 
+TODO: 新図置き換え
+
 ![インターネット上のサービスにアクセス](assets/smallest-app/kn/internet_and_local.png)
 
 しかし、開発中は自分が作っているアプリをわざわざインターネット上へ置く必要はなく、自分のPCでWebアプリを動作させ、同じく自分のPCにあるブラウザからアクセス可能です。
+
+TODO: 新図置き換え
 
 ![開発中は自分のPCでつくることができる](assets/smallest-app/kn/local.png)
 
 ## 今回つくったRailsアプリの動作まとめ
 
 今回つくったRailsアプリの動作を図に描いてみました。
+
+TODO: 新図置き換え
 
 ![今回つくったRailsアプリの動作](assets/smallest-app/kn/smallest_app.png)
 
@@ -300,6 +310,8 @@ create  app/helpers/application_helper.rb
 
 これらのファイル群によって、rails newをしただけで（何もコードを書かなくても）Webアプリとして動作します。たくさんのファイルがつくられていますね。Railsアプリの基本的なフォルダとファイル群は以下の図のものです。いきなりすべてを説明するのは難しいので、順番に説明していきます。役割ごとにフォルダが分かれています。それぞれの役割についてはこの後説明していきます。
 
+TODO: 新図置き換え
+
 ![Railsアプリの基本的なフォルダ・ファイル群](assets/smallest-app/kn/rails_files.png)
 
 ### rails gコマンド
@@ -342,6 +354,8 @@ Running via Spring preloader in process 50811
 * app/views/hello/index.html.erb
 * config/routes.rb
 
+TODO: 新図置き換え、説明を本文へ
+
 ![rails g controller hello index コマンドで生成されるファイル](assets/smallest-app/kn/rails_g_controller.png)
 
 これらのファイルがどのような働きをしているのかを、次の節でRailsがリクエストを受けてからレスポンスを返すまでの基本的な処理の順序を追いかけながら説明していきます。
@@ -350,9 +364,13 @@ Running via Spring preloader in process 50811
 
 ブラウザからアクセスしたときに、Railsアプリはどのように動作しているのでしょうか？以下の図は、今回つくったRailsアプリの動作を示したものです。前に出てきた動作の図から少しだけ詳しく書き加えてあります。
 
+TODO: 新図置き換え
+
 ![Railsアプリの動作](assets/smallest-app/kn/rails_app_semantics.png)
 
 ここでは、この図のRailsAppの部分について詳しく説明していきます。ここから、対象箇所を抜き出したのが次の図です。
+
+TODO: 新図置き換え
 
 ![Railsアプリがリクエストを受けてレスポンスを返すまで](assets/smallest-app/kn/rails_app_request_to_response.png)
 
@@ -370,6 +388,8 @@ Routesは「リクエストのURLとHTTPメソッド」に応じて次に処理�
 
 まとめると、リクエストは「URL」でアクセス先を、「HTTPメソッド」で行うことを指定します。
 
+TODO: 本文へ書き換え
+
 ![Routes](assets/smallest-app/kn/routes_mapping.png)
 
 Routesの処理を、HTTPメソッドを加えてもう少し詳しくみてみましょう。最初に説明した通り、Routesは「リクエストのURLとHTTPメソッド」に応じて次に処理を行う先を決めるのが仕事です。RailsではRoutesの処理が終わると、次はControllerのアクションへ処理が移ります。
@@ -377,6 +397,8 @@ Routesの処理を、HTTPメソッドを加えてもう少し詳しくみてみ�
 アクションとはControllerのメソッドのうち、publicなメソッドのことです（「Routesから呼び出せるもの」とも言えます）。RoutesはリクエストのURLとHTTPメソッドから、処理の進み先であるContollerのアクションを決定します。RoutesはリクエストとControllerのアクションとの対応表と言えます。
 
 では、Routesの対応表を見て見ましょう。rails serverを起動させて以下へアクセスすると、Routesの対応表が表示されます。（図参照）
+
+TODO: 新図置き換え（細部要検討）
 
 * http://localhost:3000/rails/info/routes
 
@@ -415,6 +437,8 @@ HelloControllerのindexアクションが呼び出されます。`def index`か�
 
 変数は荷札のようなもので、代入したものにあとからアクセスできるように名前をつける仕組みです。変数のうち、@はじまりの変数のことをインスタンス変数といいます。インスタンス変数を使うと、コントローラから（このあと処理する箇所である）ビューへ情報を伝えることができます。ちなみに、@はじまりではない変数はローカル変数と呼ばれるもので、このメソッド（アクション）を抜けると役目を終えて参照できなくなります。つまり、ローカル変数はビューから参照することができません。ビューから参照するためには@はじまりのインスタンス変数を利用します。
 
+TODO: 新図置き換え
+
 ![インスタンス変数を使うとビューへ情報を渡すことができる](assets/smallest-app/kn/instance_variable.png)
 
 どのビューへ処理が進むかはコントローラで指定可能ですが、今回のように何も指定が無い場合は、コントローラおよびアクションと同名のビューを選択します。今回はHelloControllerのindexアクションなので、対応するビューのファイルはapp/views/hello/index.html.erbになります。
@@ -439,6 +463,8 @@ HTMLのpタグがあります。その中にHTMLではない `<%=` と `%>` と�
 
 ビューについての動作をまとめると以下のようになります。
 
+TODO: 本文書き換え
+
 ![ビュー](assets/smallest-app/kn/view.png)
 
 ### まとめ
@@ -450,6 +476,8 @@ HTMLのpタグがあります。その中にHTMLではない `<%=` と `%>` と�
 * コントローラはさまざまな処理を行い、ビューに処理を渡す
 * ビューはテンプレートに埋め込んであるRubyのコードを実行してHTMLを作る
 * コントローラからビューへ情報を伝える場合は@はじまりのインスタンス変数を使う
+
+TODO: 新図置き換え
 
 ![Railsアプリがリクエストを受けてレスポンスを返すまで](assets/smallest-app/kn/rails_app_request_to_response.png)
 
