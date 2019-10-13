@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Routes</title>
+  <style>
+    body { background-color: #fff; color: #333; }
+
+    body, p, ol, ul, td {
+      font-family: helvetica, verdana, arial, sans-serif;
+      font-size:   13px;
+      line-height: 18px;
+    }
+
+    pre {
+      background-color: #eee;
+      padding: 10px;
+      font-size: 11px;
+      white-space: pre-wrap;
+    }
+
+    a { color: #000; }
+    a:visited { color: #666; }
+    a:hover { color: #fff; background-color:#000; }
+
+    h2 { padding-left: 10px; }
+
+      #route_table {
+    margin: 0;
+    border-collapse: collapse;
+  }
+
+  #route_table thead tr {
+    border-bottom: 2px solid #ddd;
+  }
+
+  #route_table thead tr.bottom {
+    border-bottom: none;
+  }
+
+  #route_table thead tr.bottom th {
+    padding: 10px 0;
+    line-height: 15px;
+  }
+
+  #route_table thead tr.bottom th input#search {
+    -webkit-appearance: textfield;
+  }
+
+  #route_table tbody tr {
+    border-bottom: 1px solid #ddd;
+  }
+
+  #route_table tbody tr:nth-child(odd) {
+    background: #f2f2f2;
+  }
+
+  #route_table tbody.exact_matches,
+  #route_table tbody.fuzzy_matches {
+    background-color: LightGoldenRodYellow;
+    border-bottom: solid 2px SlateGrey;
+  }
+
+  #route_table tbody.exact_matches tr,
+  #route_table tbody.fuzzy_matches tr {
+    background: none;
+    border-bottom: none;
+  }
+
+  #route_table td {
+    padding: 4px 30px;
+  }
+
+  #path_search {
+    width: 80%;
+    font-size: inherit;
+  }
+
+  </style>
+</head>
+<body>
+
+<h2>
+  Routes
+</h2>
+
+<p>
+  Routes match in priority from top to bottom
+</p>
+
+
+<table id='route_table' class='route_table'>
+  <thead>
+    <tr>
+      <th>Helper</th>
+      <th>HTTP Verb</th>
+      <th>Path</th>
+      <th>Controller#Action</th>
+    </tr>
+    <tr class='bottom'>
+      <th>
+        <a data-route-helper="_path" title="Returns a relative path (without the http or domain)" href="#">Path</a> /
+        <a data-route-helper="_url" title="Returns an absolute URL (with the http and domain)" href="#">Url</a>
+      </th>
+      <th>
+      </th>
+      <th>
+        <input id="search" placeholder="Path Match" type="search" name="path[]" />
+      </th>
+      <th>
+      </th>
+    </tr>
+  </thead>
+  <tbody class='exact_matches' id='exact_matches'>
+  </tbody>
+  <tbody class='fuzzy_matches' id='fuzzy_matches'>
+  </tbody>
+  <tbody>
+    <tr class='route_row' data-helper='path'>
+  <td data-route-name='books'>
+      books<span class='helper'>_path</span>
+  </td>
+  <td>
+    GET
+  </td>
+  <td data-route-path='/books(.:format)'>
+    /books(.:format)
+  </td>
+  <td>
+    <p>books#index</p>
+  </td>
+</tr>
+<tr class='route_row' data-helper='path'>
+  <td data-route-name=''>
+  </td>
+  <td>
+    POST
+  </td>
+  <td data-route-path='/books(.:format)'>
+    /books(.:format)
+  </td>
+  <td>
+    <p>books#create</p>
+  </td>
+</tr>
+<tr class='route_row' data-helper='path'>
+  <td data-route-name='new_book'>
+      new_book<span class='helper'>_path</span>
+  </td>
+  <td>
+    GET
+  </td>
+  <td data-route-path='/books/new(.:format)'>
+    /books/new(.:format)
+  </td>
+  <td>
+    <p>books#new</p>
+  </td>
+</tr>
+<tr class='route_row' data-helper='path'>
+  <td data-route-name='edit_book'>
+      edit_book<span class='helper'>_path</span>
+  </td>
+  <td>
+    GET
+  </td>
+  <td data-route-path='/books/:id/edit(.:format)'>
+    /books/:id/edit(.:format)
+  </td>
+  <td>
+    <p>books#edit</p>
+  </td>
+</tr>
+<tr class='route_row' data-helper='path'>
+  <td data-route-name='book'>
+      book<span class='helper'>_path</span>
+  </td>
+  <td>
+    GET
+  </td>
+  <td data-route-path='/books/:id(.:format)'>
+    /books/:id(.:format)
+  </td>
+  <td>
+    <p>books#show</p>
+  </td>
+</tr>
+<tr class='route_row' data-helper='path'>
+  <td data-route-name=''>
+  </td>
+  <td>
+    PATCH
+  </td>
+  <td data-route-path='/books/:id(.:format)'>
+    /books/:id(.:format)
+  </td>
+  <td>
+    <p>books#update</p>
+  </td>
+</tr>
+<tr class='route_row' data-helper='path'>
+  <td data-route-name=''>
+  </td>
+  <td>
+    PUT
+  </td>
+  <td data-route-path='/books/:id(.:format)'>
+    /books/:id(.:format)
+  </td>
+  <td>
+    <p>books#update</p>
+  </td>
+</tr>
+<tr class='route_row' data-helper='path'>
+  <td data-route-name=''>
+  </td>
+  <td>
+    DELETE
+  </td>
+  <td data-route-path='/books/:id(.:format)'>
+    /books/:id(.:format)
+  </td>
+  <td>
+    <p>books#destroy</p>
+  </td>
+</tr>
+<tr class='route_row' data-helper='path'>
+  <td data-route-name='rails_mandrill_inbound_emails'>
+      rails_mandrill_inbound_emails<span class='helper'>_path</span>
+  </td>
+  <td>
+    POST
+  </td>
+  <td data-route-path='/rails/action_mailbox/mandrill/inbound_emails(.:format)'>
+    /rails/action_mailbox/mandrill/inbound_emails(.:format)
+  </td>
+  <td>
+    <p>action_mailbox/ingresses/mandrill/inbound_emails#create</p>
+  </td>
+</tr>
+<tr class='route_row' data-helper='path'>
+  <td data-route-name='rails_postmark_inbound_emails'>
+      rails_postmark_inbound_emails<span class='helper'>_path</span>
+  </td>
+  <td>
+    POST
+  </td>
+  <td data-route-path='/rails/action_mailbox/postmark/inbound_emails(.:format)'>
+    /rails/action_mailbox/postmark/inbound_emails(.:format)
+  </td>
+  <td>
+    <p>action_mailbox/ingresses/postmark/inbound_emails#create</p>
+  </td>
+</tr>
+<tr class='route_row' data-helper='path'>
+  <td data-route-name='rails_relay_inbound_emails'>
+      rails_relay_inbound_emails<span class='helper'>_path</span>
+  </td>
+  <td>
+    POST
+  </td>
+  <td data-route-path='/rails/action_mailbox/relay/inbound_emails(.:format)'>
+    /rails/action_mailbox/relay/inbound_emails(.:format)
+  </td>
+  <td>
+    <p>action_mailbox/ingresses/relay/inbound_emails#create</p>
+  </td>
+</tr>
+<tr class='route_row' data-helper='path'>
+  <td data-route-name='rails_sendgrid_inbound_emails'>
+      rails_sendgrid_inbound_emails<span class='helper'>_path</span>
+  </td>
+  <td>
+    POST
+  </td>
+  <td data-route-path='/rails/action_mailbox/sendgrid/inbound_emails(.:format)'>
+    /rails/action_mailbox/sendgrid/inbound_emails(.:format)
+  </td>
+  <td>
+    <p>action_mailbox/ingresses/sendgrid/inbound_emails#create</p>
+  </td>
+</tr>
+<tr class='route_row' data-helper='path'>
+  <td data-route-name='rails_mailgun_inbound_emails'>
+      rails_mailgun_inbound_emails<span class='helper'>_path</span>
+  </td>
+  <td>
+    POST
+  </td>
+  <td data-route-path='/rails/action_mailbox/mailgun/inbound_emails/mime(.:format)'>
+    /rails/action_mailbox/mailgun/inbound_emails/mime(.:format)
+  </td>
+  <td>
+    <p>action_mailbox/ingresses/mailgun/inbound_emails#create</p>
+  </td>
+</tr>
+<tr class='route_row' data-helper='path'>
+  <td data-route-name='rails_conductor_inbound_emails'>
+      rails_conductor_inbound_emails<span class='helper'>_path</span>
+  </td>
+  <td>
+    GET
+  </td>
+  <td data-route-path='/rails/conductor/action_mailbox/inbound_emails(.:format)'>
+    /rails/conductor/action_mailbox/inbound_emails(.:format)
+  </td>
+  <td>
+    <p>rails/conductor/action_mailbox/inbound_emails#index</p>
+  </td>
+</tr>
+<tr class='route_row' data-helper='path'>
+  <td data-route-name=''>
+  </td>
+  <td>
+    POST
+  </td>
+  <td data-route-path='/rails/conductor/action_mailbox/inbound_emails(.:format)'>
+    /rails/conductor/action_mailbox/inbound_emails(.:format)
+  </td>
+  <td>
+    <p>rails/conductor/action_mailbox/inbound_emails#create</p>
+  </td>
+</tr>
+<tr class='route_row' data-helper='path'>
+  <td data-route-name='new_rails_conductor_inbound_email'>
+      new_rails_conductor_inbound_email<span class='helper'>_path</span>
+  </td>
+  <td>
+    GET
+  </td>
+  <td data-route-path='/rails/conductor/action_mailbox/inbound_emails/new(.:format)'>
+    /rails/conductor/action_mailbox/inbound_emails/new(.:format)
+  </td>
+  <td>
+    <p>rails/conductor/action_mailbox/inbound_emails#new</p>
+  </td>
+</tr>
+<tr class='route_row' data-helper='path'>
+  <td data-route-name='edit_rails_conductor_inbound_email'>
+      edit_rails_conductor_inbound_email<span class='helper'>_path</span>
+  </td>
+  <td>
+    GET
+  </td>
+  <td data-route-path='/rails/conductor/action_mailbox/inbound_emails/:id/edit(.:format)'>
+    /rails/conductor/action_mailbox/inbound_emails/:id/edit(.:format)
+  </td>
+  <td>
+    <p>rails/conductor/action_mailbox/inbound_emails#edit</p>
+  </td>
+</tr>
+<tr class='route_row' data-helper='path'>
+  <td data-route-name='rails_conductor_inbound_email'>
+      rails_conductor_inbound_email<span class='helper'>_path</span>
+  </td>
+  <td>
+    GET
+  </td>
+  <td data-route-path='/rails/conductor/action_mailbox/inbound_emails/:id(.:format)'>
+    /rails/conductor/action_mailbox/inbound_emails/:id(.:format)
+  </td>
+  <td>
+    <p>rails/conductor/action_mailbox/inbound_emails#show</p>
+  </td>
+</tr>
+<tr class='route_row' data-helper='path'>
+  <td data-route-name=''>
+  </td>
+  <td>
+    PATCH
+  </td>
+  <td data-route-path='/rails/conductor/action_mailbox/inbound_emails/:id(.:format)'>
+    /rails/conductor/action_mailbox/inbound_emails/:id(.:format)
+  </td>
+  <td>
+    <p>rails/conductor/action_mailbox/inbound_emails#update</p>
+  </td>
+</tr>
+<tr class='route_row' data-helper='path'>
+  <td data-route-name=''>
+  </td>
+  <td>
+    PUT
+  </td>
+  <td data-route-path='/rails/conductor/action_mailbox/inbound_emails/:id(.:format)'>
+    /rails/conductor/action_mailbox/inbound_emails/:id(.:format)
+  </td>
+  <td>
+    <p>rails/conductor/action_mailbox/inbound_emails#update</p>
+  </td>
+</tr>
+<tr class='route_row' data-helper='path'>
+  <td data-route-name=''>
+  </td>
+  <td>
+    DELETE
+  </td>
+  <td data-route-path='/rails/conductor/action_mailbox/inbound_emails/:id(.:format)'>
+    /rails/conductor/action_mailbox/inbound_emails/:id(.:format)
+  </td>
+  <td>
+    <p>rails/conductor/action_mailbox/inbound_emails#destroy</p>
+  </td>
+</tr>
+<tr class='route_row' data-helper='path'>
+  <td data-route-name='rails_conductor_inbound_email_reroute'>
+      rails_conductor_inbound_email_reroute<span class='helper'>_path</span>
+  </td>
+  <td>
+    POST
+  </td>
+  <td data-route-path='/rails/conductor/action_mailbox/:inbound_email_id/reroute(.:format)'>
+    /rails/conductor/action_mailbox/:inbound_email_id/reroute(.:format)
+  </td>
+  <td>
+    <p>rails/conductor/action_mailbox/reroutes#create</p>
+  </td>
+</tr>
+<tr class='route_row' data-helper='path'>
+  <td data-route-name='rails_service_blob'>
+      rails_service_blob<span class='helper'>_path</span>
+  </td>
+  <td>
+    GET
+  </td>
+  <td data-route-path='/rails/active_storage/blobs/:signed_id/*filename(.:format)'>
+    /rails/active_storage/blobs/:signed_id/*filename(.:format)
+  </td>
+  <td>
+    <p>active_storage/blobs#show</p>
+  </td>
+</tr>
+<tr class='route_row' data-helper='path'>
+  <td data-route-name='rails_blob_representation'>
+      rails_blob_representation<span class='helper'>_path</span>
+  </td>
+  <td>
+    GET
+  </td>
+  <td data-route-path='/rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format)'>
+    /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format)
+  </td>
+  <td>
+    <p>active_storage/representations#show</p>
+  </td>
+</tr>
+<tr class='route_row' data-helper='path'>
+  <td data-route-name='rails_disk_service'>
+      rails_disk_service<span class='helper'>_path</span>
+  </td>
+  <td>
+    GET
+  </td>
+  <td data-route-path='/rails/active_storage/disk/:encoded_key/*filename(.:format)'>
+    /rails/active_storage/disk/:encoded_key/*filename(.:format)
+  </td>
+  <td>
+    <p>active_storage/disk#show</p>
+  </td>
+</tr>
+<tr class='route_row' data-helper='path'>
+  <td data-route-name='update_rails_disk_service'>
+      update_rails_disk_service<span class='helper'>_path</span>
+  </td>
+  <td>
+    PUT
+  </td>
+  <td data-route-path='/rails/active_storage/disk/:encoded_token(.:format)'>
+    /rails/active_storage/disk/:encoded_token(.:format)
+  </td>
+  <td>
+    <p>active_storage/disk#update</p>
+  </td>
+</tr>
+<tr class='route_row' data-helper='path'>
+  <td data-route-name='rails_direct_uploads'>
+      rails_direct_uploads<span class='helper'>_path</span>
+  </td>
+  <td>
+    POST
+  </td>
+  <td data-route-path='/rails/active_storage/direct_uploads(.:format)'>
+    /rails/active_storage/direct_uploads(.:format)
+  </td>
+  <td>
+    <p>active_storage/direct_uploads#create</p>
+  </td>
+</tr>
+
+  </tbody>
+</table>
+
+<script type='text/javascript'>
+  // support forEarch iterator on NodeList
+  NodeList.prototype.forEach = Array.prototype.forEach;
+
+  // Enables path search functionality
+  function setupMatchPaths() {
+    // Check if there are any matched results in a section
+    function checkNoMatch(section, noMatchText) {
+      if (section.children.length <= 1) {
+        section.innerHTML += noMatchText;
+      }
+    }
+
+    // get JSON from URL and invoke callback with result
+    function getJSON(url, success) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', url);
+      xhr.onload = function() {
+        if (this.status == 200)
+          success(JSON.parse(this.response));
+      };
+      xhr.send();
+    }
+
+    function delayedKeyup(input, callback) {
+      var timeout;
+      input.onkeyup = function(){
+        if (timeout) clearTimeout(timeout);
+        timeout = setTimeout(callback, 300);
+      }
+    }
+
+    // remove params or fragments
+    function sanitizePath(path) {
+      return path.replace(/[#?].*/, '');
+    }
+
+    var pathElements = document.querySelectorAll('#route_table [data-route-path]'),
+        searchElem   = document.querySelector('#search'),
+        exactSection = document.querySelector('#exact_matches'),
+        fuzzySection = document.querySelector('#fuzzy_matches');
+
+    // Remove matches when no search value is present
+    searchElem.onblur = function(e) {
+      if (searchElem.value === "") {
+        exactSection.innerHTML = "";
+        fuzzySection.innerHTML = "";
+      }
+    }
+
+    // On key press perform a search for matching paths
+    delayedKeyup(searchElem, function() {
+      var path = sanitizePath(searchElem.value),
+          defaultExactMatch = '<tr><th colspan="4">Paths Matching (' + path +'):</th></tr>',
+          defaultFuzzyMatch = '<tr><th colspan="4">Paths Containing (' + path +'):</th></tr>',
+          noExactMatch      = '<tr><th colspan="4">No Exact Matches Found</th></tr>',
+          noFuzzyMatch      = '<tr><th colspan="4">No Fuzzy Matches Found</th></tr>';
+
+      if (!path)
+        return searchElem.onblur();
+
+      getJSON('/rails/info/routes?path=' + path, function(matches){
+        // Clear out results section
+        exactSection.innerHTML = defaultExactMatch;
+        fuzzySection.innerHTML = defaultFuzzyMatch;
+
+        // Display exact matches and fuzzy matches
+        pathElements.forEach(function(elem) {
+          var elemPath = elem.getAttribute('data-route-path');
+
+          if (matches['exact'].indexOf(elemPath) != -1)
+            exactSection.appendChild(elem.parentNode.cloneNode(true));
+
+          if (matches['fuzzy'].indexOf(elemPath) != -1)
+            fuzzySection.appendChild(elem.parentNode.cloneNode(true));
+        })
+
+        // Display 'No Matches' message when no matches are found
+        checkNoMatch(exactSection, noExactMatch);
+        checkNoMatch(fuzzySection, noFuzzyMatch);
+      })
+    })
+  }
+
+  // Enables functionality to toggle between `_path` and `_url` helper suffixes
+  function setupRouteToggleHelperLinks() {
+
+    // Sets content for each element
+    function setValOn(elems, val) {
+      elems.forEach(function(elem) {
+        elem.innerHTML = val;
+      });
+    }
+
+    // Sets onClick event for each element
+    function onClick(elems, func) {
+      elems.forEach(function(elem) {
+        elem.onclick = func;
+      });
+    }
+
+    var toggleLinks = document.querySelectorAll('#route_table [data-route-helper]');
+
+    onClick(toggleLinks, function(){
+      var helperTxt   = this.getAttribute("data-route-helper"),
+          helperElems = document.querySelectorAll('[data-route-name] span.helper');
+
+      setValOn(helperElems, helperTxt);
+    });
+  }
+
+  setupMatchPaths();
+  setupRouteToggleHelperLinks();
+
+  // Focus the search input after page has loaded
+  document.getElementById('search').focus();
+</script>
+
+
+
+</body>
+</html>
