@@ -1,0 +1,35 @@
+/* ----------------------------------------------------------
+/* arrow
+/* 矢印
+/* ---------------------------------------------------------- */
+
+.arrow__down {
+  $width-value: 50px;
+  $height-value: 100px;
+  width: $width-value;
+  height: $height-value;
+  &::before, &::after {
+    display: block;
+    content: '';
+  }
+  &::before {
+    // 胴体の部分
+    width: 45%;
+    height: 100%;
+    background: $arrow-color-1;
+    margin: 0 auto;
+  }
+  &::after {
+    width: $width-value;
+    height: $height-value;
+    border: $width-value / 2 solid transparent;
+    border-top-color: $arrow-color-1;
+  }
+  &.position-right-top {
+    $position-value: 40px;
+    position: absolute;
+    right: $position-value;
+    top: $position-value;
+    height: calc(100% - #{$position-value * 2.5});
+  }
+}

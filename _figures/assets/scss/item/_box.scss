@@ -1,0 +1,31 @@
+/* ----------------------------------------------------------
+/* box
+/* 基本の部品
+/* ---------------------------------------------------------- */
+
+.box {
+  background: $box-color-1;
+  padding: 1em;
+  border-radius: $round-large;
+  & + & {
+    margin-top: 1em;
+  }
+  &.app-box {
+    background: $box-color-2;
+  }
+}
+
+.box__headline {
+  margin: 0;
+  font-size: 2.0rem;
+}
+
+.box__small {
+  background: $box-color-3;
+  padding: 0.5em 1em;
+  border-radius: $round-medium;
+}
+
+.box__opacity {
+  opacity: 0.3;
+}

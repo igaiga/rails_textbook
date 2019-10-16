@@ -1,0 +1,36 @@
+/* ----------------------------------------------------------
+/* Font Awesome
+/* ---------------------------------------------------------- */
+// @mixin fa {
+//   font-family: ''
+// }
+
+/* ----------------------------------------------------------
+/* media query
+/* ---------------------------------------------------------- */
+@mixin mq {
+  @media (max-width: $break-point) {
+    @content;
+  }
+}
+
+@mixin mq-min {
+  @media (min-width: $content-size) {
+    @content;
+  }
+}
+
+/* ----------------------------------------------------------
+/* resolution
+/* ---------------------------------------------------------- */
+@mixin resolution2x {
+  @media only screen and (-webkit-min-device-pixel-ratio: 2),(min-resolution: 2dppx){
+    @content;
+  }
+}
+
+@mixin resolution3x {
+  @media only screen and (-webkit-min-device-pixel-ratio: 3),(min-resolution: 3dppx){
+    @content;
+  }
+}

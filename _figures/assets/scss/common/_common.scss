@@ -1,0 +1,39 @@
+/* ----------------------------------------------------------
+/* common
+/* 基本的なスタイル
+/* ---------------------------------------------------------- */
+
+body,div,iframe,blockquote,
+a,dl,dt,dd,ol,ul,li,
+form,label,input,textarea,
+table,th,td,
+article,aside,canvas,footer,header,menu,nav,section,main {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  margin: 30px;
+  * + * {
+    margin-top: 0.5em;
+  }
+}
+
+.relative {
+  position: relative;
+}
+
+.inline {
+  display: inline;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.block {
+  display: block;
+}
+
+.flex {
+  display: flex;
+}
