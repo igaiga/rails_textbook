@@ -1,0 +1,236 @@
+@charset "UTF-8";
+/* ----------------------------------------------------------
+/* variables
+/* 変数
+/* ---------------------------------------------------------- */
+/* ----------------------------------------------------------
+/* color
+/* ---------------------------------------------------------- */
+/* ----------------------------------------------------------
+/* round 角丸
+/* ---------------------------------------------------------- */
+/* ----------------------------------------------------------
+/* break point
+/* ---------------------------------------------------------- */
+/* ----------------------------------------------------------
+/* media query
+/* ---------------------------------------------------------- */
+/* ----------------------------------------------------------
+/* media query
+/* ---------------------------------------------------------- */
+/* ----------------------------------------------------------
+/* resolution
+/* ---------------------------------------------------------- */
+/* ----------------------------------------------------------
+/* common
+/* 基本的なスタイル
+/* ---------------------------------------------------------- */
+body, div, iframe, blockquote,
+a, dl, dt, dd, ol, ul, li,
+form, label, input, textarea,
+table, th, td,
+article, aside, canvas, footer, header, menu, nav, section, main {
+  box-sizing: border-box; }
+
+.wrapper {
+  margin: 30px; }
+  .wrapper * + * {
+    margin-top: 0.5em; }
+
+.relative {
+  position: relative; }
+
+.inline {
+  display: inline; }
+
+.inline-block {
+  display: inline-block; }
+
+.block {
+  display: block; }
+
+.flex {
+  display: flex; }
+
+/* ----------------------------------------------------------
+/* text
+/* 文字周りのスタイル
+/* ---------------------------------------------------------- */
+html {
+  font-size: 62.5%; }
+
+body {
+  font-size: 1.6rem;
+  line-height: 1.75;
+  font-family: sans-serif;
+  color: #000;
+  /* フォントレンダリング設定: 1x解像度ではsubpixel、2x以上の解像度ではgrayscale */
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: unset; }
+  @media only screen and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale; } }
+
+/* ----------------------------------------------------------
+/* headeline
+/* ---------------------------------------------------------- */
+h1 {
+  /* or */
+  font-size: 4rem;
+  font-weight: normal; }
+
+h2 {
+  font-size: 3rem;
+  font-weight: bold; }
+
+h3 {
+  font-size: 2.4rem;
+  font-weight: bold; }
+
+h4 {
+  font-size: 2rem;
+  font-weight: bold; }
+
+h5 {
+  font-size: 1.6rem;
+  font-weight: bold; }
+
+h6 {
+  font-size: 1.4rem;
+  font-weight: bold; }
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.4;
+  margin: 0.5em 0; }
+
+h5,
+h6 {
+  margin: 1em 0; }
+
+/* ----------------------------------------------------------
+/* paragraph
+/* ---------------------------------------------------------- */
+.text-center {
+  text-align: center; }
+
+.text-right {
+  text-align: right; }
+
+.text-left {
+  text-align: left; }
+
+/* ----------------------------------------------------------
+/* typography
+/* ---------------------------------------------------------- */
+.bold {
+  font-weight: bold; }
+
+.small {
+  font-size: 80%; }
+
+/* ----------------------------------------------------------
+/* blockquote
+/* ---------------------------------------------------------- */
+blockquote {
+  margin: 1em 0;
+  border-left: 4px solid gray;
+  padding-left: 8px; }
+
+/* ----------------------------------------------------------
+/* list
+/* ---------------------------------------------------------- */
+ul[class],
+ol[class] {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+ul,
+ol,
+dl {
+  margin: 1em 0; }
+
+dt {
+  font-weight: bold; }
+
+ul,
+ol {
+  margin-left: 0.5em;
+  list-style-position: inside; }
+
+/* ----------------------------------------------------------
+/* table
+/* ---------------------------------------------------------- */
+table {
+  margin: 1em 0;
+  border-collapse: collapse; }
+
+th,
+td {
+  border: 1px solid gray;
+  background: #fff;
+  padding: 4px;
+  word-break: break-all; }
+
+/* ----------------------------------------------------------
+/* link
+/* ---------------------------------------------------------- */
+a {
+  color: #ab47bc; }
+  a:hover {
+    opacity: 0.8; }
+
+/* ----------------------------------------------------------
+/* box
+/* 基本の部品
+/* ---------------------------------------------------------- */
+.box {
+  background: #94e0ff;
+  padding: 1em;
+  border-radius: 16px; }
+  .box + .box {
+    margin-top: 1em; }
+  .box.app-box {
+    background: #ff96dc; }
+
+.box__headline {
+  margin: 0;
+  font-size: 2.0rem; }
+
+.box__small {
+  background: #b03373;
+  padding: 0.5em 1em;
+  border-radius: 8px; }
+
+.box__opacity {
+  opacity: 0.3; }
+
+/* ----------------------------------------------------------
+/* arrow
+/* 矢印
+/* ---------------------------------------------------------- */
+.arrow__down {
+  width: 50px;
+  height: 100px; }
+  .arrow__down::before, .arrow__down::after {
+    display: block;
+    content: ''; }
+  .arrow__down::before {
+    width: 45%;
+    height: 100%;
+    background: #ffd679;
+    margin: 0 auto; }
+  .arrow__down::after {
+    width: 50px;
+    height: 100px;
+    border: 25px solid transparent;
+    border-top-color: #ffd679; }
+  .arrow__down.position-right-top {
+    position: absolute;
+    right: 40px;
+    top: 40px;
+    height: calc(100% - 100px); }
