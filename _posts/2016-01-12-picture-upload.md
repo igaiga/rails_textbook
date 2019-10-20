@@ -14,11 +14,11 @@ categories:
 
 アプリに画像アップロード機能を追加します。画像情報を格納するためのDBカラムを追加し、carrierwave gemを利用して画像アップロード機能を実装します。
 
-この章では「CRUDの基礎とindexアクション」で作ったbooks_appを引き続き題材に使っていきます（モデルの章の後半で行ったbooksテーブルにauthorカラムを追加したあとの状態を想定していますが、authorカラムの追加作業は行わなくてもこの章の内容は実行可能です。）。
+この章では「CRUDの基礎とindexアクション」で作ったbooks_appを引き続き題材に使っていきます。モデルの章の後半で行ったbooksテーブルにauthorカラムを追加した後の状態を想定していますが、authorカラムの追加作業は行わなくてもこの章の内容は実行可能です。
 
 ## 画像情報を格納するためのDBカラムを追加
 
-最初に、既存のbooksテーブルにstring型のpictureカラムを増やします。モデルの章でやったように、前に作ったmigrationファイルを編集するのではなく、新しいmigrationファイルを作ります。rails g migrationコマンドを実行し、migrationファイルを作成します。rails g migrationコマンドの基本形は以下になります。
+最初に、既存のbooksテーブルにstring型のpictureカラムを増やします。モデルの章でやったように、前に作ったmigrationファイルを編集するのではなく、新しいmigrationファイルを作ります。rails g migrationコマンドを実行し、migrationファイルを作成します。rails g migrationコマンドの基本形を再掲します。
 
 ```bash
 rails g migration Addカラム名Toテーブル名 カラム名:型名
@@ -32,19 +32,19 @@ rails g migration AddPictureToBooks picture:string
 
 ```console
 $ rails g migration AddPictureToBooks picture:string
-Running via Spring preloader in process 6111
+Running via Spring preloader in process 3249
       invoke  active_record
-      create    db/migrate/20161030225951_add_picture_to_books.rb
+      create    db/migrate/20191020225655_add_picture_to_books.rb
 ```
 
 作成されたmigrationファイルは以下のようになっています。
 
 ```
-20161030225951_add_picture_to_books.rb
+db/migrate/20191020225655_add_picture_to_books.rb
 ```
 
 ```ruby
-class AddPictureToBooks < ActiveRecord::Migration[5.1]
+class AddPictureToBooks < ActiveRecord::Migration[6.0]
   def change
     add_column :books, :picture, :string
   end
@@ -57,10 +57,10 @@ migrationファイルを作成したら、`rails db:migrate`コマンドでDBへ
 
 ```console
 $ rails db:migrate
-== 20161030225951 AddPictureToBooks: migrating ================================
+== 20191020225655 AddPictureToBooks: migrating ================================
 -- add_column(:books, :picture, :string)
-   -> 0.0055s
-== 20161030225951 AddPictureToBooks: migrated (0.0056s) =======================
+   -> 0.0027s
+== 20191020225655 AddPictureToBooks: migrated (0.0028s) =======================
 ```
 
 ## carrierwave gemを追加
@@ -79,19 +79,16 @@ bundle
 
 ```console
 $ bundle
-Fetching gem metadata from https://rubygems.org/...........
-Fetching version metadata from https://rubygems.org/...
-Fetching dependency metadata from https://rubygems.org/..
-Resolving dependencies...
+Using rake 13.0.0
 ...
-Installing carrierwave 1.0.0
-Bundle complete! 17 Gemfile dependencies, 67 gems now installed.
-Use `bundle show [gemname]` to see where a bundled gem is installed.
+Installing carrierwave 1.3.1
+Bundle complete! 19 Gemfile dependencies, 79 gems now installed.
+Use `bundle info [gemname]` to see where a bundled gem is installed.
 ```
 
-bundleコマンドを実行するとGemfileに書かれたgemを存在しなければインストールし、利用可能にします。また、Gemfile.lockに利用するバージョンが書き込まれます。
+bundleコマンドを実行すると、Gemfileに書かれたgemがまだなければインストールし利用可能にします。また、Gemfile.lockに利用するバージョンが書き込まれます。
 
-続いて、carrierwaveを利用可能にするために、carrierwaveが提供する以下のコマンドを実行して必要なファイルを作成します。`bin/spring stop`コマンドはspringというキャッシュの仕組みを再起動します（このコマンドは環境によって実行不要な場合がほとんどですが、確実に成功するように実行しています）。`rails g uploader Picture`コマンドはcarrierwaveを利用するのに必要なファイルを生成します。
+続いて、carrierwaveを利用可能にするために、carrierwaveが提供する`rails g uploader Picture`コマンドを実行して必要なファイルを作成します。その前に、`bin/spring stop`コマンドを実行し、springというキャッシュの仕組みを再起動ておきます。このコマンドは環境によって実行不要な場合もありますが、確実に成功するように実行しています。
 
 ```bash
 $ bin/spring stop
@@ -103,7 +100,7 @@ $ bin/spring stop
 Spring stopped.
 
 $ rails g uploader Picture
-Running via Spring preloader in process 47336
+Running via Spring preloader in process 4097
       create  app/uploaders/picture_uploader.rb
 ```
 
@@ -147,22 +144,22 @@ end
 ...
   <div class="field">
     <%= form.label :title %>
-    <%= form.text_field :title, id: :book_title %>
+    <%= form.text_field :title %>
   </div>
 
   <div class="field">
     <%= form.label :memo %>
-    <%= form.text_area :memo, id: :book_memo %>
+    <%= form.text_area :memo %>
   </div>
 
   <div class="field">
     <%= form.label :author %>
-    <%= form.text_field :author, id: :book_author %>
+    <%= form.text_field :author %>
   </div>
 
 +  <div class="field">
 +    <%= form.label :picture %>
-+    <%= form.file_field :picture, id: :book_picture %>
++    <%= form.file_field :picture %>
 +  </div>
 
   <div class="actions">
@@ -171,7 +168,7 @@ end
 <% end %>
 ```
 
-詳細表示画面を修正します。
+次に詳細表示画面を修正します。
 
 `app/views/books/show.html.erb`
 
