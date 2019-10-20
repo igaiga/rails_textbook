@@ -11,9 +11,10 @@ gulp.task('sass', () => {
       errorHandler: notify.onError("Error: <%= error.message %>")
     }))
     .pipe(sass({
+      outputStyle: 'compressed',
       includePaths: [
-        moduleDir + 'ress/',
-        moduleDir + '@fortawesome/fontawesome-free/css/'
+        moduleDir + 'ress',
+        moduleDir + '@fortawesome/fontawesome-free/scss/'
       ]
     }).on('error', sass.logError))
     // .pipe(autoprefixer({
@@ -26,4 +27,9 @@ gulp.task('sass:watch', () => {
   gulp.watch('./scss/**/*.scss', gulp.task('sass'));
 });
 
-gulp.task('default', gulp.series(gulp.parallel('sass')));
+gulp.task('fileCopy', () => {
+  gulp.src(moduleDir + '@fortawesome/fontawesome-free/webfonts/*')
+  .pipe(gulp.dest('./webfonts'));
+});
+
+gulp.task('default', gulp.series(gulp.parallel('fileCopy', 'sass:watch')));
