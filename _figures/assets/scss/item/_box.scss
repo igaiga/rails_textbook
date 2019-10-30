@@ -4,28 +4,56 @@
 /* ---------------------------------------------------------- */
 
 .box {
-  background: $box-color-1;
+  background: $base-color-light-5;
   padding: 1em;
-  border-radius: $round-large;
   & + & {
     margin-top: 1em;
   }
   &.app-box {
-    background: $box-color-2;
+    background: $base-color-light-1;
+    border-radius: $round-large;
   }
 }
 
 .box__headline {
-  margin: 0;
-  font-size: 2.0rem;
+  margin: 0 0 0.3em;
+  font-size: 125%;
 }
 
 .box__small {
-  background: $box-color-3;
-  padding: 0.5em 1em;
+  background: $base-color-1;
+  padding: 0.15em 1em;
   border-radius: $round-medium;
+}
+
+.box__small-headline {
+  display: inline-block;
+  font-size: 100%;
+  width: 6em;
 }
 
 .box__opacity {
   opacity: 0.3;
+}
+
+.box__list {
+  margin-top: 1em;
+}
+
+.box__item {
+  margin: 0;
+  &::before {
+    @include fa;
+    font-weight: 900;
+    content: '\f105';
+    margin: 0 6px;
+    font-size: 130%;
+    color: $accent-color;
+  }
+}
+
+.icon__file {
+  font-size: 110%;
+  opacity: 0.6;
+  margin-left: 10px;
 }

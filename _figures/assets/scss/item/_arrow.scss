@@ -16,19 +16,19 @@
     // 胴体の部分
     width: 45%;
     height: 100%;
-    background: $arrow-color-1;
+    background: $arrow-color;
     margin: 0 auto;
   }
   &::after {
     width: $width-value;
     height: $height-value;
     border: $width-value / 2 solid transparent;
-    border-top-color: $arrow-color-1;
+    border-top-color: $arrow-color;
   }
   &.position-right-top {
     $position-value: 40px;
     position: absolute;
-    right: $position-value;
+    right: 20px;
     top: $position-value;
     height: calc(100% - #{$position-value * 2.5});
   }

@@ -6,13 +6,23 @@
 /* ----------------------------------------------------------
 /* color
 /* ---------------------------------------------------------- */
-$box-color-1: #94e0ff;
-$box-color-2: #ff96dc;
-$box-color-3: #b03373;
+$base-color-light-1: #FFEBEB;
+$base-color-light-2: #FFF2DC;
+$base-color-light-3: #FFFBC6;
+$base-color-light-4: #E7FCDC;
+$base-color-light-5: #E3F9FF;
 
-$arrow-color-1: #ffd679;
+$base-color-1: #FFBDBD;
+$base-color-2: #FFD28A;
+$base-color-3: #FFE975;
+$base-color-4: #BCEDA1;
+$base-color-5: #B8EEFF;
 
-$main-color: #ab47bc;
+$arrow-color: #CF562C;
+$main-color: #CF562C;
+$accent-color: #69C0E0;
+
+// 以下使ってない
 $main-sub-color: #fce4ec;
 $base-color: #fffde7;
 $text-color: #000;
