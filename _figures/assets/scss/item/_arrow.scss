@@ -5,8 +5,7 @@
 
 .arrow__down {
   $width-value: 50px;
-  $height-value: 100px;
-  width: $width-value;
+  $height-value: 30px;
   height: $height-value;
   &::before, &::after {
     display: block;
@@ -20,16 +19,50 @@
     margin: 0 auto;
   }
   &::after {
+    // 三角の部分
     width: $width-value;
     height: $height-value;
     border: $width-value / 2 solid transparent;
     border-top-color: $arrow-color;
   }
-  &.position-right-top {
-    $position-value: 40px;
-    position: absolute;
-    right: 20px;
-    top: $position-value;
-    height: calc(100% - #{$position-value * 2.5});
+  &.is-small {
+    // 小さいサイズ
+    &::before {
+      // 胴体の部分
+      height: 60%;
+    }
+    &::after {
+      // 三角の部分
+      width: $width-value / 2;
+      height: $height-value / 2;
+      border: $width-value / 4 solid transparent;
+      border-top-color: $arrow-color;
+    }
   }
+  &.display-inline-block {
+    // 行の中に入れる場合
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -3px;
+  }
+}
+
+.arrow__position-right-top {
+  // 右上から大きく表示する
+  $position-value: -40px;
+  position: absolute;
+  right: 20px;
+  top: $position-value;
+  margin-top: 0;
+  height: calc(100% - #{$position-value * 1.6});
+}
+
+.arrow__position-routes {
+  // Routesから表示する
+  $position-value: 74px;
+  position: absolute;
+  right: 20px;
+  top: $position-value;
+  margin-top: 0;
+  height: calc(100% - #{$position-value / 2});
 }

@@ -5,6 +5,7 @@
 
 .box {
   background: $base-color-light-5;
+  border: 1px solid $base-color-5;
   padding: 1em;
   & + & {
     margin-top: 1em;
@@ -12,6 +13,7 @@
   &.app-box {
     background: $base-color-light-1;
     border-radius: $round-large;
+    border: 0;
   }
 }
 
@@ -24,6 +26,10 @@
   background: $base-color-1;
   padding: 0.15em 1em;
   border-radius: $round-medium;
+}
+
+.box__no-bg {
+  padding: 0 1em;
 }
 
 .box__small-headline {
@@ -56,4 +62,17 @@
   font-size: 110%;
   opacity: 0.6;
   margin-left: 10px;
+}
+
+.box__image {
+  display: inline;
+  margin: 0;
+  margin-left: 10px;
+}
+
+.image__helloworld {
+  margin-top: -8px;
+  margin-bottom: -8px;
+  width: 200px;
+  vertical-align: middle;
 }
