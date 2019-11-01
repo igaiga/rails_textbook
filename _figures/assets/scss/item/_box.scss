@@ -4,28 +4,59 @@
 /* ---------------------------------------------------------- */
 
 .box {
-  background: $box-color-1;
+  background: $base-color-light-5;
+  border: 1px solid $base-color-5;
   padding: 1em;
-  border-radius: $round-large;
   & + & {
     margin-top: 1em;
   }
   &.app-box {
-    background: $box-color-2;
+    background: $base-color-light-1;
+    border-radius: $round-large;
+    border: 0;
   }
 }
 
 .box__headline {
-  margin: 0;
-  font-size: 2.0rem;
+  margin: 0 0 0.3em;
+  font-size: 125%;
 }
 
 .box__small {
-  background: $box-color-3;
-  padding: 0.5em 1em;
+  background: $base-color-1;
+  padding: 0.15em 1em;
   border-radius: $round-medium;
 }
 
-.box__opacity {
+.box__no-bg {
+  padding: 0 1em;
+}
+
+.box__small-headline {
+  display: inline-block;
+  font-size: 100%;
+  width: 6em;
+}
+
+.opacity {
   opacity: 0.3;
+}
+
+.icon__file {
+  font-size: 110%;
+  opacity: 0.6;
+  margin-left: 10px;
+}
+
+.box__image {
+  display: inline;
+  margin: 0;
+  margin-left: 10px;
+}
+
+.image__helloworld {
+  margin-top: -8px;
+  margin-bottom: -8px;
+  width: 200px;
+  vertical-align: middle;
 }

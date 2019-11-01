@@ -1,0 +1,25 @@
+/* ----------------------------------------------------------
+/* list
+/* リストの部品
+/* ---------------------------------------------------------- */
+
+.list {
+  margin-top: 1em;
+}
+
+.list__item {
+  margin: 0;
+  &::before {
+    @include fa;
+    font-weight: 900;
+    content: '\f105';
+    margin: 0 6px;
+    font-size: 130%;
+    color: $accent-color;
+  }
+  .list {
+    margin-left: 1em;
+    font-size: 90%;
+  }
+}
+
