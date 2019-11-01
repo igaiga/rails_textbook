@@ -11,8 +11,14 @@
 <div class="box">
   <h2 class="box__headline">リクエスト</h2>
   <ul class="list">
-    <li class="list__item">URL：http://localhost:3000/hello/index</li>
+    <li class="list__item">URL：http://localhost:3000/books</li>
     <li class="list__item">HTTPメソッド：GET</li>
+    <li class="list__item">パラメータ(Form data)：
+      <ul class="list">
+        <li class="list__item">book[title] : 大東京トイボックス</li>
+        <li class="list__item">book[memo] : ゲーム開発会社を舞台にした熱血ストーリー</li>
+      </ul>
+    </li>
   </ul>
 </div>
 
@@ -20,30 +26,28 @@
   <h2 class="box__headline">Rails App</h2>
   <div class="box__small">
     <h3 class="box__small-headline">Routes</h3>
+    <i class="far fa-file-alt icon__file"></i>
+    routes.rb
   </div>
   <div class="box__small">
     <h3 class="box__small-headline">Controller</h3>
-    コードを実行して@timeに代入
-  </div>
-  <div class="box__no-bg">
-    結果を渡すにはインスタンス変数(@はじまり)を使う
-    <div class="arrow__down is-small display-inline-block"></div>
+    <i class="far fa-file-alt icon__file"></i>
+    ？
   </div>
   <div class="box__small">
     <h3 class="box__small-headline">View</h3>
-    @timeの中身を表示する
+    <i class="far fa-file-alt icon__file"></i>
+    ？
   </div>
 
-  <div class="arrow__down arrow__position-routes"></div>
+  <div class="arrow__down arrow__position-right-top"></div>
 
 </div>
 
 <div class="box">
   <h2 class="box__headline inline">レスポンス</h2>
   ：HTML
-  <img src="../../assets/smallest-app/time_jst.png" alt="画像" class="box__image image__helloworld">
 </div>
-
 </div>
 </body>
 </html>
