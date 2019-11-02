@@ -1,0 +1,24 @@
+/* ----------------------------------------------------------
+/* text
+/* テキストまわりの部品
+/* ---------------------------------------------------------- */
+
+.text__underline {
+  padding: 2px;
+  margin-bottom: 4px;
+  border-bottom: 4px solid $main-color;
+}
+
+.text__accent {
+  font-family: sans-serif;
+  font-weight: bold;
+  color: $accent-color; // 青
+  display: inline; // div指定時の表示崩れ対策
+}
+
+.text__accent-sub {
+  font-family: sans-serif;
+  font-weight: bold;
+  color: $main-color; // 赤
+  display: inline; // div指定時の表示崩れ対策
+}

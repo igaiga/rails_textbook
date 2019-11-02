@@ -13,10 +13,10 @@ app/controllers/books_controller.rb
   <div class="code">
     <div class="code__code">
 <pre>
-def <span class="accent">create</span><!-- spanでも青くできます -->
+def <span class="text__accent">create</span><!-- spanでも青くできます -->
   @book = Book.new(book_params)
   respond_to do |format|
-    <div class="accent">if @book.save</div><!-- divでも青くできます -->
+    <div class="text__accent">if @book.save</div><!-- divでも青くできます -->
       format.html { redirect_to @book, notice: 'Book was successfully created.' }
       format.json { render :show, status: :created, location: @book }
     else

@@ -3,12 +3,8 @@
 /* 文字周りのスタイル
 /* ---------------------------------------------------------- */
 
-html {
-  font-size: 62.5%;
-}
-
 body {
-  font-size: 1.6rem;
+  font-size: 16px;
   line-height: 1.75;
   font-family: sans-serif;
   color: $text-color;
@@ -25,29 +21,29 @@ body {
 /* headeline
 /* ---------------------------------------------------------- */
 h1 {
-  // font-size: 3.2rem;
+  // font-size: 32px;
   /* or */
-  font-size: 4rem;
+  font-size: 40px;
   font-weight: normal;
 }
 h2 {
-  font-size: 3rem;
+  font-size: 30px;
   font-weight: bold;
 }
 h3 {
-  font-size: 2.4rem;
+  font-size: 24px;
   font-weight: bold;
 }
 h4 {
-  font-size: 2rem;
+  font-size: 20px;
   font-weight: bold;
 }
 h5 {
-  font-size: 1.6rem;
+  font-size: 16px;
   font-weight: bold;
 }
 h6 {
-  font-size: 1.4rem;
+  font-size: 14px;
   font-weight: bold;
 }
 
@@ -89,14 +85,6 @@ h6 {
   font-size: 80%;
 }
 
-.accent {
-  font-family: sans-serif;
-  font-weight: bold;
-  // color: $main-color; 赤
-  color: $accent-color; // 青
-  display: inline; // div指定時の表示崩れ対策
-}
-
 /* ----------------------------------------------------------
 /* blockquote
 /* ---------------------------------------------------------- */
@@ -135,25 +123,24 @@ ol {
 /* ----------------------------------------------------------
 /* table
 /* ---------------------------------------------------------- */
-table {
+table:not([id]) {
   margin: 1em 0;
   border-collapse: collapse;
-}
-
-th,
-td {
-  border: 1px solid $line-color;
-  background: #fff;
-  padding: 4px;
-  word-break: break-all;
+  th,
+  td {
+    border: 1px solid $line-color;
+    background: #fff;
+    padding: 4px;
+    word-break: break-all;
+  }
 }
 
 /* ----------------------------------------------------------
 /* link
 /* ---------------------------------------------------------- */
 a {
-  color: $main-color;
-  &:hover {
-    opacity: 0.8;
-  }
+  color: $text-color;
+  // &:hover {
+  //   opacity: 0.8;
+  // }
 }
