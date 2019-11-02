@@ -1,0 +1,59 @@
+/* ----------------------------------------------------------
+/* files
+/* ファイル構造の部品
+/* ---------------------------------------------------------- */
+
+.files {
+  display: flex;
+}
+
+.files__column {
+  margin: 0;
+  & + & {
+    margin-left: 1em;
+  }
+}
+
+.files__list {
+}
+
+// ファイル一覧のフォントサイズを基本のサイズより少し大きめにする
+$files-font-size: 20px;
+// 階層の表現で使うマージン幅
+$files-margin: 1.5em;
+
+.files__item {
+  margin: 0;
+  min-height: calc(#{$files-font-size} * 1.75);
+  &.is-2 {
+    margin-left: $files-margin;
+  }
+  &.is-3 {
+    margin-left: calc(#{$files-margin} * 2);
+  }
+  &.is-4 {
+    margin-left: calc(#{$files-margin} * 3);
+  }
+  &.is-5 {
+    margin-left: calc(#{$files-margin} * 4);
+  }
+  &.is-description {
+    padding-top: 4px;
+  }
+}
+
+.files__name {
+  font-size: $files-font-size;
+}
+
+.files__icon-folder {
+  color: $folder-color;
+  font-size: $files-font-size;
+}
+
+.files__icon-file {
+  opacity: 0.6;
+  margin-left: 3px;
+  margin-right: 3px;
+  font-size: $files-font-size;
+}

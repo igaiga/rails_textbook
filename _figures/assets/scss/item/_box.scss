@@ -15,6 +15,10 @@
     border-radius: $round-large;
     border: 0;
   }
+  &.code-box {
+    background: $base-color-light-4;
+    border: 1px solid $base-color-4;
+  }
 }
 
 .box__headline {

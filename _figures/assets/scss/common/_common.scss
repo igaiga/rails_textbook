@@ -17,6 +17,9 @@ article,aside,canvas,footer,header,menu,nav,section,main {
   * + * {
     margin-top: 0.5em;
   }
+  &.is-wide {
+    max-width: 850px;
+  }
 }
 
 .relative {
