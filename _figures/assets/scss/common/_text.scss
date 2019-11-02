@@ -89,6 +89,14 @@ h6 {
   font-size: 80%;
 }
 
+.accent {
+  font-family: sans-serif;
+  font-weight: bold;
+  // color: $main-color; 赤
+  color: $accent-color; // 青
+  display: inline; // div指定時の表示崩れ対策
+}
+
 /* ----------------------------------------------------------
 /* blockquote
 /* ---------------------------------------------------------- */
