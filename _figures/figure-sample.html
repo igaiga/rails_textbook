@@ -1,0 +1,305 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>図のサンプルまとめ</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+  <h1>Figure samples</h1>
+  <section>
+    <h2>Rails動作部品の図</h2>
+    <div class="wrapper">
+
+      <div class="box">
+        <h2 class="box__headline">リクエスト</h2>
+        <ul class="list">
+          <li class="list__item">URL：http://localhost:3000/hello/index</li>
+          <li class="list__item">HTTPメソッド：GET</li>
+        </ul>
+      </div>
+
+      <div class="box app-box relative">
+        <h2 class="box__headline">Rails App</h2>
+        <div class="box__small">
+          <h3 class="box__small-headline">Routes</h3>
+          <i class="far fa-file-alt icon__file"></i>
+          routes.rb
+        </div>
+        <div class="box__small">
+          <h3 class="box__small-headline">Controller</h3>
+          <i class="far fa-file-alt icon__file"></i>
+          hello_controller.rb indexアクション
+        </div>
+        <div class="box__no-bg">
+          【ダミー】ここにもテキスト入れられます
+          <div class="arrow__down is-small display-inline-block"></div>
+        </div>
+        <div class="box__small">
+          <h3 class="box__small-headline">View</h3>
+          <i class="far fa-file-alt icon__file"></i>
+          hello/index.html.erb
+        </div>
+
+        <div class="arrow__down arrow__position-right-top"></div>
+        <!-- Routesからの矢印にしたい場合は以下 -->
+        <!-- <div class="arrow__down arrow__position-routes"></div> -->
+
+      </div>
+
+      <div class="box">
+        <h2 class="box__headline inline">レスポンス</h2>
+        ：HTML
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2>コードとコメント</h2>
+    <div class="wrapper is-wide">
+
+      app/controllers/books_controller.rb
+      <div class="box code-box">
+        <div class="code">
+          <div class="code__code">
+            <pre>
+def <span class="text__accent">create</span><!-- spanでも青くできます -->
+  @book = Book.new(book_params)
+  respond_to do |format|
+    <div class="text__accent">if @book.save</div><!-- divでも青くできます -->
+      format.html { redirect_to @book, notice: 'Book was successfully created.' }
+      format.json { render :show, status: :created, location: @book }
+    else
+      format.html { render :new }
+      format.json { render json: @book.errors, status: :unprocessable_entity }
+    end
+  end
+end
+</pre>
+          </div>
+          <div class="code__text">
+            <ul class="code__description-list">
+              <li class="code__description-item"></li>
+              <li class="code__description-item">
+                <span class="bold">1. リクエストのパラメータを使って本のデータを作る</span>
+              </li>
+              <li class="code__description-item">
+                <span class="bold">2. 本のデータを保存する</span>
+              </li>
+              <li class="code__description-item">
+                <span class="bold">3a. 成功したらshow画面へ</span>
+              </li>
+              <li class="code__description-item"></li>
+              <li class="code__description-item"></li>
+              <li class="code__description-item"></li>
+              <li class="code__description-item">
+                <span class="bold">3b. 保存失敗したらnew画面へ (さっきの画面)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>フォルダ構成</h2>
+    <div class="wrapper">
+
+      <div class="files">
+        <div class="files__column">
+          <div class="files__item is-1">
+            <i class="fas fa-folder-open files__icon-folder"></i>
+            <span class="files__name">helloworld</span>
+          </div>
+          <div class="files__item is-2">
+            <i class="fas fa-folder-open files__icon-folder"></i>
+            <span class="files__name">app</span>
+          </div>
+          <div class="files__item is-3">
+            <i class="fas fa-folder-open files__icon-folder"></i>
+            <span class="files__name">controllers</span>
+          </div>
+          <div class="files__item is-3">
+            <i class="fas fa-folder-open files__icon-folder"></i>
+            <span class="files__name">views</span>
+          </div>
+          <div class="files__item is-2">
+            <i class="fas fa-folder-open files__icon-folder"></i>
+            <span class="files__name">config</span>
+          </div>
+          <div class="files__item is-3">
+            <i class="far fa-file-alt files__icon-file"></i>
+            <span class="files__name">routes.rb</span>
+          </div>
+          <div class="files__item is-2">
+            <i class="fas fa-folder-open files__icon-folder"></i>
+            <span class="files__name">...</span>
+          </div>
+        </div>
+        <div class="files__column">
+          <div class="files__item is-description">
+            <i class="far fa-hand-point-left"></i>
+            アプリ名のフォルダ
+          </div>
+          <div class="files__item is-description">
+
+          </div>
+          <div class="files__item is-description">
+            <i class="far fa-hand-point-left"></i>
+            いろいろな処理を行う箇所
+          </div>
+          <div class="files__item is-description">
+            <i class="far fa-hand-point-left"></i>
+            表示に関する処理を行う箇所
+          </div>
+          <div class="files__item is-description">
+
+          </div>
+          <div class="files__item is-description">
+            <i class="far fa-hand-point-left"></i>
+            URLとコントローラの対応表
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section>
+    <h2>Routesの模式図</h2>
+    <h2>Routes</h2>
+    <div class="wrapper">
+
+      http://localhost:3000/rails/info/routes
+      <table id='route_table' class='route_table with-margin'>
+        <thead>
+          <tr>
+            <th>Helper</th>
+            <th>HTTP Verb</th>
+            <th>Path</th>
+            <th>Controller#Action</th>
+          </tr>
+          <tr class='bottom'>
+            <th>
+              <a data-route-helper="_path" title="Returns a relative path (without the http or domain)"
+                href="#">Path</a> /
+              <a data-route-helper="_url" title="Returns an absolute URL (with the http and domain)" href="#">Url</a>
+            </th>
+            <th>
+            </th>
+            <th>
+              <input id="search" placeholder="Path Match" type="search" name="path[]" />
+            </th>
+            <th>
+            </th>
+          </tr>
+        </thead>
+        <tbody class='exact_matches' id='exact_matches'>
+        </tbody>
+        <tbody class='fuzzy_matches' id='fuzzy_matches'>
+        </tbody>
+        <tbody>
+          <tr class='route_row' data-helper='path'>
+            <td data-route-name='hello_index'>
+              hello_index<span class='helper'>_path</span>
+            </td>
+            <td class="with-description">
+              <span class="text__underline">GET</span>
+              <br><span class="text__accent-sub">HTTPメソッド</span>
+            </td>
+            <td data-route-path='/hello/index(.:format)' class="with-description">
+              <span class="text__underline">/hello/index(.:format)</span>
+              <br><span class="text__accent-sub">URL(のパスの部分)</span>
+            </td>
+            <td class="with-description">
+              <span class="text__underline">hello#index</span>
+              <br><span class="text__accent-sub">Controllerのアクション</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="box">
+        <h2 class="box__headline">リクエスト</h2>
+        <ul class="list">
+          <li class="list__item">URL：http://localhost:3000/<span class="text__underline">hello/index</span></li>
+          <li class="list__item">HTTPメソッド：<span class="text__underline">GET</span></li>
+        </ul>
+      </div>
+
+      <div class="box__no-bg text-center">
+        <div class="arrow__down is-small display-inline-block"></div>
+
+      </div>
+
+      <div class="box__small">
+        HelloControllerのindexアクション
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>migration模式図</h2>
+    <div class="wrapper is-wide">
+
+        app/controllers/books_controller.rb
+        <div class="box code-box">
+          <div class="code">
+            <div class="code__code">
+              <pre>
+  def <span class="text__accent">create</span><!-- spanでも青くできます -->
+    @book = Book.new(book_params)
+    respond_to do |format|
+      <div class="text__accent">if @book.save</div><!-- divでも青くできます -->
+        format.html { redirect_to @book, notice: 'Book was successfully created.' }
+        format.json { render :show, status: :created, location: @book }
+      else
+        format.html { render :new }
+        format.json { render json: @book.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  </pre>
+            </div>
+            <div class="code__text">
+              <ul class="code__description-list">
+                <li class="code__description-item"></li>
+                <li class="code__description-item">
+                  <span class="bold">1. リクエストのパラメータを使って本のデータを作る</span>
+                </li>
+                <li class="code__description-item">
+                  <span class="bold">2. 本のデータを保存する</span>
+                </li>
+                <li class="code__description-item">
+                  <span class="bold">3a. 成功したらshow画面へ</span>
+                </li>
+                <li class="code__description-item"></li>
+                <li class="code__description-item"></li>
+                <li class="code__description-item"></li>
+                <li class="code__description-item">
+                  <span class="bold">3b. 保存失敗したらnew画面へ (さっきの画面)</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </section>
+
+  <section>
+    <h2>画面遷移図</h2>
+  </section>
+
+  <section>
+    <h2>formのコードと表示の対応図</h2>
+  </section>
+  
+  </body>
+
+</html>
