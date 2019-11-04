@@ -15,7 +15,13 @@
 @import 'common/common';
 @import 'common/text';
 
+// lib
+@import 'lib/routes';
+
 // item
 @import 'item/box';
 @import 'item/list';
 @import 'item/arrow';
+@import 'item/code';
+@import 'item/files';
+@import 'item/text';

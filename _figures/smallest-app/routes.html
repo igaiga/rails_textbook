@@ -1,0 +1,78 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title></title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<div class="wrapper">
+
+http://localhost:3000/rails/info/routes
+<table id='route_table' class='route_table with-margin'>
+  <thead>
+    <tr>
+      <th>Helper</th>
+      <th>HTTP Verb</th>
+      <th>Path</th>
+      <th>Controller#Action</th>
+    </tr>
+    <tr class='bottom'>
+      <th>
+        <a data-route-helper="_path" title="Returns a relative path (without the http or domain)" href="#">Path</a> /
+        <a data-route-helper="_url" title="Returns an absolute URL (with the http and domain)" href="#">Url</a>
+      </th>
+      <th>
+      </th>
+      <th>
+        <input id="search" placeholder="Path Match" type="search" name="path[]" />
+      </th>
+      <th>
+      </th>
+    </tr>
+  </thead>
+  <tbody class='exact_matches' id='exact_matches'>
+  </tbody>
+  <tbody class='fuzzy_matches' id='fuzzy_matches'>
+  </tbody>
+  <tbody>
+    <tr class='route_row' data-helper='path'>
+      <td data-route-name='hello_index'>
+        hello_index<span class='helper'>_path</span>
+      </td>
+      <td class="with-description">
+        <span class="text__underline">GET</span>
+        <br><span class="text__accent-sub">HTTPメソッド</span>
+      </td>
+      <td data-route-path='/hello/index(.:format)' class="with-description">
+        <span class="text__underline">/hello/index(.:format)</span>
+        <br><span class="text__accent-sub">URL(のパスの部分)</span>
+      </td>
+      <td class="with-description">
+        <span class="text__underline">hello#index</span>
+        <br><span class="text__accent-sub">Controllerのアクション</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="box">
+  <h2 class="box__headline">リクエスト</h2>
+  <ul class="list">
+    <li class="list__item">URL：http://localhost:3000/<span class="text__underline">hello/index</span></li>
+    <li class="list__item">HTTPメソッド：<span class="text__underline">GET</span></li>
+  </ul>
+</div>
+
+<div class="box__no-bg text-center">
+  <div class="arrow__down is-small display-inline-block"></div>
+
+</div>
+
+<div class="box__small">
+  HelloControllerのindexアクション
+</div>
+
+</div>
+</body>
+</html>

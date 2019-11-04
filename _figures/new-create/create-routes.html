@@ -1,0 +1,157 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title></title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<div class="wrapper">
+
+<div class="box">
+  <h2 class="box__headline">リクエスト</h2>
+  <ul class="list">
+    <li class="list__item">URL：http://localhost:3000/books</li>
+    <li class="list__item">HTTPメソッド：POST</li>
+  </ul>
+</div>
+
+<table id='route_table' class='route_table with-margin'>
+    <thead>
+      <tr>
+        <th>Helper</th>
+        <th>HTTP Verb</th>
+        <th>Path</th>
+        <th>Controller#Action</th>
+      </tr>
+      <tr class='bottom'>
+        <th>        <a data-route-helper="_path" title="Returns a relative path (without the http or domain)" href="#">Path</a> /
+          <a data-route-helper="_url" title="Returns an absolute url (with the http and domain)" href="#">Url</a>
+        </th>
+        <th>      </th>
+        <th>        <input id="search" placeholder="Path Match" type="search" name="path[]" />
+        </th>
+        <th>      </th>
+      </tr>
+    </thead>
+    <tbody class='exact_matches' id='exact_matches'>
+    </tbody>
+    <tbody class='fuzzy_matches' id='fuzzy_matches'>
+    </tbody>
+    <tbody>
+      <tr class='route_row' data-helper='path'>
+      <td data-route-name='books'>
+          books<span class='helper'>_path</span>
+      </td>
+      <td>
+        GET
+      </td>
+      <td data-route-path='/books(.:format)'>
+        /books(.:format)
+      </td>
+      <td>
+        <p>books#index</p>
+      </td>
+    </tr>
+    <tr class='route_row' data-helper='path'>
+      <td data-route-name=''>
+      </td>
+      <td>
+        <span class="text__underline">POST</span>
+      </td>
+      <td data-route-path='/books(.:format)'>
+        <span class="text__underline">/books(.:format)</span>
+      </td>
+      <td>
+        <p><span class="text__underline">books#create</span></p>
+      </td>
+    </tr>
+    <tr class='route_row' data-helper='path'>
+      <td data-route-name='new_book'>
+          new_book<span class='helper'>_path</span>
+      </td>
+      <td>
+        GET
+      </td>
+      <td data-route-path='/books/new(.:format)'>
+        /books/new(.:format)
+      </td>
+      <td>
+        <p>books#new</p>
+      </td>
+    </tr>
+    <tr class='route_row' data-helper='path'>
+      <td data-route-name='edit_book'>
+          edit_book<span class='helper'>_path</span>
+      </td>
+      <td>
+        GET
+      </td>
+      <td data-route-path='/books/:id/edit(.:format)'>
+        /books/:id/edit(.:format)
+      </td>
+      <td>
+        <p>books#edit</p>
+      </td>
+    </tr>
+    <tr class='route_row' data-helper='path'>
+      <td data-route-name='book'>
+          book<span class='helper'>_path</span>
+      </td>
+      <td>
+        GET
+      </td>
+      <td data-route-path='/books/:id(.:format)'>
+        /books/:id(.:format)
+      </td>
+      <td>
+        <p>books#show</p>
+      </td>
+    </tr>
+      <tr class='route_row' data-helper='path'>
+      <td data-route-name=''>
+      </td>
+      <td>
+        PATCH
+      </td>
+      <td data-route-path='/books/:id(.:format)'>
+        /books/:id(.:format)
+      </td>
+      <td>
+        <p>books#update</p>
+      </td>
+    </tr>
+    <tr class='route_row' data-helper='path'>
+      <td data-route-name=''>
+      </td>
+      <td>
+        PUT
+      </td>
+      <td data-route-path='/books/:id(.:format)'>
+        /books/:id(.:format)
+      </td>
+      <td>
+        <p>books#update</p>
+      </td>
+    </tr>
+    <tr class='route_row' data-helper='path'>
+      <td data-route-name=''>
+      </td>
+      <td>
+        DELETE
+      </td>
+      <td data-route-path='/books/:id(.:format)'>
+        /books/:id(.:format)
+      </td>
+      <td>
+        <p>books#destroy</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+/books への POST なので、booksコントローラのcreateアクションが呼び出されます。
+
+</div>
+</body>
+</html>

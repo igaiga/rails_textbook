@@ -1,0 +1,32 @@
+/* ----------------------------------------------------------
+/* code
+/* コードの部品
+/* ---------------------------------------------------------- */
+
+.code {
+  position: relative;
+}
+
+.code__code {
+
+}
+
+.code__text {
+  margin: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.code__description-list {
+  
+}
+
+.code__description-item {
+  margin: 0;
+  min-height: 1.5em;
+  .bold {
+    font-weight: bold;
+    color: $main-color;
+  }
+}

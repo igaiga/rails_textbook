@@ -1,0 +1,79 @@
+/* ----------------------------------------------------------
+/* routes
+/* Routesのテーブル（rails/info/routes からコピー）
+/* ---------------------------------------------------------- */
+
+#route_table {
+  margin: 0;
+  border-collapse: collapse;
+}
+
+#route_table thead tr {
+  border-bottom: 2px solid #ddd;
+}
+
+#route_table thead tr.bottom {
+  border-bottom: none;
+}
+
+#route_table thead tr.bottom th {
+  padding: 10px 0;
+  line-height: 15px;
+}
+
+#route_table thead tr.bottom th input#search {
+  -webkit-appearance: textfield;
+}
+
+#route_table tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#route_table tbody tr:nth-child(odd) {
+  background: #f2f2f2;
+}
+
+#route_table tbody.exact_matches,
+#route_table tbody.fuzzy_matches {
+  background-color: LightGoldenRodYellow;
+  border-bottom: solid 2px SlateGrey;
+}
+
+#route_table tbody.exact_matches tr,
+#route_table tbody.fuzzy_matches tr {
+  background: none;
+  border-bottom: none;
+}
+
+#route_table td {
+  // padding: 4px 30px;
+  padding: 8px 10px;
+  text-align: center;
+  line-height: 2.2;
+  vertical-align: top;
+  &.with-description {
+    padding-bottom: 3px;
+  }
+}
+
+// 追加
+#route_table {
+  width: 100%;
+  &.with-margin {
+    width: 95%;
+    margin: 1em auto 2em;
+  }
+  // body から
+  color: #333;
+  font-family: helvetica, verdana, arial, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+}
+
+#search {
+  font-family: helvetica, verdana, arial, sans-serif;
+  font-weight: normal;
+  border: 1px solid #ccc;
+  font-size: 11px;
+  padding: 2px 8px;
+}

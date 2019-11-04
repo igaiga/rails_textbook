@@ -6,7 +6,7 @@
 .box {
   background: $base-color-light-5;
   border: 1px solid $base-color-5;
-  padding: 1em;
+  padding: 0.75em 1em;
   & + & {
     margin-top: 1em;
   }
@@ -14,11 +14,17 @@
     background: $base-color-light-1;
     border-radius: $round-large;
     border: 0;
+    padding: 1em;
+  }
+  &.code-box {
+    background: $base-color-light-4;
+    border: 1px solid $base-color-4;
+    padding: 1em;
   }
 }
 
 .box__headline {
-  margin: 0 0 0.3em;
+  margin: 0 0 0.15em;
   font-size: 125%;
 }
 
