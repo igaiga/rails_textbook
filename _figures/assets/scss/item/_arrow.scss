@@ -25,8 +25,24 @@
     border: $width-value / 2 solid transparent;
     border-top-color: $arrow-color;
   }
+  &.is-medium {
+    // 中くらいのサイズ
+    height: 52px;
+    &::before {
+      // 胴体の部分
+      height: 54%;
+    }
+    &::after {
+      // 三角の部分
+      width: $width-value / 1.25;
+      height: $height-value / 1.25;
+      border: $width-value / 2.5 solid transparent;
+      border-top-color: $arrow-color;
+    }
+  }
   &.is-small {
     // 小さいサイズ
+    margin-top: -3px;
     &::before {
       // 胴体の部分
       height: 60%;
@@ -43,7 +59,6 @@
     // 行の中に入れる場合
     display: inline-block;
     vertical-align: middle;
-    margin-top: -3px;
   }
 }
 

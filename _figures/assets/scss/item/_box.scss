@@ -19,7 +19,7 @@
   &.code-box {
     background: $base-color-light-4;
     border: 1px solid $base-color-4;
-    padding: 1em;
+    padding: 0.75em 1em;
   }
 }
 
@@ -32,6 +32,28 @@
   background: $base-color-1;
   padding: 0.15em 1em;
   border-radius: $round-medium;
+}
+
+.box__flex {
+  display: flex;
+  &.is-large {
+    // migration 模式図で使用
+    margin: 0.65em auto 0;
+    align-items: center;
+    width: 70%;
+  }
+}
+
+.box__flex-column {
+  margin-top: 0;
+  &.is-command {
+    // コマンドの背景色を右側まで伸ばす
+    flex-grow: 2;
+  }
+  &.is-minus-margin {
+    // 1行表示の場合の位置調整
+    margin-top: -7px;
+  }
 }
 
 .box__no-bg {

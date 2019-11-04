@@ -1,0 +1,16 @@
+/* ----------------------------------------------------------
+/* command
+/* コマンドの部品
+/* ---------------------------------------------------------- */
+
+$command-padding: 0 0.5em; 
+.command {
+  background: $base-color-3;
+  padding: $command-padding;
+  font-family: monospace;
+}
+
+.command__no-bg {
+  margin: 0;
+  padding: $command-padding;
+}

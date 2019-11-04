@@ -1,0 +1,30 @@
+/* ----------------------------------------------------------
+/* db
+/* DBの部品
+/* ---------------------------------------------------------- */
+
+.db {
+  background: $base-color-2;
+  padding: 0.15em 1em;
+  border-radius: $round-large;
+  text-align: center;
+  min-width: 4.4em;
+  &.is-large {
+    max-width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.db__text-small {
+  margin: -0.5em 0 0.5em;
+}
+
+.db__headline {
+  font-size: 120%;
+}
+
+.db__question {
+  margin-left: 1em;
+  font-weight: bold;
+}

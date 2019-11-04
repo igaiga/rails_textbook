@@ -22,3 +22,16 @@
   color: $main-color; // 赤
   display: inline; // div指定時の表示崩れ対策
 }
+
+.text__path {
+  margin-top: 0;
+  margin-bottom: -0.5em;
+  font-size: 90%;
+}
+
+.text__large {
+  font-size: 125%;
+}
+.text__small {
+  font-size: 82%;
+}
