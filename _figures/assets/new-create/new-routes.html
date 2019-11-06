@@ -3,20 +3,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title></title>
-  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 <div class="wrapper">
 
-<div class="box">
-  <h2 class="box__headline">リクエスト</h2>
-  <ul class="list">
-    <li class="list__item">URL：http://localhost:3000/books</li>
-    <li class="list__item">HTTPメソッド：POST</li>
-  </ul>
-</div>
-
-<table id='route_table' class='route_table with-margin'>
+<table id='route_table' class='route_table'>
     <thead>
       <tr>
         <th>Helper</th>
@@ -57,13 +49,13 @@
       <td data-route-name=''>
       </td>
       <td>
-        <span class="text__underline">POST</span>
+        POST
       </td>
       <td data-route-path='/books(.:format)'>
-        <span class="text__underline">/books(.:format)</span>
+        /books(.:format)
       </td>
       <td>
-        <p><span class="text__underline">books#create</span></p>
+        <p>books#create</p>
       </td>
     </tr>
     <tr class='route_row' data-helper='path'>
@@ -71,13 +63,13 @@
           new_book<span class='helper'>_path</span>
       </td>
       <td>
-        GET
+          <span class="text__underline">GET</span>
       </td>
       <td data-route-path='/books/new(.:format)'>
-        /books/new(.:format)
+        <span class="text__underline">/books/new(.:format)</span>
       </td>
       <td>
-        <p>books#new</p>
+        <p><span class="text__underline">books#new</span></p>
       </td>
     </tr>
     <tr class='route_row' data-helper='path'>
@@ -149,8 +141,6 @@
     </tr>
   </tbody>
 </table>
-
-/books への POST なので、booksコントローラのcreateアクションが呼び出されます。
 
 </div>
 </body>

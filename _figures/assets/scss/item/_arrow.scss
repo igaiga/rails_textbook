@@ -3,10 +3,11 @@
 /* 矢印
 /* ---------------------------------------------------------- */
 
-.arrow__down {
-  $width-value: 50px;
-  $height-value: 30px;
-  height: $height-value;
+$arrow-width-value: 50px;
+$arrow-height-value: 30px;
+
+.arrow {
+  height: $arrow-height-value;
   &::before, &::after {
     display: block;
     content: '';
@@ -20,25 +21,10 @@
   }
   &::after {
     // 三角の部分
-    width: $width-value;
-    height: $height-value;
-    border: $width-value / 2 solid transparent;
+    width: $arrow-width-value;
+    height: $arrow-width-value;
+    border: $arrow-width-value / 2 solid transparent;
     border-top-color: $arrow-color;
-  }
-  &.is-medium {
-    // 中くらいのサイズ
-    height: 52px;
-    &::before {
-      // 胴体の部分
-      height: 54%;
-    }
-    &::after {
-      // 三角の部分
-      width: $width-value / 1.25;
-      height: $height-value / 1.25;
-      border: $width-value / 2.5 solid transparent;
-      border-top-color: $arrow-color;
-    }
   }
   &.is-small {
     // 小さいサイズ
@@ -49,9 +35,9 @@
     }
     &::after {
       // 三角の部分
-      width: $width-value / 2;
-      height: $height-value / 2;
-      border: $width-value / 4 solid transparent;
+      width: $arrow-width-value / 2;
+      height: $arrow-width-value / 2;
+      border: $arrow-width-value / 4 solid transparent;
       border-top-color: $arrow-color;
     }
   }
@@ -80,4 +66,24 @@
   top: $position-value;
   margin-top: 0;
   height: calc(100% - #{$position-value / 2});
+}
+
+.arrow__box {
+  padding: 0 1em;
+  height: 48px;
+  .arrow__box-arrow {
+    // arrow__box の高さに合わせられる矢印
+    height: 100%;
+    &::before {
+      // 胴体の部分
+      height: calc(100% - #{$arrow-width-value} / 2.5);
+    }
+    &::after {
+      // 三角の部分
+      width: $arrow-width-value / 1.25;
+      height: $arrow-width-value / 1.25;
+      border: $arrow-width-value / 2.5 solid transparent;
+      border-top-color: $arrow-color;
+    }
+  }
 }
