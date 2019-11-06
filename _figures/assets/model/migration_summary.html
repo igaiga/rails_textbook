@@ -1,0 +1,72 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title></title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="command">
+    $ rails g scaffold book title:string memo:text
+  </div>
+  <div class="box__flex is-large">
+    <div class="box__flex-column">
+      <div class="arrow__box">
+        <div class="arrow arrow__box-arrow display-inline-block"></div>
+      </div>
+    </div>
+    <div class="box__flex-column">
+      ファイル生成
+    </div>
+  </div>
+  <div class="text__path">
+    db/migrate/20160214232240_create_books.rb
+    <br>
+    <span class="text__small">※ファイル名先頭の20160214232240は他のファイルと重複しないようにRailsが自動でつけます。</span>
+  </div>
+  <div class="box code-box">
+    <div class="code">
+      <div class="code__code">
+<pre>
+class CreateBooks < ActiveRecord::Migration[5.1]
+  def change
+    create_table :books do |t|
+      t.string :title
+      t.text :memo
+
+      t.timestamps
+    end
+  end
+end
+</pre>
+      </div>
+    </div>
+  </div>
+  <div class="box__flex is-large">
+    <div class="box__flex-column">
+      <div class="arrow__box">
+        <div class="arrow arrow__box-arrow display-inline-block"></div>
+      </div>
+    </div>
+    <div class="box__flex-column is-command">
+      <div class="command">
+        $ rails db:migrate
+      </div>
+      <div class="command__no-bg">
+        migrationファイル(DB設計図)からDBを作る
+      </div>
+    </div>
+  </div>
+  <div class="db is-large">
+    <h3 class="db__headline">DB</h3>
+    <p class="db__text-small">
+      booksテーブル<br>
+      title, memo, created_at, updated_at
+    </p>
+  </div>
+
+</div>
+</body>
+</html>

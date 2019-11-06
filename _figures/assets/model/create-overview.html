@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title></title>
-  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 <div class="wrapper is-wide">
@@ -13,10 +13,10 @@ app/controllers/books_controller.rb
   <div class="code">
     <div class="code__code">
 <pre>
-def <span class="text__accent">create</span><!-- spanでも青くできます -->
+def create
   @book = Book.new(book_params)
   respond_to do |format|
-    <div class="text__accent">if @book.save</div><!-- divでも青くできます -->
+    if @book.save
       format.html { redirect_to @book, notice: 'Book was successfully created.' }
       format.json { render :show, status: :created, location: @book }
     else
