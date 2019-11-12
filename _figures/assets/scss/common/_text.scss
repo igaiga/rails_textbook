@@ -6,7 +6,7 @@
 body {
   font-size: 16px;
   line-height: 1.75;
-  font-family: sans-serif;
+  font-family: 'Hiragino Sans', sans-serif; // Catalina対策
   color: $text-color;
   /* フォントレンダリング設定: 1x解像度ではsubpixel、2x以上の解像度ではgrayscale */
   -webkit-font-smoothing: subpixel-antialiased;

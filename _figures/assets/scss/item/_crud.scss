@@ -1,0 +1,36 @@
+/* ----------------------------------------------------------
+/* crud
+/* CRUDの部品
+/* ---------------------------------------------------------- */
+
+.crud {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -1em;
+}
+
+.crud__box {
+  flex-basis: calc(50% - 1em);
+  margin: 0 0 1em 1em;
+  background: $base-color-light-3;
+  border: 1px solid $base-color-3;
+  border-radius: $round-large;
+  padding: 0.5em 1em 1em;
+}
+
+.crud__headline {
+  font-size: 140%;
+  color: $main-color;
+  margin: 0;
+}
+
+.crud__text {
+  margin-top: 0;
+  font-size: 110%;
+}
+
+.crud__image {
+  display: block;
+  margin: 0;
+  max-width: 100%;
+}
