@@ -9,9 +9,13 @@
   margin-left: -1em;
 }
 
-.crud__item {
+.crud__box {
   flex-basis: calc(50% - 1em);
   margin: 0 0 1em 1em;
+  background: $base-color-light-3;
+  border: 1px solid $base-color-3;
+  border-radius: $round-large;
+  padding: 0.5em 1em 1em;
 }
 
 .crud__headline {
