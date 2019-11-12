@@ -444,6 +444,46 @@ end
 
   <section>
     <h2>formのコードと表示の対応図</h2>
+    <!-- new-view-form.html -->
+    <div class="wrapper is-wide">
+
+      <div class="box__flex is-align-top">
+        <div class="box__flex-column-half">
+          <div class="text__path">app/views/books/_form.html.erb</div>
+            <div class="box code-box">
+<pre>
+<%= form_with(model: book,<br> local: true) do |form| %>
+<div class="code__block">  &lt;div class="field"&gt;
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  &lt;/div&gt;
+</div><div class="code__block">  &lt;div class="field"&gt;
+    <%= form.label :memo %>
+    <%= form.text_area :memo %>
+  &lt;/div&gt;
+</div><div class="code__block">  &lt;div class="actions"&gt;
+    <%= form.submit %>
+  &lt;/div&gt;
+</div><% end %>
+</pre>
+          </div>
+        </div>
+        <div class="box__flex-column-half">
+          <img src="./img/img_form_headline.png" width="380" class="form__image">
+          <div class="code__block">
+            <img src="./img/img_form_title.png" width="380" class="form__image">
+          </div>
+          <div class="code__block">
+            <img src="./img/img_form_memo.png" width="380" class="form__image">
+          </div>
+          <div class="code__block is-inline-block">
+            <img src="./img/img_form_button.png" width="106" class="form__image">
+          </div>
+          <img src="./img/img_form_back.png" width="380" class="form__image">
+        </div>
+      </div>
+
+    </div>
   </section>
   
   </body>

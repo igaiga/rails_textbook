@@ -10,14 +10,14 @@
 }
 
 .text__accent {
-  font-family: sans-serif;
+  @include font-family;
   font-weight: bold;
   color: $accent-color; // 青
   display: inline; // div指定時の表示崩れ対策
 }
 
 .text__accent-sub {
-  font-family: sans-serif;
+  @include font-family;
   font-weight: bold;
   color: $main-color; // 赤
   display: inline; // div指定時の表示崩れ対策

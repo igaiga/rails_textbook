@@ -30,3 +30,12 @@
     color: $main-color;
   }
 }
+
+.code__block {
+  border: 4px solid $main-color;
+  border-radius: $round-medium;
+  &.is-inline-block {
+    // 横いっぱいにならないようにする
+    display: inline-block;
+  }
+}
