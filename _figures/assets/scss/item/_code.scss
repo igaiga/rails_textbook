@@ -59,3 +59,8 @@
 .code__block-border-none {
   margin: 0 calc(0.5em + 8px);
 }
+
+.code__block-border-none-2 {
+  // .code-block > .code-blockになっていない場合の余白調整
+  margin: 0 4px;
+}

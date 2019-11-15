@@ -28,6 +28,22 @@ $arrow-right-height-value: 50px;
     border-left-color: $arrow-color;
     margin-bottom: - $arrow-right-height-value / 4;
   }
+  &.is-small {
+    &::before {
+      // 胴体の部分
+      width: 129px;
+      height: 19%;
+      background: $arrow-color;
+    }
+    &::after {
+      // 三角の部分
+      width: $arrow-right-height-value / 2;
+      height: $arrow-right-height-value / 2;
+      border: $arrow-right-height-value / 4 solid transparent;
+      border-left-color: $arrow-color;
+      margin-bottom: - $arrow-right-height-value / 6;
+    }
+  }
 }
 
 .arrow-right__position {
