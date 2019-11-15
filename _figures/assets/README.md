@@ -1,4 +1,4 @@
-## _figure/assets
+## _figures/assets
 
 - HTML/CSS で修正可能な図。
 - サーバ起動せずとも HTML/CSS はそのまま静的なファイルとして読み込めます。
@@ -16,10 +16,10 @@ gulp-cliをグローバルインストール
 $ npm install -g gulp-cli
 ```
 
-rails_textbookの_figure/assetsに移動し、（初回のみ）package.jsonに書かれたパッケージのインストール
+rails_textbookの_figures/assetsに移動し、（初回のみ）package.jsonに書かれたパッケージのインストール
 
 ```
-$ cd rails_textbook/_figure/assets
+$ cd rails_textbook/_figures/assets
 $ npm install
 ```
 
