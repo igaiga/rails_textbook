@@ -34,8 +34,28 @@
 .code__block {
   border: 4px solid $main-color;
   border-radius: $round-medium;
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  &.is-accent-color {
+    border-color: $accent-color;
+  }
   &.is-inline-block {
-    // 横いっぱいにならないようにする
+    // create bookボタン用。横いっぱいにならないようにする
     display: inline-block;
   }
+  &.is-margin-zero {
+    margin: 0;
+  }
+  &.is-margin-bottom {
+    margin-bottom: 0.5em;
+  }
+  & > .code__block {
+    // さらに中で囲う場合は左右に余白をあける
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+  }
+}
+
+.code__block-border-none {
+  margin: 0 calc(0.5em + 8px);
 }

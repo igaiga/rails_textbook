@@ -1,0 +1,62 @@
+/* ----------------------------------------------------------
+/* arrow-right
+/* 右に向かう横向きの矢印
+/* ---------------------------------------------------------- */
+
+$arrow-right-width-value: 30px;
+$arrow-right-height-value: 50px;
+
+.arrow-right {
+  margin: 0;
+  height: $arrow-right-height-value;
+  &::before, &::after {
+    display: inline-block;
+    content: '';
+  }
+  &::before {
+    // 胴体の部分
+    // width: calc(100% - #{$arrow-right-height-value}); // 100%の場合
+    width: $arrow-right-width-value + $arrow-right-height-value;
+    height: 45%;
+    background: $arrow-color;
+  }
+  &::after {
+    // 三角の部分
+    width: $arrow-right-height-value;
+    height: $arrow-right-height-value;
+    border: $arrow-right-height-value / 2 solid transparent;
+    border-left-color: $arrow-color;
+    margin-bottom: - $arrow-right-height-value / 4;
+  }
+}
+
+.arrow-right__position {
+  // 左右方向中央に位置
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.arrow-right__position-routes {
+}
+
+// .arrow-right__box {
+//   padding: 0 1em;
+//   height: 48px;
+//   .arrow__box-arrow {
+//     // arrow__box の高さに合わせられる矢印
+//     height: 100%;
+//     &::before {
+//       // 胴体の部分
+//       height: calc(100% - #{$arrow-right-width-value} / 2.5);
+//     }
+//     &::after {
+//       // 三角の部分
+//       width: $arrow-right-width-value / 1.25;
+//       height: $arrow-right-width-value / 1.25;
+//       border: $arrow-right-width-value / 2.5 solid transparent;
+//       border-top-color: $arrow-color;
+//     }
+//   }
+// }

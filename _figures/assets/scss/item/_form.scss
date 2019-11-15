@@ -6,5 +6,5 @@
 .form__image {
   display: block;
   margin: 8px;
-  max-width: 100%;
+  max-width: calc(100% - 16px);
 }
