@@ -65,26 +65,3 @@ $arrow-right-height-value: 50px;
   left: 50%;
   transform: translateX(-50%);
 }
-
-.arrow-right__position-routes {
-}
-
-// .arrow-right__box {
-//   padding: 0 1em;
-//   height: 48px;
-//   .arrow__box-arrow {
-//     // arrow__box の高さに合わせられる矢印
-//     height: 100%;
-//     &::before {
-//       // 胴体の部分
-//       height: calc(100% - #{$arrow-right-width-value} / 2.5);
-//     }
-//     &::after {
-//       // 三角の部分
-//       width: $arrow-right-width-value / 1.25;
-//       height: $arrow-right-width-value / 1.25;
-//       border: $arrow-right-width-value / 2.5 solid transparent;
-//       border-top-color: $arrow-color;
-//     }
-//   }
-// }
