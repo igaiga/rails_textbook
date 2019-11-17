@@ -28,19 +28,31 @@ $arrow-right-height-value: 50px;
     border-left-color: $arrow-color;
     margin-bottom: - $arrow-right-height-value / 4;
   }
+  // フォームで使う色
+  &.is-title {
+    &::before { background: $form-border-color-1; }
+    &::after { border-left-color: $form-border-color-1; }
+  }
+  &.is-memo {
+    &::before { background: $form-border-color-2; }
+    &::after { border-left-color: $form-border-color-2; }
+  }
+  &.is-button {
+    &::before { background: $form-border-color-3; }
+    &::after { border-left-color: $form-border-color-3; }
+  }
+  // 小さいサイズ
   &.is-small {
     &::before {
       // 胴体の部分
       width: 129px;
       height: 19%;
-      background: $arrow-color;
     }
     &::after {
       // 三角の部分
       width: $arrow-right-height-value / 2;
       height: $arrow-right-height-value / 2;
-      border: $arrow-right-height-value / 4 solid transparent;
-      border-left-color: $arrow-color;
+      border-width: $arrow-right-height-value / 4;
       margin-bottom: - $arrow-right-height-value / 6;
     }
   }

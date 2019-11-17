@@ -8,3 +8,43 @@
   margin: 8px;
   max-width: calc(100% - 16px);
 }
+
+.form__block {
+  border: 4px solid $accent-color;
+  border-radius: $round-medium;
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  &.is-title {
+    border-color: $form-border-color-1;
+  }
+  &.is-memo {
+    border-color: $form-border-color-2;
+  }
+  &.is-button {
+    border-color: $form-border-color-3;
+  }
+  &.is-inline-block {
+    // create bookボタン用。横いっぱいにならないようにする
+    display: inline-block;
+  }
+  &.is-margin-zero {
+    margin: 0;
+  }
+  &.is-margin-bottom {
+    margin-bottom: 0.5em;
+  }
+  & > .form__block {
+    // さらに中で囲う場合は左右に余白をあける
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+  }
+}
+
+.form__block-border-none {
+  margin: 0 calc(0.5em + 8px);
+}
+
+.form__block-border-none-2 {
+  // .code-block > .code-blockになっていない場合の余白調整
+  margin: 0 4px;
+}

@@ -5,7 +5,8 @@
 
 $command-padding: 0.5em; 
 .command {
-  background: $base-color-3;
+  border-left: $command-padding / 1.5 solid $command-color;
+  background: $command-color-light;
   padding: 0 $command-padding;
   font-family: monospace;
 }

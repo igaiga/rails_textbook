@@ -13,16 +13,16 @@
       <div class="text__path">app/views/books/_form.html.erb</div>
         <div class="box code-box">
 <pre>
-<div class="code__block is-margin-zero is-accent-color"><%= form_with(model: book,<br> local: true) do |form| %>
-<div class="code__block">  &lt;div class="field"&gt;
+<div class="form__block is-margin-zero"><%= form_with(model: book,<br> local: true) do |form| %>
+<div class="form__block is-title">  &lt;div class="field"&gt;
     <%= form.label :title %>
     <%= form.text_field :title %>
   &lt;/div&gt;
-</div><div class="code__block">  &lt;div class="field"&gt;
+</div><div class="form__block is-memo">  &lt;div class="field"&gt;
     <%= form.label :memo %>
     <%= form.text_area :memo %>
   &lt;/div&gt;
-</div><div class="code__block">  &lt;div class="actions"&gt;
+</div><div class="form__block is-button">  &lt;div class="actions"&gt;
     <%= form.submit %>
   &lt;/div&gt;
 </div><% end %>
@@ -30,29 +30,29 @@
     </div>
   </div>
   <div class="box__flex-column-half">
-    <div class="code__block-border-none">
+    <div class="form__block-border-none">
       <img src="../img/img_form_headline.png" class="form__image">
     </div>
-    <div class="code__block is-accent-color">
-      <div class="code__block">
+    <div class="form__block">
+      <div class="form__block is-title">
         <img src="../img/img_form_title.png" class="form__image">
       </div>
-      <div class="code__block">
+      <div class="form__block is-memo">
         <img src="../img/img_form_memo.png" class="form__image">
       </div>
-      <div class="code__block is-inline-block is-margin-bottom">
+      <div class="form__block is-button is-inline-block is-margin-bottom">
         <img src="../img/img_form_button.png" width="106" class="form__image">
       </div>
     </div>
-    <div class="code__block-border-none">
+    <div class="form__block-border-none">
       <img src="../img/img_form_back.png" class="form__image">
     </div>
   </div>
 </div>
 
-<div class="arrow-right arrow-right__position" style="top: 100px;"></div>
-<div class="arrow-right arrow-right__position" style="top: 230px;"></div>
-<div class="arrow-right arrow-right__position" style="top: 356px;"></div>
+<div class="arrow-right is-title arrow-right__position" style="top: 100px;"></div>
+<div class="arrow-right is-memo arrow-right__position" style="top: 230px;"></div>
+<div class="arrow-right is-button arrow-right__position" style="top: 356px;"></div>
 
 </div>
 </body>
