@@ -4,7 +4,9 @@ require "selenium-webdriver"
 class ScreenPhotographer
   def initialize
     options = Selenium::WebDriver::Chrome::Options.new
-    options.add_argument('--headless')
+    options.add_argument("--headless")
+#    options.add_argument("--window-size=900,800") # macでの画像サイズはこれの2倍になる
+    options.add_argument("--window-size=1200,800") # 調整前なので仮で大きめ
     # headless指定すると普段Chromeで指定しているフォント指定が効かなくなる
     @driver = Selenium::WebDriver.for :chrome, options: options
   end
