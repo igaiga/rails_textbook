@@ -6,20 +6,28 @@
 /* ----------------------------------------------------------
 /* color
 /* ---------------------------------------------------------- */
+
+// テキスト
+$text-color: #333;
+
+// 背景
 $base-color-light-1: #FFEBEB;
 $base-color-light-2: #FFF2DC;
 $base-color-light-3: #FFFBC6;
 $base-color-light-4: #E7FCDC;
-// $base-color-light-4: #fcfcfc;
 $base-color-light-5: #E3F9FF;
 
 $base-color-1: #FFBDBD;
 $base-color-2: #FFD28A;
 $base-color-3: #FFE975;
 $base-color-4: #BCEDA1;
-// $base-color-4: #d6d6d6;
 $base-color-5: #B8EEFF;
 
+// グレー地
+// $base-color-light-4: #fcfcfc;
+// $base-color-4: #d6d6d6;
+
+// 強調色
 $main-color: #cf2c2c;
 $arrow-color: $main-color;
 $accent-color: #0b72b3;
@@ -36,12 +44,12 @@ $form-border-color-1: #ffbce9;
 $form-border-color-2: #78d6fe;
 $form-border-color-3: #96ea9a;
 
-// 以下使ってない
-$main-sub-color: #fce4ec;
-$base-color: #fffde7;
-$text-color: #333;
+// // 以下使ってない
+// $main-sub-color: #fce4ec;
+// $base-color: #fffde7;
+// $text-color: #333;
 
-$thin-gray: #f7f7f7;
+// $thin-gray: #f7f7f7;
 
 $line-color: lighten($text-color, 50%);
 
