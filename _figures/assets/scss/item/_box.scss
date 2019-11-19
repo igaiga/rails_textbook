@@ -63,11 +63,19 @@
   &.is-left-margin {
     margin-left: 1em;
   }
-}
-
-.box__flex-column-half {
-  width: calc(50% - 1em);
-  margin: 0;
+  // サイズの指定。パーセンテージで。
+  &.size-50 {
+    width: calc(50% - 1em);
+    margin: 0;
+  }
+  &.size-40 {
+    width: calc(40% - 1em);
+    margin: 0;
+  }
+  &.size-60 {
+    width: calc(60% - 1em);
+    margin: 0;
+  }
 }
 
 .box__no-bg {
