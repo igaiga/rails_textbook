@@ -4,15 +4,14 @@ require "selenium-webdriver"
 class ScreenPhotographer
   def initialize
     options = Selenium::WebDriver::Chrome::Options.new
-    options.add_argument("--headless")
-#    options.add_argument("--window-size=900,800") # macでの画像サイズはこれの2倍になる
-    options.add_argument("--window-size=1200,800") # 調整前なので仮で大きめ
     # headless指定すると普段Chromeで指定しているフォント指定が効かなくなる
+    options.add_argument("--headless")
+    # options.add_argument("--window-size=900,800") # macでの画像サイズはこれの2倍になる
+    options.add_argument("--window-size=1200,800") # 調整前なので仮で大きめ
     @driver = Selenium::WebDriver.for :chrome, options: options
   end
 
   def screenshot(html_path:, out_path:)
-    # p file_url(html_path)
     @driver.get(file_url(html_path))
     @driver.save_screenshot(out_path)
   end
@@ -33,34 +32,34 @@ class FilePathMaker
     html_paths.map do |path|
       { html_path: path,   
         out_path: out_filename(path) }
-      #TODO: figure_sampleは不要
+      #TODO: figure_sample.htmlは不要
     end
   end
 
-  # TODO: private
-  def self.html_paths
+  private_class_method def self.html_paths
     Dir.glob(File.join(html_base_path, "**/*.html"))
   end
 
-  def self.out_filename(path)
+  private_class_method def self.out_filename(path)
     File.join(
       out_base_path,
-      File.dirname(path).split("/").last, # Fileでできるとかっこいい
+      File.dirname(path).split("/").last,
       File.basename(path, ".html") + ".png"
       )
   end
   
-  def self.base_path
+  private_class_method def self.base_path
     Dir.pwd
   end
 
-  def self.html_base_path
+  private_class_method def self.html_base_path
     File.join(base_path, "..", "..", "assets")
   end
 
-  def self.out_base_path
-    # TODO: 正しい位置へ移動
-    File.join(base_path, "tmp_out")
+  private_class_method def self.out_base_path
+    # TODO: 正しいフォルダへ書き換え
+    # assets/smallest-app/kn # TODO: knフォルダはscreenshotsと混ぜられたら消す
+    File.join(base_path, "..", "..", "..", "assets", "kn")
   end
 end
 
