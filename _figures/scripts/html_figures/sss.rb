@@ -44,6 +44,7 @@ class FilePathMaker
     File.join(
       out_base_path,
       File.dirname(path).split("/").last,
+      "kn", # TODO: knを消す or screenshotsもフォルダにする
       File.basename(path, ".html") + ".png"
       )
   end
@@ -57,9 +58,7 @@ class FilePathMaker
   end
 
   private_class_method def self.out_base_path
-    # TODO: 正しいフォルダへ書き換え
-    # assets/smallest-app/kn # TODO: knフォルダはscreenshotsと混ぜられたら消す
-    File.join(base_path, "..", "..", "..", "assets", "kn")
+    File.join(base_path, "..", "..", "..", "assets")
   end
 end
 
