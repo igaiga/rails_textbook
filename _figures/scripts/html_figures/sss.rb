@@ -44,7 +44,7 @@ class FilePathMaker
     File.join(
       out_base_path,
       File.dirname(path).split("/").last,
-      "kn", # TODO: knを消す or screenshotsもフォルダにする
+      "figures",
       File.basename(path, ".html") + ".png"
       )
   end
