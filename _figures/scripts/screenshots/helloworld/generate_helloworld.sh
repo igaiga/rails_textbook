@@ -51,3 +51,6 @@ cd ..
 ruby screenshots_crop.rb
 
 open screenshots
+
+# 作成されたpngファイルを配置
+ruby replace_png.rb
