@@ -12,6 +12,7 @@ class ScreenPhotographer
   end
 
   def screenshot(html_path:, out_path:)
+    return if FilePathMaker.needless?(html_path)
     @driver.get(file_url(html_path))
     @driver.save_screenshot(out_path)
   end
@@ -32,8 +33,24 @@ class FilePathMaker
     html_paths.map do |path|
       { html_path: path,   
         out_path: out_filename(path) }
-      #TODO: figure_sample.htmlは不要
     end
+  end
+
+  def self.needless?(path)
+    needless_htmls = ["figure-sample.html"]
+    needless_htmls.include?(File.basename(path))
+  end
+  
+  private_class_method def self.base_path
+    Dir.pwd # 実行時カレントディレクトリ
+  end
+
+  private_class_method def self.html_base_path
+    File.join(base_path, "..", "..", "assets")
+  end
+
+  private_class_method def self.out_base_path
+    File.join(base_path, "..", "..", "..", "assets")
   end
 
   private_class_method def self.html_paths
@@ -46,19 +63,7 @@ class FilePathMaker
       File.dirname(path).split("/").last,
       "figures",
       File.basename(path, ".html") + ".png"
-      )
-  end
-  
-  private_class_method def self.base_path
-    Dir.pwd
-  end
-
-  private_class_method def self.html_base_path
-    File.join(base_path, "..", "..", "assets")
-  end
-
-  private_class_method def self.out_base_path
-    File.join(base_path, "..", "..", "..", "assets")
+    )
   end
 end
 
