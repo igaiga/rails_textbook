@@ -22,13 +22,13 @@ categories:
 
 TODO: 新図置き換え
 
-![CRUD画面遷移図(newとcreate)](assets/new-create/kn/crud-transition-diagram-new-create.png)
+![CRUD画面遷移図(newとcreate)](assets/new-create/figures/crud-transition-diagram-new-create.png)
 
 おおまかな流れは以下のようになります。
 
 TODO: 新図を切り貼りして作成
 
-![おおまかな流れ](assets/new-create/kn/new-create-overview.png)
+![おおまかな流れ](assets/new-create/figures/new-create-overview.png)
 
 まず、newアクションが実行され新規入力画面を表示します。ここで本のタイトルとメモを入力します。Create Bookボタンを押すと、次に画面のないcreateアクションが実行されます。createアクションで、前のステップで入力されたタイトルとメモで本のデータを新規登録します。
 
@@ -40,13 +40,13 @@ TODO: 新図を切り貼りして作成
 
 TODO: 題字とスクショに分解
 
-![新規入力画面](assets/new-create/kn/new-page.png)
+![新規入力画面](assets/new-create/figures/new-page.png)
 
 新規入力画面はnewアクションで表示されます。Railsアプリは前章で説明した通り、Routes、コントローラ、ビューの各処理を経て画面が表示されます。
 
 TODO: 新図置き換え
 
-![new(新規入力)画面が表示されるまで](assets/new-create/kn/new-flow.png)
+![new(新規入力)画面が表示されるまで](assets/new-create/figures/new-flow.png)
 
 最初はRoutesで処理が行われます。
 
@@ -54,17 +54,17 @@ TODO: 新図置き換え
 
 TODO: 新図置き換え
 
-![新規入力画面の処理の流れ](assets/new-create/kn/new-flow-routes.png)
+![新規入力画面の処理の流れ](assets/new-create/figures/new-flow-routes.png)
 
 最初はRoutesにて、リクエストに対して処理されるコントローラとアクションが決まります。`http://localhost:3000/rails/info/routes`へアクセスしてRoutesの対応表を見てみましょう。今回のリクエストはパスが /books/new 、HTTPメソッドがGETなので、BooksControllerのnewアクションへ処理が進みます（図の下線部に該当します）。
 
 TODO: 新図置き換え
 
-![Routes](assets/new-create/kn/new-routes.png)
+![Routes](assets/new-create/figures/new-routes.png)
 
 ### コントローラ
 
-![新規入力画面の処理の流れ - コントローラ](assets/new-create/kn/new-flow-controller.png)
+![新規入力画面の処理の流れ - コントローラ](assets/new-create/figures/new-flow-controller.png)
 
 BooksControllerのnewアクションのコードを見てみましょう。ファイルは `app/controllers/books_controller.rb` です。
 
@@ -84,7 +84,7 @@ Bookクラスには色々と便利な機能があるのですが、それは後�
 
 ### ビュー
 
-![新規入力画面の処理の流れ - ビュー](assets/new-create/kn/new-flow-view.png)
+![新規入力画面の処理の流れ - ビュー](assets/new-create/figures/new-flow-view.png)
 
 ビューのコード `views/books/new.html.erb` を見てみましょう。
 
@@ -99,7 +99,7 @@ Bookクラスには色々と便利な機能があるのですが、それは後�
 
 これだけしかありません。随分とあっさりしています。実は、下の図中の枠線部分は別のファイルに書いてあり、 `<%= render 'form', book: @book %>` で埋め込まれるようになっています。
 
-![renderの説明](assets/new-create/kn/new-view-render.png)
+![renderの説明](assets/new-create/figures/new-view-render.png)
 
 renderメソッドは別のビューファイルを埋め込みます。わざわざ別のファイルに書く理由は、他の画面でもそのファイルを利用することで、同じ部品を共用したいからです。埋め込む用のビューファイルをパーシャルと言います。書式は以下の通りです。
 
@@ -165,7 +165,7 @@ renderメソッドは別のビューファイルを埋め込みます。わざ�
 
 TODO: 新図置き換え（Rails6.0はtext_fieldにid指定不要になってた）
 
-![コードとページの部品の対応](assets/new-create/kn/new-view-form.png)
+![コードとページの部品の対応](assets/new-create/figures/new-view-form.png)
 
 それぞれ矢印の先の部品を作っています。また、全体としてはformという名の部品になってます。formはHTMLでブラウザからサーバへ情報を送信する仕組みの1つです。
 
@@ -173,7 +173,7 @@ TODO: 新図置き換え（Rails6.0はtext_fieldにid指定不要になってた
 
 TODO: 新図置き換え
 
-![タイトル部品](assets/new-create/kn/new-view-form-title-html.png)
+![タイトル部品](assets/new-create/figures/new-view-form-title-html.png)
 
 枠線内がタイトルの部分です。全体はHTMLですが、 `<%= %>`で囲まれた黄色の部分がその中に埋め込まれたRailsコードです。
 
@@ -181,7 +181,7 @@ TODO: 新図置き換え
 
 次はRailsコードの部分をもう少し詳しく見てみましょう。
 
-![タイトル(Railsコード)](assets/new-create/kn/new-view-form-title-rails.png)
+![タイトル(Railsコード)](assets/new-create/figures/new-view-form-title-rails.png)
 
 `form.label :title` で "Title"という文字列を表示しています。その名の通り、ラベルの部分です。`form.text_field :title` はその下にあるテキスト入力欄です。`form` はformブロック内の変数で、ここではbookに関するformを記述するために使っています。見慣れない書き方かもしれませんが、ここはそう書くものだと思ってもらえれば大丈夫です。
 
@@ -189,7 +189,7 @@ TODO: 新図置き換え
 
 TODO: 新図置き換え
 
-![メモ](assets/new-create/kn/new-view-form-memo.png)
+![メモ](assets/new-create/figures/new-view-form-memo.png)
 
 メモの部分も同様です。`form.label :memo` が "Memo" を表示する部分です。`form.text_area :memo` がその下のテキスト入力欄を作ります。`text_area` は先ほどの `text_field` よりも広くて改行を入力できるテキスト入力欄を作るメソッドです。
 
@@ -197,7 +197,7 @@ TODO: 新図置き換え
 
 TODO: 新図置き換え
 
-![submit](assets/new-create/kn/new-view-form-submit-1.png)
+![submit](assets/new-create/figures/new-view-form-submit-1.png)
 
 `form.submit` は投稿ボタン（Create Bookボタン）を作ります。このボタンを押すとform内の情報をまとめてサーバへ送信（リクエストを送信）します。ここでは、Bookに関する情報、入力したタイトルとメモをリクエストに含んで送信します。ここで送信されたタイトルとメモが後の行程で登録されるのです。では、具体的にどんなリクエストが飛ぶのかを観察してみましょう。
 
@@ -207,19 +207,19 @@ Chromeのデベロッパーツールを使うと、どのようなリクエス�
 
 TODO: スクショ置き換え、データ置き換え
 
-![Chromeでリクエストを観察する(準備)](assets/new-create/kn/create-request-1.png)
+![Chromeでリクエストを観察する(準備)](assets/new-create/figures/create-request-1.png)
 
 new画面を表示させ、タイトル欄とメモ欄にBookの情報を入力します。Chromeのメニューからデベロッパーツールを起動します。Networkと書かれたタブを選択します。CreateBookボタンを押し、リクエストを送信してみましょう。
 
 TODO: スクショ置き換え、データ置き換え
 
-![Chromeでリクエストを観察する(リクエスト送信)](assets/new-create/kn/create-request-2.png)
+![Chromeでリクエストを観察する(リクエスト送信)](assets/new-create/figures/create-request-2.png)
 
 たくさん表示されました。一番最初のbooksと書かれた行が先ほどボタンを押して発行されたリクエストです。booksの行をクリックして詳細を見てみましょう。
 
 TODO: スクショ置き換え、データ置き換え
 
-![Chromeでリクエストを観察する(リクエストの中身)](assets/new-create/kn/create-request-3.png)
+![Chromeでリクエストを観察する(リクエストの中身)](assets/new-create/figures/create-request-3.png)
 
 最初にURLとHTTPメソッドが書いてあります。Routesで使う情報がここに載っています。
 
@@ -232,7 +232,7 @@ TODO: スクショ置き換え、データ置き換え
 
 new画面でCreate bookボタンを押すと新たなリクエストを飛ばすことが分かりました。ここからは、この2つ目のリクエストを追いかけます。リクエストの内容は、さきほどChromeで確認したように以下の図のようになっています。
 
-![新たなリクエスト](assets/new-create/kn/create-flow-request.png)
+![新たなリクエスト](assets/new-create/figures/create-flow-request.png)
 
 ### Routes
 
@@ -240,7 +240,7 @@ new画面でCreate bookボタンを押すと新たなリクエストを飛ばす
 
 TODO: 新図置き換え
 
-![routes](assets/new-create/kn/create-routes.png)
+![routes](assets/new-create/figures/create-routes.png)
 
 URLのパスは/books 、HTTPメソッドはPOSTなのでbooks#create、つまりBooksControllerのcreateアクションが呼び出されます。
 
@@ -269,7 +269,7 @@ end
 
 TODO: 新図置き換え
 
-![コントローラ - 3つの処理](assets/new-create/kn/create-controller.png)
+![コントローラ - 3つの処理](assets/new-create/figures/create-controller.png)
 
 3つの処理を順に見ていきます。
 
@@ -309,7 +309,7 @@ end
 
 TODO: 以下の図は削除して本文へ移動
 
-![パラメータの中身の表示 実行結果](assets/new-create/kn/create-controller-params.png)
+![パラメータの中身の表示 実行結果](assets/new-create/figures/create-controller-params.png)
 
 実行結果を見ると、確かに `params` の中にHashの形式でブラウザにて入力した値が入っていることが分かりました。
 
@@ -317,7 +317,7 @@ TODO: 以下の図は削除して本文へ移動
 
 TODO: 以下の図も編集しやすい形へ調整
 
-![パラメータの送信側と受信側](assets/new-create/kn/create-controller-params-2.png)
+![パラメータの送信側と受信側](assets/new-create/figures/create-controller-params-2.png)
 
 ここで出力した `params` の値と、さきほどブラウザのデベロッパーツールで表示させたパラメータの値が同じになっていることが分かります。ブラウザのデベロッパーツールはパラメータを送信している部分です。一方でRailsのアプリ側はパラメータを受信している部分です。ブラウザがユーザーの入力データをパラメータとして送信し、私たちが作成しているアプリがそのデータを受け取っていることを確認できました。
 
@@ -356,7 +356,7 @@ end
 
 TODO: 新図置き換え
 
-![create - ここまでの流れ](assets/new-create/kn/create-controller.png)
+![create - ここまでの流れ](assets/new-create/figures/create-controller.png)
 
 この章では1.の途中まで、createアクションにパラメータ（params）が届いたのを確認したところまで説明しました。 `book_params` でパラメータの情報を取れることが分かりました。これを使って本のデータを作ります。
 

@@ -206,13 +206,13 @@ end
 
 TODO: 新図置き換え
 
-![リクエスト](assets/smallest-app/kn/request.png)
+![リクエスト](assets/smallest-app/figures/request.png)
 
 Webサーバ上で動作しているWebアプリはリクエストを受け取ると、「レスポンス」としてHTMLで書かれたテキストを作ってブラウザへ返します。レスポンスは「Webアプリが返してきた情報群（HTMLで書かれた表示する情報を含む）」とイメージできます。HTMLはHyperText Markup Languageのことで、Webページを記述するための言語です。ブラウザはHTMLを解釈して、私たちの見易い、いつも見慣れたWebページを表示します。
 
 TODO: 新図置き換え
 
-![レスポンス](assets/smallest-app/kn/response.png)
+![レスポンス](assets/smallest-app/figures/response.png)
 
 コラム：Webサーバ
 Webサーバとはなにものなのでしょうか？Webサーバは「Webサービスを提供する場合に必要な共通の機能を提供するもの」と言えます。Webアプリはブラウザとのやりとりで必要な機能のうち、どのサービスでも使う機能はWebサーバに仕事をまかせ、自分のサービスで必要なオリジナルな機能を提供することに注力します。Railsで開発するときにはpumaというWebサーバを利用する設定になっていて、`rails s`を実行すると起動します。実際のWebサービスを運用する場合は、nginxやApacheといったWebサーバを組み合わせて使うことが多いです。
@@ -234,13 +234,13 @@ HTMLはブラウザからも見ることができます。Chromeの場合は、�
 
 TODO: 新図置き換え
 
-![インターネット上のサービスにアクセス](assets/smallest-app/kn/internet_and_local.png)
+![インターネット上のサービスにアクセス](assets/smallest-app/figures/internet_and_local.png)
 
 しかし、開発中は自分が作っているアプリをわざわざインターネット上へ置く必要はなく、自分のPCでWebアプリを動作させ、同じく自分のPCにあるブラウザからアクセス可能です。
 
 TODO: 新図置き換え
 
-![開発中は自分のPCでつくることができる](assets/smallest-app/kn/local.png)
+![開発中は自分のPCでつくることができる](assets/smallest-app/figures/local.png)
 
 ## 今回つくったRailsアプリの動作まとめ
 
@@ -248,7 +248,7 @@ TODO: 新図置き換え
 
 TODO: 新図置き換え
 
-![今回つくったRailsアプリの動作](assets/smallest-app/kn/smallest_app.png)
+![今回つくったRailsアプリの動作](assets/smallest-app/figures/smallest_app.png)
 
 ブラウザのURL欄にアドレスを入力してEnterを押すとリクエストが飛びます。リクエストを受け取ったRailsアプリはHTMLをつくり、レスポンスとして返します。レスポンスを受け取ったブラウザはHTMLを解釈し、画面に表示します。
 
@@ -306,7 +306,7 @@ create  app/helpers/application_helper.rb
 
 TODO: 新図置き換え
 
-![Railsアプリの基本的なフォルダ・ファイル群](assets/smallest-app/kn/rails_files.png)
+![Railsアプリの基本的なフォルダ・ファイル群](assets/smallest-app/figures/rails_files.png)
 
 ### rails gコマンド
 
@@ -350,7 +350,7 @@ Running via Spring preloader in process 50811
 
 TODO: 新図置き換え、説明を本文へ
 
-![rails g controller hello index コマンドで生成されるファイル](assets/smallest-app/kn/rails_g_controller.png)
+![rails g controller hello index コマンドで生成されるファイル](assets/smallest-app/figures/rails_g_controller.png)
 
 これらのファイルがどのような働きをしているのかを、次の節でRailsがリクエストを受けてからレスポンスを返すまでの基本的な処理の順序を追いかけながら説明していきます。
 
@@ -360,13 +360,13 @@ TODO: 新図置き換え、説明を本文へ
 
 TODO: 新図置き換え
 
-![Railsアプリの動作](assets/smallest-app/kn/rails_app_semantics.png)
+![Railsアプリの動作](assets/smallest-app/figures/rails_app_semantics.png)
 
 ここでは、この図のRailsAppの部分について詳しく説明していきます。ここから、対象箇所を抜き出したのが次の図です。
 
 TODO: 新図置き換え
 
-![Railsアプリがリクエストを受けてレスポンスを返すまで](assets/smallest-app/kn/rails_app_request_to_response.png)
+![Railsアプリがリクエストを受けてレスポンスを返すまで](assets/smallest-app/figures/rails_app_request_to_response.png)
 
 リクエストを受けたRailsアプリは、Routes, Controller, Viewの各所で処理を行い、レスポンスとしてHTMLを生成して返します。各所ではそれぞれ仕事の分担が決まっていて、自分の担当の処理を行います。Routes, Controller, Viewでそれぞれどのような処理が行われているのか、順に見ていきましょう。
 
@@ -384,7 +384,7 @@ Routesは「リクエストのURLとHTTPメソッド」に応じて次に処理�
 
 TODO: 本文へ書き換え
 
-![Routes](assets/smallest-app/kn/routes_mapping.png)
+![Routes](assets/smallest-app/figures/routes_mapping.png)
 
 Routesの処理を、HTTPメソッドを加えてもう少し詳しくみてみましょう。最初に説明した通り、Routesは「リクエストのURLとHTTPメソッド」に応じて次に処理を行う先を決めるのが仕事です。RailsではRoutesの処理が終わると、次はControllerのアクションへ処理が移ります。
 
@@ -396,7 +396,7 @@ TODO: 新図置き換え（細部要検討）
 
 * http://localhost:3000/rails/info/routes
 
-![Routes対応表](assets/smallest-app/kn/routes.png)
+![Routes対応表](assets/smallest-app/figures/routes.png)
 
 表中の "HTTP Verb" がHTTPメソッドです。"Path"はURLの後半部分に相当します。URLが"http://localhost:3000/hello/index"である場合、パスは"/hello/index"になります。(表示されたPathの後半部分の`"(.:format)"は省略できる記述で、レスポンスで返すフォーマットを指定するための機能です。省略した場合はHTMLを返すのが普通です。)
 
@@ -433,11 +433,11 @@ HelloControllerのindexアクションが呼び出されます。`def index`か�
 
 TODO: 新図置き換え
 
-![インスタンス変数を使うとビューへ情報を渡すことができる](assets/smallest-app/kn/instance_variable.png)
+![インスタンス変数を使うとビューへ情報を渡すことができる](assets/smallest-app/figures/instance_variable.png)
 
 どのビューへ処理が進むかはコントローラで指定可能ですが、今回のように何も指定が無い場合は、コントローラおよびアクションと同名のビューを選択します。今回はHelloControllerのindexアクションなので、対応するビューのファイルはapp/views/hello/index.html.erbになります。
 
-![コントローラの動作](assets/smallest-app/kn/controller.png)
+![コントローラの動作](assets/smallest-app/figures/controller.png)
 
 ### ビュー
 
@@ -459,7 +459,7 @@ HTMLのpタグがあります。その中にHTMLではない `<%=` と `%>` と�
 
 TODO: 本文書き換え
 
-![ビュー](assets/smallest-app/kn/view.png)
+![ビュー](assets/smallest-app/figures/view.png)
 
 ### まとめ
 
@@ -473,7 +473,7 @@ TODO: 本文書き換え
 
 TODO: 新図置き換え
 
-![Railsアプリがリクエストを受けてレスポンスを返すまで](assets/smallest-app/kn/rails_app_request_to_response.png)
+![Railsアプリがリクエストを受けてレスポンスを返すまで](assets/smallest-app/figures/rails_app_request_to_response.png)
 
 ## さらに学びたい場合は
 
