@@ -73,7 +73,7 @@ Use Ctrl-C to stop
 
 * http://localhost:3000
 
-![welcome rails](assets/smallest-app/welcome_rails.png)
+![welcome rails](assets/smallest-app/app_ss/welcome_rails.png)
 
 これは、Railsが起動し、あなたのブラウザからのリクエストを受け付けて、表示している画面です。ここまでのわずかな手順で、ブラウザでページを表示する機能を持つWebアプリをつくることができました。
 
@@ -129,7 +129,7 @@ Use Ctrl-C to stop
 
 * http://localhost:3000/hello/index
 
-![hello/index](assets/smallest-app/hello_index.png)
+![hello/index](assets/smallest-app/app_ss/hello_index.png)
 
 
 この画面が出れば、ここまで意図通りに動作しています。さきほど実行したrails gコマンドはこのページ、/hello/indexを作るものでした。どのような仕組みで動作しているかは後ほどまた説明しますので、今はこのページに"Hello world!"と表示させてみることにしましょう。
@@ -149,7 +149,7 @@ Use Ctrl-C to stop
 + <p>Hello world!</p>
 ```
 
-![Hello world](assets/smallest-app/hello_world.png)
+![Hello world](assets/smallest-app/app_ss/hello_world.png)
 
 "Hello world!"の文字が表示されましたか？これで一番小さなRailsアプリができあがりました。ここへ、少しだけRubyのコードを書いて、現在時刻を表示する機能を追加してみましょう。以下のように、+の行を追加してください。
 
@@ -158,7 +158,7 @@ Use Ctrl-C to stop
 + <p>現在時刻: <%= Time.current %></p>
 ```
 
-![現在時刻表示](assets/smallest-app/time_utc.png)
+![現在時刻表示](assets/smallest-app/app_ss/time_utc.png)
 
 表示されましたか？ブラウザをリロードすると、現在時刻が更新される、アクセスしたそのときの時刻が表示されるアプリになりました。
 
@@ -169,7 +169,7 @@ Use Ctrl-C to stop
 + <p>現在時刻: <%= Time.current.in_time_zone('Asia/Tokyo') %></p>
 ```
 
-![現在時刻表示](assets/smallest-app/time_jst.png)
+![現在時刻表示](assets/smallest-app/app_ss/time_jst.png)
 
 コラム：今回の方法のほかに、アプリ全体でタイムゾーンを日本時間に設定してしまう方法もあります。その場合はconfig/application.rbファイル中に `config.time_zone = 'Asia/Tokyo'` と設定します。この方法の利点は、プログラムの中のあちこちで `in_time_zone('Asia/Tokyo')` を書かずに済み、config/application.rbファイルの1カ所にまとめることができることです。
 
@@ -219,9 +219,9 @@ Webサーバとはなにものなのでしょうか？Webサーバは「Webサ�
 
 HTMLはブラウザからも見ることができます。Chromeの場合は、どこかのサイト（たとえば ```http://cookpad.com/```）へアクセスしたあと、右クリックメニューから「ページのソースを表示」を選ぶとHTMLで書かれたそのページを閲覧することができます。
 
-![右クリック](assets/smallest-app/right_click.png)
+![右クリック](assets/smallest-app/app_ss/right_click.png)
 
-![HTML(抜粋)](assets/smallest-app/html.png)
+![HTML(抜粋)](assets/smallest-app/app_ss/html.png)
 
 ここまでに説明してきた以下の2つが、ブラウザの主な仕事です。
 
@@ -453,7 +453,7 @@ index.html.erbは、HTMLのもとになるファイルです。ブラウザで�
 
 HTMLのpタグがあります。その中にHTMLではない `<%=` と `%>` というタグがあります。これがRubyのコードを実行するためのタグです。ここではその中にある `@time` が実行されます。@timeはコントローラのところで作られたインスタンス変数です。実行すると、変数が指しているもの、つまりコントローラで実行された `Time.current.in_time_zone('Asia/Tokyo')` の結果で置き換えられます。このビューで作られたHTMLは、ブラウザで確認することができます。さきほどブラウザから見たように、現在時刻が表示されます（実際には、ビューが作ったHTMLに、Railsがその他の加工を加えて送出します）。
 
-![ブラウザからビューがつくったHTMLを確認](assets/smallest-app/time_jst.png)
+![ブラウザからビューがつくったHTMLを確認](assets/smallest-app/app_ss/time_jst.png)
 
 ビューについての動作をまとめると以下のようになります。
 
