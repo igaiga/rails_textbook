@@ -304,9 +304,7 @@ create  app/helpers/application_helper.rb
 
 これらのファイル群によって、rails newをしただけで（何もコードを書かなくても）Webアプリとして動作します。たくさんのファイルがつくられていますね。Railsアプリの基本的なフォルダとファイル群は以下の図のものです。いきなりすべてを説明するのは難しいので、順番に説明していきます。役割ごとにフォルダが分かれています。それぞれの役割についてはこの後説明していきます。
 
-TODO: 新図置き換え
-
-![Railsアプリの基本的なフォルダ・ファイル群](assets/smallest-app/figures/rails_files.png)
+![Railsアプリの基本的なフォルダ・ファイル群（一部抜粋）](assets/smallest-app/figures/rails_files.png)
 
 ### rails gコマンド
 
@@ -336,9 +334,7 @@ Running via Spring preloader in process 50811
   create      app/assets/stylesheets/hello.scss
 ```
 
-ここで実行したrails g controllerコマンドは、URLのパスが/hello/indexであるページを表示するためのファイル群を生成します。gはgenerateの略です。rails g controllerの後ろのhelloとindexが、生成するページのパスを指定していることが分かります。
-
-ちなみに、前にやったrails g scaffoldもgenerateの種類の1つです。scaffoldは編集、更新、削除といったたくさんの機能を一度につくりますが、rails g controllerの場合は生成するページをつくるシンプルなものです。そのほかにもいくつかのgenerateコマンドが用意されています。
+ここで実行したrails g controllerコマンドは、URLのパスが/hello/indexであるページを表示するためのファイル群を作ります。gはgenerateの略です。rails g controllerの後ろのhelloとindexが、生成するページのパスを指定していることが分かります。ほかにもいくつかのgenerateコマンドが用意されているので、またあとで説明します。
 
 もしも、コマンドを間違えて生成したファイルをまとめて削除したい場合は、gをdに替えたコマンドを実行すると、まとめて削除することができます。dはdestroyの略です。
 
@@ -347,8 +343,6 @@ Running via Spring preloader in process 50811
 * app/controllers/hello_controller.rb
 * app/views/hello/index.html.erb
 * config/routes.rb
-
-TODO: 新図置き換え、説明を本文へ
 
 ![rails g controller hello index コマンドで生成されるファイル](assets/smallest-app/figures/rails_g_controller.png)
 
@@ -364,11 +358,9 @@ TODO: 新図置き換え
 
 ここでは、この図のRailsAppの部分について詳しく説明していきます。ここから、対象箇所を抜き出したのが次の図です。
 
-TODO: 新図置き換え
-
 ![Railsアプリがリクエストを受けてレスポンスを返すまで](assets/smallest-app/figures/rails_app_request_to_response.png)
 
-リクエストを受けたRailsアプリは、Routes, Controller, Viewの各所で処理を行い、レスポンスとしてHTMLを生成して返します。各所ではそれぞれ仕事の分担が決まっていて、自分の担当の処理を行います。Routes, Controller, Viewでそれぞれどのような処理が行われているのか、順に見ていきましょう。
+リクエストを受けたRailsアプリは、Routes, Controller, Viewの3つのコードを通過します。それぞれの場所で処理を行い、レスポンスとしてHTMLを生成して返します。各所ではそれぞれ仕事の分担が決まっていて、自分の担当の処理を行います。Routes, Controller, Viewでそれぞれどのような処理が行われているのか、順に見ていきましょう。
 
 ### Routes
 
@@ -378,27 +370,21 @@ Routesは「リクエストのURLとHTTPメソッド」に応じて次に処理�
  * URL : http://localhost:3000/hello/index
  * HTTPメソッド：GET
 
-リクエストを構成する要素のうち、重要なものがURLとHTTPメソッドです。URLはインターネット上の住所を表し、URLでアクセスする先を指定します。もう一方のHTTPメソッドは、そのURLに対して「何をするか」を指示するものです。ブラウザのアドレス欄へURLを入力しEnterを押すと、HTTPメソッド "GET" でリクエストが飛びます。GETは「ページを取得する」の意です。GETのほかにも、HTTPメソッドはいくつかあり、Railsアプリでよく使うものは4つほどです。GET以外のHTTPメソッドは次の章以降で説明していきます。
+リクエストを構成する要素のうち、重要なものがURLとHTTPメソッドです。URLはインターネット上の住所を表し、アクセスする先を指定するものです。もう一方のHTTPメソッドは、そのURLに対して「何をするか」を指示するものです。ブラウザのアドレス欄へURLを入力しEnterを押すと、HTTPメソッド "GET" でリクエストが飛びます。GETは「ページを取得する」指示です。GETのほかにもHTTPメソッドはいくつかあり、Railsアプリでよく使うものは4つです。GET以外のHTTPメソッドは次の章以降で説明していきます。
 
-まとめると、リクエストは「URL」でアクセス先を、「HTTPメソッド」で行うことを指定します。
-
-TODO: 本文へ書き換え
+まとめると、リクエストは「URL」でアクセス先を、「HTTPメソッド」でなにをするかを指示します。
 
 ![Routes](assets/smallest-app/figures/routes_mapping.png)
 
-Routesの処理を、HTTPメソッドを加えてもう少し詳しくみてみましょう。最初に説明した通り、Routesは「リクエストのURLとHTTPメソッド」に応じて次に処理を行う先を決めるのが仕事です。RailsではRoutesの処理が終わると、次はControllerのアクションへ処理が移ります。
+最初に、Routesは「リクエストのURLとHTTPメソッド」に応じて次に処理を行う先を決めるのが仕事だと書きました。RailsではRoutesの処理が終わると、次はコントローラのアクションへ処理が移ります。アクションとはコントローラに書かれているメソッドのうち、publicなメソッドのことです。「Routesから呼び出せるメソッド」と言っても良いでしょう。RoutesはリクエストのURLとHTTPメソッドから、処理の進み先であるコントローラのアクションを決定します。RoutesはリクエストとControllerのアクションとの対応表と言えます。
 
-アクションとはControllerのメソッドのうち、publicなメソッドのことです（「Routesから呼び出せるもの」とも言えます）。RoutesはリクエストのURLとHTTPメソッドから、処理の進み先であるContollerのアクションを決定します。RoutesはリクエストとControllerのアクションとの対応表と言えます。
-
-では、Routesの対応表を見て見ましょう。rails serverを起動させて以下へアクセスすると、Routesの対応表が表示されます。（図参照）
-
-TODO: 新図置き換え（細部要検討）
+では、Routesの対応表を見て見ましょう。rails serverを起動させて `/rails/info/routes` へアクセスしてみてください。Routesの対応表の見方を説明したのが次の図です。
 
 * http://localhost:3000/rails/info/routes
 
 ![Routes対応表](assets/smallest-app/figures/routes.png)
 
-表中の "HTTP Verb" がHTTPメソッドです。"Path"はURLの後半部分に相当します。URLが"http://localhost:3000/hello/index"である場合、パスは"/hello/index"になります。(表示されたPathの後半部分の`"(.:format)"は省略できる記述で、レスポンスで返すフォーマットを指定するための機能です。省略した場合はHTMLを返すのが普通です。)
+表中の "HTTP Verb" がHTTPメソッドです。"Path"（パス）はURLの後半部分に相当します。URLが"http://localhost:3000/hello/index"である場合、パスは"/hello/index"になります。(表示されたパスの後半部分の`"(.:format)"は省略できる記述で、レスポンスで返すフォーマットを指定するための機能です。省略した場合はHTMLを返すのが普通です。)
 
 右端の"Controller#Action"が処理の移るコントローラとアクションを示しています。ここでは "hello#index" と書かれていますが、#より左側がコントローラ名、右側がアクション名です。この場合は、「HelloControllerのindexアクション」を示しています。
 
@@ -409,7 +395,6 @@ TODO: 新図置き換え（細部要検討）
 ```ruby
 get 'hello/index'
 ```
-
 
 これがRoutesのコード部分で、この1行からさきほど説明した対応表が生成されています。「パス"hello/index"へのGETでのアクセスでHelloControllerのindexアクションが呼ばれる」という文です。Routesの書き方はまた追って説明していきます。
 
