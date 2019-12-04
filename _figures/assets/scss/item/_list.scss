@@ -3,12 +3,13 @@
 /* リストの部品
 /* ---------------------------------------------------------- */
 
-.list {
-  margin-top: 1em;
+ul.list {
+  margin-top: 0.3em;
 }
 
 .list__item {
   margin: 0;
+  line-height: 1.4;
   &::before {
     @include fa;
     font-weight: 900;

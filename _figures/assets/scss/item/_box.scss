@@ -35,9 +35,14 @@
 }
 
 .box__small {
+  // Routes Controller View の枠
   background: $base-color-1;
-  padding: 0.15em 1em;
+  padding: 0 1em;
   border-radius: $round-medium;
+  &.with-margin {
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+  }
 }
 
 .box__flex {
@@ -86,6 +91,7 @@
   display: inline-block;
   font-size: 120%;
   width: 6em;
+  margin: 0.4em 0;
 }
 
 .opacity {
@@ -100,13 +106,7 @@
 
 .box__image {
   display: inline;
-  margin: 0;
-  margin-left: 10px;
-}
-
-.image__helloworld {
-  margin-top: -8px;
-  margin-bottom: -8px;
-  width: 200px;
-  vertical-align: middle;
+  &.is-helloworld {
+    margin: 0.4em 1em 0;
+  }
 }
