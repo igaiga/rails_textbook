@@ -20,17 +20,21 @@ categories:
 
 前の章での「CRUD遷移図」において、newとcreateはこの部分になります。
 
-TODO: 新図置き換え
+![CRUD画面遷移図(newとcreate)](assets/new-create/figures/crud_transition_diagram_new_create.png)
 
-![CRUD画面遷移図(newとcreate)](assets/new-create/figures/crud-transition-diagram-new-create.png)
+新規登録は2つのアクションで構成されます。処理の流れは以下のようになります。
 
-おおまかな流れは以下のようになります。
+### ステップ1: newアクション（新規作成画面）
 
-TODO: 新図を切り貼りして作成
+![newアクション](assets/new-create/figures/new_create_overview_item_new.png)
 
-![おおまかな流れ](assets/new-create/figures/new-create-overview.png)
+newアクションが実行され新規入力画面を表示します。ここで本のタイトルとメモを入力します。Create Bookボタンを押すと、次に画面のないcreateアクションが実行されます。
 
-まず、newアクションが実行され新規入力画面を表示します。ここで本のタイトルとメモを入力します。Create Bookボタンを押すと、次に画面のないcreateアクションが実行されます。createアクションで、前のステップで入力されたタイトルとメモで本のデータを新規登録します。
+### ステップ2: createアクション（画面なし）
+
+![createアクション](assets/new-create/figures/new_create_overview_item_create.png)
+
+つづくcreateアクションで、前のステップで入力されたタイトルとメモで本のデータを新規登録します。
 
 この流れを詳しく説明していきます。最初に、newアクションの新規入力画面の処理を見てみましょう。
 
@@ -38,33 +42,29 @@ TODO: 新図を切り貼りして作成
 
 新規入力画面が表示されるまでの処理の流れを見ていきましょう。
 
-TODO: 題字とスクショに分解
+![newアクション](assets/new-create/figures/new_create_overview_item_new.png)
 
-![新規入力画面](assets/new-create/figures/new-page.png)
+TODO: スクショ置き換え
 
-新規入力画面はnewアクションで表示されます。Railsアプリは前章で説明した通り、Routes、コントローラ、ビューの各処理を経て画面が表示されます。
+![新規入力画面](assets/new-create/figures/new_page.png)
 
-TODO: 新図置き換え
+新規入力画面はnewアクションで表示されます。Railsアプリはこれまでに説明した通り、Routes、コントローラ、ビューの各処理を経て画面が表示されます。
 
-![new(新規入力)画面が表示されるまで](assets/new-create/figures/new-flow.png)
+![new(新規入力)画面の処理の流れ](assets/new-create/figures/new_flow.png)
 
 最初はRoutesで処理が行われます。
 
 ### Routes
 
-TODO: 新図置き換え
+![新規入力画面の処理の流れ - Routes](assets/new-create/figures/new_flow_routes.png)
 
-![新規入力画面の処理の流れ](assets/new-create/figures/new-flow-routes.png)
+Routesの対応表をつかって、リクエストに対して処理されるコントローラとアクションが決まります。`http://localhost:3000/rails/info/routes`へアクセスしてRoutes表を見てみましょう。今回のリクエストはパスが /books/new 、HTTPメソッドがGETなので、BooksControllerのnewアクションへ処理が進みます。Routes表の下線部に該当します。
 
-最初はRoutesにて、リクエストに対して処理されるコントローラとアクションが決まります。`http://localhost:3000/rails/info/routes`へアクセスしてRoutesの対応表を見てみましょう。今回のリクエストはパスが /books/new 、HTTPメソッドがGETなので、BooksControllerのnewアクションへ処理が進みます（図の下線部に該当します）。
-
-TODO: 新図置き換え
-
-![Routes](assets/new-create/figures/new-routes.png)
+![Routes表](assets/new-create/figures/new_routes.png)
 
 ### コントローラ
 
-![新規入力画面の処理の流れ - コントローラ](assets/new-create/figures/new-flow-controller.png)
+![新規入力画面の処理の流れ - コントローラ](assets/new-create/figures/new_flow_controller.png)
 
 BooksControllerのnewアクションのコードを見てみましょう。ファイルは `app/controllers/books_controller.rb` です。
 
@@ -74,17 +74,17 @@ def new
 end
 ```
 
-newアクションは `@book = Book.new` の1行です。Book.newでBookクラスのインスタンス（データは空っぽ）を作り、@bookインスタンス変数へ代入し、ビューへ渡します。Book.newでつくったBookクラスのインスタンスはタイトルとメモを格納できるようになっています。
+newアクションは `@book = Book.new` の1行です。Book.newでBookクラスのインスタンスを作り、@bookインスタンス変数へ代入し、ビューへ渡します。Book.newでつくったBookクラスのインスタンスはタイトルとメモを格納できるようになっていますが、タイトルとメモのデータは空っぽです。
 
-インスタンスとはクラスから作られたオブジェクトのことです。オブジェクトとほぼ同じ意味で使われますが、「クラスから作ったオブジェクトである」「そのクラスに属する」ということを強調したいときに使います。クラスはその種族に属するオブジェクト（これをインスタンスと呼びます）を作ることができる工場のようなものです。そのクラス自身が仕事をすることもあれば、そのクラスから作ったオブジェクトが仕事をすることもあります。
+インスタンスとはクラスから作られたオブジェクトのことです。オブジェクトとほぼ同じ意味で使われますが、「クラスから作ったオブジェクトである」「そのクラスに属する」ということを強調したいときに使います。クラスはその種族に属するオブジェクト（インスタンス）を作ることができる工場のようなものです。そのクラス自身が仕事をすることもあれば、そのクラスから作ったオブジェクトが仕事をすることもあります。
 
 Bookクラスには色々と便利な機能があるのですが、それは後ほど説明します。ここでは、Bookに関するビューで使う情報をつくり、インスタンス変数へ代入し、ビューへ送る、と考えると良いでしょう。
 
-コントローラの処理が終わると次はビューです。ここでは進むビューの指示がないため、デフォルトの `views/books/new.html.erb` へ処理が進みます。
+コントローラの処理が終わると次はビューです。ここでは進むビューの指示がないため、デフォルトである `views/books/new.html.erb` へ処理が進みます。
 
 ### ビュー
 
-![新規入力画面の処理の流れ - ビュー](assets/new-create/figures/new-flow-view.png)
+![新規入力画面の処理の流れ - ビュー](assets/new-create/figures/new_flow_view.png)
 
 ビューのコード `views/books/new.html.erb` を見てみましょう。
 
@@ -99,7 +99,7 @@ Bookクラスには色々と便利な機能があるのですが、それは後�
 
 これだけしかありません。随分とあっさりしています。実は、下の図中の枠線部分は別のファイルに書いてあり、 `<%= render 'form', book: @book %>` で埋め込まれるようになっています。
 
-![renderの説明](assets/new-create/figures/new-view-render.png)
+![renderの説明](assets/new-create/figures/new_view_form_screenshot.png)
 
 renderメソッドは別のビューファイルを埋め込みます。わざわざ別のファイルに書く理由は、他の画面でもそのファイルを利用することで、同じ部品を共用したいからです。埋め込む用のビューファイルをパーシャルと言います。書式は以下の通りです。
 
@@ -109,7 +109,7 @@ renderメソッドは別のビューファイルを埋め込みます。わざ�
 
 埋め込むファイル名には1つルールがあり、renderで書いた文字列の先頭に_を付けたファイル名にします。つまり、`<%= render 'form', book: @book %>`で埋め込まれるファイルは ` _form.html.erb` になります。
 
-また、`<%= render 'form', book: @book %>`の`book: @book`の部分は、`@book`変数を埋め込み先のパーシャル内で`book`変数として使うための指示です（パーシャル内でも@はじまりのインスタンス変数を利用することも可能です。それでもわざわざbook変数として渡しているのは、パーシャル内で利用する変数を明示すること、他のコントローラでパーシャルを流用する時にインスタンス変数名を揃える必要がないことなどのメリットがあります。）。
+また、`<%= render 'form', book: @book %>`の`book: @book`の部分は、`@book`変数を埋め込み先のパーシャル内で`book`変数として使うための指示です。パーシャル内でも@はじまりのインスタンス変数を利用することも可能です。それでもわざわざbook変数として渡しているのは、パーシャル内で利用する変数を明示すること、他のコントローラでパーシャルを流用する時にインスタンス変数名を揃える必要がないことなどのメリットがあります。
 
 埋め込まれるパーシャルビュー `_form.html.erb` は以下のようになっています。
 ファイルは`app/views/books/_form.html.erb`です。
@@ -161,45 +161,33 @@ renderメソッドは別のビューファイルを埋め込みます。わざ�
 <% end %>
 ```
 
-残りの部分について説明していきます。最初に下図を見てください。
+残りの部分について説明していきます。次の図を見てください。
 
-TODO: 新図置き換え（Rails6.0はtext_fieldにid指定不要になってた）
+![コードとページの部品の対応](assets/new-create/figures/new_view_form.png)
 
-![コードとページの部品の対応](assets/new-create/figures/new-view-form.png)
-
-それぞれ矢印の先の部品を作っています。また、全体としてはformという名の部品になってます。formはHTMLでブラウザからサーバへ情報を送信する仕組みの1つです。
+それぞれ矢印の先の部品を作っています。また、全体としてはformという名の部品になってます。formはHTMLでブラウザからサーバへ情報を送信する仕組みです。
 
 まずは部品の1つ、タイトルのところを見てみましょう。
 
-TODO: 新図置き換え
+![タイトル部品](assets/new-create/figures/new_view_form_title_html.png)
 
-![タイトル部品](assets/new-create/figures/new-view-form-title-html.png)
-
-枠線内がタイトルの部分です。全体はHTMLですが、 `<%= %>`で囲まれた黄色の部分がその中に埋め込まれたRailsコードです。
+枠線内がタイトルの部分です。全体はHTMLですが、 `<%= %>`で囲まれた部分がその中に埋め込まれたRailsコードです。
 
 `<div></div>`は中のHTML要素をグルーピングするための要素です。それだけだと特に見た目を変えませんが、CSSで修飾する要素を指定するためによく使います。ここでは "field" というHTMLでのclass名をつけてCSSで修飾できるようにしています。
 
-次はRailsコードの部分をもう少し詳しく見てみましょう。
+Railsコードの部分をもう少し詳しく見てみましょう。`form.label :title` で "Title"という文字列を表示しています。その名の通り、ラベルの部分です。`form.text_field :title` はその下にあるテキスト入力欄です。`form` はformブロック内の変数で、ここではbookに関するformを記述するために使っています。見慣れない書き方かもしれませんが、ここはそう書くものだと思ってもらえれば大丈夫です。
 
-![タイトル(Railsコード)](assets/new-create/figures/new-view-form-title-rails.png)
-
-`form.label :title` で "Title"という文字列を表示しています。その名の通り、ラベルの部分です。`form.text_field :title` はその下にあるテキスト入力欄です。`form` はformブロック内の変数で、ここではbookに関するformを記述するために使っています。見慣れない書き方かもしれませんが、ここはそう書くものだと思ってもらえれば大丈夫です。
-
-次はその下のメモの部分を見てみましょう。
-
-TODO: 新図置き換え
-
-![メモ](assets/new-create/figures/new-view-form-memo.png)
+![メモ部品](assets/new-create/figures/new_view_form_memo_html.png)
 
 メモの部分も同様です。`form.label :memo` が "Memo" を表示する部分です。`form.text_area :memo` がその下のテキスト入力欄を作ります。`text_area` は先ほどの `text_field` よりも広くて改行を入力できるテキスト入力欄を作るメソッドです。
 
-最後は投稿するボタンの部分です。
+![投稿ボタン部品](assets/new-create/figures/new_view_form_submit_html.png)
 
-TODO: 新図置き換え
+最後は投稿するボタンの部分です。`form.submit` は投稿ボタン（Create Bookボタン）を作ります。このボタンを押すとform内の情報をまとめてサーバへ送信（リクエストを送信）します。ここでは、Bookに関する情報、入力したタイトルとメモをリクエストに含んで送信します。ここで送信されたタイトルとメモが後の行程で登録されます。
 
-![submit](assets/new-create/figures/new-view-form-submit-1.png)
+では、具体的にどんなリクエストが飛ぶのかを観察してみましょう。
 
-`form.submit` は投稿ボタン（Create Bookボタン）を作ります。このボタンを押すとform内の情報をまとめてサーバへ送信（リクエストを送信）します。ここでは、Bookに関する情報、入力したタイトルとメモをリクエストに含んで送信します。ここで送信されたタイトルとメモが後の行程で登録されるのです。では、具体的にどんなリクエストが飛ぶのかを観察してみましょう。
+★ここから
 
 ### リクエストを観察する
 

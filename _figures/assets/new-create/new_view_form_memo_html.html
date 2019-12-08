@@ -1,0 +1,37 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title></title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="wrapper is-wide relative">
+
+<div class="box__flex is-align-top">
+    <div class="box__flex-column size-50">
+      <div class="text__path">app/views/books/_form.html.erb</div>
+        <div class="box code-box">
+<pre>
+<%= form_with(model: book,<br> local: true) do <span class="text__accent">|form|</span> %>
+...
+<div class="form__block is-memo">  &lt;div class="field"&gt;
+    <%= <span class="text__accent">form.label :memo</span> %>
+    <%= <span class="text__accent">form.text_area :memo</span> %>
+  &lt;/div&gt;
+</div>...
+</pre>
+    </div>
+  </div>
+  <div class="box__flex-column size-50" style="padding-top: 71px;">
+    <div class="form__block is-memo">
+      <img src="../img/img_form_memo.png" class="form__image">
+    </div>
+  </div>
+</div>
+
+<div class="arrow-right is-memo arrow-right__position" style="top: 170px;"></div>
+
+</div>
+</body>
+</html>

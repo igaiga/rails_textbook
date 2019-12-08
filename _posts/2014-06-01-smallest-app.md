@@ -370,11 +370,11 @@ Routesは「リクエストのURLとHTTPメソッド」に応じて次に処理�
 
 最初に、Routesは「リクエストのURLとHTTPメソッド」に応じて次に処理を行う先を決めるのが仕事だと書きました。RailsではRoutesの処理が終わると、次はコントローラのアクションへ処理が移ります。アクションとはコントローラに書かれているメソッドのうち、publicなメソッドのことです。「Routesから呼び出せるメソッド」と言っても良いでしょう。ここでのメソッドはRubyでのメソッドのことで、処理を集めて名前をつけたものです。HTTPメソッドとは別のものです。RoutesはリクエストのURLとHTTPメソッドから、処理の進み先であるコントローラのアクションを決定します。RoutesはリクエストとControllerのアクションとの対応表と言えます。
 
-では、Routesの対応表を見て見ましょう。rails serverを起動させて `/rails/info/routes` へアクセスしてみてください。Routesの対応表の見方を説明したのが次の図です。
+では、対応表であるRoutes表を見て見ましょう。rails serverを起動させて `/rails/info/routes` へアクセスしてみてください。Routes表の見方を説明したのが次の図です。
 
 * http://localhost:3000/rails/info/routes
 
-![Routes対応表](assets/smallest-app/figures/routes.png)
+![Routes表](assets/smallest-app/figures/routes.png)
 
 表中の "HTTP Verb" がHTTPメソッドです。"Path"（パス）はURLの後半部分に相当します。URLが"http://localhost:3000/hello/index"である場合、パスは"/hello/index"になります。(表示されたパスの後半部分の`"(.:format)"は省略できる記述で、レスポンスで返すフォーマットを指定するための機能です。省略した場合はHTMLを返すのが普通です。)
 
