@@ -187,8 +187,6 @@ Railsコードの部分をもう少し詳しく見てみましょう。`form.lab
 
 では、具体的にどんなリクエストが飛ぶのかを観察してみましょう。
 
-★ここから
-
 ### リクエストを観察する
 
 Chromeのデベロッパーツールを使うと、どのようなリクエストがサーバへ送信されたかを見ることができます。
@@ -220,32 +218,34 @@ TODO: スクショ置き換え、データ置き換え
 
 new画面でCreate bookボタンを押すと新たなリクエストを飛ばすことが分かりました。ここからは、この2つ目のリクエストを追いかけます。リクエストの内容は、さきほどChromeで確認したように以下の図のようになっています。
 
-![新たなリクエスト](assets/new-create/figures/create-flow-request.png)
+![新たなリクエスト](assets/new-create/figures/create_flow_controller.png)
 
 ### Routes
 
 いつものように最初の処理はroutesです。
 
-TODO: 新図置き換え
-
 ![routes](assets/new-create/figures/create-routes.png)
 
 URLのパスは/books 、HTTPメソッドはPOSTなのでbooks#create、つまりBooksControllerのcreateアクションが呼び出されます。
 
-HTTPメソッドのPOSTは今回のようなデータの新規作成時に使います。そのほか、サーバの状態へ何らかの変更を与える場合にはこのPOSTを利用します。indexやnewの時に利用したHTTPメソッドGETは、サーバの状態に変更を与えない場合に使います。newアクションでは新規入力画面を表示するだけでまだデータを保存しないので、HTTPメソッドはGETを使うのです。
+HTTPメソッドのPOSTは今回のようなデータの新規作成時に使います。そのほか、サーバの状態へ何らかの変更を与えるときにはこのPOSTを利用します。
+
+一方で、indexやnewの時に利用したHTTPメソッドGETは、サーバの状態を変えない場合に使います。newアクションでは新規入力画面を表示するだけでまだデータを保存しないので、HTTPメソッドはGETを使うのです。
 
 ### コントローラ
 
-コントローラのソースファイルは `app/controllers/books_controller.rb` です。
+コントローラのソースファイルは `app/controllers/books_controller.rb` です。ここでやっていることは大きく3つです。
 
 ```ruby
 def create
-  @book = Book.new(book_params)
+  @book = Book.new(book_params) # ⬅️1. リクエストのパラメータを使って本のデータを作る
   respond_to do |format|
-    if @book.save
+    if @book.save # ⬅️2. 本のデータを保存する
+      # ⬅️3a. 成功したらshow画面へ
       format.html { redirect_to @book, notice: 'Book was successfully created.' }
       format.json { render :show, status: :created, location: @book }
     else
+      # ⬅️3b. 保存失敗したらnew画面へ（元の画面）
       format.html { render :new }
       format.json { render json: @book.errors, status: :unprocessable_entity }
     end
@@ -253,15 +253,7 @@ def create
 end
 ```
 
-ここでやっていることは大きく3つです。
-
-TODO: 新図置き換え
-
-![コントローラ - 3つの処理](assets/new-create/figures/create-controller.png)
-
-3つの処理を順に見ていきます。
-
-最初は `@book = Book.new(book_params)` です。
+3つの処理を順に見ていきます。最初は `@book = Book.new(book_params)` です。
 
 ```ruby
 def create
