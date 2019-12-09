@@ -63,5 +63,5 @@ $arrow-right-height-value: 50px;
   position: absolute;
   top: 0;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-53%); // 三角がラインにかぶリすぎないように位置調整あり
 }
