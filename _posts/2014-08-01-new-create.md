@@ -226,7 +226,7 @@ new画面でCreate bookボタンを押すと新たなリクエストを飛ばす
 
 ![routes](assets/new-create/figures/create-routes.png)
 
-URLのパスは/books 、HTTPメソッドはPOSTなのでbooks#create、つまりBooksControllerのcreateアクションが呼び出されます。
+URLのパスは/books 、HTTPメソッドはPOSTなので対応するコントローラとアクションはbooks#create、つまりBooksControllerのcreateアクションが呼び出されます。
 
 HTTPメソッドのPOSTは今回のようなデータの新規作成時に使います。そのほか、サーバの状態へ何らかの変更を与えるときにはこのPOSTを利用します。
 
@@ -273,9 +273,11 @@ def book_params
 end
 ```
 
-`book_params` メソッドはパラメータに関する処理を行っています。パラメータとはブラウザから飛んでくるリクエストの中に含まれる情報で、たとえばユーザーの入力した値が格納されています。さきほどChromeを使って見たものです。
+`book_params` メソッドはパラメータに関する処理を行っています。パラメータとはブラウザから飛んでくるリクエストの中に含まれる情報で、たとえばユーザーの入力した値が入っています。さきほどChromeデベロッパーツールを使って見たものが、Railsまで渡ってきています。
 
-パラメータは `params` で取得できます。次は`params`にどんな情報が、どのように入っているかを見てみましょう。
+パラメータは `params` で取得できます。次は`params`にどんな情報が、どのように入っているかを見てみましょう。次のようにコードを変更してみてください。
+
+`app/controllers/books_controller.rb`
 
 ```diff
 def book_params
@@ -287,21 +289,23 @@ end
 
 コードを変更して、ブラウザから新規登録画面を表示し、テキストボックス欄に入力し、Create Bookボタンを押します。その後、rails serverのshellに流れた文字列から************を探してみてください。表示されていない場合は、rails serverを再起動してみてください。
 
-TODO: 以下の図は削除して本文へ移動
+TODO: スクショ新データで撮り直し
 
 ![パラメータの中身の表示 実行結果](assets/new-create/figures/create-controller-params.png)
 
-実行結果を見ると、確かに `params` の中にHashの形式でブラウザにて入力した値が入っていることが分かりました。
+実行結果を見ると、確かに `params` の中にブラウザにて入力した値がHashの形で入っていることが分かりました。
 
 これを、少し前にブラウザのデベロッパーツールで表示させた内容と比較してみましょう。
 
-TODO: 以下の図も編集しやすい形へ調整
+TODO: スクショ撮り直し、つかいやすい形にする
 
 ![パラメータの送信側と受信側](assets/new-create/figures/create-controller-params-2.png)
 
 ここで出力した `params` の値と、さきほどブラウザのデベロッパーツールで表示させたパラメータの値が同じになっていることが分かります。ブラウザのデベロッパーツールはパラメータを送信している部分です。一方でRailsのアプリ側はパラメータを受信している部分です。ブラウザがユーザーの入力データをパラメータとして送信し、私たちが作成しているアプリがそのデータを受け取っていることを確認できました。
 
 TODO:「new/createのChrome Dev toolsとログの図（新規）」をここに挿入する
+
+★ここから
 
 ### Strong Parameters
 
