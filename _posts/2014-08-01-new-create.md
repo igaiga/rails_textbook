@@ -216,9 +216,9 @@ TODO: スクショ置き換え、データ置き換え
 ## Createアクション
 ### 新たなリクエスト
 
-new画面でCreate bookボタンを押すと新たなリクエストを飛ばすことが分かりました。ここからは、この2つ目のリクエストを追いかけます。リクエストの内容は、さきほどChromeで確認したように以下の図のようになっています。
+new画面でCreate bookボタンを押すと新たなリクエストを飛ばすことが分かりました。ここからは、この2つ目のリクエストを追いかけます。リクエストの内容は、さきほどChromeで確認したように次の図のようになっています。
 
-![新たなリクエスト](assets/new-create/figures/create_flow_controller.png)
+![新たなリクエスト](assets/new-create/figures/create_flow_routes.png)
 
 ### Routes
 
@@ -233,6 +233,8 @@ HTTPメソッドのPOSTは今回のようなデータの新規作成時に使い
 一方で、indexやnewの時に利用したHTTPメソッドGETは、サーバの状態を変えない場合に使います。newアクションでは新規入力画面を表示するだけでまだデータを保存しないので、HTTPメソッドはGETを使うのです。
 
 ### コントローラ
+
+![新たなリクエスト](assets/new-create/figures/create_flow_controller.png)
 
 コントローラのソースファイルは `app/controllers/books_controller.rb` です。ここでやっていることは大きく3つです。
 
