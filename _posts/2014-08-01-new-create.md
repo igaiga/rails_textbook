@@ -305,11 +305,9 @@ TODO: スクショ撮り直し、つかいやすい形にする
 
 TODO:「new/createのChrome Dev toolsとログの図（新規）」をここに挿入する
 
-★ここから
-
 ### Strong Parameters
 
-`book_params`の説明に戻ります。`params`の後ろについている、require、permitとはなんでしょうか？
+`book_params`の説明に戻ります。`params`の後ろについている、requireとpermitとはなんでしょうか？
 
 `app/controllers/books_controller.rb`
 
@@ -319,34 +317,41 @@ def book_params
 end
 ```
 
-params以降のrequire, permitメソッドは、パラメータの内容を制限しています。意図していないデータが入ってくるのを防ぐために使用します。ここでは、bookのtitle, memoだけを受け取るようにしています。requireには対象となるモデル名（モデルについては次章で説明します）を、permitには更新を許可するカラム名を指定します。
+params以降のrequire, permitメソッドは、パラメータの内容を制限します。意図していないデータが入ってくるのを防ぐための仕組みです。ここでは、bookのtitle, memoだけを受け取るようにしています。requireには対象となるモデル名（モデルについては次章で説明します）を、permitには更新を許可するカラム名を指定します。
 
-このパラメータを制限する仕組みはStrong Parametersと呼ばれます。これが必要な理由は、攻撃に対する防御、つまりセキュリティ対策です。ブラウザから飛ばすパラメータは、ユーザーの手によって改ざんすることも可能です。つまり、任意のパラメータを飛ばす攻撃をすることができます。この1つ前のnewの画面で用意したフォームに存在しないパラメータが飛んでくる可能性があるので、ここで変更を許可するパラメータを絞っています。
+このパラメータを制限する仕組みはStrong Parametersと呼ばれます。これが必要な理由は、攻撃に対する防御、つまりセキュリティ対策です。ブラウザから飛ばすパラメータは、ユーザーの手によって改ざんすることも可能です。つまり、任意のパラメータを飛ばして攻撃をすることもできます。そのため、1つ前のnew画面で用意したフォームに存在しないパラメータが飛んでくる可能性もあるので、ここで変更を許可するパラメータを絞っています。
 
-もう少し説明すると、ここで使われている`Book.new(book_params)`に関係しています。newメソッドは、引数で受け取った値を自分のカラムへ代入します。たとえば、titleだけを更新したいケースがあったとして、book_paramsにtitleの情報だけがやってくればいいのですが、攻撃者はmemoの情報もパラメータとして飛ばすこともあります。StrongParametersで受け取り可能なパラメータを絞っていないと、プログラマの意図しないカラムが更新されてしまうことになります。
+たとえば、titleだけを更新したいケースがあり、titleだけを更新するformをつくったとします。`Book.new(book_params)`でnewメソッドは、引数で受け取った値を自分のカラムへ代入します。このとき、book_paramsにtitleの情報だけがやってくればいいのですが、攻撃者はmemoの情報もパラメータとして飛ばすこともあります。StrongParametersで受け取り可能なパラメータを絞っていないと、プログラマの意図しないカラムが更新されてしまうことになります。
 
 ## まとめ
+
+createアクションでの処理について説明してきました。createアクション全体の中で、どこまで進んだかを確認してみましょう。
 
 `app/controllers/books_controller.rb`
 
 ```ruby
 def create
-  @book = Book.new(book_params)
-  ...
+  @book = Book.new(book_params) # ⬅️1. リクエストのパラメータを使って本のデータを作る
+  respond_to do |format|
+    if @book.save # ⬅️2. 本のデータを保存する
+      # ⬅️3a. 成功したらshow画面へ
+      format.html { redirect_to @book, notice: 'Book was successfully created.' }
+      format.json { render :show, status: :created, location: @book }
+    else
+      # ⬅️3b. 保存失敗したらnew画面へ（元の画面）
+      format.html { render :new }
+      format.json { render json: @book.errors, status: :unprocessable_entity }
+    end
+  end
 end
-...
 def book_params
   params.require(:book).permit(:title, :memo)
 end
 ```
 
-TODO: 新図置き換え
+この章では1.まで、createアクションにパラメータ（params）が届いたのを確認したところまで説明しました。`params`でパラメータの情報を取り、StrongParametersを使って必要なものだけに制限します。
 
-![create - ここまでの流れ](assets/new-create/figures/create-controller.png)
-
-この章では1.の途中まで、createアクションにパラメータ（params）が届いたのを確認したところまで説明しました。 `book_params` でパラメータの情報を取れることが分かりました。これを使って本のデータを作ります。
-
-本のデータはBook.newで作ります。newはクラスのインスタンスを作るメソッドです。実はBookは「モデル」という種族に属する便利な機能を持ったクラスです。モデルについての説明は次の章で行います。
+Book.new(book_params)で本のデータを作ります。newはクラスのインスタンスを作るメソッドです。実はBookは「モデル」という種族に属する便利な機能を持ったクラスです。モデルについての説明は次の章で行います。
 
 このあと、本の情報を保存し（2.の部分）、その結果により表示する画面を切り替えます（3.の部分）。続きは次の章で説明します。
 
