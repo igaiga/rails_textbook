@@ -65,12 +65,9 @@ a:visited { color: #a0a; }
 
 @media (max-width: 480px) {
   .site {
-    width: 100%;
+    width: calc(100% - 2em);
     margin-left: 1em;
     margin-right: 1em;
-  }
-  .post {
-    width: calc(100% - 1em);
   }
 }
 
