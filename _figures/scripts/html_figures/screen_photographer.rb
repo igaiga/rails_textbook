@@ -68,13 +68,14 @@ class FilePathMaker
   end
 
   private_class_method def self.out_dirs
-    dirs = ["crud", "model", "new-create", "picture", "picture-upload", "smallest-app"]
+    dirs = ["crud", "model", "new-create", "smallest-app"]
     dirs.map do |dir_name|
       File.join(out_base_path, dir_name)
     end
   end
 
   def self.mkdir_out_dirs
+    mkdir([out_base_path])
     mkdir(out_dirs)
   end
 
@@ -95,5 +96,3 @@ FilePathMaker.htmls.each do |params|
 end
 
 sp.clear
-
-#TODO: cropするクラスをつくる。screenshotの方と流用したい。
