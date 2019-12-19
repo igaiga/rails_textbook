@@ -1,6 +1,7 @@
 require "uri"
 require "selenium-webdriver"
 
+# スクリーンショットを撮って指定した出力先へpng出力
 class ScreenPhotographer
   def initialize
     options = Selenium::WebDriver::Chrome::Options.new
@@ -28,6 +29,7 @@ class ScreenPhotographer
   end
 end
 
+# ScreenPhotographerへ渡すための入力HTMLパスと出力pngパスを作成
 class FilePathMaker
   def self.htmls
     html_paths.map do |path|
@@ -49,12 +51,12 @@ class FilePathMaker
     File.join(base_path, "..", "..", "assets")
   end
 
-  private_class_method def self.out_base_path
-    File.join(base_path, "..", "..", "..", "assets")
-  end
-
   private_class_method def self.html_paths
     Dir.glob(File.join(html_base_path, "**/*.html"))
+  end
+
+  private_class_method def self.out_base_path
+    File.join(base_path, "tmp")
   end
 
   private_class_method def self.out_filename(path)
