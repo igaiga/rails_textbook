@@ -6,25 +6,25 @@
 .box {
   background: $base-color-light-5;
   border-radius: $round-large;
-  border: 1px solid $base-color-5;
+  border: 2px solid $base-color-5;
   padding: 0.75em 1em;
   & + & {
     margin-top: 1em;
   }
   &.app-box {
     background: $base-color-light-1;
-    border: 1px solid $base-color-1;
+    border-color: $base-color-1;
     padding: 1em;
   }
   &.crud-box {
     background: $base-color-light-3;
-    border: 1px solid $base-color-3;
+    border-color: $base-color-3;
     padding: 0.5em 1em 1em;
   }
   &.code-box {
     background: $base-color-light-4;
     border-radius: 0;
-    border: 2px solid $base-color-4;
+    border-color: $base-color-4;
     padding: 0.75em 1em;
   }
 }
