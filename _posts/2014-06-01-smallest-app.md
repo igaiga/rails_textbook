@@ -372,8 +372,6 @@ Routesは「リクエストのURLとHTTPメソッド」に応じて次に処理�
 
 では、対応表であるRoutes表を見て見ましょう。rails serverを起動させて `/rails/info/routes` へアクセスしてみてください。Routes表の見方を説明したのが次の図です。
 
-* http://localhost:3000/rails/info/routes
-
 ![Routes表](assets/smallest-app/figures/routes.png)
 
 表中の "HTTP Verb" がHTTPメソッドです。"Path"（パス）はURLの後半部分に相当します。URLが"http://localhost:3000/hello/index"である場合、パスは"/hello/index"になります。(表示されたパスの後半部分の`"(.:format)"は省略できる記述で、レスポンスで返すフォーマットを指定するための機能です。省略した場合はHTMLを返すのが普通です。)
