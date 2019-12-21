@@ -56,7 +56,7 @@ class FilePathMaker
   end
 
   private_class_method def self.out_base_path
-    File.join(base_path, "tmp")
+    File.join(base_path, "..", "..", "..", "assets")
   end
 
   private_class_method def self.out_filename(path)
