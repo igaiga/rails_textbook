@@ -16,7 +16,7 @@ class Cropper
         "migration_created.png" => [1340, 980],
         "migration_how_to_make_db.png" => [1340, 1200],
         "migration_new_column_author.png" => [1820, 1060],
-        "migration_rails_db_migrate.png" => [1820, 1340],
+        "migration_rails_db_migrate.png" => [1320, 1340],
         "summary_model_db.png" => [1820, 1320],
         "summary_rails_db_migrate.png" => [1820, 1320],
         "summary_scaffold_make_files.png" => [1820, 1320],
