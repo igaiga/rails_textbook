@@ -224,7 +224,7 @@ new画面でCreate bookボタンを押すと新たなリクエストを飛ばす
 
 いつものように最初の処理はroutesです。
 
-![routes](assets/new-create/figures/create-routes.png)
+![routes](assets/new-create/figures/create_routes.png)
 
 URLのパスは/books 、HTTPメソッドはPOSTなので対応するコントローラとアクションはbooks#create、つまりBooksControllerのcreateアクションが呼び出されます。
 
