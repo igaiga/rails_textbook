@@ -2,3 +2,4 @@ _site
 node_modules/
 npm-debug.log
 iga_memo.txt
+_figures/scripts/html_figures/tmp/

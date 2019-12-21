@@ -56,18 +56,38 @@ class FilePathMaker
   end
 
   private_class_method def self.out_base_path
-    File.join(base_path, "..", "..", "..", "assets")
+    File.join(base_path, "tmp")
   end
 
   private_class_method def self.out_filename(path)
     File.join(
       out_base_path,
       File.dirname(path).split("/").last,
-      "figures",
       File.basename(path, ".html") + ".png"
     )
   end
+
+  private_class_method def self.out_dirs
+    dirs = ["crud", "model", "new-create", "smallest-app"]
+    dirs.map do |dir_name|
+      File.join(out_base_path, dir_name)
+    end
+  end
+
+  def self.mkdir_out_dirs
+    mkdir([out_base_path])
+    mkdir(out_dirs)
+  end
+
+  def self.mkdir(paths)
+    paths.each do |path|
+      Dir.mkdir path
+    rescue Errno::EEXIST => _e
+    end
+  end
 end
+
+FilePathMaker.mkdir_out_dirs
 
 sp = ScreenPhotographer.new
 
@@ -76,5 +96,3 @@ FilePathMaker.htmls.each do |params|
 end
 
 sp.clear
-
-#TODO: cropするクラスをつくる。screenshotの方と流用したい。
