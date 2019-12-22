@@ -1,5 +1,6 @@
 #!/bin/sh
 # 一番小さなRailsアプリづくり helloworld app 作成＆スクショ生成
+# rm -rf helloworld
 rails new helloworld
 cd helloworld
 bin/spring stop
