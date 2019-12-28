@@ -52,9 +52,9 @@ rm -rf screenshots
 cp -r books_app/tmp/capybara screenshots
 
 # screemshots 切り出し
-# ★ここから
-#ruby screenshots_crop.rb
-
+cp -r screenshots screenshots_org #backup
+# open screenshots_org
+ruby cropper.rb
 open screenshots
 
 # 作成されたpngファイルを配置
