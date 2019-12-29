@@ -55,7 +55,7 @@ cp -r books_app/tmp/capybara screenshots
 cp -r screenshots screenshots_org #backup
 # open screenshots_org
 ruby cropper.rb
-open screenshots
+open screenshots # 確認用
 
 # 作成されたpngファイルを配置
-#ruby replace_png.rb
+ruby replacer.rb

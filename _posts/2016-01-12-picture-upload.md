@@ -262,9 +262,9 @@ Use Ctrl-C to stop
 
 New Bookリンクをクリックすると、「ファイルを選択」ボタンが増えているかと思います。ボタンを押して画像ファイルを選び、アップロードしてみましょう。
 
-![new](assets/picture-upload/app_ss/books_new.png)
+![new](assets/picture-upload/app_ss/books_with_upload_new.png)
 
-![show](assets/picture-upload/app_ss/books_show.png)
+![show](assets/picture-upload/app_ss/books_with_upload_created.png)
 
 uploadした画像ファイルがブラウザに表示されているのを確認してみてください。
 
