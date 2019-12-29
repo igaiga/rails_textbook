@@ -3,3 +3,11 @@ node_modules/
 npm-debug.log
 iga_memo.txt
 _figures/scripts/html_figures/tmp/
+
+_figures/scripts/screenshots/books_app/books_app/
+_figures/scripts/screenshots/books_app/screenshots_org/
+_figures/scripts/screenshots/books_app/screenshots/
+
+_figures/scripts/screenshots/helloworld/helloworld/
+_figures/scripts/screenshots/helloworld/screenshots_org/
+_figures/scripts/screenshots/helloworld/screenshots/
