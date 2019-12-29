@@ -7,10 +7,11 @@ RSpec.feature "/books", type: :system do
       fill_in "Title", with: "RubyとRailsの学習ガイド"
       fill_in "Memo", with: "Rails関連技術地図とそれらの学習資料の紹介"
       fill_in "Author", with: "五十嵐邦明"
-      ss_file_path = page.save_screenshot 'books_with_upload_new.png'
-      attach_file "Picture", "spec/systems/rrsg_hyou1_small.png"
+      attach_file "Picture", "spec/systems/rrsg_small.png"
+      page.save_screenshot 'books_with_upload_new.png'
       click_button "Create Book"
-      ss_file_path = page.save_screenshot 'books_with_upload_created.png'
+
+      page.save_screenshot 'books_with_upload_created.png'
       expect(page).to have_text('successfully')
     end
   end

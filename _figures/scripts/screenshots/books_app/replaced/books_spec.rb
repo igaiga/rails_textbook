@@ -7,11 +7,6 @@ RSpec.feature "/books", type: :system do
       ss_file_path = page.save_screenshot 'books_index_blank.png'
       expect(page).to have_text('Book') # OKにするだけ
     end
-    it "new" do
-      visit new_book_path
-      ss_file_path = page.save_screenshot 'books_new_blank.png'
-      expect(page).to have_text('Book') # OKにするだけ
-    end
   end
   describe "1 data" do
     before do

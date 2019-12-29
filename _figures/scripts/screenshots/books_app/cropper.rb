@@ -14,7 +14,7 @@ class Cropper
         "books_show_data_1.png" => [780, 290],
         "books_with_author_new.png" => [440, 600],
         "books_with_upload_created.png" => [860, 1140],
-        "books_with_upload_new.png" => [600, 680],
+        "books_with_upload_new.png" => [480, 680],
       },
     }
     wh[dir_name][file_name]
