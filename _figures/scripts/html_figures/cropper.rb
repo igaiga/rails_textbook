@@ -4,7 +4,7 @@ class Cropper
     dir_name, file_name = file_path.split("/").last(2)
     wh = {
       "crud" => {
-        "crud_4_pages.png" => [1820, 1150],
+        "crud_4_pages.png" => [1820, 1380],
         "index_flow.png" => [1320, 1000],
         "index_flow_controller.png" => [1320, 1000],
         "index_flow_routes.png" => [1320, 1000],
