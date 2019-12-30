@@ -16,6 +16,17 @@
   border: 2px solid $base-color-3;
   border-radius: $round-large;
   padding: 0.5em 1em 1em;
+  &.is-column { // テキストと画像が横並びの場合
+    display: flex;
+  }
+}
+
+// is-column用
+.crud__box-text {
+  width: 10em;
+}
+.crud__box-image {
+  width: 80%;
 }
 
 .crud__headline {
