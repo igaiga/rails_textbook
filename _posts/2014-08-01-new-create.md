@@ -287,19 +287,23 @@ def book_params
 end
 ```
 
-コードを変更して、ブラウザから新規登録画面を表示し、テキストボックス欄に入力し、Create Bookボタンを押します。その後、ターミナルに流れたrails serverの文字列から************を探してみてください。表示されていない場合は、rails serverを再起動してみてください。
+コードを変更して、ブラウザから新規登録画面を表示し、テキストボックス欄に入力し、Create Bookボタンを押します。その後、ターミナルに流れたrails serverの文字列から**********を探してみてください。表示されていない場合は、rails serverを再起動してみてください。
 
-TODO: スクショ新データで撮り直し
-
-![パラメータの中身の表示 実行結果](assets/new-create/figures/create-controller-params.png)
+```console
+... （略）
+Started POST "/books" for ::1 at 2020-01-04 20:07:46 +0900
+Processing by BooksController#create as HTML
+  Parameters: {"authenticity_token"=>"y+YIbnc7gTMyt3HpcvVmYinhQG9NrhM63BOaXzvc3QIMgSROQkwH/rsmunFtOqni7SGjlfZ9NIenuevojh6neg==", "book"=>{"title"=>"RubyとRails の学習ガイド", "memo"=>"Rails関連技術地図とそれらの学習資料の紹介"}, "commit"=>"Create Book"}
+"**********"
+<ActionController::Parameters {"authenticity_token"=>"y+YIbnc7gTMyt3HpcvVmYinhQG9NrhM63BOaXzvc3QIMgSROQkwH/rsmunFtOqni7SGjlfZ9NIenuevojh6neg==", "book"=>{"title"=>"RubyとRailsの学習ガイド", "memo"=>"Rails関連技術地図とそれらの学習資料の紹介"}, "commit"=>"Create Book", "controller"=>"books", "action"=>"create"} permitted: false>
+... （略）
+```
 
 実行結果を見ると、確かに `params` の中にブラウザにて入力した値がHashの形で入っていることが分かりました。
 
 これを、少し前にブラウザのデベロッパーツールで表示させた内容と比較してみましょう。
 
-TODO: スクショ撮り直し、つかいやすい形にする
-
-![パラメータの送信側と受信側](assets/new-create/figures/create-controller-params-2.png)
+![パラメータの送信側と受信側](assets/new-create/figures/params_devtools.png)
 
 ここで出力した `params` の値と、さきほどブラウザのデベロッパーツールで表示させたパラメータの値が同じになっていることが分かります。ブラウザのデベロッパーツールはパラメータを送信している部分です。一方でRailsのアプリ側はパラメータを受信している部分です。ブラウザがユーザーの入力データをパラメータとして送信し、私たちが作成しているアプリがそのデータを受け取っていることを確認できました。
 
