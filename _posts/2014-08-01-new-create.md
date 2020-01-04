@@ -189,21 +189,17 @@ Railsコードの部分をもう少し詳しく見てみましょう。`form.lab
 
 Chromeのデベロッパーツールを使うと、どのようなリクエストがサーバへ送信されたかを見ることができます。
 
-TODO: スクショ置き換え、データ置き換え
-
-![Chromeでリクエストを観察する(準備)](assets/new-create/figures/create-request-1.png)
-
 new画面を表示させ、タイトル欄とメモ欄にBookの情報を入力します。Chromeのメニューからデベロッパーツールを起動します。Networkと書かれたタブを選択します。CreateBookボタンを押し、リクエストを送信してみましょう。
 
-TODO: スクショ置き換え、データ置き換え
+![Chromeでリクエストを観察する(準備)](assets/new-create/figures/dev_tool_create_1.png)
 
-![Chromeでリクエストを観察する(リクエスト送信)](assets/new-create/figures/create-request-2.png)
+![Chromeでリクエストを観察する(リクエスト送信)](assets/new-create/figures/dev_tool_create_2.png)
 
 たくさん表示されました。一番最初のbooksと書かれた行が先ほどボタンを押して発行されたリクエストです。booksの行をクリックして詳細を見てみましょう。
 
-TODO: スクショ置き換え、データ置き換え
+![Chromeでリクエストを観察する(リクエストの中身)](assets/new-create/figures/dev_tool_create_3.png)
 
-![Chromeでリクエストを観察する(リクエストの中身)](assets/new-create/figures/create-request-3.png)
+![Chromeでリクエストを観察する(リクエストの中身 form)](assets/new-create/figures/dev_tool_create_4.png)
 
 最初にURLとHTTPメソッドが書いてあります。Routesで使う情報がここに載っています。
 
