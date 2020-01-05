@@ -191,15 +191,15 @@ Chromeのデベロッパーツールを使うと、どのようなリクエス�
 
 new画面を表示させ、タイトル欄とメモ欄にBookの情報を入力します。Chromeのメニューからデベロッパーツールを起動します。Networkと書かれたタブを選択します。CreateBookボタンを押し、リクエストを送信してみましょう。
 
-![Chromeでリクエストを観察する(準備)](assets/new-create/figures/dev_tool_create_1.png)
+![Chromeでリクエストを観察する(準備)](assets/new-create/figures/devtools_create_1.png)
 
-![Chromeでリクエストを観察する(リクエスト送信)](assets/new-create/figures/dev_tool_create_2.png)
+![Chromeでリクエストを観察する(リクエスト送信)](assets/new-create/figures/devtools_create_2.png)
 
 たくさん表示されました。一番最初のbooksと書かれた行が先ほどボタンを押して発行されたリクエストです。booksの行をクリックして詳細を見てみましょう。
 
-![Chromeでリクエストを観察する(リクエストの中身)](assets/new-create/figures/dev_tool_create_3.png)
+![Chromeでリクエストを観察する(リクエストの中身)](assets/new-create/figures/devtools_create_3.png)
 
-![Chromeでリクエストを観察する(リクエストの中身 form)](assets/new-create/figures/dev_tool_create_4.png)
+![Chromeでリクエストを観察する(リクエストの中身 form)](assets/new-create/figures/devtools_create_4.png)
 
 最初にURLとHTTPメソッドが書いてあります。Routesで使う情報がここに載っています。
 
@@ -303,7 +303,7 @@ Processing by BooksController#create as HTML
 
 ここで出力した `params` の値と、さきほどブラウザのデベロッパーツールで表示させたパラメータの値が同じになっていることが分かります。ブラウザのデベロッパーツールはパラメータを送信している部分です。一方でRailsのアプリ側はパラメータを受信している部分です。ブラウザがユーザーの入力データをパラメータとして送信し、私たちが作成しているアプリがそのデータを受け取っていることを確認できました。
 
-TODO:「new/createのChrome Dev toolsとログの図（新規）」をここに挿入する
+![ブラウザとデベロッパーツール](assets/new-create/figures/browser_devtools.png)
 
 ### Strong Parameters
 
