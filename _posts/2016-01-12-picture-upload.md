@@ -14,11 +14,11 @@ categories:
 
 アプリに画像アップロード機能を追加します。画像情報を格納するためのDBカラムを追加し、carrierwave gemを利用して画像アップロード機能を実装します。
 
-この章では「CRUDの基礎とindexアクション」で作ったbooks_appを引き続き題材に使っていきます。モデルの章の後半で行ったbooksテーブルにauthorカラムを追加した後の状態を想定していますが、authorカラムの追加作業は行わなくてもこの章の内容は実行可能です。
+この章では「CRUDの基礎とindexアクション」でつくったbooks_appを引き続き題材に使っていきます。モデルの章の後半で行ったbooksテーブルにauthorカラムを追加した後の状態を想定していますが、authorカラムの追加作業は行わなくてもこの章の内容は実行可能です。
 
 ## 画像情報を格納するためのDBカラムを追加
 
-最初に、既存のbooksテーブルにstring型のpictureカラムを増やします。モデルの章でやったように、前に作ったmigrationファイルを編集するのではなく、新しいmigrationファイルを作ります。rails g migrationコマンドを実行し、migrationファイルを作成します。rails g migrationコマンドの基本形を再掲します。
+最初に、既存のbooksテーブルにstring型のpictureカラムを増やします。モデルの章でやったように、前に作ったmigrationファイルを編集するのではなく、新しいmigrationファイルをつくります。rails g migrationコマンドを実行し、migrationファイルを作成します。rails g migrationコマンドの基本形を再掲します。
 
 ```bash
 rails g migration Addカラム名Toテーブル名 カラム名:型名

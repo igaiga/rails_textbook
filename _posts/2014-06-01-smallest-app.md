@@ -25,9 +25,9 @@ mkdir my_web_apps
 cd my_web_apps
 ```
 
-mkdirはフォルダを作成するコマンド、cdはターミナル内で現在のフォルダを移動するコマンドです。Windowsで普段使いなれている「コンピューター（エクスプローラー）」を起動するには、ターミナルで`explorer .`と打つと現在のフォルダを開くことができます。MacでFinderを開くにはターミナルから`open .`と打ちます。mkdirコマンドで作成したフォルダが存在することが確認できます。フォルダはどちらから作成しても同じようにつくることができます。
+mkdirはフォルダを作成するコマンド、cdはターミナル内で現在のフォルダを移動するコマンドです。Windowsで普段使いなれている「コンピューター（エクスプローラー）」を起動するには、ターミナルで`explorer .`と打つと現在のフォルダを開くことができます。MacでFinderを開くにはターミナルから`open .`と打ちます。mkdirコマンドで作成したフォルダが存在することが確認できます。フォルダはターミナルからとエクスプローラー（MacではFinder）からとどちらから作成しても違いはないので、どちらでも問題ありません。
 
-それでは、アプリを作てみましょう。最初に作るのは、ブラウザに"Hello world!"と表示させるアプリです。先ほど作成したフォルダ ```my_web_apps``` の下に新しいアプリを作ってみましょう。ターミナルを起動して以下のコマンドを打ちます。
+それでは、アプリを作りましょう。最初に作るのは、ブラウザに"Hello world!"と表示させるアプリです。先ほど作成したフォルダ ```my_web_apps``` の下に新しいアプリを作ってみましょう。ターミナルを起動して以下のコマンドを打ちます。
 
 ```bash
 rails new helloworld
@@ -47,7 +47,7 @@ Webpacker successfully installed 🎉 🍰
 
 ターミナルの画面にこのように"Webpacker successfully installed"と表示されれば成功です。メッセージ中"Done in 3.83s."の3.83sは所用時間なので、実行するごとに変化します。rails newコマンドはたくさんのフォルダとファイルを自動で作ります。rails newコマンドでやっていることはこの後のコラムで説明します。
 
-もしもエラーなどでrails newコマンドが中断されたあとでリトライしたいときには、アプリのフォルダを削除してからもう一度実行してみてください。フォルダが残っていると問題が発生することがあります。
+もしもエラーなどでrails newコマンドが中断されたあとでリトライしたいときには、アプリのフォルダ、ここではhelloworldフォルダを削除してからもう一度実行してみてください。フォルダが残っていると問題が発生することがあります。
 
 次は以下のコマンドを実行してみてください。`rails s`コマンドはwebサーバを起動するコマンドで、sはserverの略です。
 
@@ -113,7 +113,7 @@ Running via Spring preloader in process 9959
       create      app/assets/stylesheets/hello.scss
 ```
 
-もしもrails gコマンドを打ち間違えて違うファイルを作ってしまった場合は、打ち間違えたコマンドのgの部分をdにして再実行すると、rails gコマンドで作成したファイルをまとめて削除してくれます。たとえば、``` rails g controller hell index``` とhelloをhellと打ち間違えた場合は、``` rails d controller hell index``` コマンドを実行することで間違えて作ったファイル群を削除することができます（ターミナルでカーソルキーの↑キーを押すと、さきほど入力した内容が出てくるので、それを利用してgをdに直すと楽に実行できます）。
+もしもrails gコマンドを打ち間違えて違うファイルをつくってしまったときは、打ち間違えたコマンドのgの部分をdにして再実行すると、rails gコマンドで作成したファイルをまとめて削除してくれます。たとえば、``` rails g controller hell index``` とhelloをhellと打ち間違えた場合は、``` rails d controller hell index``` コマンドを実行することで間違えてつくったファイル群を削除することができます（ターミナルでカーソルキーの↑キーを押すと、さきほど入力した内容が出てくるので、それを利用してgをdに直すと楽に実行できます）。
 
 再びrails serverを起動させましょう。
 
@@ -303,7 +303,7 @@ create  app/helpers/application_helper.rb
 ... (略)
 ```
 
-これらのファイル群によって、rails newをしただけで（何もコードを書かなくても）Webアプリとして動作します。たくさんのファイルがつくられていますね。Railsアプリの基本的なフォルダとファイル群は以下の図のものです。いきなりすべてを説明するのは難しいので、順番に説明していきます。役割ごとにフォルダが分かれています。それぞれの役割についてはこの後説明していきます。
+これらのファイル群によって、rails newをしただけで（何もコードを書かなくても）Webアプリとして動作します。たくさんのファイルがつくられていますね。Railsアプリの基本的なフォルダとファイル群を書いたものが次の図です。いきなりすべてを説明するのは難しいので、順番に説明していきます。役割ごとにフォルダが分かれていますが、それぞれの役割についてはこのあと説明していきます。
 
 ![Railsアプリの基本的なフォルダ・ファイル群（一部抜粋）](assets/smallest-app/figures/rails_files.png)
 
@@ -355,7 +355,7 @@ Running via Spring preloader in process 50811
 
 ![Railsアプリの動作](assets/smallest-app/figures/rails_app_semantics.png)
 
-ここでは、この図のRails Appの部分について詳しく説明していきます。ここから、対象箇所を抜き出したのが次の図です。
+ここでは、この図のRails Appの部分について詳しく説明していきます。対象箇所を抜き出したのが次の図です。
 
 ![Railsアプリがリクエストを受けてレスポンスを返すまで](assets/smallest-app/figures/rails_app_request_to_response.png)
 
@@ -373,9 +373,9 @@ Routesは「リクエストのURLとHTTPメソッド」に応じて次に処理�
 
 まとめると、リクエストは「URL」でアクセス先を、「HTTPメソッド」でなにをするかを指示します。
 
-![Routes](assets/smallest-app/figures/routes_mapping.png)
-
 最初に、Routesは「リクエストのURLとHTTPメソッド」に応じて次に処理を行う先を決めるのが仕事だと書きました。RailsではRoutesの処理が終わると、次はコントローラのアクションへ処理が移ります。アクションとはコントローラに書かれているメソッドのうち、publicなメソッドのことです。「Routesから呼び出せるメソッド」と言っても良いでしょう。ここでのメソッドはRubyでのメソッドのことで、処理を集めて名前をつけたものです。HTTPメソッドとは別のものです。RoutesはリクエストのURLとHTTPメソッドから、処理の進み先であるコントローラのアクションを決定します。RoutesはリクエストとControllerのアクションとの対応表と言えます。
+
+![Routes](assets/smallest-app/figures/routes_mapping.png)
 
 では、対応表であるRoutes表を見て見ましょう。rails serverを起動させて `/rails/info/routes` へアクセスしてみてください。Routes表の見方を説明したのが次の図です。
 
@@ -401,7 +401,7 @@ Routesについてまとめると、「RoutesはリクエストのパスとHTTP�
 
 ### コントローラ
 
-コントローラではさまざまな処理を行い、次のビューに処理を渡します。コントローラのファイルは`app/controllers/`へ置きます。さきほどのRoutesで次の処理先として指定されたHelloControllerは、`app/controller/hello_controller.rb` というファイルです。
+コントローラではさまざまな処理を行い、次のビューでつかうデータをつくって渡します。コントローラのファイルは`app/controllers/`へ置きます。さきほどのRoutesで次の処理先として指定されたHelloControllerは、`app/controller/hello_controller.rb` というファイルです。
 
 ```ruby
 class HelloController < ApplicationController
@@ -451,7 +451,7 @@ HTMLのpタグがあります。その中にHTMLではない `<%=` と `%>` と�
 
 * Routes、コントローラ、ビューの順番で処理を行い、HTMLを作ってブラウザへレスポンスを返す
 * RoutesはリクエストのURLとHTTPメソッドに応じて、処理をするコントローラとアクションを決める対応表
-* コントローラはさまざまな処理を行い、ビューで使う情報を@はじまりのインスタンス変数を使って渡す
+* コントローラはさまざまな処理を行い、ビューでつかう情報を@はじまりのインスタンス変数を使って渡す
 * ビューはテンプレート書かれたRubyのコードを実行して埋め込み、HTMLを作る
 
 ![Railsアプリがリクエストを受けてレスポンスを返すまで](assets/smallest-app/figures/rails_app_request_to_response.png)
