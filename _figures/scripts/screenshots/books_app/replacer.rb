@@ -33,6 +33,7 @@ class Replacer
     filename = File.basename(path)
     # コピー先のassets 以下のパスを得る
     out_path_hash = {
+      "books_index_data_1.png" => "crud",
       "books_index_data_2.png" => "crud",
       "books_created_data_1.png" => "crud", # modelのページでも使っている
       "books_index_blank.png" => "crud",
