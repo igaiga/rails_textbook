@@ -88,7 +88,7 @@ Use `bundle info [gemname]` to see where a bundled gem is installed.
 
 bundleコマンドを実行すると、Gemfileに書かれたgemがまだなければインストールし利用可能にします。また、Gemfile.lockに利用するバージョンが書き込まれます。
 
-続いて、carrierwaveを利用可能にするために、carrierwaveが提供する`rails g uploader Picture`コマンドを実行して必要なファイルを作成します。その前に、`bin/spring stop`コマンドを実行し、springというキャッシュの仕組みを再起動ておきます。このコマンドは環境によって実行不要な場合もありますが、確実に成功するように実行しています。
+続いて、carrierwaveを利用可能にするために、carrierwaveが提供する`rails g uploader Picture`コマンドを実行して必要なファイルを作成します。その前に、`bin/spring stop`コマンドを実行し、springというキャッシュの仕組みを再起動しておきます。このコマンドは環境によって実行不要な場合もありますが、確実に成功するように実行しています。
 
 ```bash
 $ bin/spring stop
