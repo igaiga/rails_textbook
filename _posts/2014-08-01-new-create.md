@@ -369,5 +369,5 @@ Book.new(book_params)で本のデータを作ります。newはクラスのイ�
 
 ## さらに学びたい場合は
 
-- [Rails ガイド: Action Controller の概要](http://railsguides.jp/action_controller_overview.html)
+- [Rails ガイド: Action Controller の概要](https://railsguides.jp/action_controller_overview.html)
   - 前章でも紹介した、コントローラについての詳しい解説のページです。StrongParametersに関する説明もここに書いてあります。
