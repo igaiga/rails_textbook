@@ -208,7 +208,7 @@ end
 
 ## Webアプリはどのように動作しているか
 
-ここで、普段ブラウザからつかっているWebアプリがどのように動作しているかを見てみましょう。アドレス入力欄にURLを入力してエンターキーを押すと、「リクエスト」がURL先のサーバへ向けて飛んでいきます。たとえば ```http://cookpad.com/``` と入力した場合は、クックパッドのサーバへ向けてリクエストが飛んでいきます。リクエストは追って説明していきますが、ざっくりと「そのページを見たいという要求（リクエスト）」とイメージしてもらえばOKです。
+ここで、普段ブラウザからつかっているWebアプリがどのように動作しているかを見てみましょう。アドレス入力欄にURLを入力してエンターキーを押すと、「リクエスト」がURL先のサーバへ向けて飛んでいきます。たとえば ```https://cookpad.com/``` と入力した場合は、クックパッドのサーバへ向けてリクエストが飛んでいきます。リクエストは追って説明していきますが、ざっくりと「そのページを見たいという要求（リクエスト）」とイメージしてもらえばOKです。
 
 ![リクエスト](assets/smallest-app/figures/request.png)
 
@@ -220,7 +220,7 @@ Webサーバ上で動作しているWebアプリはリクエストを受け取�
 
 ![HTMLを表示](assets/smallest-app/figures/result.png)
 
-HTMLはブラウザからも見ることができます。Chromeの場合は、どこかのサイト（たとえば ```http://cookpad.com/```）へアクセスしたあと、右クリックメニューから「ページのソースを表示」を選ぶとHTMLで書かれたそのページを閲覧することができます。
+HTMLはブラウザからも見ることができます。Chromeの場合は、どこかのサイト（たとえば ```https://cookpad.com/```）へアクセスしたあと、右クリックメニューから「ページのソースを表示」を選ぶとHTMLで書かれたそのページを閲覧することができます。
 
 ![右クリック](assets/smallest-app/app_ss/right_click.png)
 
@@ -458,11 +458,11 @@ HTMLのpタグがあります。その中にHTMLではない `<%=` と `%>` と�
 
 ## さらに学びたい場合は
 
-- [Rails Guides : Rails のルーティング](https://railsguides.jp/routing.html)
+- [Rails ガイド: Rails のルーティング](https://railsguides.jp/routing.html)
   - Routesについての詳しい説明です。
-- [Rails Guides : Action Controller の概要](https://railsguides.jp/action_controller_overview.html)
+- [Rails ガイド: Action Controller の概要](https://railsguides.jp/action_controller_overview.html)
   - コントローラについての詳しい説明です。
-- [Rails Guides : Action View の概要](http://railsguides.jp/action_view_overview.html)
+- [Rails ガイド: Action View の概要](https://railsguides.jp/action_view_overview.html)
   - ビューについての詳しい説明です。
-- [Rails Guides : レイアウトとレンダリング](https://railsguides.jp/layouts_and_rendering.html)
+- [Rails ガイド: レイアウトとレンダリング](https://railsguides.jp/layouts_and_rendering.html)
   - コントローラから次のビューを指定する方法や、ビューを整理して書くための情報などが説明されています。
