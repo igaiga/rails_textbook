@@ -1,3 +1,4 @@
+rm -rf images
 cp -r ../assets/ images
 
 mv images/smallest-app images/02_smallest_app
