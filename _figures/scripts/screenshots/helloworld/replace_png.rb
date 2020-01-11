@@ -27,7 +27,6 @@ class FilePathMaker
     File.join(
       to_base_path,
       "smallest-app",
-      "app_ss",
       File.basename(path)
     )
   end

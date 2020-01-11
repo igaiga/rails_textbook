@@ -24,7 +24,6 @@ class Replacer
     File.join(
       out_base_path,
       out_middle_path,
-      "app_ss",
       File.basename(path)
     )
   end

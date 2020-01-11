@@ -22,7 +22,6 @@ class Replacer
     File.join(
       out_base_path,
       File.dirname(path).split("/").last,
-      "figures",
       File.basename(path)
     )
   end
