@@ -1,0 +1,32 @@
+PREDEF:
+#  - chap00-preface.re
+
+CHAPS:
+  - chap01_preface.re
+  - chap02_smallest_app.re
+  - chap03_crud.re
+  - chap04_new_create.re
+  - chap05_model.re
+  - chap06_gem.re
+  - chap07_picture_upload.re
+  - chap08_postface.re
+
+APPENDIX:
+
+POSTDEF:
+#  - chap99-postscript.re
+
+##
+## ■Tips
+## 第I部、第II部、…のように「部」を使うには、「CHAPS:」を次のようにする。
+##
+##   CHAPS:
+##     - 部タイトル:
+##         - chap01.re
+##         - chap02.re
+##     - 部タイトル:
+##         - chap03.re
+##         - chap04.re
+##
+## 「部タイトル」の最後に半角の「:」をつけることに注意。
+##
