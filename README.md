@@ -37,3 +37,17 @@
 
 私的な利用、および公的な学校、コミュニティでの利用はOKです。
 商用での利用については許可していませんが、別途有償ライセンスの準備がありますので [igaiga](https://github.com/igaiga) へご連絡ください。
+
+## 画像に関するメモ
+
+生成方法によって何種類かの画像ファイルがあります。
+
+- HTMLからレンダリングしたファイル
+  - _figures/aseets/ 以下のフォルダにhtmlファイルがあるもの
+  - レンダリングスクリプトは _figures/scripts/html_figures 以下
+- イラストレーターで作成した変更されないファイル
+  - _figures/aseets/ 以下のフォルダに画像がそのまま置いてあるもの
+- アプリのスクショ
+  - レンダリングスクリプトは _figures/scripts/screenshots 以下
+- chrome_dev_toolのスクショを加工したもの
+  - _figures/chrome_dev_tool 以下にあるもの
