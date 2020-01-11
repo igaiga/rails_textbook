@@ -24,7 +24,7 @@
   "homepage": "https://github.com/igaiga/rails_textbook#readme",
   "dependencies": {},
   "devDependencies": {
-    "textlint": "^5.3.0",
+    "textlint": "^5.7.0",
     "textlint-rule-max-ten": "^2.0.1",
     "textlint-rule-no-doubled-conjunction": "^1.0.0",
     "textlint-rule-no-doubled-conjunctive-particle-ga": "^1.0.2",
