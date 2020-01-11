@@ -20,19 +20,19 @@ categories:
 
 前の章での「CRUD遷移図」において、newとcreateはこの部分になります。
 
-![CRUD画面遷移図(newとcreate)](assets/new-create/figures/crud_transition_diagram_new_create.png)
+![CRUD画面遷移図(newとcreate)](assets/new-create/crud_transition_diagram_new_create.png)
 
 新規登録は2つのアクションで構成されます。処理の流れは以下のようになります。
 
 ### ステップ1: newアクション（新規作成画面）
 
-![newアクション](assets/new-create/figures/new_create_overview_item_new.png)
+![newアクション](assets/new-create/new_create_overview_item_new.png)
 
 newアクションが実行され新規入力画面を表示します。ここで本のタイトルとメモを入力します。Create Bookボタンを押すと、次に画面のないcreateアクションが実行されます。
 
 ### ステップ2: createアクション（画面なし）
 
-![createアクション](assets/new-create/figures/new_create_overview_item_create.png)
+![createアクション](assets/new-create/new_create_overview_item_create.png)
 
 つづくcreateアクションで、前のステップで入力されたタイトルとメモで本のデータを新規登録します。
 
@@ -42,27 +42,27 @@ newアクションが実行され新規入力画面を表示します。ここ�
 
 新規入力画面が表示されるまでの処理の流れを見ていきましょう。
 
-![newアクション](assets/new-create/figures/new_create_overview_item_new.png)
+![newアクション](assets/new-create/new_create_overview_item_new.png)
 
-![新規入力画面](assets/new-create/app_ss/books_new_data_1.png)
+![新規入力画面](assets/new-create/books_new_data_1.png)
 
 新規入力画面はnewアクションで表示されます。Railsアプリはこれまでに説明した通り、Routes、コントローラ、ビューの各処理を経て画面が表示されます。
 
-![new(新規入力)画面の処理の流れ](assets/new-create/figures/new_flow.png)
+![new(新規入力)画面の処理の流れ](assets/new-create/new_flow.png)
 
 最初はRoutesで処理が行われます。
 
 ### Routes
 
-![新規入力画面の処理の流れ - Routes](assets/new-create/figures/new_flow_routes.png)
+![新規入力画面の処理の流れ - Routes](assets/new-create/new_flow_routes.png)
 
 Routesの対応表をつかって、リクエストに対して処理されるコントローラとアクションが決まります。`http://localhost:3000/rails/info/routes`へアクセスしてRoutes表を見てみましょう。今回のリクエストはパスが /books/new 、HTTPメソッドがGETなので、BooksControllerのnewアクションへ処理が進みます。Routes表の下線部に該当します。
 
-![Routes表](assets/new-create/figures/new_routes.png)
+![Routes表](assets/new-create/new_routes.png)
 
 ### コントローラ
 
-![新規入力画面の処理の流れ - コントローラ](assets/new-create/figures/new_flow_controller.png)
+![新規入力画面の処理の流れ - コントローラ](assets/new-create/new_flow_controller.png)
 
 BooksControllerのnewアクションのコードを見てみましょう。ファイルは `app/controllers/books_controller.rb` です。
 
@@ -82,7 +82,7 @@ Bookクラスには色々と便利な機能があるのですが、それは後�
 
 ### ビュー
 
-![新規入力画面の処理の流れ - ビュー](assets/new-create/figures/new_flow_view.png)
+![新規入力画面の処理の流れ - ビュー](assets/new-create/new_flow_view.png)
 
 ビューのコード `views/books/new.html.erb` を見てみましょう。
 
@@ -97,7 +97,7 @@ Bookクラスには色々と便利な機能があるのですが、それは後�
 
 これだけしかありません。随分とあっさりしています。実は、下の図中の枠線部分は別のファイルに書いてあり、 `<%= render 'form', book: @book %>` で埋め込まれるようになっています。
 
-![renderの説明](assets/new-create/figures/new_view_form_screenshot.png)
+![renderの説明](assets/new-create/new_view_form_screenshot.png)
 
 renderメソッドは別のビューファイルを埋め込みます。わざわざ別のファイルに書く理由は、他の画面でもそのファイルを利用することで、同じ部品を共用したいからです。埋め込む用のビューファイルをパーシャルと言います。書式は以下の通りです。
 
@@ -161,13 +161,13 @@ renderメソッドは別のビューファイルを埋め込みます。わざ�
 
 残りの部分について説明していきます。次の図を見てください。
 
-![コードとページの部品の対応](assets/new-create/figures/new_view_form.png)
+![コードとページの部品の対応](assets/new-create/new_view_form.png)
 
 それぞれ矢印の先の部品を作っています。また、全体としてはformという名の部品になってます。formはHTMLでブラウザからサーバへ情報を送信する仕組みです。
 
 まずは部品の1つ、タイトルのところを見てみましょう。
 
-![タイトル部品](assets/new-create/figures/new_view_form_title_html.png)
+![タイトル部品](assets/new-create/new_view_form_title_html.png)
 
 枠線内がタイトルの部分です。全体はHTMLですが、 `<%= %>`で囲まれた部分がその中に埋め込まれたRailsコードです。
 
@@ -175,11 +175,11 @@ renderメソッドは別のビューファイルを埋め込みます。わざ�
 
 Railsコードの部分をもう少し詳しく見てみましょう。`form.label :title` で "Title"という文字列を表示しています。その名の通り、ラベルの部分です。`form.text_field :title` はその下にあるテキスト入力欄です。`form` はformブロック内の変数で、ここではbookに関するformを記述するために使っています。見慣れない書き方かもしれませんが、ここはそう書くものだと思ってもらえれば大丈夫です。
 
-![メモ部品](assets/new-create/figures/new_view_form_memo_html.png)
+![メモ部品](assets/new-create/new_view_form_memo_html.png)
 
 メモの部分も同様です。`form.label :memo` が "Memo" を表示する部分です。`form.text_area :memo` がその下のテキスト入力欄を作ります。`text_area` は先ほどの `text_field` よりも広くて改行を入力できるテキスト入力欄を作るメソッドです。
 
-![投稿ボタン部品](assets/new-create/figures/new_view_form_submit_html.png)
+![投稿ボタン部品](assets/new-create/new_view_form_submit_html.png)
 
 最後は投稿するボタンの部分です。`form.submit` は投稿ボタン（Create Bookボタン）を作ります。このボタンを押すとform内の情報をまとめてサーバへ送信（リクエストを送信）します。ここでは、Bookに関する情報、入力したタイトルとメモをリクエストに含んで送信します。ここで送信されたタイトルとメモが後の行程で登録されます。
 
@@ -191,15 +191,15 @@ Chromeのデベロッパーツールを使うと、どのようなリクエス�
 
 new画面を表示させ、タイトル欄とメモ欄にBookの情報を入力します。Chromeのメニューからデベロッパーツールを起動します。Networkと書かれたタブを選択します。CreateBookボタンを押し、リクエストを送信してみましょう。
 
-![Chromeでリクエストを観察する(準備)](assets/new-create/figures/devtools_create_1.png)
+![Chromeでリクエストを観察する(準備)](assets/new-create/devtools_create_1.png)
 
-![Chromeでリクエストを観察する(リクエスト送信)](assets/new-create/figures/devtools_create_2.png)
+![Chromeでリクエストを観察する(リクエスト送信)](assets/new-create/devtools_create_2.png)
 
 たくさん表示されました。一番最初のbooksと書かれた行が先ほどボタンを押して発行されたリクエストです。booksの行をクリックして詳細を見てみましょう。
 
-![Chromeでリクエストを観察する(リクエストの中身)](assets/new-create/figures/devtools_create_3.png)
+![Chromeでリクエストを観察する(リクエストの中身)](assets/new-create/devtools_create_3.png)
 
-![Chromeでリクエストを観察する(リクエストの中身 form)](assets/new-create/figures/devtools_create_4.png)
+![Chromeでリクエストを観察する(リクエストの中身 form)](assets/new-create/devtools_create_4.png)
 
 最初にURLとHTTPメソッドが書いてあります。Routesで使う情報がここに載っています。
 
@@ -212,13 +212,13 @@ new画面を表示させ、タイトル欄とメモ欄にBookの情報を入力�
 
 new画面でCreate bookボタンを押すと新たなリクエストを飛ばすことが分かりました。ここからは、この2つ目のリクエストを追いかけます。リクエストの内容は、さきほどChromeで確認したように次の図のようになっています。
 
-![新たなリクエスト](assets/new-create/figures/create_flow_routes.png)
+![新たなリクエスト](assets/new-create/create_flow_routes.png)
 
 ### Routes
 
 いつものように最初の処理はroutesです。
 
-![routes](assets/new-create/figures/create_routes.png)
+![routes](assets/new-create/create_routes.png)
 
 URLのパスは/books 、HTTPメソッドはPOSTなので対応するコントローラとアクションはbooks#create、つまりBooksControllerのcreateアクションが呼び出されます。
 
@@ -228,7 +228,7 @@ HTTPメソッドのPOSTは今回のようなデータの新規作成時に使い
 
 ### コントローラ
 
-![新たなリクエスト](assets/new-create/figures/create_flow_controller.png)
+![新たなリクエスト](assets/new-create/create_flow_controller.png)
 
 コントローラのソースファイルは `app/controllers/books_controller.rb` です。ここでやっていることは大きく3つです。
 
@@ -299,13 +299,13 @@ Processing by BooksController#create as HTML
 
 これを、少し前にブラウザのデベロッパーツールで表示させた内容と比較してみましょう。
 
-![パラメータの送信側と受信側](assets/new-create/figures/params_devtools.png)
+![パラメータの送信側と受信側](assets/new-create/params_devtools.png)
 
 ここで出力した `params` の値と、さきほどブラウザのデベロッパーツールで表示させたパラメータの値が同じになっていることが分かります。
 
 次の図はさきほど試した、デベロッパーツールでRailsアプリへのリクエストを観察したときの様子を図にしたものです。ブラウザのデベロッパーツールで見たものは、送信するリクエストのパラメータです。一方でRailsアプリで出力したパラメータは、リクエストを受信してRailsアプリで処理している部分です。ブラウザがユーザーの入力データをパラメータとして送信し、私たちが作成しているアプリがそのデータを受け取っていることを確認できました。
 
-![ブラウザとデベロッパーツール](assets/new-create/figures/devtools_and_rails.png)
+![ブラウザとデベロッパーツール](assets/new-create/devtools_and_rails.png)
 
 ### Strong Parameters
 
