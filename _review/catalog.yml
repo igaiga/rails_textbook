@@ -1,20 +1,20 @@
 PREDEF:
-#  - chap00-preface.re
+#  - 00_preface.re
 
 CHAPS:
-  - chap01_preface.re
-  - chap02_smallest_app.re
-  - chap03_crud.re
-  - chap04_new_create.re
-  - chap05_model.re
-  - chap06_gem.re
-  - chap07_picture_upload.re
-  - chap08_postface.re
+  - 01_preface.re
+  - 02_smallest_app.re
+  - 03_crud.re
+  - 04_new_create.re
+  - 05_model.re
+  - 06_gem.re
+  - 07_picture_upload.re
+  - 08_postface.re
 
 APPENDIX:
 
 POSTDEF:
-#  - chap99-postscript.re
+#  - 99_postscript.re
 
 ##
 ## ■Tips
