@@ -7,6 +7,7 @@ md2review ../_posts/2014-09-01-model.md > contents/05_model.re
 md2review ../_posts/2016-01-11-gem.md > contents/06_gem.re
 md2review ../_posts/2016-01-12-picture-upload.md > contents/07_picture_upload.re
 md2review ../_posts/2016-02-17-postface.md > contents/08_postface.re
-# TODO: 変換後にreファイルからヘッダ情報の除去が必要、現在は手作業。
-echo "reファイルからヘッダ情報を削除してください"
+
+# 変換後にreファイルからヘッダ情報の除去
+ruby remove_jekyll_header.rb
 
