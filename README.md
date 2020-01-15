@@ -47,7 +47,9 @@
   - レンダリングスクリプトは _figures/scripts/html_figures 以下
 - イラストレーターで作成した変更されないファイル
   - _figures/aseets/ 以下のフォルダに画像がそのまま置いてあるもの
+  - assetsへのコピースクリプトは書いていない
 - アプリのスクショ
   - レンダリングスクリプトは _figures/scripts/screenshots 以下
 - chrome_dev_toolのスクショを加工したもの
   - _figures/chrome_dev_tool 以下にあるもの
+  - assetsへのコピースクリプトは書いていない
