@@ -53,3 +53,5 @@
 - chrome_dev_toolのスクショを加工したもの
   - _figures/chrome_dev_tool 以下にあるもの
   - assetsへのコピースクリプトは書いていない
+- 表紙
+  - _figures/covers/rails_textbook_cover.png
