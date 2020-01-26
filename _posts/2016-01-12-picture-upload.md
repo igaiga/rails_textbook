@@ -71,14 +71,14 @@ $ rails db:migrate
 gem 'carrierwave'
 ```
 
-Gemfileの内容でgemを利用できるようにbundleコマンドをターミナルで実行します（メッセージ中"Installing carrierwave 1.0.0"の数字は異なる場合があります）。
+Gemfileの内容でgemを利用できるようにbundle installコマンドをターミナルで実行します（メッセージ中"Installing carrierwave 1.0.0"の数字は異なる場合があります）。
 
 ```bash
-bundle
+bundle install
 ```
 
 ```console
-$ bundle
+$ bundle install
 Using rake 13.0.0
 ...
 Installing carrierwave 1.3.1
@@ -86,7 +86,7 @@ Bundle complete! 19 Gemfile dependencies, 79 gems now installed.
 Use `bundle info [gemname]` to see where a bundled gem is installed.
 ```
 
-bundleコマンドを実行すると、Gemfileに書かれたgemがまだなければインストールし利用可能にします。また、Gemfile.lockに利用するバージョンが書き込まれます。
+bundle installコマンドを実行すると、Gemfileに書かれたgemがまだなければインストールし利用可能にします。また、Gemfile.lockに利用するバージョンが書き込まれます。
 
 続いて、carrierwaveを利用可能にするために、carrierwaveが提供する`rails g uploader Picture`コマンドを実行して必要なファイルを作成します。その前に、`bin/spring stop`コマンドを実行し、springというキャッシュの仕組みを再起動しておきます。このコマンドは環境によって実行不要な場合もありますが、確実に成功するように実行しています。
 
@@ -243,10 +243,7 @@ end
 
 ## 動作確認
 
-rails serverを起動して、ブラウザから http://localhost:3000/books へアクセスしてみましょう[^2]。
-
-[^2]: PictureUploaderが見つからない旨のエラー（"Unable to autoload constant PictureUploader"など）が発生した場合は、rails serverを一度止め、 `bin/spring stop` コマンドを実行してからrails serverをもう一度起動して、再アクセスしてみてください。また、 `app/uploaders/picture_uploader.rb` ファイルが存在するかも確認してみてください。存在しない場合は `rails g uploader Picture` コマンドが実行されていないケースが考えられます。
-
+rails serverを起動して、ブラウザから http://localhost:3000/books へアクセスしてみましょう。
 
 ```bash
 rails s
@@ -259,6 +256,8 @@ $ rails s
 * Listening on tcp://localhost:3000
 Use Ctrl-C to stop
 ```
+
+もしもPictureUploaderが見つからない旨のエラー（"Unable to autoload constant PictureUploader"など）が発生した場合は、rails serverを一度止め、 `bin/spring stop` コマンドを実行してからrails serverをもう一度起動して、再アクセスしてみてください。また、 `app/uploaders/picture_uploader.rb` ファイルが存在するかも確認してみてください。存在しない場合は `rails g uploader Picture` コマンドが実行されていないケースが考えられます。
 
 New Bookリンクをクリックすると、「ファイルを選択」ボタンが増えているかと思います。ボタンを押して画像ファイルを選び、アップロードしてみましょう。
 
@@ -273,5 +272,5 @@ uploadした画像ファイルがブラウザに表示されているのを確�
 ポイントをまとめます。
 
 - carrierwave gemを使うと画像アップロード機能を追加できる
-- Gemfileに新しいgemを追加した後、bundleコマンドでインストールする
+- Gemfileに新しいgemを追加した後、bundle installコマンドでインストールする
 - マイグレーションファイルの生成はrails g migration Addカラム名Toテーブル名 カラム名:型名
