@@ -79,9 +79,9 @@ bundle install
 
 ```console
 $ bundle install
-Using rake 13.0.0
+Using rake 13.0.1
 ...
-Installing carrierwave 1.3.1
+Installing carrierwave 2.0.2
 Bundle complete! 19 Gemfile dependencies, 79 gems now installed.
 Use `bundle info [gemname]` to see where a bundled gem is installed.
 ```

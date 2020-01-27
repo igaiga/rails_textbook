@@ -62,13 +62,14 @@ rails s
 ```console
 $ rails s
 => Booting Puma
-=> Rails 6.0.0 application starting in development
+=> Rails 6.0.2.1 application starting in development
 => Run `rails server --help` for more startup options
 Puma starting in single mode...
-* Version 3.12.1 (ruby 2.6.5-p114), codename: Llamas in Pajamas
+* Version 4.3.1 (ruby 2.7.0-p0), codename: Mysterious Traveller
 * Min threads: 5, max threads: 5
 * Environment: development
-* Listening on tcp://localhost:3000
+* Listening on tcp://127.0.0.1:3000
+* Listening on tcp://[::1]:3000
 Use Ctrl-C to stop
 ```
 
