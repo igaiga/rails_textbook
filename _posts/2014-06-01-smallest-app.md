@@ -57,7 +57,7 @@ cd helloworld
 rails s
 ```
 
-うまく動作している場合は、以下のような表示になります（メッセージ中"Version 3.12.1"の数字は異なる場合があります）。
+うまく動作している場合は、以下のような表示になります。メッセージ中にあるバージョンの数字は異なる場合があります。
 
 ```console
 $ rails s
@@ -65,7 +65,7 @@ $ rails s
 => Rails 6.0.2.1 application starting in development
 => Run `rails server --help` for more startup options
 Puma starting in single mode...
-* Version 4.3.1 (ruby 2.7.0-p0), codename: Mysterious Traveller
+* Version 4.3.1 (ruby 2.6.5-p114), codename: Mysterious Traveller
 * Min threads: 5, max threads: 5
 * Environment: development
 * Listening on tcp://127.0.0.1:3000
