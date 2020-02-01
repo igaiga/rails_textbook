@@ -30,3 +30,7 @@
 %%% デフォルトのフォントを明朝体からゴシック体に変更
 \renewcommand\familydefault{\sfdefault}      % 英数字のデフォルトをサンセリフに変更
 \renewcommand\kanjifamilydefault{\gtdefault} % 日本語のデフォルトをゴシック体に変更
+
+%%% ページ番号が太く出るので普通の太さに変更
+%%% renewcommandでsty/starter.styの標準設定上書き mdseries=普通太さを明示指定 「-- 1 --」
+\renewcommand{\pagenumberstyle}{\mdseries --\ \thepage\ --}
