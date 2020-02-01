@@ -8,3 +8,28 @@
 
 % \renewcommand\kanjifamilydefault{\gtdefault}  % 本文をゴシック体に
 % \renewcommand\familydefault{\sfdefault}       % 英文をサンセリフ体に
+
+%%% 日本語フォントの太さを細くするよう変更
+%%% （Notoフォントを使っていることが前提なので、Docker環境を使うか、
+%%%   Notoフォントを自分でインストールすること）
+%%% 参考：https://tm23forest.com/contents/veryeasy-latex-meiryo-font
+\special{pdf:mapline uphminr-h unicode NotoSerifCJK-Light.ttc} % 明朝体
+\special{pdf:mapline uphgothr-h unicode NotoSansCJK-Light.ttc} % ゴシック体
+
+%%% 英語のセリフ付きフォント（明朝体相当）を細いものに変更
+%%% 参考：https://tug.org/FontCatalogue/iwonalight/
+\usepackage[light,math]{iwona}
+\renewcommand{\bfdefault}{bx}  % 日本語の太字が効くように修正
+
+%%% 英語のサンセリフフォント（ゴシック体相当）を細いものに変更
+%%% 参考：https://tug.org/FontCatalogue/robotolight/
+%%%       https://tug.org/FontCatalogue/firasanslight/
+\usepackage[light]{roboto}
+%\usepackage[light]{FiraSans}
+\makeatletter
+\renewcommand{\bfseries@sf}{bx} % 日本語の太字が効くように修正
+\makeatother
+
+%%% デフォルトのフォントを明朝体からゴシック体に変更
+%\renewcommand\familydefault{\sfdefault}      % 英数字のデフォルトをサンセリフに変更
+\renewcommand\kanjifamilydefault{\gtdefault} % 日本語のデフォルトをゴシック体に変更
