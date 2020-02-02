@@ -92,7 +92,7 @@ starter:
   inlinecode_gray: false
 
   ## 奥付 (Colophon) に「powered by Re:VIEW Starter」と入れるか？
-  colophon_poweredby: false
+  colophon_poweredby: true
 
   ## 画像が現在位置に入りきらず次ページに送られたとき、後続のテキストを現在位置に
   ## 流し込むかどうか。流し込まないと現在位置に大きなスペースができてしまう。
