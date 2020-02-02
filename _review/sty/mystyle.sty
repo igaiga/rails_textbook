@@ -23,9 +23,7 @@
 %%%       https://tug.org/FontCatalogue/firasanslight/
 \usepackage[light]{roboto}
 %\usepackage[light]{FiraSans}
-\makeatletter
 \renewcommand{\bfseries@sf}{bx} % 日本語の太字が効くように修正
-\makeatother
 
 %%% デフォルトのフォントを明朝体からゴシック体に変更
 \renewcommand\familydefault{\sfdefault}      % 英数字のデフォルトをサンセリフに変更
@@ -36,3 +34,7 @@
 \long\def\@footnotetext#1{%
   \original@@footnotetext{{\sffamily #1}}%  % 引数を強制的にサンセリフ体にする
 }
+
+%%% ページ番号が太く出るので普通の太さに変更
+%%% renewcommandでsty/starter.styの標準設定上書き mdseries=普通太さを明示指定 「-- 1 --」
+\renewcommand{\pagenumberstyle}{\mdseries --\ \thepage\ --}
