@@ -42,7 +42,7 @@ $ rails new helloworld
       create  Rakefile
  ...（略）
 ✨  Done in 3.83s.
-Webpacker successfully installed 🎉 🍰
+Webpacker successfully installed
 ```
 
 ターミナルの画面にこのように"Webpacker successfully installed"と表示されれば成功です。メッセージ中"Done in 3.83s."の3.83sは所用時間なので、実行するごとに変化します。rails newコマンドはたくさんのフォルダとファイルを自動で作ります。rails newコマンドでやっていることはこの後のコラムで説明します。
