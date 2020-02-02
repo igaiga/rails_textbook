@@ -31,6 +31,8 @@
 \renewcommand\familydefault{\sfdefault}      % 英数字のデフォルトをサンセリフに変更
 \renewcommand\kanjifamilydefault{\gtdefault} % 日本語のデフォルトをゴシック体に変更
 
-%%% ページ番号が太く出るので普通の太さに変更
-%%% renewcommandでsty/starter.styの標準設定上書き mdseries=普通太さを明示指定 「-- 1 --」
-\renewcommand{\pagenumberstyle}{\mdseries --\ \thepage\ --}
+%% 英数字のデフォルトフォントを細いサンセリフ体にしたとき、脚注の英数字が細くならないのを修正
+\let\original@@footnotetext=\@footnotetext
+\long\def\@footnotetext#1{%
+  \original@@footnotetext{{\sffamily #1}}%  % 引数を強制的にサンセリフ体にする
+}
