@@ -46,39 +46,47 @@
     }
   \fi
 
+  \vspace{4zw}         % 縦方向のスペース
+
   %% フォントを変更
-  \mcfamily            % 明朝体（日本語）
-  \rmfamily            % ローマン体（英語）
+  \gtfamily            % ゴシック体（日本語）
+  \sffamily            % サンセリフ体（英語）
+  %% \mcfamily            % 明朝体（日本語）
+  %% \rmfamily            % ローマン体（英語）
 
   %% 著者
   \ifx\@author\empty\else
-    \vspace{8zw}       % 縦方向のスペース
+    \vspace{24zw}       % 縦方向のスペース
     {
       \LARGE           % フォントサイズを大きく
-      \@author         % 著者
+      %\@author         % 著者
+      五十嵐邦明
+      \par             % 段落を区切る（デザイン崩れを防ぐため）
+      ガーネットテック373株式会社
+      \par             % 段落を区切る（デザイン崩れを防ぐため）
+      2020年2月29日
       \par             % 段落を区切る（デザイン崩れを防ぐため）
     }
   \fi
 
   %% 日付、バージョン、イベント名
-  \vfill               % 縦方向のスペース
-  {
-    \Large             % フォントサイズを大きめに
-    \ifx\@pubevent\empty\else
-      \@pubevent\par   % イベント名（config.ymlの「pubevent_name:」で指定）
-    \fi
-    \ifx\@latestpubhistory\empty
-      \@date           % 日付（config.ymlの「date:」で指定）
-    \else
-      \@latestpubhistory % 日付とバージョン（config.ymlの「history:」で指定）
-    \fi
-    \par               % 段落を区切る（デザイン崩れを防ぐため）
-  }
+  %% \vfill               % 縦方向のスペース
+  %% {
+  %%   \Large             % フォントサイズを大きめに
+    %% \ifx\@pubevent\empty\else
+    %%   \@pubevent\par   % イベント名（config.ymlの「pubevent_name:」で指定）
+    %% \fi
+    %% \ifx\@latestpubhistory\empty
+    %%   \@date           % 日付（config.ymlの「date:」で指定）
+    %% \else
+    %%   \@latestpubhistory % 日付とバージョン（config.ymlの「history:」で指定）
+    %% \fi
+  %%   \par               % 段落を区切る（デザイン崩れを防ぐため）
+  %% }
 
   \vspace{4zw}         % 縦方向のスペース
 
 }
-
 
 %%%
 %%% タイトルページ（大扉）の、次のページ
@@ -89,13 +97,27 @@
   \vspace*{\fill}      % 縦方向の長いスペース（ページ先頭なので「*」が必要）
   \small               % フォントを小さく
 
-  {\gtfamily\bfseries ■免責}\\
-  本書は情報の提供のみを目的としています。\\
-  本書の内容を実行・適用・運用したことで何が起きようとも、それは実行・適用・運用した人自身の責任であり、著者や関係者はいかなる責任も負いません。\\
+  {\gtfamily\bfseries ■ 技術書典8 まえがき}\\
 
-  {\gtfamily\bfseries ■商標}\\
-  本書に登場するシステム名や製品名は、関係各社の商標または登録商標です。\\
-  また本書では、{\texttrademark}、{\textregistered}、{\textcopyright}などのマークは省略しています。\\
+本書は2012年4月から始めた一橋大学での講義資料からはじまり、そのあと幾度かの改訂を経て、今回初めての印刷製本版となりました。当時はRuby1.9, Rails3.2という環境でしたので、現在のRuby2.7, Rails6.0までの道のりで、Rubyは8つ、Railsは7つのバージョンアップを重ねたことになります。8年前から同じ言語、同じフレームワークを使って仕事ができていることは本当にすごいことです。しかもそのフレームワークは今でもバージョンアップのたびに便利になっていることも驚異的です。RubyとRailsのおかげでたのしく暮らしています。全てのRubyistのみなさんへ感謝します。\\
+
+  {\gtfamily\bfseries ■ 著: 五十嵐邦明}\\
+
+ガーネットテック373株式会社\\
+twitter: igaiga555\\
+https://igarashikuniaki.net\\
+
+群馬高専出身。現在はフリーランスでRailsアプリ開発や技術顧問、研修設計などに携わる。大学の非常勤講師、企業の新人研修、島根県Ruby合宿、Rails寺子屋、RailsGirlsなどで講師を務める。著書に『ゼロからわかるRuby超入門』、『RubyとRailsの学習ガイド』 ほか。\\
+
+  {\gtfamily\bfseries ■ イラスト: becolomochi}\\
+
+べころもち工房\\
+twitter: becolomochi\\
+https://becolomochi.com\\
+
+群馬高専卒業後、印刷会社にDTPオペレータとして入社。そののち関連企業のWebシステム開発部署へWebデザイナーとして異動。現在フリーランス。\\
+
+「暖かくて優しい、しなやかなコミュニケーションを」をモットーに、イメージキャラクター制作、イラスト、デザイン、コーディング、フロントエンド実装を行なっている。群馬で異業種の夫と子と3人暮らし。ダム好き。\\
 
   %%% 挿絵を入れる場合
   %\includegraphics[width=0.7\textwidth]{images/illust.png}
