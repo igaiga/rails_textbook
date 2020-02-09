@@ -41,7 +41,7 @@ $ rails new helloworld
       create  README.md
       create  Rakefile
  ...（略）
-✨  Done in 3.83s.
+Done in 3.83s.
 Webpacker successfully installed
 ```
 
