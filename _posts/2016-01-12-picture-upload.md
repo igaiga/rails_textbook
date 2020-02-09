@@ -21,13 +21,13 @@ categories:
 最初に、既存のbooksテーブルにstring型のpictureカラムを増やします。モデルの章でやったように、前に作ったmigrationファイルを編集するのではなく、新しいmigrationファイルをつくります。rails g migrationコマンドを実行し、migrationファイルを作成します。rails g migrationコマンドの基本形を再掲します。
 
 ```bash
-rails g migration Addカラム名Toテーブル名 カラム名:型名
+$ rails g migration Addカラム名Toテーブル名 カラム名:型名
 ```
 
 今回はbooksテーブルにpictureカラムをstring型で追加するので、実行するコマンドは以下になります。ターミナルで実行してみましょう。
 
 ```bash
-rails g migration AddPictureToBooks picture:string
+$ rails g migration AddPictureToBooks picture:string
 ```
 
 ```console
@@ -74,7 +74,7 @@ gem 'carrierwave'
 Gemfileの内容でgemを利用できるようにbundle installコマンドをターミナルで実行します（メッセージ中"Installing carrierwave 1.0.0"の数字は異なる場合があります）。
 
 ```bash
-bundle install
+$ bundle install
 ```
 
 ```console
@@ -246,7 +246,7 @@ end
 rails serverを起動して、ブラウザから http://localhost:3000/books へアクセスしてみましょう。
 
 ```bash
-rails s
+$ rails s
 ```
 
 ```console

@@ -18,11 +18,11 @@ categories:
 
 ### アプリの作成とWelcome画面
 
-まずはターミナルを起動して、以下のコマンドを打ってみましょう。
+まずはターミナルを起動して、以下のコマンドを打ってみましょう。先頭の$マークはターミナルを表す印です。入力はしないでください。
 
 ```bash
-mkdir my_web_apps
-cd my_web_apps
+$ mkdir my_web_apps
+$ cd my_web_apps
 ```
 
 mkdirはフォルダを作成するコマンド、cdはターミナル内で現在のフォルダを移動するコマンドです。Windowsで普段使いなれている「コンピューター（エクスプローラー）」を起動するには、ターミナルで`explorer .`と打つと現在のフォルダを開くことができます。MacでFinderを開くにはターミナルから`open .`と打ちます。mkdirコマンドで作成したフォルダが存在することを確認できます。フォルダはターミナルからとエクスプローラー（MacではFinder）からとどちらから作成しても違いはないので、どちらでも問題ありません。
@@ -30,7 +30,7 @@ mkdirはフォルダを作成するコマンド、cdはターミナル内で現�
 それでは、アプリを作りましょう。最初に作るのは、ブラウザに"Hello world!"と表示させるアプリです。先ほど作成したフォルダ ```my_web_apps``` の下に新しいアプリを作ってみましょう。ターミナルを起動して以下のコマンドを打ちます。
 
 ```bash
-rails new helloworld
+$ rails new helloworld
 ```
 
 実行には少し時間がかかります。たくさんのメッセージが表示されます。
@@ -53,8 +53,8 @@ Webpacker successfully installed
 
 
 ```bash
-cd helloworld
-rails s
+$ cd helloworld
+$ rails s
 ```
 
 うまく動作している場合は、以下のような表示になります。メッセージ中にあるバージョンの数字は異なる場合があります。
@@ -92,7 +92,7 @@ rails newコマンドがエラーで中断されたときには、表示され�
 ひきつづき、以下のコマンドを入力してみましょう（メッセージ中"in process 9959"の数字は実行するごとに異なります）。rails serverが起動している場合は、Ctrl-c（controlキーを押しながらcキー）で終了してからコマンドを打ってください。
 
 ```bash
-rails g controller hello index
+$ rails g controller hello index
 ```
 
 ```console
@@ -118,7 +118,7 @@ Running via Spring preloader in process 9959
 再びrails serverを起動させましょう。
 
 ```bash
-rails s
+$ rails s
 ```
 
 ```console
@@ -263,8 +263,8 @@ Railsでの基本的な開発の進め方は以下の2つを繰り返すサイ�
 実は、さきほどつくったアプリもこの手順で進めていました。
 
 ```bash
-rails new helloworld
-rails g controller hello index
+$ rails new helloworld
+$ rails g controller hello index
 ```
 
 これらのコマンドは「ひな形になるファイルの生成」を行っていました。そのあと、```app/views/hello/index.html.erb``` を編集して、
@@ -312,7 +312,7 @@ create  app/helpers/application_helper.rb
 次に実行したrails gコマンドで作られたファイルを見てみましょう。
 
 ```bash
-rails g controller hello index
+$ rails g controller hello index
 ```
 
 ```console
