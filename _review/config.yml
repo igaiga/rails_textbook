@@ -304,7 +304,7 @@ texdocumentclass: ["jsbook",
     #"uplatex,papersize,twoside,a5j,9pt,openright"  # A5  9pt 右起こし
     #"uplatex,papersize,twoside,a5j,9pt,openany"    # A5  9pt 両起こし
     #"uplatex,papersize,oneside,a5j,10pt,openany"   # A5 10pt 両起こし（タブレット向け）
-    "uplatex,papersize,oneside,b5j,10pt,openany"
+    "uplatex,papersize,oneside,b5j,12pt,openany"
 ]
 #
 # LaTeX用のコマンドを指定する

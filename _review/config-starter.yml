@@ -7,7 +7,8 @@ starter:
   ## * pbook: 印刷用のモノクロPDFを出力。printing bookの略。
   ## * ebook: 電子用のカラーPDFを出力。electric bookの略。
   ## * tablet: タブレット用のカラーPDFを出力。
-  target: pbook
+  # target: pbook
+  target: tablet
 
   ## ドラフトモード。trueなら画像を読み込むかわりに枠を表示する。
   ## 図やスクリーンショットが多くてコンパイルに時間がかかるときに便利。
