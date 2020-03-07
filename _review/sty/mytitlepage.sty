@@ -5,27 +5,6 @@
 \usepackage{afterpage}                  % for '\afterpage'
 \usepackage[pagecolor=none]{pagecolor}  % for '\newpagecolor'
 
-\newcommand*\includefullpagegraphics[2][]{%
-  \clearpage
-  \thispagestyle{empty}%
-  \vbox to \textheight{%
-    \vskip-1in
-    \vbox to \paperheight{\vss
-      \hbox to \textwidth{%
-        \ifodd\c@page
-        \hskip-\dimexpr\oddsidemargin + 1in\relax
-        \else
-        \hskip-\dimexpr\evensidemargin + 1in\relax
-        \fi
-        \hbox to \paperwidth{\hss
-          \includegraphics[#1]{#2}%
-          \hss}%
-        \hss}%
-      \vss}%
-    \vss}%
-  \clearpage
-}
-
 %% 背景色を指定
 %\definecolor{starter@titlepagecolor}{gray}{0.90}  % 薄いグレー
 \colorlet{starter@titlepagecolor}{white}           % 白
@@ -34,8 +13,6 @@
   \newpagecolor{starter@titlepagecolor} % このページの背景色を指定する
   \afterpage{\restorepagecolor}         % 次のページからは背景色をなくす
 
-  %% カバー挿入
-  \includefullpagegraphics[keepaspectratio]{./images/rails_textbook_cover_omote.png}
   \thispagestyle{empty}% ページ番号やヘッダーを入れない
   \centering           % 中央寄せ
   %\raggedright        % 左寄せ
