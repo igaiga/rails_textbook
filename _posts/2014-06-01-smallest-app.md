@@ -45,7 +45,7 @@ Done in 3.83s.
 Webpacker successfully installed
 ```
 
-ターミナルの画面にこのように"Webpacker successfully installed"と表示されれば成功です。メッセージ中"Done in 3.83s."の3.83sは所用時間なので、実行するごとに変化します。rails newコマンドはたくさんのフォルダとファイルを自動で作ります。rails newコマンドでやっていることはこの後のコラムで説明します。
+ターミナルの画面にこのように"Webpacker successfully installed"と表示されれば成功です。メッセージ中"Done in 3.83s."の3.83sは所要時間なので、実行するごとに変化します。rails newコマンドはたくさんのフォルダとファイルを自動で作ります。rails newコマンドでやっていることはこの後のコラムで説明します。
 
 もしもエラーなどでrails newコマンドが中断されたあとでリトライしたいときには、アプリのフォルダ、ここではhelloworldフォルダを削除してからもう一度実行してみてください。フォルダが残っていると問題が発生することがあります。
 
