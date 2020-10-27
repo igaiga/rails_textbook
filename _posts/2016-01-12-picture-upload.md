@@ -51,7 +51,7 @@ class AddPictureToBooks < ActiveRecord::Migration[6.0]
 end
 ```
 
-生成されたmigrationファイルには、booksテーブルへauthorカラムをstring型で追加する指示が書かれています。
+生成されたmigrationファイルには、booksテーブルへpictureカラムをstring型で追加する指示が書かれています。
 
 migrationファイルを作成したら、`rails db:migrate`コマンドでDBへ内容を反映します。
 
