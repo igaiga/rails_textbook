@@ -1,0 +1,71 @@
+---
+version: 2.1
+orbs:
+  ruby: circleci/ruby@1.1.1
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.6.6-node-browsers
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+    steps:
+      - checkout
+      - ruby/install-deps:
+          key: rails-textbook-v1-bundle
+      - run: bundle exec jekyll build
+      - run:
+          name: zip html for artifacts
+          command: zip -r html.zip _site
+      - store_artifacts:
+          path: html.zip
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - ./
+  review_app:
+    docker:
+      - image: circleci/python:latest
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+    steps:
+      - attach_workspace:
+          at: ./
+      - run:
+          name: Install awscli
+          command: sudo pip install awscli
+      - run:
+          name: Deploy HTML to s3
+          command: aws s3 sync _site $S3_REVIEW_TEXTBOOK_PATH
+  deploy:
+    docker:
+      - image: circleci/python:latest
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+    steps:
+      - attach_workspace:
+          at: ./
+      - run:
+          name: Install awscli
+          command: sudo pip install awscli
+      - run:
+          name: Deploy Refined HTML to s3
+          command: aws s3 sync _site $S3_TEXTBOOK_PATH
+workflows:
+  build-and-deploy:
+    jobs:
+    - build
+    - review_app:
+        requires:
+        - build
+        filters:
+          branches:
+            ignore: master
+    - deploy:
+        requires:
+        - build
+        filters:
+          branches:
+            only: master
