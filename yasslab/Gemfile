@@ -2,3 +2,12 @@ source 'https://rubygems.org'
 
 gem 'rake'
 gem 'nokogiri'
+
+# Require gem from orginal Gemfile
+gem "jekyll"
+# For jekyll extension
+gem 'redcarpet'
+gem 'pygments.rb'
+
+# For Github pages
+gem "github-pages"

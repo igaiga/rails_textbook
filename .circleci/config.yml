@@ -14,6 +14,7 @@ jobs:
       - ruby/install-deps:
           key: rails-textbook-v1-bundle
       - run: bundle exec jekyll build
+      - run: bundle exec rake -f yasslab/Rakefile refine_html
       - run:
           name: zip html for artifacts
           command: zip -r html.zip _site

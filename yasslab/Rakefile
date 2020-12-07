@@ -2,7 +2,9 @@ desc 'refine html'
 task :refine_html do
   require 'nokogiri'
 
-  Dir.glob('../_site/*.html').each do |path|
+  puts "refinement process start"
+
+  Dir.glob('_site/*.html').each do |path|
     file = File.open(path)
     file_name = File.basename(path, ".*")
     html = Nokogiri::HTML(file, nil, 'utf-8')
@@ -12,9 +14,17 @@ task :refine_html do
       a.attributes['href'].value = href.gsub!('-','_') # Change to support RailsTutorialJP naming style
     end
 
+    html.css('img').each do |i|
+      src = i.attr('src')
+      i.attributes['src'].value = "#{ENV['RAILS_TEXT_S3_PATH']}/#{src}"
+    end
+
     file_name.gsub!('-','_') # Change to support RailsTutorialJP naming style
 
-    refine_path = "../_site/#{file_name}_refinement.html"
+    refine_path = "_site/#{file_name}_refinement.html"
     File.open(refine_path, 'w+') { |f| f.write(html) }
+
+    puts "refinement file: #{file_name}"
   end
+  puts "refinement process end"
 end
