@@ -55,3 +55,18 @@
   - assetsへのコピースクリプトは書いていない
 - 表紙
   - _figures/covers/rails_textbook_cover.png
+
+## サンプルコード生成
+
+- 本体リポジトリ: https://github.com/igaiga/rails_textbook
+  - サンプルコード生成スクリプトは本体側に置いてある
+- サンプルコードリポジトリ: https://github.com/igaiga/rails_textbook_sample/
+
+### 生成スクリプト群
+
+- rails_textbook/_figures/scripts/screenshots 以下のスクリーンショット用スクリプトを動かす
+  - 事前に生成したいバージョンのRubyとRailsを実行可能にしておく
+    - サンプルコードが作成されるのでそれをサンプルコード用リポジトリへ置く
+  - rails_textbook/_figures/scripts/screenshots/helloworld/generate_helloworld.sh
+  - rails_textbook/_figures/scripts/screenshots/books_app/generate_books_app.sh
+    - books_appはauthorとcarrierwaveまで込みでスクリプトで作成してくれる
