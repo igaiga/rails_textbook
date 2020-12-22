@@ -1,12 +1,39 @@
+top_level = self
+
+using(Module.new do
+  refine(top_level.singleton_class) do
+    def contents
+      %w[preface smallest-app crud new-create model gem picture-upload postface]
+    end
+
+    def create_toc
+      toc_path = "_site/frontmatter_refinement.html"
+      File.open(toc_path, 'w+') { |f| f.write(generate_toc) }
+    end
+
+    def generate_toc
+      body = "<h1 class='contents'>目次</h1><div id='table_of_contents'><ul>"
+      contents.each.with_index(1) do |file_name, toc_chap|
+        file = File.open("_site/#{file_name}.html")
+        html = Nokogiri::HTML(file, nil, 'utf-8')
+        file_name.gsub!('-','_')
+        toc_name = html.title
+        body << "<li class='chapter'><a href='/textbook/#{file_name}' class='heading hyperref'><span class='number'>第#{toc_chap}章</span>#{toc_name}</a></li>"
+      end
+      body << "</ul></div>"
+      body
+    end
+  end
+end)
+
 desc 'refine html'
 task :refine_html do
   require 'nokogiri'
 
   puts "refinement process start"
 
-  Dir.glob('_site/*.html').each do |path|
-    file = File.open(path)
-    file_name = File.basename(path, ".*")
+  contents.each do |file_name|
+    file = File.open("_site/#{file_name}.html")
     html = Nokogiri::HTML(file, nil, 'utf-8')
 
     html.css('.header').remove
@@ -27,5 +54,6 @@ task :refine_html do
 
     puts "refinement file: #{file_name}"
   end
+  create_toc
   puts "refinement process end"
 end
