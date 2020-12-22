@@ -9,6 +9,7 @@ task :refine_html do
     file_name = File.basename(path, ".*")
     html = Nokogiri::HTML(file, nil, 'utf-8')
 
+    html.css('.header').remove
     html.css('#home .posts a').each do |a|
       href = a.attr('href')
       a.attributes['href'].value = href.gsub!('-','_') # Change to support RailsTutorialJP naming style
