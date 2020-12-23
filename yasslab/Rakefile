@@ -50,6 +50,7 @@ task :refine_html do
     end
 
     html.css('img').each do |i|
+      i.parent.add_class('image')
       src = i.attr('src')
       i.attributes['src'].value = "#{ENV['RAILS_TEXT_S3_PATH']}/#{src}"
     end
