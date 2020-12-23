@@ -36,8 +36,8 @@ task :refine_html do
     file = File.open("_site/#{file_name}.html")
     html = Nokogiri::HTML(file, nil, 'utf-8')
 
-    html.css('.header').remove
-    html.search('link[rel=stylesheet]').remove
+    html.search('.header').remove
+    html.search('head').remove
 
     # Change title to include chapters
     html.at_css('h1').prepend_child "<span class='number'>第#{sec_number}章</span>"
