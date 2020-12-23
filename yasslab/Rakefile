@@ -13,12 +13,12 @@ using(Module.new do
 
     def generate_toc
       body = "<h1 class='contents'>目次</h1><div id='table_of_contents'><ul>"
-      contents.each.with_index(1) do |file_name, toc_chap|
+      contents.each.with_index(1) do |file_name, sec_number|
         file = File.open("_site/#{file_name}.html")
         html = Nokogiri::HTML(file, nil, 'utf-8')
         file_name.gsub!('-','_')
         toc_name = html.title
-        body << "<li class='chapter'><a href='/textbook/#{file_name}' class='heading hyperref'><span class='number'>第#{toc_chap}章</span>#{toc_name}</a></li>"
+        body << "<li class='chapter'><a href='/textbook/#{file_name}' class='heading hyperref'><span class='number'>第#{sec_number}章</span>#{toc_name}</a></li>"
       end
       body << "</ul></div>"
       body
@@ -32,11 +32,16 @@ task :refine_html do
 
   puts "refinement process start"
 
-  contents.each do |file_name|
+  contents.each.with_index(1) do |file_name, sec_number|
     file = File.open("_site/#{file_name}.html")
     html = Nokogiri::HTML(file, nil, 'utf-8')
 
     html.css('.header').remove
+    html.search('link[rel=stylesheet]').remove
+
+    # Change title to include chapters
+    html.at_css('h1').prepend_child "<span class='number'>第#{sec_number}章</span>"
+
     html.css('#home .posts a').each do |a|
       href = a.attr('href')
       a.attributes['href'].value = href.gsub!('-','_') # Change to support RailsTutorialJP naming style
