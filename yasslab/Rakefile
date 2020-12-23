@@ -41,6 +41,8 @@ task :refine_html do
 
     # Change title to include chapters
     html.at_css('h1').prepend_child "<span class='number'>第#{sec_number}章</span>"
+    html.at_css('.site')['id'] = file_name
+    html.at_css('.site').add_class('textbook-content')
 
     html.css('#home .posts a').each do |a|
       href = a.attr('href')
