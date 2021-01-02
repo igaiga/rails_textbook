@@ -1,10 +1,32 @@
 # Railsの教科書
 
-## Webで閲覧
-- http://igarashikuniaki.net/rails_textbook/
+## サンプルコード
+- https://github.com/igaiga/rails_textbook_sample/
 
-## 達人出版会で電子書籍版を購入
-- http://tatsu-zine.com/books/rails-textbook
+## 電子書籍版: 達人出版会
+- https://tatsu-zine.com/books/rails-textbook
+
+## 紙書籍版: BOOTH
+- https://igaigarb.booth.pm/items/1848429
+
+## 誤記などの報告方法
+以下のコントリビュートポリシーにご同意いただいて、issuesまたはpull requestを作成いただくか、igaigaまでご連絡ください。
+
+## コントリビュートポリシー
+ご報告、コントリビュートいただきありがとうございます。本資料は有償の書籍、資料として利用されております。ご了承の上コントリビュートいただければと思います。
+
+## 利用可能範囲
+私的な利用、および公的な学校、コミュニティでの利用はOKです。
+商用での利用については許可していませんが、別途有償ライセンスの準備がありますので [igaiga](https://github.com/igaiga) へご連絡ください。
+
+# 正誤表
+## 2020年2月29日 技術書典8 v2.0.0
+### Page.100 7.1 画像情報を格納するための DB カラムを追加
+後ろから2つ目の文「pictureカラム」であるところが「authorカラム」となっている
+- 誤: books テーブルへ author カラムを string 型で追加する
+- 正: books テーブルへ picture カラムを string 型で追加する
+
+# 環境構築メモ
 
 ## ローカルで閲覧
 - $ git clone https://github.com/igaiga/rails_textbook.git
@@ -20,23 +42,6 @@
 - $ `npm i textlint`   # textlintのインストール
 - $ `npm test`         # 文章全体のチェック
 - $ `npm run textlint _posts/2014-04-01-preface.md`  # 単独のファイルをチェック
-
-### atomエディタでの実行
-
-- $ `apm install linter`
-- $ `apm install linter-textlint`
-- atomエディタでファイルを開くと画面下部にエラーが表示されます
-
-## 誤記などの報告方法
-以下のコントリビュートポリシーにご同意いただいて、issuesまたはpull requestを作成いただくか、igaigaまでご連絡ください。
-
-### コントリビュートポリシー
-ご報告、コントリビュートいただきありがとうございます。本資料は書籍版とWeb版で情報を共有しております。原則として、両方へ変更が反映されていきます。ご了承の上コントリビュートいただければと思います。
-
-## 利用可能範囲
-
-私的な利用、および公的な学校、コミュニティでの利用はOKです。
-商用での利用については許可していませんが、別途有償ライセンスの準備がありますので [igaiga](https://github.com/igaiga) へご連絡ください。
 
 ## 画像に関するメモ
 
@@ -62,7 +67,7 @@
   - サンプルコード生成スクリプトは本体側に置いてある
 - サンプルコードリポジトリ: https://github.com/igaiga/rails_textbook_sample/
 
-### 生成スクリプト群
+## 生成スクリプト群
 
 - rails_textbook/_figures/scripts/screenshots 以下のスクリーンショット用スクリプトを動かす
   - 事前に生成したいバージョンのRubyとRailsを実行可能にしておく
