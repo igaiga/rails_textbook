@@ -1,8 +1,6 @@
-# RSpec追加
-# Gemfileにrspec-railsを追加
-file_name = "books_app/Gemfile"
-src_regex = /group :development, :test do/
-dst = "group :development, :test do\n  gem 'rspec-rails'"
+file_name = "books_app/spec/rails_helper.rb"
+src_regex = /RSpec\.configure do \|config\|/
+dst = "RSpec.configure do |config|" + "\n" + "  config.before(:each, type: :system){ driven_by :selenium_chrome_headless }"
 
 def replace(file_name:, src_regex:, dst:)
   body = File.open(file_name, "r") do |file|

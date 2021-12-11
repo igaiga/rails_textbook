@@ -20,7 +20,14 @@ class Replacer
 
   private_class_method def self.out_filename(path)
     out_middle_path = out_middle_path(path)
-    return nil unless out_middle_path
+    if out_middle_path.nil?
+      puts "#{path}のコピー先フォルダがout_middle_pathメソッドで指定されていません"
+      return nil
+    end
+    if out_middle_path == "[not use]"
+      puts "#{path}は利用されません"
+      return nil
+    end
     File.join(
       out_base_path,
       out_middle_path,
@@ -40,20 +47,17 @@ class Replacer
       "books_with_author_new.png" => "model",
       "books_with_upload_created.png" => "picture-upload",
       "books_with_upload_new.png" => "picture-upload",
+      "books_edit_data_1.png" => "[not use]",
+      "books_show_data_1.png" => "[not use]",
     }
     out_path_hash[filename]
   end
 
   def self.cp
     in_file_paths.each do |in_path|
-      p in_path
-      p out_filename(in_path)
-      unless out_filename(in_path)
-        puts "コピー先フォルダがout_middle_pathメソッドで指定されていません"
-        next
-      end
-      if out_filename(in_path)
-      end
+      out_path = out_filename(in_path)
+      next unless out_path
+      puts "Copy from #{in_path} to #{out_path}" if out_path
       FileUtils.cp(in_path, out_filename(in_path))
     end
   end

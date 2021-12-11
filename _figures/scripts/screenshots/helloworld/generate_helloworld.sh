@@ -1,5 +1,9 @@
 #!/bin/sh
 # 一番小さなRailsアプリづくり helloworld app 作成＆スクショ生成
+rm -rf screenshots # スクリーンショット収集用フォルダ
+mkdir screenshots
+
+# rails new, rails generate
 rm -rf helloworld
 rails new helloworld
 cd helloworld
@@ -8,7 +12,7 @@ bin/rails g controller hello index
 cd ..
 
 # rspec setup
-ruby edit_00_setup_rspec.rb
+ruby edit_00_setup_rspec_gemfile.rb
 cd helloworld
 bundle install
 bin/spring stop
@@ -16,6 +20,7 @@ bin/rails generate rspec:install
 mkdir spec/systems
 cp ../hello_spec.rb spec/systems/.
 cd ..
+ruby edit_00_setup_rspec_rails_helper.rb # rails g rspec:install 生成ファイルの書き換え
 
 # screenshot for generated "Hello#index"
 cd helloworld

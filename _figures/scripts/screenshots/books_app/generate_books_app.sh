@@ -1,5 +1,9 @@
 #!/bin/sh
 # books_app 作成＆スクショ生成
+rm -rf screenshots # スクリーンショット収集用フォルダ
+mkdir screenshots
+
+# rails new, rails generate
 rm -rf books_app
 rails new books_app
 cd books_app
@@ -9,7 +13,7 @@ bin/rails db:migrate
 cd ..
 
 # rspec setup
-ruby edit_00_setup_rspec.rb
+ruby edit_00_setup_rspec_gemfile.rb
 cd books_app
 bundle install
 bin/spring stop
@@ -17,6 +21,7 @@ bin/rails generate rspec:install
 mkdir spec/systems
 cp ../replaced/*_spec.rb spec/systems/.
 cd ..
+ruby edit_00_setup_rspec_rails_helper.rb # rails g rspec:install 生成ファイルの書き換え
 
 # screenshot 1st for generated Books CRUD
 cd books_app
