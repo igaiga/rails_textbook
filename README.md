@@ -27,20 +27,31 @@
 - 誤: books テーブルへ author カラムを string 型で追加する
 - 正: books テーブルへ picture カラムを string 型で追加する
 
-# サンプルコード生成
+# 各種スクリプト
 
-- 本体リポジトリ: https://github.com/igaiga/rails_textbook
-  - サンプルコード生成スクリプトは本体側に置いてある
-- サンプルコードリポジトリ: https://github.com/igaiga/rails_textbook_sample/
+## サンプルアプリとスクリーンショットの生成
 
-# 各種スクリプト群
-
-- rails_textbook/_figures/scripts/screenshots 以下のスクリーンショット用スクリプトを動かす
+- rails_textbook/_figures/scripts
+  - サンプルアプリを生成して、スクリーンショットを作成するコード群の置き場
   - 事前に生成したいバージョンのRubyとRailsを実行可能にしておく
-    - サンプルコードが作成されるのでそれをサンプルコード用リポジトリへ置く
+  - サンプルコードが作成されるのでそれをサンプルコード用リポジトリへ置く
+  - rails_textbook/_figures/scripts/screenshots/helloworld/generate_helloworld.sh
+    - helloworld サンプルアプリの生成とスクリーンショット作成のスクリプトコード
+  - rails_textbook/_figures/scripts/screenshots/books_app/generate_books_app.sh
+    - books_app サンプルアプリの生成とスクリーンショット作成のスクリプトコード
+
+## 新しいRuby, Railsでの動作確認
+
+- 対象バージョンのRubyとRailsを実行可能にする
+- 上記のサンプルアプリの生成とスクリーンショット作成のスクリプトコードを実行すればSystem specで動作確認できる
   - rails_textbook/_figures/scripts/screenshots/helloworld/generate_helloworld.sh
   - rails_textbook/_figures/scripts/screenshots/books_app/generate_books_app.sh
-    - books_appはauthorとcarrierwaveまで込みでスクリプトで作成してくれる
+- エラーが出ないことを確認
+- スクリーンショットが正しくできていることを確認
+
+## ReVIEW
+
+- あとで書く
 
 # 書籍内で利用している画像の説明
 
