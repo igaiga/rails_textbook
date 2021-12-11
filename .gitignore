@@ -2,6 +2,7 @@ _site
 node_modules/
 npm-debug.log
 iga_memo.txt
+.DS_Store
 _figures/scripts/html_figures/tmp/
 
 _figures/scripts/screenshots/books_app/books_app/
