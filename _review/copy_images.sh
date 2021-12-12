@@ -1,5 +1,6 @@
 rm -rf images
 cp -r ../assets/ images
+cp ../_figures/covers/*.png images/.
 
 mv images/smallest-app images/02_smallest_app
 mv images/crud images/03_crud

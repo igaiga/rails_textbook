@@ -141,6 +141,7 @@ toc: true
 
 # 表紙にするHTMLファイル。ファイル名を指定すると表紙として入る
 # cover: null
+cover: cover_omote.tex
 #
 # 表紙に配置し、書籍の影絵にも利用する画像ファイル。省略した場合はnull (画像を使わない)。画像ディレクトリ内に置いてもディレクトリ名は不要(例: cover.jpg)
 #coverimage: cover.jpg
@@ -162,6 +163,7 @@ titlepage: true
 
 # 裏表紙データファイル (PDFMaker向けにはLaTeXソース断片、EPUBMaker向けにはHTMLファイル)
 # backcover: null
+backcover: cover_ura.tex
 
 # プロフィールページファイル  (PDFMaker向けにはLaTeXソース断片、EPUBMaker向けにはHTMLファイル)。ファイル名を指定すると著者紹介として入る
 # profile: null

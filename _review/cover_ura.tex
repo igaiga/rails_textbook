@@ -1,0 +1,13 @@
+\clearpage % これを入れないと裏表紙、奥付にページ番号が入る
+\thispagestyle{empty} % ページ番号やヘッダーをなくす
+\vbox to \textheight{%
+  \vskip-\dimexpr\headheight + 0.735in\relax%
+  \vbox to \paperheight{\vss%
+    \hbox to \textwidth{%
+      \hskip-\dimexpr\oddsidemargin + 1in\relax%
+      \hbox to \paperwidth{\hss
+        \includegraphics[width=\paperwidth,height=\paperheight]{images/rails_textbook_cover_ura.png}%
+        \hss}%
+    \hss}%
+  \vss}%
+\vss}%
