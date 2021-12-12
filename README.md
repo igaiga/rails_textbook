@@ -69,7 +69,8 @@
   - _figures/chrome_dev_tool 以下にあるもの
   - assetsへのコピースクリプトは書いていない
 - 表紙
-  - _figures/covers/rails_textbook_cover.png
+  - _figures/covers/rails_textbook_cover_omote.png
+  - _figures/covers/rails_textbook_cover_ura.png
 
 # ReVIEW
 
