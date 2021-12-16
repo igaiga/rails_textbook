@@ -27,31 +27,17 @@ end
 
 def replace_form_html_erb
   file_name = "books_app/app/views/books/_form.html.erb"
-  src_regex = /<div class="actions">/
-  dst = %Q[<div class="field">\n    <%= form.label :picture %>\n    <%= form.file_field :picture %>\n  </div>\n\n  <div class="actions">]
+  src_regex = /<%= form.submit %>/
+  dst = %Q[<div>\n    <%= form.label :picture, style: "display: block" %>\n    <%= form.file_field :picture %>\n  </div>\n\n  <div>\n    <%= form.submit %>]
 
   replace(file_name: file_name, src_regex: src_regex, dst: dst)
 end
 
-def replace_show_html_erb
-  file_name = "books_app/app/views/books/show.html.erb"
-  src_regex = /  <%= @book.author %>/
-  dst = %Q[  <%= @book.author %>\n</p>\n\n<p>  \n  <strong>Picture:</strong>\n  <%= image_tag(@book.picture_url) if @book.picture.present? %>]
+def replace_partial_book_html_erb
+  file_name = "books_app/app/views/books/_book.html.erb"
+  src_regex = /    <%= @book.author %>/
+  dst = %Q[    <%= @book.author %>\n  </p>\n\n  <p>  \n    <strong>Picture:</strong>\n    <%= image_tag(@book.picture_url) if @book.picture.present? %>]
 
-  replace(file_name: file_name, src_regex: src_regex, dst: dst)
-end
-
-def replace_index_html_erb_1
-  file_name = "books_app/app/views/books/index.html.erb"
-  src_regex = /<th>Author<\/th>/
-  dst = %Q[<th>Author</th>\n      <th>Picture</th>]
-  replace(file_name: file_name, src_regex: src_regex, dst: dst)
-end
-
-def replace_index_html_erb_2
-  file_name = "books_app/app/views/books/index.html.erb"
-  src_regex = /<td><%= book.author %><\/td>/
-  dst = %Q[<td><%= book.author %></td>\n        <td><%= book.picture %></td>]
   replace(file_name: file_name, src_regex: src_regex, dst: dst)
 end
 
@@ -65,7 +51,5 @@ end
 replace_gemfile
 replace_book_model
 replace_form_html_erb
-replace_show_html_erb
-replace_index_html_erb_1
-replace_index_html_erb_2
+replace_partial_book_html_erb
 replace_books_controller

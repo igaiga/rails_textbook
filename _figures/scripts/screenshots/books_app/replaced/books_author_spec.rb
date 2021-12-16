@@ -8,7 +8,7 @@ RSpec.feature "/books", type: :system do
       fill_in "Memo", with: "Rails関連技術地図とそれらの学習資料の紹介"
       fill_in "Author", with: "五十嵐邦明"
       ss_file_path = page.save_screenshot 'books_with_author_new.png'
-      expect(page).to have_text('Book')
+      expect(page).to have_text('book')
     end
   end
 end

@@ -5,7 +5,7 @@ RSpec.feature "/books", type: :system do
     it "index" do
       visit books_path
       ss_file_path = page.save_screenshot 'books_index_blank.png'
-      expect(page).to have_text('Book') # OKにするだけ
+      expect(page).to have_text('book') # OKにするだけ
     end
   end
   describe "1 data" do
@@ -15,7 +15,7 @@ RSpec.feature "/books", type: :system do
     it "index" do
       visit books_path
       ss_file_path = page.save_screenshot 'books_index_data_1.png'
-      expect(page).to have_text('Book')
+      expect(page).to have_text('book')
     end
     it "show" do
       visit book_path(Book.last)
@@ -25,17 +25,17 @@ RSpec.feature "/books", type: :system do
     it "new" do
       visit new_book_path
       ss_file_path = page.save_screenshot 'books_new_data_1.png'
-      expect(page).to have_text('Book')
+      expect(page).to have_text('book')
     end
     it "edit" do
       visit edit_book_path(Book.last)
       ss_file_path = page.save_screenshot 'books_edit_data_1.png'
-      expect(page).to have_text('Book')
+      expect(page).to have_text('book')
     end
     it "edit" do
       visit edit_book_path(Book.last)
       ss_file_path = page.save_screenshot 'books_edit_data_1.png'
-      expect(page).to have_text('Book')
+      expect(page).to have_text('book')
     end
     it "new + cerate" do
       visit new_book_path
@@ -54,7 +54,7 @@ RSpec.feature "/books", type: :system do
     it "index" do
       visit books_path
       ss_file_path = page.save_screenshot 'books_index_data_2.png'
-      expect(page).to have_text('Book')
+      expect(page).to have_text('book')
     end
   end
 end
