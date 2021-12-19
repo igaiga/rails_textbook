@@ -1,3 +1,5 @@
+# $ bin/copy_imaegs.sh
+# ReVIEWで必要な画像ファイルをimagesフォルダへコピー
 rm -rf images
 cp -r ../assets/ images
 cp ../_figures/covers/*.png images/.

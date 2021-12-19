@@ -1,3 +1,6 @@
+# $ bin/md_to_re.sh
+# .mdから.reへ変換してcontentsフォルダへ配置するスクリプト
+
 # 出力フォルダ作成
 if [ ! -d contents ]; then
   mkdir contents
@@ -16,4 +19,4 @@ md2review ../_posts/2016-02-17-postface.md > contents/08_postface.re
 
 # 変換後にreファイルからヘッダ情報の除去
 # Jekyllを削除したらこの処理を削除できる
-ruby remove_jekyll_header.rb
+ruby bin/remove_jekyll_header.rb

@@ -76,6 +76,36 @@
 
 - [ReVIEW Starter](https://kauplan.org/reviewstarter/) を利用しています
 - _reviewフォルダ以下に関連ファイル群が置かれています
+- 以下の作業は_reviewフォルダで実行する想定です
+
+## PDFの作り方
+
+### カラーモノクロ共通作業
+
+- 最後に余分なページが入るので、macOSのプレビューアプリなどで削除する
+- Acrobat Reader で表示してエラーが出ないことを確認する
+
+## カラー版（電子書籍向け）
+
+- $ bin/build_pdf.sh
+- 他のスクリプトファイル群を実行して必要なファイルを収集してPDFを作成します
+
+## モノクロ版（印刷書向け）
+
+- $ bin/build_pdf_for_print.sh
+- build_pdf.shの書籍印刷用モノクロ版で、ノンブル（通し番号）が付きます。
+
+## copy_images.sh
+
+- $ bin/copy_images.sh
+- ReVIEWで必要な画像ファイル群をimagesフォルダ以下にコピーします。
+
+## md_to_re.sh
+
+- $ bin/md_to_re.sh
+- .mdから.reへ変換してcontentsフォルダへ配置するスクリプト
+
+
 
 # HTML
 

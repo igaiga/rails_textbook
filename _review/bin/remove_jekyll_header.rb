@@ -1,4 +1,6 @@
-# reviewファイルから、jekyll markdown 先頭にあった余分な行を削除
+# $ ruby bin/remove_jekyll_header.rb
+# reviewファイルから、jekyll markdown 先頭にある余分な行を削除
+# jekyllを消せたらこのファイルは不要になる
 require "fileutils"
 
 def remove_jekyll_header(file_name)
