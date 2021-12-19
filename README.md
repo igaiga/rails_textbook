@@ -16,7 +16,7 @@
 ## コントリビュートポリシー
 - ご報告、コントリビュートいただきありがとうございます。本資料は有償の書籍、資料として利用されております。ご了承の上コントリビュートいただければと思います。
 
-## 利用可能範囲
+## ライセンスと利用可能範囲
 - 私的な利用、および公的な学校、コミュニティでの利用はOKです。
 - 商用での利用については許可していませんが、別途有償ライセンスの準備がありますので [igaiga](https://github.com/igaiga) へご連絡ください。
 
@@ -27,9 +27,7 @@
 - 誤: books テーブルへ author カラムを string 型で追加する
 - 正: books テーブルへ picture カラムを string 型で追加する
 
-# 各種スクリプト
-
-## サンプルアプリとスクリーンショットの生成
+# サンプルアプリとスクリーンショットの生成
 
 - rails_textbook/_figures/scripts
   - サンプルアプリを生成して、スクリーンショットを作成するコード群の置き場
@@ -40,7 +38,7 @@
   - rails_textbook/_figures/scripts/screenshots/books_app/generate_books_app.sh
     - books_app サンプルアプリの生成とスクリーンショット作成のスクリプトコード
 
-## 新しいRuby, Railsでの動作確認
+# 新しいRuby, Railsでの動作確認
 
 - 対象バージョンのRubyとRailsを実行可能にする
 - 上記のサンプルアプリの生成とスクリーンショット作成のスクリプトコードを実行すればSystem specで動作確認できる
@@ -48,10 +46,6 @@
   - rails_textbook/_figures/scripts/screenshots/books_app/generate_books_app.sh
 - エラーが出ないことを確認
 - スクリーンショットが正しくできていることを確認
-
-## ReVIEW
-
-- あとで書く
 
 # 書籍内で利用している画像の説明
 
@@ -76,7 +70,6 @@
 
 - [ReVIEW Starter](https://kauplan.org/reviewstarter/) を利用しています
 - _reviewフォルダ以下に関連ファイル群が置かれています
-- 以下の作業は_reviewフォルダで実行する想定です
 
 ## PDFの作り方
 
@@ -85,27 +78,35 @@
 - 最後に余分なページが入るので、macOSのプレビューアプリなどで削除する
 - Acrobat Reader で表示してエラーが出ないことを確認する
 
-## カラー版（電子書籍向け）
+### build_pdf.sh カラー版PDF作成（電子書籍向け）
 
+- スクリプトファイル群を実行して必要なファイルを収集してPDFを作成します
+- _reviewフォルダで実行
 - $ bin/build_pdf.sh
-- 他のスクリプトファイル群を実行して必要なファイルを収集してPDFを作成します
 
-## モノクロ版（印刷書向け）
+### build_pdf_for_print.sh モノクロ版PDF作成（印刷書向け）
 
-- $ bin/build_pdf_for_print.sh
 - build_pdf.shの書籍印刷用モノクロ版で、ノンブル（通し番号）が付きます。
+- _reviewフォルダで実行
+- $ bin/build_pdf_for_print.sh
 
-## copy_images.sh
+## 内部でつかっているスクリプト群
 
-- $ bin/copy_images.sh
-- ReVIEWで必要な画像ファイル群をimagesフォルダ以下にコピーします。
+### change_images_gray.rb
 
-## md_to_re.sh
+- カラー画像をモノクロ化
 
-- $ bin/md_to_re.sh
+### copy_images.sh
+
+- ReVIEWで必要な画像ファイル群をimagesフォルダ以下へコピー
+
+### md_to_re.sh
+
 - .mdから.reへ変換してcontentsフォルダへ配置するスクリプト
 
+### remove_jekyll_header.rb
 
+- reファイルから、jekyll markdown 先頭にある余分な行を削除
 
 # HTML
 
