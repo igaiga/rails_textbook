@@ -72,9 +72,9 @@ def new
 end
 ```
 
-newアクションは `@book = Book.new` の1行です。Book.newでBookクラスのインスタンスを作り、@bookインスタンス変数へ代入し、ビューへ渡します。Book.newでつくったBookクラスのインスタンスはタイトルとメモを格納できるようになっていますが、タイトルとメモのデータは空っぽです。
+newアクションは `@book = Book.new` の1行です。Book.newでBookモデルオブジェクトを作り、@bookインスタンス変数へ代入し、ビューへ渡します。Book.newでつくったBookモデルオブジェクトはタイトルとメモを格納できるようになっていますが、タイトルとメモのデータは空っぽです。
 
-インスタンスとはクラスから作られたオブジェクトのことです。オブジェクトとほぼ同じ意味で使われますが、「クラスから作ったオブジェクトである」「そのクラスに属する」ということを強調したいときに使います。クラスはその種族に属するオブジェクト（インスタンス）を作ることができる工場のようなものです。そのクラス自身が仕事をすることもあれば、そのクラスから作ったオブジェクトが仕事をすることもあります。
+また、この「Bookモデルオブジェクト」のことを「Bookクラスのインスタンス」とも呼びます。インスタンスとはクラスから作られたオブジェクトのことです。オブジェクトとほぼ同じ意味で使われますが、「クラスから作ったオブジェクトである」「そのクラスに属する」ということを強調したいときに使います。クラスはその種族に属するオブジェクト（インスタンス）を作ることができる工場のようなものです。そのクラス自身が仕事をすることもあれば、そのクラスから作ったオブジェクトが仕事をすることもあります。
 
 Bookクラスには色々と便利な機能があるのですが、それは後ほど説明します。ここでは、Bookに関するビューで使う情報をつくり、インスタンス変数へ代入し、ビューへ送る、と考えると良いでしょう。
 
@@ -87,57 +87,59 @@ Bookクラスには色々と便利な機能があるのですが、それは後�
 ビューのコード `views/books/new.html.erb` を見てみましょう。
 
 ```erb
-<h1>New Book</h1>
+<h1>New book</h1>
 
-<%= render 'form', book: @book %>
+<%= render "form", book: @book %>
 
-<%= link_to 'Back', books_path %>
+<br>
+
+<div>
+  <%= link_to "Back to books", books_path %>
+</div>
 ```
 
-TODO: パーシャルの話を前倒ししたので書き換え。ただし、前回に書いたのはrender モデルオブジェクトのケースで、renderに文字列を渡すのはここが初めて。
-
-これだけしかありません。随分とあっさりしています。実は、下の図中の枠線部分は別のファイルに書いてあり、 `<%= render 'form', book: @book %>` で埋め込まれるようになっています。
+これだけしかありません。随分とあっさりしています。実は、下の図中の枠線部分は別のファイルに書いてあり、 `<%= render "form", book: @book %>` で埋め込まれるようになっています。
 
 ![renderの説明](assets/new-create/new_view_form_screenshot.png)
 
-renderメソッドは別のビューファイルを埋め込みます。わざわざ別のファイルに書く理由は、他の画面でもそのファイルを利用することで、同じ部品を共用したいからです。埋め込む用のビューファイルをパーシャルと言います。書式は以下の通りです。
+このrenderメソッドは前の章でも出てきたメソッドで、別のパーシャルビューファイルを埋め込みます。前の章ではBookモデルオブジェクトを渡してパーシャルを指定していましたが、ここではパーシャルのファイル名を文字列で指定するつかい方をしています。書式は以下の通りです。
 
 ```
-<%= render 埋め込みたいファイル名, パーシャル内で使う変数名: 渡す変数 %>
+<%= render 埋め込みたいパーシャルビューファイル名, パーシャル内で使う変数名: 渡す変数 %>
 ```
 
-埋め込むファイル名には1つルールがあり、renderで書いた文字列の先頭に_を付けたファイル名にします。つまり、`<%= render 'form', book: @book %>`で埋め込まれるファイルは ` _form.html.erb` になります。
+パーシャルであるビューファイルの名前は先頭に_を付けるルールがあるので、パーシャルはrenderで書いた「埋め込みたいパーシャルビューファイル名」文字列の先頭に_を付けたファイル名にします。つまり、`<%= render "form", book: @book %>`で埋め込まれるファイルは ` _form.html.erb` になります。
 
-また、`<%= render 'form', book: @book %>`の`book: @book`の部分は、`@book`変数を埋め込み先のパーシャル内で`book`変数として使うための指示です。パーシャル内でも@はじまりのインスタンス変数を利用することも可能です。それでもわざわざbook変数として渡しているのは、パーシャル内で利用する変数を明示すること、他のコントローラでパーシャルを流用する時にインスタンス変数名を揃える必要がないことなどのメリットがあります。
+また、`<%= render "form", book: @book %>`の`book: @book`の部分は、`@book`変数を埋め込み先のパーシャル内で`book`変数として使うための指示です。パーシャル内でも@はじまりのインスタンス変数を利用することも可能です。それでもわざわざbook変数として渡しているのは、パーシャル内で利用する変数を明示すること、他のコントローラでパーシャルを流用する時にインスタンス変数名を揃える必要がないことなどのメリットがあります。
 
-埋め込まれるパーシャルビュー `_form.html.erb` は以下のようになっています。
+埋め込まれるパーシャルビューファイル `_form.html.erb` は以下のようになっています。
 ファイルは`app/views/books/_form.html.erb`です。
 
 ```erb
-<%= form_with(model: book, local: true) do |form| %>
+<%= form_with(model: book) do |form| %>
   <% if book.errors.any? %>
-    <div id="error_explanation">
+    <div style="color: red">
       <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
 
       <ul>
-        <% book.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+        <% book.errors.each do |error| %>
+          <li><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
+  <div>
+    <%= form.label :title, style: "display: block" %>
     <%= form.text_field :title %>
   </div>
 
-  <div class="field">
-    <%= form.label :memo %>
+  <div>
+    <%= form.label :memo, style: "display: block" %>
     <%= form.text_area :memo %>
   </div>
 
-  <div class="actions">
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
@@ -149,11 +151,11 @@ renderメソッドは別のビューファイルを埋め込みます。わざ�
 
 ```erb
 <% if book.errors.any? %>
-  <div id="error_explanation">
+  <div style="color: red">
     <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
-    <ul>
-      <% book.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+   <ul>
+      <% book.errors.each do |error| %>
+        <li><%= error.full_message %></li>
       <% end %>
     </ul>
   </div>
@@ -164,23 +166,31 @@ renderメソッドは別のビューファイルを埋め込みます。わざ�
 
 ![コードとページの部品の対応](assets/new-create/new_view_form.png)
 
+TODO:置き換え確認(中のビューコードを書き換える)
+
 それぞれ矢印の先の部品を作っています。また、全体としてはformという名の部品になってます。formはHTMLでブラウザからサーバへ情報を送信する仕組みです。
 
 まずは部品の1つ、タイトルのところを見てみましょう。
 
 ![タイトル部品](assets/new-create/new_view_form_title_html.png)
 
+TODO:置き換え確認(中のビューコードを書き換える)
+
 枠線内がタイトルの部分です。全体はHTMLですが、 `<%= %>`で囲まれた部分がその中に埋め込まれたRailsコードです。
 
 `<div></div>`は中のHTML要素をグルーピングするための要素です。それだけだと特に見た目を変えませんが、CSSで修飾する要素を指定するためによく使います。ここでは "field" というHTMLでのclass名をつけてCSSで修飾できるようにしています。
 
-Railsコードの部分をもう少し詳しく見てみましょう。`form.label :title` で "Title"という文字列を表示しています。その名の通り、ラベルの部分です。`form.text_field :title` はその下にあるテキスト入力欄です。`form` はformブロック内の変数で、ここではbookに関するformを記述するために使っています。見慣れない書き方かもしれませんが、ここはそう書くものだと思ってもらえれば大丈夫です。
+Railsコードの部分をもう少し詳しく見てみましょう。`<%= form.label :title, style: "display: block"` で "Title"という文字列を表示しています。その名の通り、ラベルの部分です。`form.text_field :title` はその下にあるテキスト入力欄です。`form` はformブロック内の変数で、ここではbookに関するformを記述するために使っています。見慣れない書き方かもしれませんが、ここはそう書くものだと思ってもらえれば大丈夫です。
 
 ![メモ部品](assets/new-create/new_view_form_memo_html.png)
 
-メモの部分も同様です。`form.label :memo` が "Memo" を表示する部分です。`form.text_area :memo` がその下のテキスト入力欄を作ります。`text_area` は先ほどの `text_field` よりも広くて改行を入力できるテキスト入力欄を作るメソッドです。
+TODO:置き換え確認(中のビューコードを書き換える)
+
+メモの部分も同様です。`form.label :memo, style: "display: block"` が "Memo" を表示する部分です。`form.text_area :memo` がその下のテキスト入力欄を作ります。`text_area` は先ほどの `text_field` よりも広くて改行を入力できるテキスト入力欄を作るメソッドです。
 
 ![投稿ボタン部品](assets/new-create/new_view_form_submit_html.png)
+
+TODO:置き換え確認(中のビューコードを書き換える)
 
 最後は投稿するボタンの部分です。`form.submit` は投稿ボタン（Create Bookボタン）を作ります。このボタンを押すとform内の情報をまとめてサーバへ送信（リクエストを送信）します。ここでは、Bookに関する情報、入力したタイトルとメモをリクエストに含んで送信します。ここで送信されたタイトルとメモが後の行程で登録されます。
 
@@ -194,17 +204,25 @@ new画面を表示させ、タイトル欄とメモ欄にBookの情報を入力�
 
 ![Chromeでリクエストを観察する(準備)](assets/new-create/devtools_create_1.png)
 
+TODO:置き換え確認
+
 ![Chromeでリクエストを観察する(リクエスト送信)](assets/new-create/devtools_create_2.png)
+
+TODO:置き換え確認
 
 たくさん表示されました。一番最初のbooksと書かれた行が先ほどボタンを押して発行されたリクエストです。booksの行をクリックして詳細を見てみましょう。
 
 ![Chromeでリクエストを観察する(リクエストの中身)](assets/new-create/devtools_create_3.png)
 
+TODO:置き換え確認
+
 ![Chromeでリクエストを観察する(リクエストの中身 form)](assets/new-create/devtools_create_4.png)
+
+TODO:置き換え確認
 
 最初にURLとHTTPメソッドが書いてあります。Routesで使う情報がここに載っています。
 
-下の方へスクロールすると、Form Dataという欄にbook[title]とbook[memo]の情報を見つけることができます。さきほどnew画面で入力した内容がここに表示されていることを確認してみてください。
+PayloadタブのForm Dataという欄にbook[title]とbook[memo]の情報を見つけることができます。さきほどnew画面で入力した内容がここに表示されていることを確認してみてください。
 
 次は、飛んだこのリクエストがどのように処理されるかを見ていきましょう。
 
@@ -223,9 +241,9 @@ new画面でCreate bookボタンを押すと新たなリクエストを飛ばす
 
 URLのパスは/books 、HTTPメソッドはPOSTなので対応するコントローラとアクションはbooks#create、つまりBooksControllerのcreateアクションが呼び出されます。
 
-HTTPメソッドのPOSTは今回のようなデータの新規作成時に使います。そのほか、サーバの状態へ何らかの変更を与えるときにはこのPOSTを利用します。
+HTTPメソッドのPOSTは今回のようなデータの新規作成時につかいます。そのほか、サーバの状態へ何らかの変更を与えるときにはこのPOSTをつかいます。
 
-一方で、indexやnewの時に利用したHTTPメソッドGETは、サーバの状態を変えない場合に使います。newアクションでは新規入力画面を表示するだけでまだデータを保存しないので、HTTPメソッドはGETを使うのです。
+一方で、indexやnewの時に利用したHTTPメソッドGETは、サーバの状態を変えない場合につかいます。newアクションでは新規入力画面を表示するだけでまだデータを保存しないので、HTTPメソッドはGETをつかいます。
 
 ### コントローラ
 
@@ -239,11 +257,11 @@ def create
   respond_to do |format|
     if @book.save # ⬅️2. 本のデータを保存する
       # ⬅️3a. 成功したらshow画面へ
-      format.html { redirect_to @book, notice: 'Book was successfully created.' }
+      format.html { redirect_to book_url(@book), notice: "Book was successfully created." }
       format.json { render :show, status: :created, location: @book }
     else
       # ⬅️3b. 保存失敗したらnew画面へ（元の画面）
-      format.html { render :new }
+      format.html { render :new, status: :unprocessable_entity }
       format.json { render json: @book.errors, status: :unprocessable_entity }
     end
   end
@@ -288,19 +306,21 @@ end
 
 ```console
 ... （略）
-Started POST "/books" for ::1 at 2020-01-04 20:07:46 +0900
-Processing by BooksController#create as HTML
-  Parameters: {"authenticity_token"=>"y+YIbnc7gTMyt3HpcvVmYinhQG9NrhM63BOaXzvc3QIMgSROQkwH/rsmunFtOqni7SGjlfZ9NIenuevojh6neg==", "book"=>{"title"=>"RubyとRails の学習ガイド", "memo"=>"Rails関連技術地図とそれらの学習資料の紹介"}, "commit"=>"Create Book"}
+Started POST "/books" for ::1 at 2022-01-03 10:53:53 +0900
+Processing by BooksController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "book"=>{"title"=>"RubyとRailsの学習ガイド", "memo"=>"Rails関連技術地図とそれらの学習資料の紹介"}, "commit"=>"Create Book"}
 "**********"
-<ActionController::Parameters {"authenticity_token"=>"y+YIbnc7gTMyt3HpcvVmYinhQG9NrhM63BOaXzvc3QIMgSROQkwH/rsmunFtOqni7SGjlfZ9NIenuevojh6neg==", "book"=>{"title"=>"RubyとRailsの学習ガイド", "memo"=>"Rails関連技術地図とそれらの学習資料の紹介"}, "commit"=>"Create Book", "controller"=>"books", "action"=>"create"} permitted: false>
+#<ActionController::Parameters {"authenticity_token"=>"8URYGtSvucQ_XuPqoLuen4d4SAXeX0GSxsefdLhu3H3fTPLirZpf4bneHxExoykxo0Zn62lv-BsDMQnqJiSBwQ", "book"=>{"title"=>"RubyとRailsの学習ガイド", "memo"=>"Rails関連技術地図とそれらの学習資料の紹介"}, "commit"=>"Create Book", "controller"=>"books", "action"=>"create"} permitted: false>
 ... （略）
 ```
 
-実行結果を見ると、確かに `params` の中にブラウザにて入力した値がHashの形で入っていることが分かりました。
+実行結果を見ると、確かに `params` の中にブラウザにて入力した値が入っていることが分かりました。
 
 これを、少し前にブラウザのデベロッパーツールで表示させた内容と比較してみましょう。
 
 ![パラメータの送信側と受信側](assets/new-create/params_devtools.png)
+
+TODO:置き換え確認
 
 ここで出力した `params` の値と、さきほどブラウザのデベロッパーツールで表示させたパラメータの値が同じになっていることが分かります。
 
@@ -338,15 +358,16 @@ def create
   respond_to do |format|
     if @book.save # ⬅️2. 本のデータを保存する
       # ⬅️3a. 成功したらshow画面へ
-      format.html { redirect_to @book, notice: 'Book was successfully created.' }
+      format.html { redirect_to book_url(@book), notice: "Book was successfully created." }
       format.json { render :show, status: :created, location: @book }
     else
       # ⬅️3b. 保存失敗したらnew画面へ（元の画面）
-      format.html { render :new }
+      format.html { render :new, status: :unprocessable_entity }
       format.json { render json: @book.errors, status: :unprocessable_entity }
     end
   end
 end
+
 def book_params
   params.require(:book).permit(:title, :memo)
 end
