@@ -32,11 +32,14 @@
 - rails_textbook/_figures/scripts
   - サンプルアプリを生成して、スクリーンショットを作成するコード群の置き場
   - 事前に生成したいバージョンのRubyとRailsを実行可能にしておく
-  - サンプルコードが作成されるのでそれをサンプルコード用リポジトリへ置く
-  - rails_textbook/_figures/scripts/screenshots/helloworld/generate_helloworld.sh
-    - helloworld サンプルアプリの生成とスクリーンショット作成のスクリプトコード
-  - rails_textbook/_figures/scripts/screenshots/books_app/generate_books_app.sh
-    - books_app サンプルアプリの生成とスクリーンショット作成のスクリプトコード
+  - helloworld サンプルアプリの生成とスクリーンショット作成のスクリプトコード
+    - rails_textbook/_figures/scripts/screenshots/helloworld/generate_helloworld.sh
+    - 生成されたスクリーンショットは、最後に実行するreplace_png.rbでassetsフォルダ以下へコピーされる
+  - books_app サンプルアプリの生成とスクリーンショット作成のスクリプトコード
+    - rails_textbook/_figures/scripts/screenshots/books_app/generate_books_app.sh
+    - 生成されたスクリーンショットは、最後に実行するreplacer.rbでassetsフォルダ以下へコピーされる
+  - この作業の結果、サンプルコードも作成されるので、できあがったコードをサンプルコード用リポジトリへ置く
+    - https://github.com/igaiga/rails_textbook_sample
 
 # 新しいRuby, Railsでの動作確認
 
@@ -49,7 +52,7 @@
 
 # 書籍内で利用している画像の説明
 
-生成方法によって何種類かの画像ファイルがあります。
+生成方法によって何種類かの画像ファイルがあります。_figures/assets/README.mdも参照。
 
 - HTMLからレンダリングしたファイル
   - _figures/aseets/ 以下のフォルダにhtmlファイルがあるもの

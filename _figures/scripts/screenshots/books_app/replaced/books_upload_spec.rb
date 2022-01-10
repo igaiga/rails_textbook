@@ -11,8 +11,8 @@ RSpec.feature "/books", type: :system do
       page.save_screenshot 'books_with_upload_new.png'
       click_button "Create Book"
 
-      page.save_screenshot 'books_with_upload_created.png'
       expect(page).to have_text('successfully')
+      page.save_screenshot 'books_with_upload_created.png'
     end
   end
 end
