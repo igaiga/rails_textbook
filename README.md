@@ -73,6 +73,10 @@
 
 - [ReVIEW Starter](https://kauplan.org/reviewstarter/) を利用しています
 - _reviewフォルダ以下に関連ファイル群が置かれています
+- 以下のフォルダは作業フォルダとして.gitignoreに追加されていて、build_pdf.shなどを実行したときにファイルが生成または配置されます
+  - _review/contents reファイル置き場
+  - _review/images 画像ファイル置き場
+- _reviewフォルダ以下に.ruby_version, Gemfile, Gemfile.lockが置いてあるので、_reviewフォルダでbundle installを実行してください
 
 ## PDFの作り方
 
