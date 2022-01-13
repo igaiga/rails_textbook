@@ -92,7 +92,7 @@ FilePathMaker.mkdir_out_dirs
 sp = ScreenPhotographer.new
 
 FilePathMaker.htmls.each do |params|
-  sp.screenshot(params)
+  sp.screenshot(**params)
 end
 
 sp.clear
