@@ -13,16 +13,16 @@
       <div class="text__path">app/views/books/_form.html.erb</div>
         <div class="box code-box">
 <pre>
-<div class="form__block is-margin-zero"><%= form_with(model: book,<br> local: true) do |form| %>
-<div class="form__block is-title">  &lt;div class="field"&gt;
+<div class="form__block is-margin-zero"><%= form_with(model: book)<br> do |form| %>
+<div class="form__block is-title">  &lt;div&gt;
     <%= form.label :title %>
     <%= form.text_field :title %>
   &lt;/div&gt;
-</div><div class="form__block is-memo">  &lt;div class="field"&gt;
+</div><div class="form__block is-memo">  &lt;div&gt;
     <%= form.label :memo %>
     <%= form.text_area :memo %>
   &lt;/div&gt;
-</div><div class="form__block is-button">  &lt;div class="actions"&gt;
+</div><div class="form__block is-button">  &lt;div&gt;
     <%= form.submit %>
   &lt;/div&gt;
 </div><% end %>
