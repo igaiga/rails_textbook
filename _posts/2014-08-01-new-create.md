@@ -196,25 +196,17 @@ new画面を表示させ、タイトル欄とメモ欄にBookの情報を入力�
 
 ![Chromeでリクエストを観察する(準備)](assets/new-create/devtools_create_1.png)
 
-TODO:置き換え確認
-
 ![Chromeでリクエストを観察する(リクエスト送信)](assets/new-create/devtools_create_2.png)
 
-TODO:置き換え確認
+たくさん表示されました。一番最初のbooksと書かれた行が先ほどボタンを押して発行されたリクエストです。booksの行をクリックして詳細を表示し、Headersタブを選択してリクエストの中身を見てみましょう。
 
-たくさん表示されました。一番最初のbooksと書かれた行が先ほどボタンを押して発行されたリクエストです。booksの行をクリックして詳細を見てみましょう。
+![Chromeでリクエストを観察する(リクエストの中身 Headers)](assets/new-create/devtools_create_3.png)
 
-![Chromeでリクエストを観察する(リクエストの中身)](assets/new-create/devtools_create_3.png)
+最初にURLとHTTPメソッドが書いてあります。Routesで使う情報がここに載っています。次はPayloadタブを選択してみましょう。
 
-TODO:置き換え確認
+![Chromeでリクエストを観察する(リクエストの中身 Payload)](assets/new-create/devtools_create_4.png)
 
-![Chromeでリクエストを観察する(リクエストの中身 form)](assets/new-create/devtools_create_4.png)
-
-TODO:置き換え確認
-
-最初にURLとHTTPメソッドが書いてあります。Routesで使う情報がここに載っています。
-
-PayloadタブのForm Dataという欄にbook[title]とbook[memo]の情報を見つけることができます。さきほどnew画面で入力した内容がここに表示されていることを確認してみてください。
+PayloadタブのForm Data欄にbook[title]とbook[memo]の情報を見つけることができます。さきほどnew画面で入力した内容がここに表示されていることを確認してみてください。
 
 次は、飛んだこのリクエストがどのように処理されるかを見ていきましょう。
 
@@ -298,11 +290,11 @@ end
 
 ```console
 ... （略）
-Started POST "/books" for ::1 at 2022-01-03 10:53:53 +0900
+Started POST "/books" for ::1 at 2022-01-15 10:20:55 +0900
 Processing by BooksController#create as TURBO_STREAM
   Parameters: {"authenticity_token"=>"[FILTERED]", "book"=>{"title"=>"RubyとRailsの学習ガイド", "memo"=>"Rails関連技術地図とそれらの学習資料の紹介"}, "commit"=>"Create Book"}
 "**********"
-#<ActionController::Parameters {"authenticity_token"=>"8URYGtSvucQ_XuPqoLuen4d4SAXeX0GSxsefdLhu3H3fTPLirZpf4bneHxExoykxo0Zn62lv-BsDMQnqJiSBwQ", "book"=>{"title"=>"RubyとRailsの学習ガイド", "memo"=>"Rails関連技術地図とそれらの学習資料の紹介"}, "commit"=>"Create Book", "controller"=>"books", "action"=>"create"} permitted: false>
+#<ActionController::Parameters {"authenticity_token"=>"FxEsVBv5JZ82rOoYa4FAtOahW43-I5vvFLoDR3k68WPA2tgV1PFsk1aQIlinAdHVRDIDXMbQPwd6fZNb7Vaxlg", "book"=>{"title"=>"RubyとRailsの学習ガイド", "memo"=>"Rails関連技術地図とそれらの学習資料の紹介"}, "commit"=>"Create Book", "controller"=>"books", "action"=>"create"} permitted: false>
 ... （略）
 ```
 
@@ -311,8 +303,6 @@ Processing by BooksController#create as TURBO_STREAM
 これを、少し前にブラウザのデベロッパーツールで表示させた内容と比較してみましょう。
 
 ![パラメータの送信側と受信側](assets/new-create/params_devtools.png)
-
-TODO:置き換え確認
 
 ここで出力した `params` の値と、さきほどブラウザのデベロッパーツールで表示させたパラメータの値が同じになっていることが分かります。
 
