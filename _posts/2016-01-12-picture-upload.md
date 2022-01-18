@@ -70,7 +70,7 @@ $ rails db:migrate
 gem "carrierwave"
 ```
 
-Gemfileの内容でgemを利用できるようにbundle installコマンドをターミナルで実行します（メッセージ中"Installing carrierwave 2.2.2"の数字は異なる場合があります）。
+Gemfileの内容でgemを利用できるようにbundle installコマンドをターミナルで実行します（メッセージ中"Installing carrierwave 2.2.2"や"17 Gemfile dependencies, 81 gems now installed."の数字は異なる場合があります）。
 
 ```bash
 $ bundle install
@@ -183,10 +183,10 @@ end
     <%= book.author %>
   </p>
   
-  +<p>
-  +  <strong>Picture:</strong>
-  +  <%= image_tag(book.picture_url) if book.picture.present? %>
-  +</p>
++  <p>
++    <strong>Picture:</strong>
++    <%= image_tag(book.picture_url) if book.picture.present? %>
++  </p>
 
 </div>
 ```
@@ -217,8 +217,6 @@ New Bookリンクをクリックすると、「ファイルを選択」ボタン
 ![new](assets/picture-upload/books_with_upload_new.png)
 
 ![show](assets/picture-upload/books_with_upload_created.png)
-
-TODO:置き換え確認
 
 uploadした画像ファイルがブラウザに表示されているのを確認してみてください。
 
