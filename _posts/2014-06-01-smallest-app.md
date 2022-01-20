@@ -61,14 +61,14 @@ $ rails s
 ```console
 $ rails s
 => Booting Puma
-=> Rails 7.0.0 application starting in development
+=> Rails 7.0.1 application starting in development
 => Run `bin/rails server --help` for more startup options
 Puma starting in single mode...
-* Puma version: 5.5.2 (ruby 3.0.3-p157) ("Zawgyi")
+* Puma version: 5.5.2 (ruby 3.1.0-p0) ("Zawgyi")
 *  Min threads: 5
 *  Max threads: 5
 *  Environment: development
-*          PID: 32236
+*          PID: 9794
 * Listening on http://127.0.0.1:3000
 * Listening on http://[::1]:3000
 Use Ctrl-C to stop
@@ -78,7 +78,7 @@ Use Ctrl-C to stop
 
 * http://localhost:3000
 
-![welcome rails](assets/smallest-app/welcome_rails.png)
+![RAILS画面](assets/smallest-app/welcome_rails.png)
 
 これは、Railsが起動し、あなたのブラウザからのリクエストを受け付けて、表示している画面です。ここまでのわずかな手順で、ブラウザでページを表示する機能を持つWebアプリをつくることができました。
 
@@ -90,7 +90,7 @@ rails newコマンドがエラーで中断されたときには、表示され�
 
 ### rails gコマンドでページを作る
 
-ひきつづき、以下のコマンドを入力してみましょう（メッセージ中"in process 9959"の数字は実行するごとに異なります）。rails serverが起動している場合は、Ctrl-c（controlキーを押しながらcキー）で終了してからコマンドを打ってください。
+ひきつづき、以下のコマンドを入力してみましょう。rails serverが起動している場合は、Ctrl-c（controlキーを押しながらcキー）で終了してからコマンドを打ってください。
 
 ```bash
 $ rails g controller hello index
