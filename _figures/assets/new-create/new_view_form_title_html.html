@@ -13,8 +13,8 @@
     <div class="text__path">app/views/books/_form.html.erb</div>
       <div class="box code-box">
 <pre>
-<%= form_with(model: book,<br> local: true) do <span class="text__accent">|form|</span> %>
-<div class="form__block is-title">  &lt;div class="field"&gt;
+<%= form_with(model: book)<br> do <span class="text__accent">|form|</span> %>
+<div class="form__block is-title">  &lt;div&gt;
     <%= <span class="text__accent">form.label :title</span> %>
     <%= <span class="text__accent">form.text_field :title</span> %>
   &lt;/div&gt;

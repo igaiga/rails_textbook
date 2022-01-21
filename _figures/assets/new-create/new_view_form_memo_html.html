@@ -13,9 +13,9 @@
       <div class="text__path">app/views/books/_form.html.erb</div>
         <div class="box code-box">
 <pre>
-<%= form_with(model: book,<br> local: true) do <span class="text__accent">|form|</span> %>
+<%= form_with(model: book)<br> do <span class="text__accent">|form|</span> %>
 ...
-<div class="form__block is-memo">  &lt;div class="field"&gt;
+<div class="form__block is-memo">  &lt;div&gt;
     <%= <span class="text__accent">form.label :memo</span> %>
     <%= <span class="text__accent">form.text_area :memo</span> %>
   &lt;/div&gt;

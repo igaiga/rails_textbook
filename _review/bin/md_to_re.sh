@@ -6,6 +6,9 @@ if [ ! -d contents ]; then
   mkdir contents
 fi
 
+# 古いファイルが存在する場合は削除
+rm contents/*.re
+
 # MarkdownファイルをReVIEWファイルへ変換
 # $ gem i md2review
 md2review ../_posts/2014-04-01-preface.md > contents/01_preface.re

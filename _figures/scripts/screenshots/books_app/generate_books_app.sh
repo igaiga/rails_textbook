@@ -28,6 +28,9 @@ cd books_app
 bundle exec rspec spec/systems/books_spec.rb
 cd ..
 
+# Chrome Dev Tools用のスクリーンショットアプリ作成時はここまでで終わりにする
+# exit
+
 # screenshot 2nd for Books with author
 ruby edit_10_replace_for_author.rb
 cd books_app

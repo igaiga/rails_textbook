@@ -41,11 +41,10 @@ $ rails new helloworld
       create  README.md
       create  Rakefile
  ...（略）
-Done in 3.83s.
-Webpacker successfully installed
+append  config/importmap.rb
 ```
 
-ターミナルの画面にこのように"Webpacker successfully installed"と表示されれば成功です。メッセージ中"Done in 3.83s."の3.83sは所要時間なので、実行するごとに変化します。rails newコマンドはたくさんのフォルダとファイルを自動で作ります。rails newコマンドでやっていることはこの後のコラムで説明します。
+ターミナルの画面にこのように"append  config/importmap.rb"と表示されれば成功です。rails newコマンドはたくさんのフォルダとファイルを自動で作ります。rails newコマンドでやっていることはこの後のコラムで説明します。
 
 もしもエラーなどでrails newコマンドが中断されたあとでリトライしたいときには、アプリのフォルダ、ここではhelloworldフォルダを削除してからもう一度実行してみてください。フォルダが残っていると問題が発生することがあります。
 
@@ -62,14 +61,16 @@ $ rails s
 ```console
 $ rails s
 => Booting Puma
-=> Rails 6.0.2.1 application starting in development
-=> Run `rails server --help` for more startup options
+=> Rails 7.0.1 application starting in development
+=> Run `bin/rails server --help` for more startup options
 Puma starting in single mode...
-* Version 4.3.1 (ruby 2.6.5-p114), codename: Mysterious Traveller
-* Min threads: 5, max threads: 5
-* Environment: development
-* Listening on tcp://127.0.0.1:3000
-* Listening on tcp://[::1]:3000
+* Puma version: 5.5.2 (ruby 3.1.0-p0) ("Zawgyi")
+*  Min threads: 5
+*  Max threads: 5
+*  Environment: development
+*          PID: 9794
+* Listening on http://127.0.0.1:3000
+* Listening on http://[::1]:3000
 Use Ctrl-C to stop
 ```
 
@@ -77,19 +78,19 @@ Use Ctrl-C to stop
 
 * http://localhost:3000
 
-![welcome rails](assets/smallest-app/welcome_rails.png)
+![RAILS画面](assets/smallest-app/welcome_rails.png)
 
 これは、Railsが起動し、あなたのブラウザからのリクエストを受け付けて、表示している画面です。ここまでのわずかな手順で、ブラウザでページを表示する機能を持つWebアプリをつくることができました。
 
 ### コラム: ```rails new``` コマンドでやっていること
 
-rails newコマンドを実行すると、たくさんのメッセージが表示されました。このとき、何が行われているのでしょうか。最初に、Railsアプリとして動作するのに必要なファイルとフォルダを作成します。次に、利用するGemライブラリ（Rubyの便利なプログラム集）をダウンロードして利用可能にします。つづいて、rails webpacker:install, yarn installが実行されて、JavaScriptのライブラリをダウンロードして利用可能にします。
+rails newコマンドを実行すると、たくさんのメッセージが表示されました。このとき、何が行われているのでしょうか。最初に、Railsアプリとして動作するのに必要なファイルとフォルダを作成します。次に、利用するGemライブラリ（Rubyの便利なプログラム集）をダウンロードして利用可能にします。つづいて、JavaScriptのライブラリを利用可能にします。
 
 rails newコマンドがエラーで中断されたときには、表示されるエラーメッセージを手がかりに問題を解決する必要がありますが、そのときにこれらの知識も役に立つかもしれません。また、rails newコマンドがエラーで中断したあとにリトライしたいときは、これらの処理が途中のどこかで止まっていることがあるので、アプリのフォルダを削除してからもう一度実行してみてください。
 
 ### rails gコマンドでページを作る
 
-ひきつづき、以下のコマンドを入力してみましょう（メッセージ中"in process 9959"の数字は実行するごとに異なります）。rails serverが起動している場合は、Ctrl-c（controlキーを押しながらcキー）で終了してからコマンドを打ってください。
+ひきつづき、以下のコマンドを入力してみましょう。rails serverが起動している場合は、Ctrl-c（controlキーを押しながらcキー）で終了してからコマンドを打ってください。
 
 ```bash
 $ rails g controller hello index
@@ -97,7 +98,6 @@ $ rails g controller hello index
 
 ```console
 $ rails g controller hello index
-Running via Spring preloader in process 9959
       create  app/controllers/hello_controller.rb
        route  get 'hello/index'
       invoke  erb
@@ -108,9 +108,6 @@ Running via Spring preloader in process 9959
       invoke  helper
       create    app/helpers/hello_helper.rb
       invoke    test_unit
-      invoke  assets
-      invoke    scss
-      create      app/assets/stylesheets/hello.scss
 ```
 
 もしもrails gコマンドを打ち間違えて違うファイルをつくってしまったときは、打ち間違えたコマンドのgの部分をdにして再実行すると、rails gコマンドで作成したファイルをまとめて削除してくれます。たとえば、``` rails g controller hell index``` とhelloをhellと打ち間違えた場合は、``` rails d controller hell index``` コマンドを実行することで間違えてつくったファイル群を削除することができます。ターミナルでカーソルキーの↑キーを押すと、さきほど入力した内容が出てくるので、それを利用してgをdに直すと楽に実行できます。dはdestroyの略です。
@@ -125,7 +122,8 @@ $ rails s
 $ rails s
 => Booting Puma
 ...（略）
-* Listening on tcp://localhost:3000
+* Listening on http://127.0.0.1:3000
+* Listening on http://[::1]:3000
 Use Ctrl-C to stop
 ```
 
@@ -288,18 +286,10 @@ $ rails new helloworld
 create
 create  README.md
 create  Rakefile
-create  config.ru
-create  .gitignore
-create  Gemfile
+... (略)
 create  app
 create  app/assets/config/manifest.js
-create  app/assets/javascripts/application.js
-create  app/assets/javascripts/cable.js
 create  app/assets/stylesheets/application.css
-create  app/channels/application_cable/channel.rb
-create  app/channels/application_cable/connection.rb
-create  app/controllers/application_controller.rb
-create  app/helpers/application_helper.rb
 ... (略)
 ```
 
@@ -317,22 +307,16 @@ $ rails g controller hello index
 
 ```console
 $ rails g controller hello index
-Running via Spring preloader in process 50811
-  create  app/controllers/hello_controller.rb
-   route  get 'hello/index'
-  invoke  erb
-  create    app/views/hello
-  create    app/views/hello/index.html.erb
-  invoke  test_unit
-  create    test/controllers/hello_controller_test.rb
-  invoke  helper
-  create    app/helpers/hello_helper.rb
-  invoke    test_unit
-  invoke  assets
-  invoke    coffee
-  create      app/assets/javascripts/hello.coffee
-  invoke    scss
-  create      app/assets/stylesheets/hello.scss
+      create  app/controllers/hello_controller.rb
+       route  get 'hello/index'
+      invoke  erb
+      create    app/views/hello
+      create    app/views/hello/index.html.erb
+      invoke  test_unit
+      create    test/controllers/hello_controller_test.rb
+      invoke  helper
+      create    app/helpers/hello_helper.rb
+      invoke    test_unit
 ```
 
 ここで実行したrails g controllerコマンドは、URLのパスが/hello/indexであるページを表示するためのファイル群を作ります。gはgenerateの略です。rails g controllerの後ろのhelloとindexが、生成するページのパスを指定していることが分かります。ほかにもいくつかのgenerateコマンドが用意されているので、またあとで説明します。もしも、コマンドを間違えて生成したファイルをまとめて削除したい場合は、gをdに替えたコマンドを実行すると、まとめて削除することができます。

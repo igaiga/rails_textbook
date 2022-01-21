@@ -32,19 +32,18 @@ $ rails g migration AddPictureToBooks picture:string
 
 ```console
 $ rails g migration AddPictureToBooks picture:string
-Running via Spring preloader in process 3249
-      invoke  active_record
-      create    db/migrate/20191020225655_add_picture_to_books.rb
+invoke  active_record
+create    db/migrate/20220109012706_add_picture_to_books.rb
 ```
 
 作成されたmigrationファイルは以下のようになっています。
 
 ```
-db/migrate/20191020225655_add_picture_to_books.rb
+db/migrate/20220109012706_add_picture_to_books.rb
 ```
 
 ```ruby
-class AddPictureToBooks < ActiveRecord::Migration[6.0]
+class AddPictureToBooks < ActiveRecord::Migration[7.0]
   def change
     add_column :books, :picture, :string
   end
@@ -57,10 +56,10 @@ migrationファイルを作成したら、`rails db:migrate`コマンドでDBへ
 
 ```console
 $ rails db:migrate
-== 20191020225655 AddPictureToBooks: migrating ================================
+== 20220109012706 AddPictureToBooks: migrating ================================
 -- add_column(:books, :picture, :string)
-   -> 0.0027s
-== 20191020225655 AddPictureToBooks: migrated (0.0028s) =======================
+   -> 0.0007s
+== 20220109012706 AddPictureToBooks: migrated (0.0008s) =======================
 ```
 
 ## carrierwave gemを追加
@@ -68,10 +67,10 @@ $ rails db:migrate
 次は画像upload機能を持つライブラリcarrierwave gemを追加します。gemを追加する場合はGemfileへ追記します。記述する場所はどこでも良いのですが、今回は一番最後の行へ追記することにします。Gemfileへ次の一行を追加して保存します。
 
 ```ruby
-gem 'carrierwave'
+gem "carrierwave"
 ```
 
-Gemfileの内容でgemを利用できるようにbundle installコマンドをターミナルで実行します（メッセージ中"Installing carrierwave 1.0.0"の数字は異なる場合があります）。
+Gemfileの内容でgemを利用できるようにbundle installコマンドをターミナルで実行します（メッセージ中"Installing carrierwave 2.2.2"や"17 Gemfile dependencies, 81 gems now installed."の数字は異なる場合があります）。
 
 ```bash
 $ bundle install
@@ -79,29 +78,24 @@ $ bundle install
 
 ```console
 $ bundle install
-Using rake 13.0.1
 ...
-Installing carrierwave 2.0.2
-Bundle complete! 19 Gemfile dependencies, 79 gems now installed.
+Installing carrierwave 2.2.2
+...
+Bundle complete! 17 Gemfile dependencies, 81 gems now installed.
 Use `bundle info [gemname]` to see where a bundled gem is installed.
 ```
 
 bundle installコマンドを実行すると、Gemfileに書かれたgemがまだなければインストールし利用可能にします。また、Gemfile.lockに利用するバージョンが書き込まれます。
 
-続いて、carrierwaveを利用可能にするために、carrierwaveが提供する`rails g uploader Picture`コマンドを実行して必要なファイルを作成します。その前に、`bin/spring stop`コマンドを実行し、springというキャッシュの仕組みを再起動しておきます。このコマンドは環境によって実行不要な場合もありますが、確実に成功するように実行しています。
+続いて、carrierwaveを利用可能にするために、carrierwaveが提供する`rails g uploader Picture`コマンドを実行して必要なファイルを作成します。Rails6.1以前の環境では、事前に`bin/spring stop`コマンドを実行し、springというキャッシュの仕組みを再起動しておきます。Rails7.0以降ではspringがデフォルトでインストールされなくなったので、`bin/spring stop`コマンドは不要です。
 
 ```bash
-$ bin/spring stop
 $ rails g uploader Picture
 ```
 
 ```console
-$ bin/spring stop
-Spring stopped.
-
 $ rails g uploader Picture
-Running via Spring preloader in process 4097
-      create  app/uploaders/picture_uploader.rb
+create  app/uploaders/picture_uploader.rb
 ```
 
 ## モデルの変更
@@ -140,29 +134,29 @@ end
 `app/views/books/_form.html.erb`
 
 ```diff
-<%= form_with(model: book, local: true) do |form| %>
+<%= form_with(model: book) do |form| %>
 ...
-  <div class="field">
-    <%= form.label :title %>
+  <div>
+    <%= form.label :title, style: "display: block" %>
     <%= form.text_field :title %>
   </div>
 
-  <div class="field">
-    <%= form.label :memo %>
+  <div>
+    <%= form.label :memo, style: "display: block" %>
     <%= form.text_area :memo %>
   </div>
 
-  <div class="field">
-    <%= form.label :author %>
+  <div>
+    <%= form.label :author, style: "display: block" %>
     <%= form.text_field :author %>
   </div>
 
-+  <div class="field">
-+    <%= form.label :picture %>
++  <div>
++    <%= form.label :picture, style: "display: block" %>
 +    <%= form.file_field :picture %>
 +  </div>
 
-  <div class="actions">
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
@@ -170,73 +164,31 @@ end
 
 次に詳細表示画面を修正します。
 
-`app/views/books/show.html.erb`
+`app/views/books/_book.html.erb`
 
 ```diff
-<p id="notice"><%= notice %></p>
+<div id="<%= dom_id book %>">
+  <p>
+    <strong>Title:</strong>
+    <%= book.title %>
+  </p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @book.title %>
-</p>
+  <p>
+    <strong>Memo:</strong>
+    <%= book.memo %>
+  </p>
 
-<p>
-  <strong>Memo:</strong>
-  <%= @book.memo %>
-</p>
+  <p>
+    <strong>Author:</strong>
+    <%= book.author %>
+  </p>
+  
++  <p>
++    <strong>Picture:</strong>
++    <%= image_tag(book.picture_url) if book.picture.present? %>
++  </p>
 
-<p>
-  <strong>Author:</strong>
-  <%= @book.author %>
-</p>
-
-+<p>
-+  <strong>Picture:</strong>
-+  <%= image_tag(@book.picture_url) if @book.picture.present? %>
-+</p>
-
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
-```
-
-一覧表示画面も変更します。一覧表示画面では画像は表示させず、ファイル名だけを表示することにします。
-
-`app/views/books/index.html.erb`
-
-```diff
-<p id="notice"><%= notice %></p>
-
-<h1>Books</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Memo</th>
-      <th>Author</th>
-+     <th>Picture</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @books.each do |book| %>
-      <tr>
-        <td><%= book.title %></td>
-        <td><%= book.memo %></td>
-        <td><%= book.author %></td>
-+       <td><%= book.picture %></td>
-        <td><%= link_to 'Show', book %></td>
-        <td><%= link_to 'Edit', edit_book_path(book) %></td>
-        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Book', new_book_path %>
+</div>
 ```
 
 これで画像アップロード機能が追加されました。
@@ -253,11 +205,12 @@ $ rails s
 $ rails s
 => Booting Puma
 ...（略）
-* Listening on tcp://localhost:3000
+* Listening on http://127.0.0.1:3000
+* Listening on http://[::1]:3000
 Use Ctrl-C to stop
 ```
 
-もしもPictureUploaderが見つからない旨のエラー（"Unable to autoload constant PictureUploader"など）が発生した場合は、rails serverを一度止め、 `bin/spring stop` コマンドを実行してからrails serverをもう一度起動して、再アクセスしてみてください。また、 `app/uploaders/picture_uploader.rb` ファイルが存在するかも確認してみてください。存在しない場合は `rails g uploader Picture` コマンドが実行されていないケースが考えられます。
+もしもPictureUploaderが見つからない旨のエラー（"Unable to autoload constant PictureUploader"など）が発生した場合は、rails serverを一度止めてからもう一度起動して、再アクセスしてみてください。また、 `app/uploaders/picture_uploader.rb` ファイルが存在するかも確認してみてください。存在しない場合は `rails g uploader Picture` コマンドが実行されていないケースが考えられます。
 
 New Bookリンクをクリックすると、「ファイルを選択」ボタンが増えているかと思います。ボタンを押して画像ファイルを選び、アップロードしてみましょう。
 

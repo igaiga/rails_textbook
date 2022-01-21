@@ -22,7 +22,7 @@ end
 def replace_partial_book_html_erb
   file_name = "books_app/app/views/books/_book.html.erb"
   src_regex = /    <%= book.memo %>/
-  dst = %Q[    <%= @book.memo %>\n  </p>\n\n  <p>  \n    <strong>Author:</strong>\n    <%= @book.author %>]
+  dst = %Q[    <%= book.memo %>\n  </p>\n\n  <p>  \n    <strong>Author:</strong>\n    <%= book.author %>]
 
   replace(file_name: file_name, src_regex: src_regex, dst: dst)
 end

@@ -19,7 +19,7 @@ RSpec.feature "/books", type: :system do
     end
     it "show" do
       visit book_path(Book.last)
-      ss_file_path = page.save_screenshot 'books_show_data_1.png'
+      ss_file_path = page.save_screenshot 'books_show_data_1.png' # crud_4_pages.png生成につかう
       expect(page).to have_text('学習ガイド')
     end
     it "new" do
@@ -29,12 +29,7 @@ RSpec.feature "/books", type: :system do
     end
     it "edit" do
       visit edit_book_path(Book.last)
-      ss_file_path = page.save_screenshot 'books_edit_data_1.png'
-      expect(page).to have_text('book')
-    end
-    it "edit" do
-      visit edit_book_path(Book.last)
-      ss_file_path = page.save_screenshot 'books_edit_data_1.png'
+      ss_file_path = page.save_screenshot 'books_edit_data_1.png' # crud_4_pages.png生成につかう
       expect(page).to have_text('book')
     end
     it "new + cerate" do
