@@ -378,6 +378,10 @@
 
 %\renewcommand{\chaptermark}[1]{\markboth{\prechaptername\thechapter\postchaptername~#1}{}}
 \mainmatter
+
+%% 追加: 本文では段落冒頭で字下げする
+\setlength{\parindent}{1zw}
+
 <%= @input_files["CHAPS"] %>
 %\renewcommand{\chaptermark}[1]{\markboth{\appendixname\thechapter~#1}{}}
 \reviewappendix
