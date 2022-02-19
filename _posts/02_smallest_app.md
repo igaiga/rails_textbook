@@ -1,15 +1,3 @@
----
-layout: post
-unique_identifier:
- - 'http:/example.jp/bookid_in_url'
- - 'BookID'
- - 'URL'
-title: '一番小さなRailsアプリづくり'
-creator: '五十嵐邦明'
-date: '2014-06-01'
-categories:
---- 
-
 # 一番小さなRailsアプリづくり
 
 ここではできるだけ小さい構成のRailsアプリを作ってみます。Railsアプリがどのように動作するのかの説明と、Railsによって作られたファイルがどのような役割なのか、機能と関連づけて説明していきます。

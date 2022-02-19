@@ -1,15 +1,3 @@
----
-layout: post
-unique_identifier:
- - 'http:/example.jp/bookid_in_url'
- - 'BookID'
- - 'URL'
-title: 'はじめに'
-creator: '五十嵐邦明'
-date: '2014-04-01'
-categories:
----
-
 # はじめに
 
 > *Rubyは開発者を幸せにする言語。*

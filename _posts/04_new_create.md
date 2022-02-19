@@ -1,15 +1,3 @@
----
-layout: post
-unique_identifier:
- - 'http:/example.jp/bookid_in_url'
- - 'BookID'
- - 'URL'
-title: 'new, create アクション'
-creator: '五十嵐邦明'
-date: '2014-08-01'
-categories:
----
-
 # new, createアクション
 
 この章ではCRUDのC（Create）にあたる新規登録を行うための2つのアクション、newとcreateについて説明していきます。

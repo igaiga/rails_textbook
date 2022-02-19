@@ -1,15 +1,3 @@
----
-layout: post
-unique_identifier:
- - 'http:/example.jp/bookid_in_url'
- - 'BookID'
- - 'URL'
-title: 'モデル'
-creator: '五十嵐邦明'
-date: '2014-09-01'
-categories:
----
-
 # モデル
 
 この章ではデータの長期保存と、その際に使うモデルについて説明します。

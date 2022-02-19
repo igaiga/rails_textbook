@@ -71,17 +71,23 @@
 
 # ReVIEW
 
+## 概要
+
 - [ReVIEW Starter](https://kauplan.org/reviewstarter/) を利用しています
 - _reviewフォルダ以下に関連ファイル群が置かれています
-- 以下のフォルダは作業フォルダとして.gitignoreに追加されていて、build_pdf.shなどを実行したときにファイルが生成または配置されます
+- _review/binフォルダ以下に生成に関するスクリプト群が置かれています
+- bin/build_pdf.shなどを実行したときに以下のファイル群が生成または配置されます
   - _review/contents reファイル置き場
+    - bin/md_to_re.shでmd2review gemのコマンドをつかって_postsフォルダのmdから変換します
   - _review/images 画像ファイル置き場
-- _reviewフォルダ以下に.ruby_version, Gemfile, Gemfile.lockが置いてあるので、_reviewフォルダでbundle installを実行してください
+    - bin/copy_images.shでassetsフォルダからコピーされます
 
 ## PDFの作り方
 
 ### カラーモノクロ共通作業
 
+- _reviewフォルダ以下に.ruby_version, Gemfile, Gemfile.lockが置いてあるので、_reviewフォルダでbundle installを実行してください
+- docker環境が必要です
 - 最後に余分なページが入るので、macOSのプレビューアプリなどで削除する
 - Acrobat Reader で表示してエラーが出ないことを確認する
 
@@ -111,19 +117,6 @@
 
 - .mdから.reへ変換してcontentsフォルダへ配置するスクリプト
 
-### remove_jekyll_header.rb
-
-- reファイルから、jekyll markdown 先頭にある余分な行を削除
-
-# HTML
-
-## jekyllを利用してローカルで閲覧
-- $ git clone https://github.com/igaiga/rails_textbook.git
-- $ cd rails_textbook
-- $ bundle install
-- $ jekyll serve --watch --baseurl ''
-- http://localhost:4000/rails_textbook/ へアクセス
-
 # textlint
 
 文章をチェックするためにtextlintが利用可能です。
@@ -132,4 +125,4 @@
 
 - $ `npm i textlint`   # textlintのインストール
 - $ `npm test`         # 文章全体のチェック
-- $ `npm run textlint _posts/2014-04-01-preface.md`  # 単独のファイルをチェック
+- $ `npm run textlint _posts/01_preface.md`  # 単独のファイルをチェック

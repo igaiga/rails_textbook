@@ -1,15 +1,3 @@
----
-layout: post
-unique_identifier:
- - 'http:/example.jp/bookid_in_url'
- - 'BookID'
- - 'URL'
-title: 'あとがき'
-creator: '五十嵐邦明'
-date: '2016-02-17'
-categories:
----
-
 # あとがき
 
 ## さらに学びたい方への資料

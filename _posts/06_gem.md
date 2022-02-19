@@ -1,15 +1,3 @@
----
-layout: post
-unique_identifier:
- - 'http:/example.jp/bookid_in_url'
- - 'BookID'
- - 'URL'
-title: 'Gemライブラリ'
-creator: '五十嵐邦明'
-date: '2016-01-11'
-categories:
----
-
 # Gemライブラリ
 
 この章ではGemについて説明します。Gemfileやbundleコマンドについても説明をしていきます。

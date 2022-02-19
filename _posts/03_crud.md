@@ -1,15 +1,3 @@
----
-layout: post
-unique_identifier:
- - 'http:/example.jp/bookid_in_url'
- - 'BookID'
- - 'URL'
-title: 'CRUDの基礎とindexアクション'
-creator: '五十嵐邦明'
-date: '2014-07-01'
-categories:
----
-
 # CRUDの基礎とindexアクション
 
 Webアプリには基本となる4つの機能があります。ページの新規作成（Create）、表示（Read）、更新（Update）、削除（Destroy）です。それぞれの頭文字を取ってCRUDと呼ばれています。大きなWebアプリも、このCRUDを基礎として作られます。
