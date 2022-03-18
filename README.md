@@ -10,7 +10,7 @@
 - https://igaigarb.booth.pm/items/1848429
 
 ## 正誤表
-- [正誤表](/errata.md)
+- [正誤表](/documents/errata.md)
 
 ## 誤記などの報告方法
 - 以下のコントリビュートポリシーにご同意いただいて、IssuesまたはPull requestsを作成いただくか、igaigaまでご連絡ください。
