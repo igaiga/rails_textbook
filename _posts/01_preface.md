@@ -98,10 +98,7 @@ Webアプリのプログラムを書くための道具として、ターミナ�
 
 ブラウザはつくったWebアプリへアクセスするための道具としてつかいます。お好きなものをご利用いただけますが、文中で説明につかわれている [Chrome](https://www.google.co.jp/chrome/browser/) を使うと分かりやすいです。
 
-もしもここに書いている内容でうまくいかない場合は、 [RailsGirlsガイド インストール・レシピ](https://railsgirls.jp/install) のページも参考にしてみてください。
-
-- RailsGirlsガイド インストール・レシピ
-  - [https://railsgirls.jp/install](https://railsgirls.jp/install)
+また、今後のRubyおよびRailsなどのバージョンアップによってここに書いている内容では動かなくなることもあります。 [読者サポートページ](https://github.com/igaiga/rails_textbook) にある「環境構築」のページにより新しい情報があれば、そちらも参考にしてください。
 
 ### Macに開発環境をつくる
 

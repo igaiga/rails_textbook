@@ -1,16 +1,16 @@
 # Railsの教科書
 
-## サンプルコード
-- https://github.com/igaiga/rails_textbook_sample/
-
 ## 電子書籍版: 達人出版会
 - https://tatsu-zine.com/books/rails-textbook
 
 ## 紙書籍版: BOOTH
 - https://igaigarb.booth.pm/items/1848429
 
-## 正誤表
+## 読者サポートページ
+
+- [サンプルコード](https://github.com/igaiga/rails_textbook_sample/)
 - [正誤表](/documents/errata.md)
+- [環境構築](/documents/install.md)
 
 ## 誤記などの報告方法
 - 以下のコントリビュートポリシーにご同意いただいて、IssuesまたはPull requestsを作成いただくか、igaigaまでご連絡ください。
