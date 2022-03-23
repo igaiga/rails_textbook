@@ -149,10 +149,7 @@ Webアプリのプログラムを書くための道具として、ターミナ�
 
 
 
-もしもここに書いている内容でうまくいかない場合は、 @<href>{https://railsgirls.jp/install,RailsGirlsガイド インストール・レシピ} のページも参考にしてみてください。
-
- * RailsGirlsガイド インストール・レシピ
- ** @<href>{https://railsgirls.jp/install,https://railsgirls.jp/install}
+また、今後のRubyおよびRailsなどのバージョンアップによってここに書いている内容では動かなくなることもあります。 @<href>{https://github.com/igaiga/rails_textbook,読者サポートページ} にある「環境構築」のページにより新しい情報があれば、そちらも参考にしてください。
 
 
 === Macに開発環境をつくる
