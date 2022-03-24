@@ -38,15 +38,15 @@ end
 app/controllers/books_controller.rb
 
 ```ruby
-@book = Book.new(book_params) # ⬅️1. リクエストのパラメータを使って本のデータを作る
+@book = Book.new(book_params) # ⬅1. リクエストのパラメータを使って本のデータを作る
 
 respond_to do |format|
-  if @book.save # ⬅️2. 本のデータを保存する
-    # ⬅️3a. 成功したらshow画面へ
+  if @book.save # ⬅2. 本のデータを保存する
+    # ⬅3a. 成功したらshow画面へ
     format.html { redirect_to book_url(@book), notice: "Book was successfully created." }
     format.json { render :show, status: :created, location: @book }
   else
-    # ⬅️3b. 保存失敗したらnew画面へ（元の画面）
+    # ⬅3b. 保存失敗したらnew画面へ（元の画面）
     format.html { render :new, status: :unprocessable_entity }
     format.json { render json: @book.errors, status: :unprocessable_entity }
   end
@@ -57,9 +57,9 @@ end
 
 ```ruby
 def create
-  @book = Book.new(book_params) # ⬅️BookクラスはModelという種族に属する
+  @book = Book.new(book_params) # ⬅BookクラスはModelという種族に属する
   respond_to do |format|
-    if @book.save # ⬅️ここで保存
+    if @book.save # ⬅ここで保存
       format.html { redirect_to book_url(@book), notice: "Book was successfully created." }
       format.json { render :show, status: :created, location: @book }
     else
@@ -253,15 +253,15 @@ DB設計書（migration）からDBテーブルを作るのが `rails db:migrate`
 app/controllers/books_controller.rb
 
 ```ruby
-@book = Book.new(book_params) # ⬅️1. リクエストのパラメータを使って本のデータを作る
+@book = Book.new(book_params) # ⬅1. リクエストのパラメータを使って本のデータを作る
 
 respond_to do |format|
-  if @book.save # ⬅️2. 本のデータを保存する
-    # ⬅️3a. 成功したらshow画面へ
+  if @book.save # ⬅2. 本のデータを保存する
+    # ⬅3a. 成功したらshow画面へ
     format.html { redirect_to book_url(@book), notice: "Book was successfully created." }
     format.json { render :show, status: :created, location: @book }
   else
-    # ⬅️3b. 保存失敗したらnew画面へ（元の画面）
+    # ⬅3b. 保存失敗したらnew画面へ（元の画面）
     format.html { render :new, status: :unprocessable_entity }
     format.json { render json: @book.errors, status: :unprocessable_entity }
   end

@@ -335,10 +335,10 @@ class BooksController < ApplicationController
 <h1>Books</h1>
 
 <div id="books">
-  <% @books.each do |book| %> ⬅️ @booksはbookがいくつか入った配列
-    <%= render book %> ⬅️ 個々のbookのtitleやmemoを表示
+  <% @books.each do |book| %> ⬅ @booksはbookがいくつか入った配列
+    <%= render book %> ⬅ 個々のbookのtitleやmemoを表示
     <p>
-      <%= link_to "Show this book", book %> ⬅️ Show（詳細画面）へのリンクを生成
+      <%= link_to "Show this book", book %> ⬅ Show（詳細画面）へのリンクを生成
     </p>
   <% end %>
 </div>
@@ -392,12 +392,12 @@ renderメソッドは別のビューファイルを埋め込みます。わざ�
 <div id="<%= dom_id book %>">
   <p>
     <strong>Title:</strong>
-    <%= book.title %> ⬅️初回のbook.titleは "RubyとRailsの学習ガイド"
+    <%= book.title %> ⬅初回のbook.titleは "RubyとRailsの学習ガイド"
   </p>
 
   <p>
     <strong>Memo:</strong>
-    <%= book.memo %> ⬅️初回のbook.memoは "Rails関連技術地図とそれらの学習資料の紹介"
+    <%= book.memo %> ⬅初回のbook.memoは "Rails関連技術地図とそれらの学習資料の紹介"
   </p>
 
 </div>
