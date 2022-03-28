@@ -1,0 +1,15 @@
+% for user-defined macro
+
+%% 「Railsの教科書」用LaTeX設定
+
+%% 原ノ味フォントを使う
+\usepackage[haranoaji]{pxchfon}
+
+%% 標準の本文は英字はrobotoに、日本語は原ノ味ゴシックにする
+\usepackage[sfdefault,light]{roboto}
+\setminchofont{HaranoAjiGothic-Light.otf}
+\setboldminchofont{HaranoAjiGothic-Bold.otf}
+
+%% 箇条書き(itemize)はネストした2段目・3段目も「・」にする
+\renewcommand\labelitemii{\textbullet}
+\renewcommand\labelitemiii{\textbullet}
