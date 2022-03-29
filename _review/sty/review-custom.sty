@@ -5,10 +5,14 @@
 %% 原ノ味フォントを使う
 \usepackage[haranoaji]{pxchfon}
 
+%% 本文はserif(ゴシック)にする
+\renewcommand\kanjifamilydefault{\gtdefault}
+\renewcommand\familydefault{\sfdefault}
+
 %% 標準の本文は英字はrobotoに、日本語は原ノ味ゴシックにする
 \usepackage[sfdefault,light]{roboto}
-\setminchofont{HaranoAjiGothic-Light.otf}
-\setboldminchofont{HaranoAjiGothic-Bold.otf}
+\setgothicfont{HaranoAjiGothic-Light.otf}
+\setboldgothicfont{HaranoAjiGothic-Bold.otf}
 
 %% 箇条書き(itemize)はネストした2段目・3段目も「・」にする
 \renewcommand\labelitemii{\textbullet}
