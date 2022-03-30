@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 gem "rake"
-gem "review", "2.5.0"
+gem "review"
 
 # Convert markdown to re
 gem "md2review"

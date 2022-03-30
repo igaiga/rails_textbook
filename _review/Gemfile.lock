@@ -4,14 +4,20 @@ GEM
     image_size (3.0.1)
     md2review (1.12.1)
       redcarpet (> 2.0.0)
+    pastel (0.8.0)
+      tty-color (~> 0.5)
     rake (13.0.6)
     redcarpet (3.5.1)
-    review (2.5.0)
+    review (5.4.0)
       image_size
       rouge
       rubyzip
+      tty-logger
     rouge (3.28.0)
     rubyzip (2.3.2)
+    tty-color (0.6.0)
+    tty-logger (0.6.0)
+      pastel (~> 0.8)
 
 PLATFORMS
   arm64-darwin-21
@@ -20,7 +26,7 @@ PLATFORMS
 DEPENDENCIES
   md2review
   rake
-  review (= 2.5.0)
+  review
 
 BUNDLED WITH
    2.2.33

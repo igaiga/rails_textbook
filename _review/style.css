@@ -1,7 +1,7 @@
 @charset "utf-8";
-/* Tatujin-Publishing   */
+/* Tatsu-zine Publishing Inc.  */
 /* Style sheet for epub */
-/* Ver.0.8b1            */
+/* Ver.0.9b0            */
 
 /*
 Scale & Rhythm
@@ -12,33 +12,32 @@ x:p:h1:h2:h3 = 12px:14px:16px:24px:30px
 * {
 }
 body {
-    margin: 0;
+    margin: 10px;
     padding: 0;
     font-size: 1em;
     line-height:1.6;
-    font-family: "ShinGoPro-Regular","ShinGo-Regular", sans-serif;
     /*
     word-break: normal;
     -webkit-line-break: after-white-space;
     */
 }
 p, ul, ol, dl, pre, table {
-    font-family: "ShinGo Regular","ShinGo R","新ゴR","新ゴ R", sans-serif;
     font-size: 0.875em;
 }
 /* Heading */
 h1 {
     margin: 0 0 3em;
     padding: 0.5em 0 0;
-    border-top: 14px #326450 solid;
+    border-top: 14px #b92b10 solid;
     text-align: left;
     font-size: 1.875em;
     font-weight: bold;
+    overflow:hidden;
 }
 h2 {
     margin: 3em 0 0.5em;
     padding: 0.5em 0 0;
-    border-top: 2px #326450 solid;
+    border-top: 2px #b92b10 solid;
     text-align: left;
     font-size: 1.5em;
     font-weight: bold;
@@ -57,6 +56,22 @@ h4, h5, h6 {
     line-height: 1.6;
     font-weight: bold;
 }
+/* Part Header */
+h1.part-number {
+    margin: 0 0 2em;
+    padding: 0.5em 0 0;
+    border-top: 14px #b92b10 solid;
+    text-align: left;
+    font-size: 1.875em;
+    font-weight: bold;
+    overflow:hidden;
+}
+h2.part-title {
+    margin: 0em 0 0.5em;
+    padding: 0em 0 0;
+    border: none;
+    font-size: 1.875em;
+}
 /* Paragraph */
 p {
     margin:0.7em 0;
@@ -65,14 +80,21 @@ p {
     text-indent: 1em;
     line-height: 1.6;
 }
+p.noindent {
+    text-indent: 0px;
+}
 div.lead p {
-	color: #666;
+	color: #444;
     line-height: 1.6;
     font-size: 0.75em;
+}
+p.flushright {
+    text-align: right;
 }
 /* List */
 ul, ol {
     margin: 2em 0 2em 2em;
+/*    margin: 2em 0 2em 0.5em;*/
     padding: 0;
     list-style-position: outside;
 }
@@ -87,22 +109,21 @@ dl {
     padding: 0;
 }
 dt {
-    margin: 0;
+    margin: 0 0 0 1em;
     padding: 0;
     font-weight: bold;
 }
 dd {
-    margin: 0 0 1em 2em;
+    margin: 0 0 1em 3em;
     padding: 0;
     line-height: 1.6;
 }
 /* Table
-p.tablecaptionではなく
-table caption {}を使う方が良いかも？
 */
 table {
     margin: 0 auto 2em auto;
     border-collapse: collapse;
+    padding: 0;
 }
 table tr th {
     background-color: #eee;
@@ -115,8 +136,10 @@ table tr td {
     border:1px #aaa solid;
     font-size: 0.75em;
 }
-p.tablecaption, table caption {
+
+p.tablecaption, table caption, div.table p.caption {
     margin: 0;
+    text-align: center;
     color: #666;
     font-size: 0.75em;
     font-weight: bold;
@@ -124,16 +147,22 @@ p.tablecaption, table caption {
 }
 /* Quote */
 blockquote {
-    margin: 2em 0 2em 2em;
+    margin: 2em 0 2em 0;
     padding: 0.3em 1em;
     border: 1px #aaa solid;
 }
+blockquote p {
+    text-indent: 0em;
+}
+
 /* Column Block */
 div.column {
-    margin: 2em 0 2em 2em;
+/*    margin: 2em 0 2em 2em;*/
+    margin: 2em 0 2em 0;
     padding: 0.3em 1em;
     background-color: #eee;
-    -webkit-border-radius: 0.7em;    
+    border-radius: 0.7em;
+    -webkit-border-radius: 0.7em;
 }
 div.column *{
     margin:0.7em 0;    
@@ -141,6 +170,9 @@ div.column *{
 div.column ul,
 div.column ol {
     list-style-position: inside;
+}
+div.column h3:before {
+    content: "■コラム: ";
 }
 /* Code Block */
 /*
@@ -154,10 +186,14 @@ div.code, div.caption-code, div.source-code, div.emlist-code, div.emlistnum-code
     margin: 1em 0 2em 2em;
     padding: 0;
 }
+div.emlist-code p.caption {
+    border-left: 7px solid #b92b10;
+}
 pre.emlist, pre.source, pre.list {
     margin: 0;
     padding: 5px;
     border: 1px #aaa solid;
+    background-color: #eee;
 }
 div p.caption {
     margin: 0;
@@ -167,10 +203,11 @@ div p.caption {
 }
 div.cmd-code pre.cmd {
     margin: 0;
-    padding: 5px;
-    color: #ccc;
-    font-weight: bold;
-    background-color: #444;
+    padding: 10px;
+    color: #111
+    background-color: #fff;
+    border: 1px #222 solid;
+    border-radius: 0.5em;
     -webkit-border-radius: 0.5em;
 }
 pre.cmd, pre.emlist, pre.list, pre.source {
@@ -183,11 +220,18 @@ pre.cmd, pre.emlist, pre.list, pre.source {
 div.image {
     margin: 2em auto;
     padding: 0;
+    text-align: center;
 }
 div.image img {
     margin: 0 auto;
     padding: 0;
-    display: block;
+    display: inline-block;
+    text-align: center;
+    max-width: 100%;
+    max-height: 100%;
+}
+.full img {
+    width: 100%;
 }
 div.image p.caption {
     margin: 0 auto;
@@ -216,6 +260,7 @@ div.colophon p {
 }
 div.colophon p.title {
     font-size: 1.5em;
+    border-bottom: 2px #b92b10 solid;
 }
 div.colophon table {
     margin: 1em 0 2em;
@@ -223,14 +268,38 @@ div.colophon table {
 }
 div.colophon table tr th {
     background-color: #fff;
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: normal;
     border: none;
 }
 div.colophon table tr td {
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: normal;
     border: none;
+}
+/* Note */
+div.note {
+    border-radius: 0.7em;
+    margin: 1em auto;
+    border: 1px #aaa solid;
+    padding: 0.3em 1em;
+    text-indent: 0px;
+}
+div.note p.caption {
+    color: #000;
+}
+div.note p {
+    text-indent: 0;
+}
+
+/* info */
+div.info {
+    margin: 1em auto;
+    border: 1px #aaa solid;
+   padding: 0.3em 1em;
+}
+div.info p.caption {
+    text-indent: 0px;
 }
 
 /* Inline */
@@ -247,267 +316,10 @@ strong{
     font-weight: bold;
 }
 em {
-    font-style: italic;
-}
-
-.cursor {
-    color: #000;
-    background: #fff;
-}
-
-
-/**
- * from Rouge
- */
-.highlight table td { padding: 5px; }
-.highlight table pre { margin: 0; }
-.highlight .cm {
-  color: #999988;
-  font-style: italic;
-}
-.highlight .cp {
-  color: #999999;
-  font-weight: bold;
-}
-.highlight .c1 {
-  color: #999988;
-  font-style: italic;
-}
-.highlight .cs {
-  color: #999999;
-  font-weight: bold;
-  font-style: italic;
-}
-.highlight .c, .highlight .cd {
-  color: #999988;
-  font-style: italic;
-}
-.highlight .err {
-  color: #a61717;
-  background-color: #e3d2d2;
-}
-.highlight .gd {
-  color: #000000;
-  background-color: #ffdddd;
-}
-.highlight .ge {
-  color: #000000;
-  font-style: italic;
-}
-.highlight .gr {
-  color: #aa0000;
-}
-.highlight .gh {
-  color: #999999;
-}
-.highlight .gi {
-  color: #000000;
-  background-color: #ddffdd;
-}
-.highlight .go {
-  color: #888888;
-}
-.highlight .gp {
-  color: #555555;
-}
-.highlight .gs {
-  font-weight: bold;
-}
-.highlight .gu {
-  color: #aaaaaa;
-}
-.highlight .gt {
-  color: #aa0000;
-}
-.highlight .kc {
-  color: #000000;
-  font-weight: bold;
-}
-.highlight .kd {
-  color: #000000;
-  font-weight: bold;
-}
-.highlight .kn {
-  color: #000000;
-  font-weight: bold;
-}
-.highlight .kp {
-  color: #000000;
-  font-weight: bold;
-}
-.highlight .kr {
-  color: #000000;
-  font-weight: bold;
-}
-.highlight .kt {
-  color: #445588;
-  font-weight: bold;
-}
-.highlight .k, .highlight .kv {
-  color: #000000;
-  font-weight: bold;
-}
-.highlight .mf {
-  color: #009999;
-}
-.highlight .mh {
-  color: #009999;
-}
-.highlight .il {
-  color: #009999;
-}
-.highlight .mi {
-  color: #009999;
-}
-.highlight .mo {
-  color: #009999;
-}
-.highlight .m, .highlight .mb, .highlight .mx {
-  color: #009999;
-}
-.highlight .sb {
-  color: #d14;
-}
-.highlight .sc {
-  color: #d14;
-}
-.highlight .sd {
-  color: #d14;
-}
-.highlight .s2 {
-  color: #d14;
-}
-.highlight .se {
-  color: #d14;
-}
-.highlight .sh {
-  color: #d14;
-}
-.highlight .si {
-  color: #d14;
-}
-.highlight .sx {
-  color: #d14;
-}
-.highlight .sr {
-  color: #009926;
-}
-.highlight .s1 {
-  color: #d14;
-}
-.highlight .ss {
-  color: #990073;
-}
-.highlight .s {
-  color: #d14;
-}
-.highlight .na {
-  color: #008080;
-}
-.highlight .bp {
-  color: #999999;
-}
-.highlight .nb {
-  color: #0086B3;
-}
-.highlight .nc {
-  color: #445588;
-  font-weight: bold;
-}
-.highlight .no {
-  color: #008080;
-}
-.highlight .nd {
-  color: #3c5d5d;
-  font-weight: bold;
-}
-.highlight .ni {
-  color: #800080;
-}
-.highlight .ne {
-  color: #990000;
-  font-weight: bold;
-}
-.highlight .nf {
-  color: #990000;
-  font-weight: bold;
-}
-.highlight .nl {
-  color: #990000;
-  font-weight: bold;
-}
-.highlight .nn {
-  color: #555555;
-}
-.highlight .nt {
-  color: #000080;
-}
-.highlight .vc {
-  color: #008080;
-}
-.highlight .vg {
-  color: #008080;
-}
-.highlight .vi {
-  color: #008080;
-}
-.highlight .nv {
-  color: #008080;
-}
-.highlight .ow {
-  color: #000000;
-  font-weight: bold;
-}
-.highlight .o {
-  color: #000000;
-  font-weight: bold;
-}
-.highlight .w {
-  color: #bbbbbb;
-}
-.highlight {
-  background-color: #f8f8f8;
-}
-.rouge-table { border-spacing: 0 }
-.rouge-gutter { text-align: right }
-
-/**
- * from EBPAJ EPUB 3 File Creation Guide sample style
- *
- * cf. http://ebpaj.jp/counsel/guide
- */
-
-/* image width definition(pacentage)  */
-.width-010per { width:  10%; }
-.width-020per { width:  20%; }
-.width-025per { width:  25%; }
-.width-030per { width:  30%; }
-.width-033per { width:  33%; }
-.width-040per { width:  40%; }
-.width-050per { width:  50%; }
-.width-060per { width:  60%; }
-.width-067per { width:  67%; }
-.width-070per { width:  70%; }
-.width-075per { width:  75%; }
-.width-080per { width:  80%; }
-.width-090per { width:  90%; }
-.width-100per { width: 100%; }
-
-
-/*
- *  Starter
- */
-tt, code, pre, kbd {
-  /* see https://silight.hatenablog.jp/entry/2015/07/02/214601 */
-  font-family: monospace, serif;
-}
-.weak {
-  color: #999;
-}
-.image-bordered {
-  border: solid 1px #ccc;
-}
-.bou {
-  text-emphasis-style: dot filled;
-  -webkit-text-emphasis-style: dot filled;
+    font-weight: bold;
+}
+code {
+  border: 1px solid #ddd;
+  background-color: #eef;
+  padding: 0 .4em;
 }
