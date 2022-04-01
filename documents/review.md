@@ -44,7 +44,7 @@
 
 ## 概要
 
-- [ReVIEW Starter](https://kauplan.org/reviewstarter/) を利用しています
+- https://github.com/vvakame/docker-review を利用しています
 - _reviewフォルダ以下に関連ファイル群が置かれています
 - _review/binフォルダ以下に生成に関するスクリプト群が置かれています
 - bin/build_pdf.shなどを実行したときに以下のファイル群が生成または配置されます
@@ -58,15 +58,13 @@
 ### カラーモノクロ共通作業
 
 - _reviewフォルダ以下に.ruby_version, Gemfile, Gemfile.lockが置いてあるので、_reviewフォルダでbundle installを実行してください
-- docker環境が必要です
-- 最後に余分なページが入るので、macOSのプレビューアプリなどで削除する
-- Acrobat Reader で表示してエラーが出ないことを確認する
+- Docker環境が必要です
+- Acrobat Reader で表示してエラーが出ないことを確認してください
 
 ### build_pdf.sh カラー版PDF作成（電子書籍向け）
 
 - スクリプトファイル群を実行して必要なファイルを収集してPDFを作成します
-- _reviewフォルダで実行
-- $ bin/build_pdf.sh
+- $ _review/bin/build_pdf.sh
 
 ### build_pdf_for_print.sh モノクロ版PDF作成（印刷書向け）
 
