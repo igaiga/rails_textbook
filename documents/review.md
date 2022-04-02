@@ -39,6 +39,9 @@
 - 表紙
   - _figures/covers/rails_textbook_cover_omote.png
   - _figures/covers/rails_textbook_cover_ura.png
+  - _figures/covers/rails_textbook_cover_ura.pdf
+    - 同名のpngをPDF化したもの
+    - Re:VIEW で結合するときにpngよりもPDFの方がかんたんなため
 
 # ReVIEW
 
@@ -58,12 +61,14 @@
 ### カラーモノクロ共通作業
 
 - _reviewフォルダ以下に.ruby_version, Gemfile, Gemfile.lockが置いてあるので、_reviewフォルダでbundle installを実行してください
+  - 現状のbin以下にあるスクリプトは、Re:VIEWだけコンテナで実行し、他のスクリプトはネイティブで実行します
 - Docker環境が必要です
 - Acrobat Reader で表示してエラーが出ないことを確認してください
 
 ### build_pdf.sh カラー版PDF作成（電子書籍向け）
 
 - スクリプトファイル群を実行して必要なファイルを収集してPDFを作成します
+- _reviewフォルダで実行
 - $ _review/bin/build_pdf.sh
 
 ### build_pdf_for_print.sh モノクロ版PDF作成（印刷書向け）
