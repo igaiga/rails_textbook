@@ -10,7 +10,7 @@ Rubyの世界にもライブラリがあり、Gemと呼ばれます。Gemは [ru
 
 ## Gemをインストールして利用する
 
-Gemをインストールするにはgem iコマンドを利用します。gem iのiはinstallの省略形です。省略せずにgem installとすることもできます。例として、pメソッドをより見やすい形で拡張させたapコマンドを提供するawesome_printというGemをインストールしてみましょう。
+Gemをインストールするにはgem iコマンドを利用します。gem iのiはinstallの省略形です。省略せずにgem installとすることもできます。例として、pメソッドをより見やすい形で拡張させたapメソッドを提供するawesome_printというGemをインストールしてみましょう。
 
 ```bash
 $ gem i awesome_print
