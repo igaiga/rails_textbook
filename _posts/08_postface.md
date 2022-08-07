@@ -41,11 +41,11 @@ Railsを学びはじめると、Webサービスにはたくさんの技術が使
 - Ruby on Rails ガイド
   - [https://railsguides.jp](https://railsguides.jp)
   - 電子書籍版 [https://tatsu-zine.com/books/railsguides](https://tatsu-zine.com/books/railsguides)
-  - Railsの各機能を網羅的に解説しているサイトです。Railsの機能の使い方が分からないときに最初にあたるサイトでもあります。調べ物で使うのも良いですが、一度通読しておくとどのような機能があるかを把握できてその後の進みが速いです。常に最新のRailsについての記述が書いてあるサイトでもあります。本書でも各章の最後に、その章の内容に該当するRailsガイドへのリンクを書いているのでぜひ読んでみてください。
+  - RailsガイドにはRailsの多くの機能についての説明が書かれています。私はRailsの機能の使い方がわからないときに最初にあたるサイトとしてつかっています。調べ物でつかうのも良いですが、一度通読しておくと、どのような機能があるかを把握できるのでその後の開発を加速させることができます。Railsの機能開発とセットで書かれているため、最新バージョンのRailsに対応した記事を読むことができます。たまに読み返すと、新機能が追記されていて「こんな書き方もできるのか」と勉強になります。時間をかけてでも全体へ目を通す価値のある資料です。本書でも各章の最後に、その章の内容に該当するRailsガイドへのリンクを書いているのでぜひ読んでみてください。
 
-- Ruby on Rails API
+- api.rubyonrails.org
   - [https://api.rubyonrails.org](https://api.rubyonrails.org)
-  - Railsのリファレンスページです。メソッド名やクラス名で検索することができます。Railsのコード中に書かれたドキュメントを、読みやすく検索しやすく提供しているページです。
+  - Railsのリファレンスページです。メソッド名やクラス名で検索することができます。Railsのコード中に書かれたドキュメントを、読みやすく検索しやすく提供しているページです。また、各メソッドの説明からGitHubの該当ソースコードへのリンクも貼られているので、ソースコードを調べる入り口としても便利です。詳しく説明が書かれているので、知らない機能について調べるときに最初に読む資料としてRailsガイドとあわせてお勧めです。
 
 - Ruby on Rails チュートリアル
   - [https://railstutorial.jp](https://railstutorial.jp)
@@ -74,7 +74,7 @@ RailsはRubyというプログラミング言語で作られています。Ruby�
 
 - Rubyリファレンスマニュアル（通称るりま）
   - [https://docs.ruby-lang.org/ja/latest/doc/index.html](https://docs.ruby-lang.org/ja/latest/doc/index.html)
-  - Rubyのリファレンスマニュアルです。たとえばArrayクラスのメソッド一覧を調べるには、「組み込みライブラリ Builtin libraries - Array」とたどります。辞書的な使い方のほかに、全体を一読するのもお勧めです。まずはArray, Hash, String, Enumerableだけでも読んでおくとRubyを書く力が上がります。また、るりまの全文検索として「るりまサーチ」[https://docs.ruby-lang.org/ja/search/](https://docs.ruby-lang.org/ja/search/) も用意されています。たとえば、メソッド名から機能を調べたいようなケースで役立ちます。リファレンスマニュアルの利用方法は後述の『ゼロからわかる Ruby超入門』でも説明しています。
+  - Rubyのリファレンスマニュアルです。たとえばArrayクラスのメソッド一覧を調べるには、「組み込みライブラリ Builtin libraries - Array」とたどります。辞書的な使い方のほかに、全体を一読するのもお勧めです。まずはArray, Hash, String, Enumerableだけでも読んでおくとRubyを書く力が上がります。また、Rubyリファレンスマニュアルの全文検索として[るりまサーチ](https://docs.ruby-lang.org/ja/search/)のサイトがあります。たとえば、メソッド名を入力して検索すると、そのメソッドを持つクラス一覧を表示して、リファレンスマニュアルへのリンクが表示されます。Rubyリファレンスマニュアルの利用方法は後述の『ゼロからわかる Ruby超入門』でも説明しています。
 
 - ゼロからわかる Ruby超入門
   - 五十嵐邦明、松岡浩平 著 技術評論社 ISBN: 978-4297101237
