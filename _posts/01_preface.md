@@ -82,9 +82,19 @@ Use Ctrl-C to stop
 
 ## サンプルコード
 
-本書で使うサンプルコードは以下に置いてあります。
+本書で使うサンプルコードは次のURLにあります。
 
-[`https://github.com/igaiga/rails_textbook_sample`](https://github.com/igaiga/rails_textbook_sample)
+- [`https://github.com/igaiga/rails_textbook_sample`](https://github.com/igaiga/rails_textbook_sample)
+
+## 読者サポートページ
+
+「開発環境構築」と「正誤表」は次のURLにあります。開発環境構築は次の節で説明していますが、より新しい情報で更新することがあります。
+
+- 開発環境構築
+  - [`https://github.com/igaiga/rails_textbook/blob/master/documents/install.md`](https://github.com/igaiga/rails_textbook/blob/master/documents/install.md)
+
+- 正誤表
+  - [`https://github.com/igaiga/rails_textbook/blob/master/documents/errata.md`](https://github.com/igaiga/rails_textbook/blob/master/documents/errata.md)
 
 ## 開発環境
 
