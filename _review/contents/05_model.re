@@ -780,7 +780,7 @@ $ rails db:migrate
 
 +<p>
 +  <strong>Author:</strong>
-+  <%= @book.author %>
++  <%= book.author %>
 +</p>
 
 </div>
