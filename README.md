@@ -23,6 +23,6 @@
 - 私的な利用、および公的な学校、コミュニティでの利用はOKです。
 - 商用での利用については許可していませんが、別途有償ライセンスの準備がありますので [igaiga](https://github.com/igaiga) へご連絡ください。
 
-## ReVIEW
+## ReVIEW、動作確認、スクリーンショット作成
 
 - [ReVIEW](/documents/review.md)

@@ -2,24 +2,26 @@
 
 - 対象バージョンのRubyとRailsを実行可能にする
 - 後述のサンプルアプリの生成とスクリーンショット作成のスクリプトコードを実行すればSystem specで動作確認できる
-  - rails_textbook/_figures/scripts/screenshots/helloworld/generate_helloworld.sh
-  - rails_textbook/_figures/scripts/screenshots/books_app/generate_books_app.sh
+  - _figures/scripts/screenshots/helloworld/generate_helloworld.sh
+  - _figures/scripts/screenshots/books_app/generate_books_app.sh
 - エラーが出ないことを確認
 - スクリーンショットが正しくできていることを確認
 
 # サンプルアプリとスクリーンショットの生成
 
-- rails_textbook/_figures/scripts
+- _figures/scripts
   - サンプルアプリを生成して、スクリーンショットを作成するコード群の置き場
   - 事前に生成したいバージョンのRubyとRailsを実行可能にしておく
   - helloworld サンプルアプリの生成とスクリーンショット作成のスクリプトコード
-    - rails_textbook/_figures/scripts/screenshots/helloworld/generate_helloworld.sh
+    - _figures/scripts/screenshots/helloworld/generate_helloworld.sh
     - 生成されたスクリーンショットは、最後に実行するreplace_png.rbでassetsフォルダ以下へコピーされる
   - books_app サンプルアプリの生成とスクリーンショット作成のスクリプトコード
-    - rails_textbook/_figures/scripts/screenshots/books_app/generate_books_app.sh
+    - _figures/scripts/screenshots/books_app/generate_books_app.sh
     - 生成されたスクリーンショットは、最後に実行するreplacer.rbでassetsフォルダ以下へコピーされる
   - この作業の結果、サンプルコードも作成されるので、できあがったコードをサンプルコード用リポジトリへ置く
     - https://github.com/igaiga/rails_textbook_sample
+    - helloworld: _figures/scripts/screenshots/helloworld/helloworld
+    - books_app: _figures/scripts/screenshots/books_app/books_app
 
 # 書籍内で利用している画像の説明
 
