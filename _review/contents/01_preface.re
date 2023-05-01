@@ -146,7 +146,7 @@ Webアプリのプログラムを書くための道具として、ターミナ�
 
 
 
-ターミナルはコンピュータをコントロールするための道具です。自分で書いたプログラムをターミナルから実行することができます。ターミナルでRubyおよびRailsのプログラムを実行するためには、開発環境を作る必要があります。最初にMacとWindowsの場合それぞれでの環境構築方法を説明して、そのあとでどちらの環境でも共通であるRubyとRailsのインストール方法を説明します。
+ターミナルはコンピュータをコントロールするための道具です。自分で書いたプログラムをターミナルから実行することができます。ターミナルでRubyおよびRailsのプログラムを実行するためには、開発環境を作る必要があります。最初にMacとWindowsの場合それぞれでの環境構築方法を説明して、そのあとでどちらの環境でも共通であるRubyとRailsのインストール方法を説明します。また、Docker環境をつかって開発環境をつくる方法も説明しています。
 
 
 
@@ -159,6 +159,10 @@ Webアプリのプログラムを書くための道具として、ターミナ�
 
 
 また、今後のRubyおよびRailsなどのバージョンアップによってここに書いている内容では動かなくなることもあります。 @<href>{https://github.com/igaiga/rails_textbook,読者サポートページ} にある「環境構築」のページにより新しい情報があれば、そちらも参考にしてください。
+
+
+
+以降で開発環境のつくり方を説明しています。Macに環境をつくる場合は、「Macに開発環境をつくる」と「RubyとRailsをインストールする」を実行してください。Windowsに環境をつくる場合は、「Windowsに開発環境をつくる」と「RubyとRailsをインストールする」を実行してください。Dockerをつかって環境をつくる場合は、「Dockerをつかって開発環境をつくる」を実行してください。
 
 
 === Macに開発環境をつくる
@@ -307,5 +311,44 @@ Railsは最新バージョンのものをつかって問題ありませんが、
 
 
 
-ここまででRubyとRailsの開発環境構築ができました。
+ここまででRubyとRailsの開発環境構築ができました。次の章へ進んでください。
+
+
+=== Dockerをつかって開発環境をつくる
+
+
+Dockerをつかってかんたんに開発環境をつくる Docked Rails CLI がRailsコアチームより提供されています。あらかじめ、Docker DesktopなどでDocker環境をつくっておきます。
+
+ * Docked Rails CLI @<href>{https://github.com/rails/docked,https://github.com/rails/docked}
+ * Docker Desktop @<href>{https://www.docker.com/products/docker-desktop,https://www.docker.com/products/docker-desktop}
+
+
+
+この環境でつかわれるRubyとRailsのバージョンは@<href>{https://github.com/rails/docked/blob/main/Dockerfile,Docked Rails CLIリポジトリのDockerfile}で確認できます。2023年5月1日現在、Rubyはv3.2.0、Railsは@<tt>{gem install rails}でインストールされる最新バージョンv7.0.4.3がつかわれます。
+
+
+
+ターミナルで以下を実行します。
+
+
+//emlist{
+docker volume create ruby-bundle-cache
+alias docked='docker run --rm -it -v ${PWD}:/rails -v ruby-bundle-cache:/bundle \
+  -p 3000:3000 ghcr.io/rails/cli'
+//}
+
+
+次の例のように、railsコマンドの前にdockedをつけることで、構築されたDocker環境上で実行できます。bundleコマンドも同様にdocked bundleコマンドになります。railsコマンド、bundleコマンドを実行するときは、前にdockedをつけて実行してください。
+
+
+//emlist{
+docked rails new books_app
+cd books_app
+docked rails generate scaffold book title
+docked rails db:migrate
+docked rails server
+//}
+
+
+ここまででRubyとRailsの開発環境構築ができました。次の章へ進んでください。
 

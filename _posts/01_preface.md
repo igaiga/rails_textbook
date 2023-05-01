@@ -102,13 +102,15 @@ Use Ctrl-C to stop
 
 Webアプリのプログラムを書くための道具として、ターミナル、エディタ、ブラウザをつかいます。
 
-ターミナルはコンピュータをコントロールするための道具です。自分で書いたプログラムをターミナルから実行することができます。ターミナルでRubyおよびRailsのプログラムを実行するためには、開発環境を作る必要があります。最初にMacとWindowsの場合それぞれでの環境構築方法を説明して、そのあとでどちらの環境でも共通であるRubyとRailsのインストール方法を説明します。
+ターミナルはコンピュータをコントロールするための道具です。自分で書いたプログラムをターミナルから実行することができます。ターミナルでRubyおよびRailsのプログラムを実行するためには、開発環境を作る必要があります。最初にMacとWindowsの場合それぞれでの環境構築方法を説明して、そのあとでどちらの環境でも共通であるRubyとRailsのインストール方法を説明します。また、Docker環境をつかって開発環境をつくる方法も説明しています。
 
 エディタはプログラムを入力する道具です。エディタは好みのものがあればそれを利用してください。特にない場合は [Visual Studio Code](https://code.visualstudio.com/) をお勧めします。Visual Studio Codeは無料で使うことができます。ライセンスはMITライセンスです。
 
 ブラウザはつくったWebアプリへアクセスするための道具としてつかいます。お好きなものをご利用いただけますが、文中で説明につかわれている [Chrome](https://www.google.co.jp/chrome/browser/) を使うと分かりやすいです。
 
 また、今後のRubyおよびRailsなどのバージョンアップによってここに書いている内容では動かなくなることもあります。 [読者サポートページ](https://github.com/igaiga/rails_textbook) にある「環境構築」のページにより新しい情報があれば、そちらも参考にしてください。
+
+以降で開発環境のつくり方を説明しています。Macに環境をつくる場合は、「Macに開発環境をつくる」と「RubyとRailsをインストールする」を実行してください。Windowsに環境をつくる場合は、「Windowsに開発環境をつくる」と「RubyとRailsをインストールする」を実行してください。Dockerをつかって環境をつくる場合は、「Dockerをつかって開発環境をつくる」を実行してください。
 
 ### Macに開発環境をつくる
 
@@ -217,4 +219,33 @@ Rails 7.0.1
 
 Railsは最新バージョンのものをつかって問題ありませんが、もしも問題が出て進められなくなったときには、`gem i rails -v 7.0.1`のようにバージョンを指定して、本書の内容と揃えることもできます。そのときには、以降のページで出てくる`rails new アプリ名`コマンドを実行するときに、つかうバージョンを指定し`rails _7.0.1_ new アプリ名`とします。
 
-ここまででRubyとRailsの開発環境構築ができました。
+ここまででRubyとRailsの開発環境構築ができました。次の章へ進んでください。
+
+### Dockerをつかって開発環境をつくる
+
+Dockerをつかってかんたんに開発環境をつくる Docked Rails CLI がRailsコアチームより提供されています。あらかじめ、Docker DesktopなどでDocker環境をつくっておきます。
+
+- Docked Rails CLI [https://github.com/rails/docked](https://github.com/rails/docked)
+- Docker Desktop [https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)
+
+この環境でつかわれるRubyとRailsのバージョンは[Docked Rails CLIリポジトリ Dockerfile](https://github.com/rails/docked/blob/main/Dockerfile)で確認できます。2023年5月1日現在、Rubyはv3.2.0、Railsは`gem install rails`でインストールされる最新バージョンv7.0.4.3がつかわれます。
+
+ターミナルで以下を実行します。
+
+```
+docker volume create ruby-bundle-cache
+alias docked='docker run --rm -it -v ${PWD}:/rails -v ruby-bundle-cache:/bundle \
+  -p 3000:3000 ghcr.io/rails/cli'
+```
+
+次の例のように、railsコマンドの前にdockedをつけることで、構築されたDocker環境上で実行できます。bundleコマンドも同様にdocked bundleコマンドになります。railsコマンド、bundleコマンドを実行するときは、前にdockedをつけて実行してください。
+
+```
+docked rails new books_app
+cd books_app
+docked rails generate scaffold book title
+docked rails db:migrate
+docked rails server
+```
+
+ここまででRubyとRailsの開発環境構築ができました。次の章へ進んでください。
