@@ -7,7 +7,6 @@ mkdir screenshots
 rm -rf books_app
 rails new books_app
 cd books_app
-# bin/spring stop # spring has removed at Rails7.0
 bin/rails g scaffold book title:string memo:text
 bin/rails db:migrate
 cd ..
@@ -16,7 +15,6 @@ cd ..
 ruby edit_00_setup_rspec_gemfile.rb
 cd books_app
 bundle install
-# bin/spring stop # spring has removed at Rails7.0
 bin/rails generate rspec:install
 mkdir spec/systems
 cp ../replaced/*_spec.rb spec/systems/.
@@ -36,7 +34,6 @@ ruby edit_10_replace_for_author.rb
 cd books_app
 cp ../replaced/*_add_author_to_books.rb db/migrate/.
 bin/rails db:migrate
-# bin/spring stop # spring has removed at Rails7.0
 # screenshot with Author
 bundle exec rspec spec/systems/books_author_spec.rb
 cd ..
@@ -44,13 +41,11 @@ cd ..
 # screenshot 3rd for Books with picture upload
 ruby edit_20_replace_for_picture_upload.rb
 cd books_app
-# bin/spring stop # spring has removed at Rails7.0
 bundle install
 bin/rails g uploader Picture
 cp ../replaced/*_add_picture_to_books.rb db/migrate/.
 cp ../replaced/*.png spec/systems/.
 bin/rails db:migrate
-# bin/spring stop # spring has removed at Rails7.0
 # screenshot with file upload
 bundle exec rspec spec/systems/books_upload_spec.rb
 cd ..

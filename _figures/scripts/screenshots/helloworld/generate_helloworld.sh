@@ -7,7 +7,6 @@ mkdir screenshots
 rm -rf helloworld
 rails new helloworld
 cd helloworld
-bin/spring stop
 bin/rails g controller hello index
 cd ..
 
@@ -15,7 +14,6 @@ cd ..
 ruby edit_00_setup_rspec_gemfile.rb
 cd helloworld
 bundle install
-bin/spring stop
 bin/rails generate rspec:install
 mkdir spec/systems
 cp ../hello_spec.rb spec/systems/.
