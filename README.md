@@ -26,3 +26,4 @@
 ## ReVIEW、動作確認、スクリーンショット作成
 
 - [ReVIEW](/documents/review.md)
+- [動作確認、スクリーンショット作成](/documents/make_screenshots.md)
