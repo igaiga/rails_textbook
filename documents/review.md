@@ -23,6 +23,12 @@
     - helloworld: _figures/scripts/screenshots/helloworld/helloworld
     - books_app: _figures/scripts/screenshots/books_app/books_app
 
+# Docked Rails CLI用動作確認
+
+- 上記のスクリーンショット作成スクリプトコードから動作させる部分だけ抜き出してDocked Rails CLIで動く用に修正
+- helloworld: _figures/scripts/screenshots/helloworld/docked_rails_cli_generate_helloworld.sh
+- books_app: _figures/scripts/screenshots/books_app/docked_rails_cli_generate_books_app.sh
+
 # 書籍内で利用している画像の説明
 
 生成方法によって何種類かの画像ファイルがあります。_figures/assets/README.mdも参照。
