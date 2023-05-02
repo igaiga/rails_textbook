@@ -128,7 +128,7 @@ Dockerをつかってかんたんに開発環境をつくる Docked Rails CLI �
 
 この環境でつかわれるRubyとRailsのバージョンは[Docked Rails CLIリポジトリ Dockerfile](https://github.com/rails/docked/blob/main/Dockerfile)で確認できます。2023年5月1日現在、Rubyはv3.2.0、Railsは`gem install rails`でインストールされる最新バージョンv7.0.4.3がつかわれます。
 
-ターミナルで以下を実行します。
+ターミナルで以下を実行します。aliasコマンドはターミナルを開くごとに必要になるので、 `~/.zshrc` や `~/.bashrc` へ追加しておくと便利です。
 
 ```
 docker volume create ruby-bundle-cache

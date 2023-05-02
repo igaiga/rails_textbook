@@ -49,14 +49,14 @@ $ rails s
 ```console
 $ rails s
 => Booting Puma
-=> Rails 7.0.1 application starting in development
+=> Rails 7.0.4.3 application starting in development
 => Run `bin/rails server --help` for more startup options
 Puma starting in single mode...
-* Puma version: 5.5.2 (ruby 3.1.0-p0) ("Zawgyi")
+* Puma version: 5.6.5 (ruby 3.2.2-p53) ("Birdie's Version")
 *  Min threads: 5
 *  Max threads: 5
 *  Environment: development
-*          PID: 9794
+*          PID: 30819
 * Listening on http://127.0.0.1:3000
 * Listening on http://[::1]:3000
 Use Ctrl-C to stop

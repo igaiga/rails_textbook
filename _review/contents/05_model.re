@@ -179,7 +179,7 @@ rails c
 
 //emlist[][console]{
 $ rails c
-Loading development environment (Rails 7.0.1)
+Loading development environment (Rails 7.0.4.3)
 irb(main):001:0>
 //}
 

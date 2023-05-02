@@ -58,7 +58,7 @@ $ rails db:migrate
 gem "carrierwave"
 ```
 
-Gemfileの内容でgemを利用できるようにbundle installコマンドをターミナルで実行します（メッセージ中"Installing carrierwave 2.2.2"や"17 Gemfile dependencies, 81 gems now installed."の数字は異なる場合があります）。
+Gemfileの内容でgemを利用できるようにbundle installコマンドをターミナルで実行します（メッセージ中"Installing carrierwave 2.2.3"や"17 Gemfile dependencies, 84 gems now installed."の数字は異なる場合があります）。
 
 ```bash
 $ bundle install
@@ -67,9 +67,9 @@ $ bundle install
 ```console
 $ bundle install
 ...
-Installing carrierwave 2.2.2
+Installing carrierwave 2.2.3
 ...
-Bundle complete! 17 Gemfile dependencies, 81 gems now installed.
+Bundle complete! 17 Gemfile dependencies, 84 gems now installed.
 Use `bundle info [gemname]` to see where a bundled gem is installed.
 ```
 

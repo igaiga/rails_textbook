@@ -75,11 +75,15 @@
 本書では以下のようにコードやターミナルコマンドを表現します。
 
 
-=== rubyおよびrailsコードの書式例
+=== コードの書式例
 
 //emlist[][ruby]{
 puts "Hello world!"
 //}
+
+
+Ruby、Rails、HTMLなどのコードの書式例です。
+
 
 === 差分がある場合の書式例
 
@@ -106,7 +110,9 @@ $ rails s
 先頭の$マークはターミナルを表す印です。入力する必要はありません。入力するとエラーになるので気をつけてください。
 
 
-=== ターミナルの実行結果の書式例
+
+ターミナルでの実行結果の書式例は次のようになります。
+
 
 //emlist[][console]{
 => Booting Puma
@@ -138,7 +144,7 @@ Use Ctrl-C to stop
 == 開発環境
 
 
-本書は2022年1月19日現在の最新バージョンであるRuby 3.1.0、Rails 7.0.1で動作確認をしています。
+本書は2023年5月1日現在の最新バージョンであるRuby 3.2.2、Rails 7.0.4.3で動作確認をしています。
 
 
 
@@ -274,7 +280,7 @@ rbenvを使ってRubyをインストールします。Rubyのバージョンは�
 
 
 //emlist[][console]{
-$ rbenv install 3.1.0
+$ rbenv install 3.2.2
 //}
 
 
@@ -282,7 +288,7 @@ $ rbenv install 3.1.0
 
 
 //emlist[][console]{
-$ rbenv global 3.1.0
+$ rbenv global 3.2.2
 //}
 
 
@@ -299,7 +305,7 @@ $ gem i rails
 
 //emlist[][console]{
 $ rails -v
-Rails 7.0.1
+Rails 7.0.4.3
 //}
 
 
@@ -307,7 +313,7 @@ Rails 7.0.1
 
 
 
-Railsは最新バージョンのものをつかって問題ありませんが、もしも問題が出て進められなくなったときには、@<tt>{gem i rails -v 7.0.1}のようにバージョンを指定して、本書の内容と揃えることもできます。そのときには、以降のページで出てくる@<tt>{rails new アプリ名}コマンドを実行するときに、つかうバージョンを指定し@<tt>{rails _7.0.1_ new アプリ名}とします。
+Railsは最新バージョンのものをつかって問題ありませんが、もしも問題が出て進められなくなったときには、@<tt>{gem i rails -v 7.0.4.3}のようにバージョンを指定して、本書の内容と揃えることもできます。そのときには、以降のページで出てくる@<tt>{rails new アプリ名}コマンドを実行するときに、つかうバージョンを指定し@<tt>{rails _7.0.4.3_ new アプリ名}とします。
 
 
 
@@ -324,11 +330,11 @@ Dockerをつかってかんたんに開発環境をつくる Docked Rails CLI �
 
 
 
-この環境でつかわれるRubyとRailsのバージョンは@<href>{https://github.com/rails/docked/blob/main/Dockerfile,Docked Rails CLIリポジトリのDockerfile}で確認できます。2023年5月1日現在、Rubyはv3.2.0、Railsは@<tt>{gem install rails}でインストールされる最新バージョンv7.0.4.3がつかわれます。
+この環境でつかわれるRubyとRailsのバージョンは@<href>{https://github.com/rails/docked/blob/main/Dockerfile,Docked Rails CLIリポジトリ Dockerfile}で確認できます。2023年5月1日現在、Rubyはv3.2.0、Railsは@<tt>{gem install rails}でインストールされる最新バージョンv7.0.4.3がつかわれます。
 
 
 
-ターミナルで以下を実行します。
+ターミナルで以下を実行します。aliasコマンドはターミナルを開くごとに必要になるので、 @<tt>{~/.zshrc} や @<tt>{~/.bashrc} へ追加しておくと便利です。
 
 
 //emlist{
