@@ -20,7 +20,8 @@
 - 私的な利用、および公的な学校、コミュニティでの利用はOKです。
 - 商用での利用については許可していませんが、別途有償ライセンスの準備がありますので [igaiga](https://github.com/igaiga) へご連絡ください。
 
-## ReVIEW、動作確認、スクリーンショット作成
+## 筆者向けメモ
 
 - [ReVIEW](/documents/review.md)
 - [動作確認、スクリーンショット作成](/documents/make_screenshots.md)
+- [改訂時の作業メモesa](https://esa-pages.io/p/sharing/4060/posts/1595/c57ee90b06ef0fd15faa.html)
