@@ -11,17 +11,19 @@
 
 - _figures/scripts
   - サンプルアプリを生成して、スクリーンショットを作成するコード群の置き場
-  - 事前に生成したいバージョンのRubyとRailsを実行可能にしておく
-  - helloworld サンプルアプリの生成とスクリーンショット作成のスクリプトコード
-    - _figures/scripts/screenshots/helloworld/generate_helloworld.sh
-    - 生成されたスクリーンショットは、最後に実行するreplace_png.rbでassetsフォルダ以下へコピーされる
-  - books_app サンプルアプリの生成とスクリーンショット作成のスクリプトコード
-    - _figures/scripts/screenshots/books_app/generate_books_app.sh
-    - 生成されたスクリーンショットは、最後に実行するreplacer.rbでassetsフォルダ以下へコピーされる
-  - この作業の結果、サンプルコードも作成されるので、できあがったコードをサンプルコード用リポジトリへ置く
-    - https://github.com/igaiga/rails_textbook_sample
-    - helloworld: _figures/scripts/screenshots/helloworld/helloworld
-    - books_app: _figures/scripts/screenshots/books_app/books_app
+- 事前に生成したいバージョンのRubyとRailsを実行可能にしておく
+- helloworld サンプルアプリの生成とスクリーンショット作成のスクリプトコード
+  - $ cd _figures/scripts/screenshots/helloworld
+  - ./generate_helloworld.sh
+  - 生成されたスクリーンショットは、最後に実行するreplace_png.rbでassetsフォルダ以下へコピーされる
+- books_app サンプルアプリの生成とスクリーンショット作成のスクリプトコード
+  - $ cd _figures/scripts/screenshots/books_app
+  - ./generate_books_app.sh
+  - 生成されたスクリーンショットは、最後に実行するreplacer.rbでassetsフォルダ以下へコピーされる
+- この作業の結果、サンプルコードも作成されるので、できあがった以下のフォルダをサンプルコード用リポジトリへ置く
+  - helloworld: _figures/scripts/screenshots/helloworld/helloworld
+  - books_app: _figures/scripts/screenshots/books_app/books_app
+  - サンプルコードリポジトリ: https://github.com/igaiga/rails_textbook_sample
 
 # Docked Rails CLI用動作確認
 
