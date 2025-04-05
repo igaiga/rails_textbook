@@ -3,9 +3,6 @@
 ## 電子書籍版: 達人出版会
 - https://tatsu-zine.com/books/rails-textbook
 
-## 紙書籍版: BOOTH
-- https://igaigarb.booth.pm/items/1848429
-
 ## 読者サポートページ
 
 - [サンプルコード](https://github.com/igaiga/rails_textbook_sample/)
