@@ -566,8 +566,8 @@ StrongParametersにauthorを追加します。
 class BooksController < ApplicationController
 ...
     def book_params
--      params.require(:book).permit(:title, :memo)
-+      params.require(:book).permit(:title, :memo, :author)
+-      params.expect(book: [ :title, :memo ])
++      params.expect(book: [ :title, :memo, :author ])
     end
 end
 ```
