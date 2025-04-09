@@ -29,8 +29,8 @@ end
 
 def replace_books_controller
   file_name = "books_app/app/controllers/books_controller.rb"
-  src_regex = /params\.require\(:book\)\.permit\(:title, :memo\)/
-  dst = %Q[params.require(:book).permit(:title, :memo, :author)]
+  src_regex = Regexp.new(Regexp.escape("params.expect(book: [ :title, :memo ])"))
+  dst = %Q[params.expect(book: [ :title, :memo, :author ])]
   replace(file_name: file_name, src_regex: src_regex, dst: dst)
 end
 
