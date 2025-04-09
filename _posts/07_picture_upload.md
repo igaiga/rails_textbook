@@ -109,8 +109,8 @@ class Book < ApplicationRecord
 class BooksController < ApplicationController
 ...
     def book_params
--      params.require(:book).permit(:title, :memo, :author)
-+      params.require(:book).permit(:title, :memo, :author, :picture)
+-      params.expect(book: [ :title, :memo, :author ])
++      params.expect(book: [ :title, :memo, :author, :picture ])
     end
 end
 ```
