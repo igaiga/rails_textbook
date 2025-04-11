@@ -62,7 +62,8 @@ class Cropper
   end
 
   private_class_method def self.crop_exec(file_path, width, height)
-    system "convert #{file_path} -crop #{width}x#{height}+0+0 #{file_path}"
+    # imagemagickのconvert機能をつかう
+    system "magick #{file_path} -crop #{width}x#{height}+0+0 #{file_path}"
   end
 end
 
