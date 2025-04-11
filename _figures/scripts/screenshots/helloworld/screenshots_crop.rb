@@ -16,5 +16,6 @@ def height(file_path)
 end
 
 Dir.glob("screenshots/**/*.png") do |file_path|
-  system "convert #{file_path} -crop #{width(file_path)}x#{height(file_path)}+0+0 #{file_path}"
+  # imagemagickのconvert機能をつかう
+  system "magick #{file_path} -crop #{width(file_path)}x#{height(file_path)}+0+0 #{file_path}"
 end
