@@ -42,7 +42,7 @@ class Cropper
         "rails_app_request_to_response.png" => [1320, 980],
         "rails_files.png" => [980, 580],
         "rails_g_controller.png" => [1180, 760],
-        "routes.png" => [1320, 940],
+        "routes.png" => [1820, 940],
         "routes_mapping.png" => [1320, 480],
       },
     }

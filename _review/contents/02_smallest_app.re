@@ -67,14 +67,15 @@ $ rails s
 //emlist[][console]{
 $ rails s
 => Booting Puma
-=> Rails 7.0.4.3 application starting in development
+=> Rails 8.0.2 application starting in development
 => Run `bin/rails server --help` for more startup options
 Puma starting in single mode...
-* Puma version: 5.6.5 (ruby 3.2.2-p53) ("Birdie's Version")
-*  Min threads: 5
-*  Max threads: 5
+* Puma version: 6.6.0 ("Return to Forever")
+* Ruby version: ruby 3.4.2 (2025-02-15 revision d2930f8e7a) +PRISM [arm64-darwin22]
+*  Min threads: 3
+*  Max threads: 3
 *  Environment: development
-*          PID: 30819
+*          PID: 50873
 * Listening on http://127.0.0.1:3000
 * Listening on http://[::1]:3000
 Use Ctrl-C to stop
@@ -217,7 +218,7 @@ Use Ctrl-C to stop
 
 //emlist[][diff]{
 - <p>現在時刻: <%= Time.current %></p>
-+ <p>現在時刻: <%= Time.current.in_time_zone('Asia/Tokyo') %></p>
++ <p>現在時刻: <%= Time.current.in_time_zone("Asia/Tokyo") %></p>
 //}
 
 
@@ -241,7 +242,7 @@ Use Ctrl-C to stop
 //emlist[][diff]{
 class HelloController < ApplicationController
   def index
-+   @time = Time.current.in_time_zone('Asia/Tokyo')
++   @time = Time.current.in_time_zone("Asia/Tokyo")
   end
 end
 //}
@@ -255,7 +256,7 @@ end
 
 
 //emlist[][diff]{
-- <p>現在時刻: <%= Time.current.in_time_zone('Asia/Tokyo') %></p>
+- <p>現在時刻: <%= Time.current.in_time_zone("Asia/Tokyo") %></p>
 + <p>現在時刻: <%= @time %></p>
 //}
 
@@ -270,7 +271,7 @@ end
 === コラム: タイムゾーンの設定
 
 
-今回の @<tt>{Time.current.in_time_zone('Asia/Tokyo')} はこの場所で使う時刻だけを日本時間へ変更しました。この方法のほかに、アプリ全体でタイムゾーンを日本時間に設定する方法もあります。その場合はconfig/application.rbファイル中に @<tt>{config.time_zone = 'Asia/Tokyo'} と設定します。この方法の利点は、プログラムの中のあちこちで @<tt>{in_time_zone('Asia/Tokyo')} を書かずに済み、config/application.rbファイルの1カ所にまとめることができることです。
+今回の @<tt>{Time.current.in_time_zone("Asia/Tokyo")} はこの場所で使う時刻だけを日本時間へ変更しました。この方法のほかに、アプリ全体でタイムゾーンを日本時間に設定する方法もあります。その場合はconfig/application.rbファイル中に @<tt>{config.time_zone = "Asia/Tokyo"} と設定します。この方法の利点は、プログラムの中のあちこちで @<tt>{in_time_zone("Asia/Tokyo")} を書かずに済み、config/application.rbファイルの1カ所にまとめることができることです。
 
 
 == Webアプリはどのように動作しているか
@@ -421,7 +422,6 @@ create  README.md
 create  Rakefile
 ... (略)
 create  app
-create  app/assets/config/manifest.js
 create  app/assets/stylesheets/application.css
 ... (略)
 //}
@@ -537,7 +537,7 @@ Routesは「リクエストのURLとHTTPメソッド」に応じて次に処理�
 
 
 
-では、対応表であるRoutes表を見て見ましょう。rails serverを起動させて @<tt>{/rails/info/routes} へアクセスしてみてください。Routes表の見方を説明したのが次の図です。
+では、対応表であるRoutes表を見て見ましょう。rails serverを起動させて @<tt>{/rails/info/routes} へアクセスしてみてください。Routes表の見方を説明したのが次の図です。実際のRoutes表はもっと長いのですが、本書では説明に関係する行だけを載せています。
 
 
 
@@ -551,7 +551,7 @@ Routesは「リクエストのURLとHTTPメソッド」に応じて次に処理�
 
 
 
-右端の"Controller#Action"が処理の移るコントローラとアクションを示しています。ここでは "hello#index" と書かれていますが、#の左側がコントローラ名、右側がアクション名です。この場合は、「HelloControllerのindexアクション」を示しています。
+"Controller#Action"が処理の移るコントローラとアクションを示しています。ここでは "hello#index" と書かれていますが、#の左側がコントローラ名、右側がアクション名です。この場合は、「HelloControllerのindexアクション」を示しています。
 
 
 
@@ -563,11 +563,15 @@ Routesは「リクエストのURLとHTTPメソッド」に応じて次に処理�
 
 
 //emlist[][ruby]{
-get 'hello/index'
+get "hello/index"
 //}
 
 
 これがRoutesのコード部分で、この1行からさきほど説明した対応表が生成されています。「パス"hello/index"へのGETでのアクセスでHelloControllerのindexアクションが呼ばれる」という文です。Routesの書き方はまた追って説明していきます。
+
+
+
+Routes表の各行がどのファイルのどの行からつくられたかは、Routes表のSource Location列に書かれています。ここでは @<tt>{/Users/igaiga/helloworld/config/routes.rb:2} なので、@<tt>{config/routes.rb}の2行目であることを示しています。
 
 
 
@@ -587,7 +591,7 @@ Routesについてまとめると、「RoutesはリクエストのパスとHTTP�
 //emlist[][ruby]{
 class HelloController < ApplicationController
   def index
-    @time = Time.current.in_time_zone('Asia/Tokyo')
+    @time = Time.current.in_time_zone("Asia/Tokyo")
   end
 end
 //}
@@ -597,7 +601,7 @@ HelloControllerのindexアクションが呼び出されます。@<tt>{def index
 
 
 
-このindexアクションでは@<tt>{@time}というインスタンス変数に現在時刻を代入しています。アクションの中のプログラム、ここでは @<tt>{@time = Time.current.in_time_zone('Asia/Tokyo')} は、インデント（字下げ）されて書かれます。
+このindexアクションでは@<tt>{@time}というインスタンス変数に現在時刻を代入しています。アクションの中のプログラム、ここでは @<tt>{@time = Time.current.in_time_zone("Asia/Tokyo")} は、インデント（字下げ）されて書かれます。
 
 
 
@@ -641,7 +645,7 @@ HelloControllerのindexアクションが呼び出されます。@<tt>{def index
 //}
 
 
-HTMLのpタグがあります。その中にHTMLではない @<tt>{<%=} と @<tt>{%>} というタグがあります。これがRubyのコードを実行するためのタグです。ここではその中にある @<tt>{@time} が実行されます。@timeインスタンス変数にはコントローラで実行された現在時刻 @<tt>{Time.current.in_time_zone('Asia/Tokyo')} の結果が代入されているので、これがHTMLへ埋め込まれます。
+HTMLのpタグがあります。その中にHTMLではない @<tt>{<%=} と @<tt>{%>} というタグがあります。これがRubyのコードを実行するためのタグです。ここではその中にある @<tt>{@time} が実行されます。@timeインスタンス変数にはコントローラで実行された現在時刻 @<tt>{Time.current.in_time_zone("Asia/Tokyo")} の結果が代入されているので、これがHTMLへ埋め込まれます。
 
 
 
