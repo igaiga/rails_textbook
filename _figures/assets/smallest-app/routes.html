@@ -6,28 +6,23 @@
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-<div class="wrapper">
+<div class="wrapper is-wide">
 
 <div class="text__path">http://localhost:3000/rails/info/routes</div>
 <table id='route_table' class='route_table with-margin'>
   <thead>
     <tr>
-      <th>Helper</th>
+      <th>Helper
+        (<a data-route-helper="_path" title="Returns a relative path (without the http or domain)" href="#">Path</a> /
+        <a data-route-helper="_url" title="Returns an absolute URL (with the http and domain)" href="#">Url</a>)
+      </th>
       <th>HTTP Verb</th>
       <th>Path</th>
       <th>Controller#Action</th>
+      <th>Source Location</th>
     </tr>
     <tr class='bottom'>
-      <th>
-        <a data-route-helper="_path" title="Returns a relative path (without the http or domain)" href="#">Path</a> /
-        <a data-route-helper="_url" title="Returns an absolute URL (with the http and domain)" href="#">Url</a>
-      </th>
-      <th>
-      </th>
-      <th>
-        <input id="search" placeholder="Path Match" type="search" name="path[]" />
-      </th>
-      <th>
+      <th colspan="5" id="search_container"><input id="search" placeholder="Search" type="search" name="query[]" style="width:98%;">
       </th>
     </tr>
   </thead>
@@ -51,6 +46,9 @@
       <td class="with-description">
         <span class="text__underline">hello#index</span>
         <br><span class="text__accent-sub">Controllerのアクション</span>
+      </td>
+      <td>
+        /Users/igaiga/helloworld/config/routes.rb:2
       </td>
     </tr>
   </tbody>
