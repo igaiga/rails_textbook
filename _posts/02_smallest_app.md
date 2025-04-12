@@ -49,14 +49,15 @@ $ rails s
 ```console
 $ rails s
 => Booting Puma
-=> Rails 7.0.4.3 application starting in development
+=> Rails 8.0.2 application starting in development
 => Run `bin/rails server --help` for more startup options
 Puma starting in single mode...
-* Puma version: 5.6.5 (ruby 3.2.2-p53) ("Birdie's Version")
-*  Min threads: 5
-*  Max threads: 5
+* Puma version: 6.6.0 ("Return to Forever")
+* Ruby version: ruby 3.4.2 (2025-02-15 revision d2930f8e7a) +PRISM [arm64-darwin22]
+*  Min threads: 3
+*  Max threads: 3
 *  Environment: development
-*          PID: 30819
+*          PID: 50873
 * Listening on http://127.0.0.1:3000
 * Listening on http://[::1]:3000
 Use Ctrl-C to stop
@@ -156,7 +157,7 @@ Use Ctrl-C to stop
 
 ```diff
 - <p>現在時刻: <%= Time.current %></p>
-+ <p>現在時刻: <%= Time.current.in_time_zone('Asia/Tokyo') %></p>
++ <p>現在時刻: <%= Time.current.in_time_zone("Asia/Tokyo") %></p>
 ```
 
 ![現在時刻表示](assets/smallest-app/time_jst.png)
@@ -170,7 +171,7 @@ Use Ctrl-C to stop
 ```diff
 class HelloController < ApplicationController
   def index
-+   @time = Time.current.in_time_zone('Asia/Tokyo')
++   @time = Time.current.in_time_zone("Asia/Tokyo")
   end
 end
 ```
@@ -180,7 +181,7 @@ end
 `app/views/hello/index.html.erb`
 
 ```diff
-- <p>現在時刻: <%= Time.current.in_time_zone('Asia/Tokyo') %></p>
+- <p>現在時刻: <%= Time.current.in_time_zone("Asia/Tokyo") %></p>
 + <p>現在時刻: <%= @time %></p>
 ```
 
@@ -190,7 +191,7 @@ end
 
 ### コラム: タイムゾーンの設定
 
-今回の `Time.current.in_time_zone('Asia/Tokyo')` はこの場所で使う時刻だけを日本時間へ変更しました。この方法のほかに、アプリ全体でタイムゾーンを日本時間に設定する方法もあります。その場合はconfig/application.rbファイル中に `config.time_zone = 'Asia/Tokyo'` と設定します。この方法の利点は、プログラムの中のあちこちで `in_time_zone('Asia/Tokyo')` を書かずに済み、config/application.rbファイルの1カ所にまとめることができることです。
+今回の `Time.current.in_time_zone("Asia/Tokyo")` はこの場所で使う時刻だけを日本時間へ変更しました。この方法のほかに、アプリ全体でタイムゾーンを日本時間に設定する方法もあります。その場合はconfig/application.rbファイル中に `config.time_zone = "Asia/Tokyo"` と設定します。この方法の利点は、プログラムの中のあちこちで `in_time_zone("Asia/Tokyo")` を書かずに済み、config/application.rbファイルの1カ所にまとめることができることです。
 
 ## Webアプリはどのように動作しているか
 
@@ -276,7 +277,6 @@ create  README.md
 create  Rakefile
 ... (略)
 create  app
-create  app/assets/config/manifest.js
 create  app/assets/stylesheets/application.css
 ... (略)
 ```
@@ -347,23 +347,25 @@ Routesは「リクエストのURLとHTTPメソッド」に応じて次に処理�
 
 ![Routes](assets/smallest-app/routes_mapping.png)
 
-では、対応表であるRoutes表を見て見ましょう。rails serverを起動させて `/rails/info/routes` へアクセスしてみてください。Routes表の見方を説明したのが次の図です。
+では、対応表であるRoutes表を見て見ましょう。rails serverを起動させて `/rails/info/routes` へアクセスしてみてください。Routes表の見方を説明したのが次の図です。実際のRoutes表はもっと長いのですが、本書では説明に関係する行だけを載せています。
 
 ![Routes表](assets/smallest-app/routes.png)
 
 表中の "HTTP Verb" がHTTPメソッドです。"Path"（パス）はURLの後半部分に相当します。URLが"http://localhost:3000/hello/index"である場合、パスは"/hello/index"になります。(表示されたパスの後半部分の"(.:format)"は省略できる記述で、レスポンスで返すフォーマットを指定するための機能です。省略した場合はHTMLを返すのが普通です。)
 
-右端の"Controller#Action"が処理の移るコントローラとアクションを示しています。ここでは "hello#index" と書かれていますが、#の左側がコントローラ名、右側がアクション名です。この場合は、「HelloControllerのindexアクション」を示しています。
+"Controller#Action"が処理の移るコントローラとアクションを示しています。ここでは "hello#index" と書かれていますが、#の左側がコントローラ名、右側がアクション名です。この場合は、「HelloControllerのindexアクション」を示しています。
 
 この対応表を解釈すると、「リクエストのHTTPメソッドが"GET"、パスが"/hello/index"のとき、次の処理は"HelloController"の"index"アクションになる」となります。
 
 ここで表示されたRoutesは`config/routes.rb`ファイルから生成されています。このファイルには次のような記述があります。
 
 ```ruby
-get 'hello/index'
+get "hello/index"
 ```
 
 これがRoutesのコード部分で、この1行からさきほど説明した対応表が生成されています。「パス"hello/index"へのGETでのアクセスでHelloControllerのindexアクションが呼ばれる」という文です。Routesの書き方はまた追って説明していきます。
+
+Routes表の各行がどのファイルのどの行からつくられたかは、Routes表のSource Location列に書かれています。ここでは `/Users/igaiga/helloworld/config/routes.rb:2` なので、`config/routes.rb`の2行目であることを示しています。
 
 Routesについてまとめると、「RoutesはリクエストのパスとHTTPメソッドによって次の処理先であるコントローラとアクションを決める対応表」となります。
 
@@ -376,14 +378,14 @@ Routesについてまとめると、「RoutesはリクエストのパスとHTTP�
 ```ruby
 class HelloController < ApplicationController
   def index
-    @time = Time.current.in_time_zone('Asia/Tokyo')
+    @time = Time.current.in_time_zone("Asia/Tokyo")
   end
 end
 ```
 
 HelloControllerのindexアクションが呼び出されます。`def index`から`end`までがindexアクションです。コントローラにあるpublicなメソッドをアクションと呼びます。アクションはRoutesから次の処理先として指示される可能性があります。
 
-このindexアクションでは`@time`というインスタンス変数に現在時刻を代入しています。アクションの中のプログラム、ここでは `@time = Time.current.in_time_zone('Asia/Tokyo')` は、インデント（字下げ）されて書かれます。
+このindexアクションでは`@time`というインスタンス変数に現在時刻を代入しています。アクションの中のプログラム、ここでは `@time = Time.current.in_time_zone("Asia/Tokyo")` は、インデント（字下げ）されて書かれます。
 
 変数は名札のようなもので、代入したものをあとから使えるように名前をつける仕組みです。変数のうち、@はじまりの変数のことをインスタンス変数といいます。インスタンス変数を使うと、コントローラから、このあとの処理先であるビューへ情報を伝えることができます。ちなみに、@はじまりではない変数はローカル変数と呼ばれ、このメソッド（アクション）を抜けると役目を終えて使えなくなります。つまり、ローカル変数へ代入してもビューから使うことはできません。ビューで使うためには、@はじまりのインスタンス変数を利用します。
 
@@ -407,7 +409,7 @@ HelloControllerのindexアクションが呼び出されます。`def index`か�
 <p>現在時刻: <%= @time %></p>
 ```
 
-HTMLのpタグがあります。その中にHTMLではない `<%=` と `%>` というタグがあります。これがRubyのコードを実行するためのタグです。ここではその中にある `@time` が実行されます。@timeインスタンス変数にはコントローラで実行された現在時刻 `Time.current.in_time_zone('Asia/Tokyo')` の結果が代入されているので、これがHTMLへ埋め込まれます。
+HTMLのpタグがあります。その中にHTMLではない `<%=` と `%>` というタグがあります。これがRubyのコードを実行するためのタグです。ここではその中にある `@time` が実行されます。@timeインスタンス変数にはコントローラで実行された現在時刻 `Time.current.in_time_zone("Asia/Tokyo")` の結果が代入されているので、これがHTMLへ埋め込まれます。
 
 ビューで作られたHTMLは、Railsがその他の加工を加えてレスポンスとして送出され、ブラウザに表示されます。作られたHTMLはブラウザで「ページのソースを表示」機能をつかって確認することができます。
 
