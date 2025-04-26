@@ -9,7 +9,7 @@ class Cropper
         "index_flow_controller.png" => [1320, 1000],
         "index_flow_routes.png" => [1320, 1000],
         "index_flow_view.png" => [1320, 1000],
-        "index_routes.png" => [1300, 1020],
+        "index_routes.png" => [1800, 1020],
       },
       "model" => {
         "create_flow_controller.png" => [1320, 1100],
