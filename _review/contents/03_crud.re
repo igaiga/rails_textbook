@@ -26,8 +26,8 @@ $ rails new books_app
 $ rails new books_app
       create
 ... （略）
-Pin Stimulus
-      append  config/importmap.
+      create  db/cable_schema.rb
+       force  config/cable.yml
 //}
 
 
@@ -45,7 +45,7 @@ $ rails s
 $ rails g scaffold book title:string memo:text
       invoke  active_record
       create    db/migrate/20220120025416_create_books.rb
-...
+... （略）
       create      app/views/books/_book.json.jbuilder
 
 $ rails db:migrate
@@ -332,13 +332,15 @@ class BooksController < ApplicationController
 //emlist[][erb]{
 <p style="color: green"><%= notice %></p>
 
+<% content_for :title, "Books" %>
+
 <h1>Books</h1>
 
 <div id="books">
-  <% @books.each do |book| %> ⬅ @booksはbookがいくつか入った配列
-    <%= render book %> ⬅ 個々のbookのtitleやmemoを表示
+  <% @books.each do |book| %>
+    <%= render book %>
     <p>
-      <%= link_to "Show this book", book %> ⬅ Show（詳細画面）へのリンクを生成
+      <%= link_to "Show this book", book %>
     </p>
   <% end %>
 </div>
