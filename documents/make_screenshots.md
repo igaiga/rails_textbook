@@ -37,12 +37,21 @@
 
 - HTMLからレンダリングしたファイル
   - _figures/aseets/ 以下のフォルダにhtmlファイルがあるもの
-  - レンダリングスクリプトは _figures/scripts/html_figures 以下
+  - _figures/assets/README.mdも参照
+  - レンダリングスクリプトは _figures/scripts/html_figures/ 以下
+    - $ cd _figures/scripts/html_figures
+    - $ ./all_run.sh
 - Adobe Illustrator で作成した変更されないファイル
   - _figures/aseets/ 以下のフォルダに画像がそのまま置いてあるもの
   - assetsへのコピースクリプトは書いていない
 - アプリで撮影したスクリーンショット
   - レンダリングスクリプトは _figures/scripts/screenshots 以下
+    - helloworld
+      - $ cd _figures/scripts/screenshots/helloworld
+      - $ ./generate_helloworld.sh
+    - books_app
+      - $ cd _figures/scripts/screenshots/books_app
+      - $ ./generate_books_app.sh
 - chrome_dev_toolのスクリーンショットを加工したもの
   - _figures/chrome_dev_tool 以下にあるもの
   - assetsへのコピースクリプトは書いていない
