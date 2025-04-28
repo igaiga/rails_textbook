@@ -10,7 +10,7 @@ class Cropper
         "books_index_data_1.png" => [1290, 400],
         "books_index_data_2.png" => [1290, 720],
         "books_new_blank.png" => [420, 500],
-        "books_new_data_1.png" => [420, 500],
+        "books_new_data_1.png" => [420, 580],
         "books_show_data_1.png" => [780, 290],
         "books_with_author_new.png" => [440, 600],
         "books_with_upload_created.png" => [860, 1200],
