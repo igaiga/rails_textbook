@@ -75,6 +75,8 @@ Bookクラスには色々と便利な機能があるのですが、それは後�
 ビューのコード `views/books/new.html.erb` を見てみましょう。
 
 ```erb
+<% content_for :title, "New book" %>
+
 <h1>New book</h1>
 
 <%= render "form", book: @book %>
@@ -124,7 +126,7 @@ Bookクラスには色々と便利な機能があるのですが、それは後�
 
   <div>
     <%= form.label :memo, style: "display: block" %>
-    <%= form.text_area :memo %>
+    <%= form.textarea :memo %>
   </div>
 
   <div>
@@ -168,7 +170,7 @@ Railsコードの部分をもう少し詳しく見てみましょう。`<%= form
 
 ![メモ部品](assets/new-create/new_view_form_memo_html.png)
 
-メモの部分も同様です。`form.label :memo, style: "display: block"` が "Memo" を表示する部分です。`form.text_area :memo` がその下のテキスト入力欄を作ります。`text_area` は先ほどの `text_field` よりも広くて改行を入力できるテキスト入力欄を作るメソッドです。
+メモの部分も同様です。`form.label :memo, style: "display: block"` が "Memo" を表示する部分です。`form.textarea :memo` がその下のテキスト入力欄を作ります。`textarea` は先ほどの `text_field` よりも広くて改行を入力できるテキスト入力欄を作るメソッドです。
 
 ![投稿ボタン部品](assets/new-create/new_view_form_submit_html.png)
 
@@ -209,7 +211,7 @@ new画面でCreate bookボタンを押すと新たなリクエストを飛ばす
 
 いつものように最初の処理はroutesです。
 
-![routes](assets/new-create/create_routes.png)
+![Routes表](assets/new-create/create_routes.png)
 
 URLのパスは/books 、HTTPメソッドはPOSTなので対応するコントローラとアクションはbooks#create、つまりBooksControllerのcreateアクションが呼び出されます。
 
