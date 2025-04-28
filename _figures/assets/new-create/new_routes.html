@@ -6,43 +6,45 @@
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-<div class="wrapper">
+<div class="wrapper is-wide">
 
-<table id='route_table' class='route_table'>
-    <thead>
-      <tr>
-        <th>Helper</th>
-        <th>HTTP Verb</th>
-        <th>Path</th>
-        <th>Controller#Action</th>
-      </tr>
-      <tr class='bottom'>
-        <th>        <a data-route-helper="_path" title="Returns a relative path (without the http or domain)" href="#">Path</a> /
-          <a data-route-helper="_url" title="Returns an absolute url (with the http and domain)" href="#">Url</a>
-        </th>
-        <th>      </th>
-        <th>        <input id="search" placeholder="Path Match" type="search" name="path[]" />
-        </th>
-        <th>      </th>
-      </tr>
-    </thead>
-    <tbody class='exact_matches' id='exact_matches'>
-    </tbody>
-    <tbody class='fuzzy_matches' id='fuzzy_matches'>
-    </tbody>
-    <tbody>
-      <tr class='route_row' data-helper='path'>
+<table id='route_table' class='route_table with-margin'>
+  <thead>
+    <tr>
+      <th>Helper
+        (<a data-route-helper="_path" title="Returns a relative path (without the http or domain)" href="#">Path</a> /
+        <a data-route-helper="_url" title="Returns an absolute URL (with the http and domain)" href="#">Url</a>)
+      </th>
+      <th>HTTP Verb</th>
+      <th>Path</th>
+      <th>Controller#Action</th>
+      <th>Source Location</th>
+    </tr>
+    <tr class='bottom'>
+      <th colspan="5" id="search_container"><input id="search" placeholder="Search" type="search" name="query[]" style="width:98%;">
+      </th>
+    </tr>
+  </thead>
+  <tbody class='exact_matches' id='exact_matches'>
+  </tbody>
+  <tbody class='fuzzy_matches' id='fuzzy_matches'>
+  </tbody>
+  <tbody>
+    <tr class='route_row' data-helper='path'>
       <td data-route-name='books'>
-          books<span class='helper'>_path</span>
+        books_path
       </td>
-      <td>
+      <td class="with-description">
         GET
       </td>
-      <td data-route-path='/books(.:format)'>
+      <td data-route-path='/books(.:format)' class="with-description">
         /books(.:format)
       </td>
-      <td>
+      <td class="with-description">
         <p>books#index</p>
+      </td>
+      <td>
+        /Users/igaiga/books_app/config/routes.rb:2
       </td>
     </tr>
     <tr class='route_row' data-helper='path'>
@@ -57,13 +59,16 @@
       <td>
         <p>books#create</p>
       </td>
+      <td>
+        /Users/igaiga/books_app/config/routes.rb:2
+      </td>
     </tr>
     <tr class='route_row' data-helper='path'>
       <td data-route-name='new_book'>
-          new_book<span class='helper'>_path</span>
+        new_book_path
       </td>
       <td>
-          <span class="text__underline">GET</span>
+        <span class="text__underline">GET</span>
       </td>
       <td data-route-path='/books/new(.:format)'>
         <span class="text__underline">/books/new(.:format)</span>
@@ -71,10 +76,13 @@
       <td>
         <p><span class="text__underline">books#new</span></p>
       </td>
+      <td>
+        /Users/igaiga/books_app/config/routes.rb:2
+      </td>
     </tr>
     <tr class='route_row' data-helper='path'>
       <td data-route-name='edit_book'>
-          edit_book<span class='helper'>_path</span>
+        edit_book<span class='helper'>_path</span>
       </td>
       <td>
         GET
@@ -85,10 +93,13 @@
       <td>
         <p>books#edit</p>
       </td>
+      <td>
+        /Users/igaiga/books_app/config/routes.rb:2
+      </td>
     </tr>
     <tr class='route_row' data-helper='path'>
       <td data-route-name='book'>
-          book<span class='helper'>_path</span>
+        book_path
       </td>
       <td>
         GET
@@ -99,8 +110,11 @@
       <td>
         <p>books#show</p>
       </td>
+      <td>
+        /Users/igaiga/books_app/config/routes.rb:2
+      </td>
     </tr>
-      <tr class='route_row' data-helper='path'>
+    <tr class='route_row' data-helper='path'>
       <td data-route-name=''>
       </td>
       <td>
@@ -111,6 +125,9 @@
       </td>
       <td>
         <p>books#update</p>
+      </td>
+      <td>
+        /Users/igaiga/books_app/config/routes.rb:2
       </td>
     </tr>
     <tr class='route_row' data-helper='path'>
@@ -125,6 +142,9 @@
       <td>
         <p>books#update</p>
       </td>
+      <td>
+        /Users/igaiga/books_app/config/routes.rb:2
+      </td>
     </tr>
     <tr class='route_row' data-helper='path'>
       <td data-route-name=''>
@@ -138,7 +158,11 @@
       <td>
         <p>books#destroy</p>
       </td>
+      <td>
+        /Users/igaiga/books_app/config/routes.rb:2
+      </td>
     </tr>
+
   </tbody>
 </table>
 
