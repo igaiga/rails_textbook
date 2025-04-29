@@ -44,6 +44,7 @@ class Replacer
       "books_created_data_1.png" => "crud", # modelのページでも使っている
       "books_index_blank.png" => "crud",
       "books_new_data_1.png" => "new-create",
+      "books_created_data_1.png" => "model",
       "books_with_author_new.png" => "model",
       "books_with_upload_created.png" => "picture-upload",
       "books_with_upload_new.png" => "picture-upload",
