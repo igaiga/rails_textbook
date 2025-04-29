@@ -122,8 +122,8 @@ rails c
 
 ```console
 $ rails c
-Loading development environment (Rails 7.0.4.3)
-irb(main):001:0>
+Loading development environment (Rails 8.0.2)
+books-app(dev)>
 ```
 
 rails consoleで以下のコードを実行してみてください。
@@ -206,7 +206,7 @@ DBの設計書をマイグレーションファイルと呼びます。マイグ
 `db/migrate/20211225013956_create_books.rb`
 
 ```ruby
-class CreateBooks < ActiveRecord::Migration[7.0]
+class CreateBooks < ActiveRecord::Migration[8.0]
   def change
     create_table :books do |t|
       t.string :title
@@ -218,7 +218,7 @@ class CreateBooks < ActiveRecord::Migration[7.0]
 end
 ```
 
-1行目 `ActiveRecord::Migration[7.0]` の末尾にある数字はRailsのバージョンを表します。Rails7.0.xではこのように7.0となります。
+1行目 `ActiveRecord::Migration[8.0]` の末尾にある数字はRailsのバージョンを表します。Rails8.0.xではこのように8.0となります。
 
 3行目 `create_table :books` でbooksという名前のテーブルを作ります。DBはテーブルという単位でデータを管理します。ここでは、本に関するデータを保存するためにbooksという名前のテーブルを作っています。テーブル名はモデル名の複数形にするというルールがあります。
 
@@ -393,7 +393,7 @@ $ rails g migration Addカラム名Toテーブル名 カラム名:型名
 ```
 
 ```ruby
-class AddAuthorToBooks < ActiveRecord::Migration[7.0]
+class AddAuthorToBooks < ActiveRecord::Migration[8.0]
   def change
     add_column :books, :author, :string
   end
@@ -484,7 +484,7 @@ create    db/migrate/20220107022320_add_author_to_books.rb
 `db/migrate/20220107022320_add_author_to_books.rb`
 
 ```ruby
-class AddAuthorToBooks < ActiveRecord::Migration[7.0]
+class AddAuthorToBooks < ActiveRecord::Migration[8.0]
   def change
     add_column :books, :author, :string
   end
@@ -518,7 +518,7 @@ $ rails db:migrate
 
   <div>
     <%= form.label :memo, style: "display: block" %>
-    <%= form.text_area :memo %>
+    <%= form.textarea :memo %>
   </div>
 
 +  <div>
@@ -574,8 +574,6 @@ end
 
 #### 動作確認
 
-rails serverを起動して動作を確認してみましょう。
+rails serverを起動して動作を確認してみましょう。new、show、indexの各画面にAuthor欄が追加されて、登録できるようになりました。
 
 ![新規入力画面](assets/model/books_with_author_new.png)
-
-new、show、indexの各画面にAuthor欄が追加されて、登録できるようになりました。

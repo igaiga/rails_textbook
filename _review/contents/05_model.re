@@ -179,8 +179,8 @@ rails c
 
 //emlist[][console]{
 $ rails c
-Loading development environment (Rails 7.0.4.3)
-irb(main):001:0>
+Loading development environment (Rails 8.0.2)
+books-app(dev)>
 //}
 
 
@@ -307,7 +307,7 @@ DBの設計書をマイグレーションファイルと呼びます。マイグ
 
 
 //emlist[][ruby]{
-class CreateBooks < ActiveRecord::Migration[7.0]
+class CreateBooks < ActiveRecord::Migration[8.0]
   def change
     create_table :books do |t|
       t.string :title
@@ -320,7 +320,7 @@ end
 //}
 
 
-1行目 @<tt>{ActiveRecord::Migration[7.0]} の末尾にある数字はRailsのバージョンを表します。Rails7.0.xではこのように7.0となります。
+1行目 @<tt>{ActiveRecord::Migration[8.0]} の末尾にある数字はRailsのバージョンを表します。Rails8.0.xではこのように8.0となります。
 
 
 
@@ -586,7 +586,7 @@ $ rails g migration Addカラム名Toテーブル名 カラム名:型名
 //}
 
 //emlist[][ruby]{
-class AddAuthorToBooks < ActiveRecord::Migration[7.0]
+class AddAuthorToBooks < ActiveRecord::Migration[8.0]
   def change
     add_column :books, :author, :string
   end
@@ -710,7 +710,7 @@ create    db/migrate/20220107022320_add_author_to_books.rb
 
 
 //emlist[][ruby]{
-class AddAuthorToBooks < ActiveRecord::Migration[7.0]
+class AddAuthorToBooks < ActiveRecord::Migration[8.0]
   def change
     add_column :books, :author, :string
   end
@@ -746,7 +746,7 @@ $ rails db:migrate
 
   <div>
     <%= form.label :memo, style: "display: block" %>
-    <%= form.text_area :memo %>
+    <%= form.textarea :memo %>
   </div>
 
 +  <div>
@@ -800,8 +800,8 @@ StrongParametersにauthorを追加します。
 class BooksController < ApplicationController
 ...
     def book_params
--      params.require(:book).permit(:title, :memo)
-+      params.require(:book).permit(:title, :memo, :author)
+-      params.expect(book: [ :title, :memo ])
++      params.expect(book: [ :title, :memo, :author ])
     end
 end
 //}
@@ -809,15 +809,11 @@ end
 ==== 動作確認
 
 
-rails serverを起動して動作を確認してみましょう。
+rails serverを起動して動作を確認してみましょう。new、show、indexの各画面にAuthor欄が追加されて、登録できるようになりました。
 
 
 
 //image[books_with_author_new][新規入力画面]{
 //}
 
-
-
-
-new、show、indexの各画面にAuthor欄が追加されて、登録できるようになりました。
 
