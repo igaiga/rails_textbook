@@ -26,7 +26,6 @@ $ gem i awesome_print
 //}
 
 //emlist[][console]{
-Fetching awesome_print-1.9.2.gem
 Successfully installed awesome_print-1.9.2
 1 gem installed
 //}
@@ -36,7 +35,7 @@ Successfully installed awesome_print-1.9.2
 
 
 
-インストールしたawesome_printは、きれいに表示するapというメソッドを提供します。irbを起動して試しに使ってみましょう。irbは対話形式でRubyプログラムを実行できる仕組みです。rails consoleもirbを利用しています。
+インストールしたawesome_printは、きれいに表示するapメソッドを提供します。irbを起動して試しに使ってみましょう。irbは対話形式でRubyプログラムを実行できる仕組みです。rails consoleもirbを利用しています。
 
 
 //emlist[][bash]{
@@ -62,7 +61,7 @@ $ irb
 //}
 
 
-このような形式で配列[1,2,3]が表示されれば成功です。Rubyが標準で持っているpメソッドも同等のことができますが、apメソッドの方がきれいに読み易い形で表示してくれます。
+このような形式で配列[1,2,3]が表示されれば成功です。Rubyが標準で持っているpメソッドやppメソッドも同等のことができますが、apメソッドの方がきれいに読みやすい形で表示してくれます。
 
 
 
@@ -84,22 +83,19 @@ BundlerでGem群をインストールするには2つの手順を実行します
 
 
 
-Railsアプリは最初からBundlerの仕組みを利用するようになっています。GemfileはRailsアプリの場合、Railsのルートフォルダに置いてあります。エディタで開いてみましょう。
+Railsアプリは最初からBundlerの仕組みを利用するようになっいて、GemfileもRailsのルートフォルダに置いてあります。エディタで開いてみましょう。
 
 
 //emlist[][ruby]{
 source "https://rubygems.org"
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
-
-ruby "3.2.2"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.4", ">= 7.0.4.3"
+gem "rails", "~> 8.0.2"
 ...
 //}
 
 
-たくさんのgemが表示されました。Railsアプリは最初につくった状態ですでに10個以上のgemが登録されています。ここに、さきほどのawesome_print gemを追加してみましょう。書く場所はどこでも良いのですが、一番最後の行へ追加することにします。Gemfileへ次の一行を追加して保存します。
+たくさんのGemが表示されました。Railsアプリは最初につくった状態ですでに10個以上のGemが登録されています。ここに、さきほどのawesome_print Gemを追加してみましょう。書く場所はどこでも良いのですが、一番最後の行へ追加することにします。Gemfileへ次の一行を追加して保存します。
 
 
 //emlist[][ruby]{
@@ -107,20 +103,20 @@ gem "awesome_print"
 //}
 
 
-追加して保存したら、以下のようにbundle installコマンドを実行します。このコマンドの実行時にはネットワークへ接続が必要なため、少し時間がかかります。また、各Gemのバージョンや、Bundle complete!につづけて表示される数字は異なることがあります。
+追加して保存したら、以下のようにbundle installコマンドを実行します。このコマンドの実行時にはネットワークへ接続が必要なため、少し時間がかかります。既に @<tt>{awesome_print} Gemがインストール済みのときは、 @<tt>{Installing awesome_print 1.9.2} などの表示は出ません。また、各Gemのバージョンや、Bundle complete!につづけて表示される数字は異なることがあります。
 
 
 //emlist[][console]{
 $ bundle install
 ...
-Using awesome_print 1.9.2
+Installing awesome_print 1.9.2
 ...
-Bundle complete! 18 Gemfile dependencies, 83 gems now installed.
+Bundle complete! 24 Gemfile dependencies, 131 gems now installed.
 Use `bundle info [gemname]` to see where a bundled gem is installed.
 //}
 
 
-これでawesome_print gemを使う準備は完了です。試しにrails consoleを起動して、apメソッドを使ってみましょう。
+これでawesome_print Gemを使う準備は完了です。試しにrails consoleを起動して、apメソッドを使ってみましょう。
 
 
 //emlist[][console]{
@@ -133,20 +129,20 @@ $ rails c
 ]
 => nil
 > ap Book.first
-irb(main):002:0> ap Book.last
-   (1.0ms)  SELECT sqlite_version(*)
-Book Load (0.4ms)  SELECT "books".* FROM "books" ORDER BY "books"."id" ASC LIMIT ?  [["LIMIT", 1]] #<Book:0x0000000130c061c0> {
-    :id => 1,
-    :title => "RubyとRailsの学習ガイド",
-    :memo => "Rails関連技術地図とそれらの学習資料の紹介",
-    :created_at => Fri, 07 Jan 2022 02:06:03.593544000 UTC +00:00,
-    :updated_at => Fri, 07 Jan 2022 02:06:03.593544000 UTC +00:00
+Book Load (0.2ms)  SELECT "books".* FROM "books" ORDER BY "books"."id" ASC LIMIT 1
+ /*application='BooksApp'*/
+#<Book:0x0000000130c061c0> {
+            :id => 1,
+         :title => "RubyとRailsの学習ガイド",
+          :memo => "Railsの関連技術地図とそれらの学習資料",
+    :created_at => 2025-04-28 07:22:27.108228000 UTC +00:00,
+    :updated_at => 2025-04-28 07:22:27.108228000 UTC +00:00,
 }
 => nil
 //}
 
 
-ターミナルに改行されて色がついて読み易く表示されているかと思います。またRailsアプリではrequireを書く必要がありません。ちなみに、書いても問題ありません。requireは複数回実行しても問題ないためです。
+位置が揃えて改行され、色がついて読みやすく表示されているかと思います。またRailsアプリではrequireを書く必要がありません。ちなみに、requireは複数回実行しても問題ないため、requireを書いても問題ありません。
 
 
 
@@ -154,7 +150,7 @@ Book Load (0.4ms)  SELECT "books".* FROM "books" ORDER BY "books"."id" ASC LIMIT
 
 
 
-また、Gemfileを変更してbundle installコマンドを実行すると、Gemfile.lockというファイルが作成されます。Gemfile.lockには、使われているGem名とそのバージョン情報が記録されています。Gemfile.lockは自動で作られるものなので、編集する必要はありません。ソースコードを保管するときは、GemfileとGemfile.lockの両方のファイルを保管してください。
+また、bundle installコマンドを実行すると、Gemfileと同じフォルダにGemfile.lockというファイルが作成されます。Gemfile.lockには、使われているGem名とそのバージョン情報が記録されています。Gemfile.lockは自動で作られるものなので、編集する必要はありません。ソースコードを保管するときは、GemfileとGemfile.lockの両方のファイルを保管してください。
 
 
 
@@ -168,7 +164,7 @@ Book Load (0.4ms)  SELECT "books".* FROM "books" ORDER BY "books"."id" ASC LIMIT
 
 
 
-特定のGemだけをバージョンアップしたい場合は、@<tt>{bundle update Gem名} とGem名をつけて実行すればOKです。指定したGemが利用している他のGemがある場合は、セットでバージョンアップされます。
+特定のGemだけをバージョンアップしたい場合は、@<tt>{bundle update Gem名} とGem名をつけて実行すればOKです。指定したGemが利用している他のGemがある場合は、あわせてバージョンアップされます。
 
 
 == Gemfileに書かれたGemを使って実行する
@@ -190,7 +186,7 @@ bundle exec rake -T
 
 
 
-ところで、ここまでrailsコマンドを使ってきましたが、ここにbundle execを書かなくてもいいのでしょうか？答えは、「書く必要はない」です。railsコマンドを実行すると、bin/railsファイルが実行され、その中でbundle exec相当の処理を行っています。
+ところで、ここまでrailsコマンドを使ってきましたが、ここにbundle execを書かなくても良いのでしょうか？答えは、「書く必要はない」です。railsコマンドを実行すると、bin/railsファイルが実行され、その中でbundle exec相当の処理を行っています。
 
 
 == Gemfileでのバージョン指定
@@ -200,19 +196,19 @@ bundle exec rake -T
 
 
 //emlist[][ruby]{
-gem 'capybara', '>= 2.15'
+gem "sqlite3", ">= 2.1"
 //}
 
 
-これは「capybara Gemのバージョンは、2.15以上」という意味の指定になります。これは数式の意味と同じですね。一方、こんな見慣れないバージョン指定表記があります。
+これは「sqlite3 Gemのバージョンは、2.1以上」という意味の指定になります。これは数式の意味と同じですね。一方、こんな見慣れないバージョン指定表記があります。
 
 
 //emlist[][ruby]{
-gem 'sqlite3', '~> 1.4'
+gem "rails", "~> 8.0.2"
 //}
 
 
- ~> という記号、このケースでは、@<tt>{>= 1.4.0} かつ @<tt>{< 1.5} という意味になります。小さいバージョンアップは受け入れて、大きなバージョンアップは受け入れない、という記号です。
+ ~> という記号、このケースでは、@<tt>{>= 8.0.2} かつ @<tt>{< 8.1} という意味になります。小さいバージョンアップは受け入れて、大きなバージョンアップは受け入れない、という記号です。バージョン8.0.2.1や8.0.3はインストールされますが、バージョン8.1や9.0はインストールされません。
 
 
 
