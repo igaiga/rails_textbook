@@ -1,6 +1,6 @@
 # 画像アップロード機能の追加
 
-アプリに画像アップロード機能を追加します。画像情報を格納するためのDBカラムを追加し、carrierwave gemを利用して画像アップロード機能を実装します。
+アプリに画像アップロード機能を追加します。画像情報を格納するためのDBカラムを追加し、carrierwave Gemを利用して画像アップロード機能を実装します。
 
 この章では「CRUDの基礎とindexアクション」でつくったbooks_appを引き続き題材に使っていきます。モデルの章の後半で行ったbooksテーブルにauthorカラムを追加した後の状態を想定していますが、authorカラムの追加作業は行わなくてもこの章の内容は実行可能です。
 
@@ -26,12 +26,10 @@ create    db/migrate/20220109012706_add_picture_to_books.rb
 
 作成されたmigrationファイルは以下のようになっています。
 
-```
-db/migrate/20220109012706_add_picture_to_books.rb
-```
+`db/migrate/20220109012706_add_picture_to_books.rb`
 
 ```ruby
-class AddPictureToBooks < ActiveRecord::Migration[7.0]
+class AddPictureToBooks < ActiveRecord::Migration[8.0]
   def change
     add_column :books, :picture, :string
   end
@@ -50,15 +48,15 @@ $ rails db:migrate
 == 20220109012706 AddPictureToBooks: migrated (0.0008s) =======================
 ```
 
-## carrierwave gemを追加
+## carrierwave Gemを追加
 
-次は画像upload機能を持つライブラリcarrierwave gemを追加します。gemを追加する場合はGemfileへ追記します。記述する場所はどこでも良いのですが、今回は一番最後の行へ追記することにします。Gemfileへ次の一行を追加して保存します。
+次は画像upload機能を持つライブラリcarrierwave Gemを追加します。Gemを追加する場合はGemfileへ追記します。記述する場所はどこでも良いのですが、今回は一番最後の行へ追記することにします。Gemfileへ次の一行を追加して保存します。
 
 ```ruby
 gem "carrierwave"
 ```
 
-Gemfileの内容でgemを利用できるようにbundle installコマンドをターミナルで実行します（メッセージ中"Installing carrierwave 2.2.3"や"17 Gemfile dependencies, 84 gems now installed."の数字は異なる場合があります）。
+Gemfileの内容でgemを利用できるようにbundle installコマンドをターミナルで実行します（メッセージ中"Installing carrierwave 3.1.1"や"23 Gemfile dependencies, 130 gems now installed."の数字は異なる場合があります）。
 
 ```bash
 $ bundle install
@@ -67,15 +65,15 @@ $ bundle install
 ```console
 $ bundle install
 ...
-Installing carrierwave 2.2.3
+Installing carrierwave 3.1.1
 ...
-Bundle complete! 17 Gemfile dependencies, 84 gems now installed.
+Bundle complete! 23 Gemfile dependencies, 130 gems now installed.
 Use `bundle info [gemname]` to see where a bundled gem is installed.
 ```
 
-bundle installコマンドを実行すると、Gemfileに書かれたgemがまだなければインストールし利用可能にします。また、Gemfile.lockに利用するバージョンが書き込まれます。
+bundle installコマンドを実行すると、Gemfileに書かれたGemがまだなければインストールし利用可能にします。また、Gemfile.lockに利用するバージョンが書き込まれます。
 
-続いて、carrierwaveを利用可能にするために、carrierwaveが提供する`rails g uploader Picture`コマンドを実行して必要なファイルを作成します。Rails6.1以前の環境では、事前に`bin/spring stop`コマンドを実行し、springというキャッシュの仕組みを再起動しておきます。Rails7.0以降ではspringがデフォルトでインストールされなくなったので、`bin/spring stop`コマンドは不要です。
+続いて、carrierwaveを利用可能にするために、carrierwaveが提供する`rails g uploader Picture`コマンドを実行して必要なファイルを作成します。
 
 ```bash
 $ rails g uploader Picture
@@ -131,7 +129,7 @@ end
 
   <div>
     <%= form.label :memo, style: "display: block" %>
-    <%= form.text_area :memo %>
+    <%= form.textarea :memo %>
   </div>
 
   <div>
@@ -212,6 +210,6 @@ uploadした画像ファイルがブラウザに表示されているのを確�
 
 ポイントをまとめます。
 
-- carrierwave gemを使うと画像アップロード機能を追加できる
-- Gemfileに新しいgemを追加した後、bundle installコマンドでインストールする
+- carrierwave Gemを使うと画像アップロード機能を追加できる
+- Gemfileに新しいGemを追加した後、bundle installコマンドでインストールする
 - マイグレーションファイルの生成はrails g migration Addカラム名Toテーブル名 カラム名:型名
