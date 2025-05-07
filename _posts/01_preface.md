@@ -4,7 +4,7 @@
 
 > *もっと多くの開発者を Ruby で幸せにしたい。*
 
-> *- matz*
+> *- Matz*
 
 
 ブラウザを使って買い物をする、SNSを読み書きする、料理のレシピを検索する。Webアプリが提供するサービスは私たちの生活に深く根ざしています。それらを使うだけではなくて、どうやって動いているか知りたい、自分でも作ってみたい。本書はその第一歩を踏み出すための資料です。
@@ -38,7 +38,7 @@
 
 - Railsの基礎はわかっている
 
-本書はRailsの入門的な本やサイトを読んで難しいと感じた方に、そこまでの知識を埋められるように書いています。逆に言えば、他の入門書を読める力があれば、本書は易しすぎると感じるかもしれません。具体的には、[Railsチュートリアル](https://railstutorial.jp/) を読み進められるようであれば、本書から得られるものは少ないのではないかと思います。
+本書はRailsの入門的な本やサイトを読んで難しいと感じた方に、そこまでの知識を埋められるように書いています。逆に言えば、他の入門書を読める力があれば、本書はやさしすぎると感じるかもしれません。具体的には、[Railsチュートリアル](https://railstutorial.jp/) を読み進められるようであれば、本書から得られるものは少ないのではないかと思います。
 
 ## 書式例
 
@@ -101,13 +101,13 @@ Use Ctrl-C to stop
 
 ## 開発環境
 
-本書は2023年5月1日現在の最新バージョンであるRuby 3.2.2、Rails 7.0.4.3で動作確認をしています。
+本書は2025年4月1日現在の最新バージョンであるRuby 3.4.2、Rails 8.0.2で動作確認をしています。
 
 Webアプリのプログラムを書くための道具として、ターミナル、エディタ、ブラウザをつかいます。
 
-ターミナルはコンピュータをコントロールするための道具です。自分で書いたプログラムをターミナルから実行することができます。ターミナルでRubyおよびRailsのプログラムを実行するためには、開発環境を作る必要があります。最初にMacとWindowsの場合それぞれでの環境構築方法を説明して、そのあとでどちらの環境でも共通であるRubyとRailsのインストール方法を説明します。また、Docker環境をつかって開発環境をつくる方法も説明しています。
+ターミナルはコンピュータをコントロールするための道具です。自分で書いたプログラムをターミナルから実行することができます。ターミナルでRubyおよびRailsのプログラムを実行するためには、開発環境を作る必要があります。最初にMacとWindowsの場合それぞれでの環境構築方法を説明して、そのあとでどちらの環境でも共通であるRubyとRailsのインストール方法を説明します。また、Docker環境をつかって開発環境をつくる方法も説明しています。🌠TODO: 更新
 
-エディタはプログラムを入力する道具です。エディタは好みのものがあればそれを利用してください。特にない場合は [Visual Studio Code](https://code.visualstudio.com/) をお勧めします。Visual Studio Codeは無料で使うことができます。ライセンスはMITライセンスです。
+エディタはプログラムを入力する道具です。エディタは好みのものがあればそれを利用してください。特にない場合は [Visual Studio Code](https://code.visualstudio.com) をお勧めします。Visual Studio Codeはマイクロソフトによって開発されたオープンソースのエディタで、無料で使うことができます。ライセンスはMITライセンスです。
 
 ブラウザはつくったWebアプリへアクセスするための道具としてつかいます。お好きなものをご利用いただけますが、文中で説明につかわれている [Chrome](https://www.google.co.jp/chrome/browser/) を使うと分かりやすいです。
 
@@ -117,13 +117,15 @@ Webアプリのプログラムを書くための道具として、ターミナ�
 
 ### Macに開発環境をつくる
 
+🌠新しいMBPで試してみるとよさそう
+
 開発環境づくりに必要なxcodeツールをインストールします。
 
 ```console
 $ xcode-select --install
 ```
 
-[Homebrew](https://brew.sh/) をインストールします。HomebrewはMacでさまざまな便利なプログラムをインストール、管理するためのツールです。以下のコマンド中の`-fsSL`の後ろに表示上は改行をいれていますが、実行するときは次の行とつなげて1行のコマンドとして実行してください。
+[Homebrew](https://brew.sh) をインストールします。HomebrewはMacでさまざまな便利なプログラムをインストール、管理するためのツールです。以下のコマンド中の`-fsSL`の後ろに表示上は改行をいれていますが、実行するときは次の行とつなげて1行のコマンドとして実行してください。
 
 ```console
 $ /bin/bash -c "$(curl -fsSL
@@ -141,23 +143,17 @@ $ source ~/.zshrc
 
 これでRubyとRailsをインストールするための準備ができました。つづいて「RubyとRailsをインストールする」へ進んでください。
 
-もしも、Rails6.1以前のRailsをつかう場合や、JavaScriptのライブラリを利用する場合には、Webpackerと呼ばれるライブラリを利用することがあります。Webpackerをつかう場合には、以下の手順でyarnなどの必要なJavaScriptライブラリをインストールします。
-
-```console
-$ brew install yarn
-```
-
 ### Windowsに開発環境をつくる
 
 Windowsの場合はWSL2（Windows Subsystem for Linux 2、以下WSL）とrbenvを利用することで開発環境をつくることができます。インストールしたWSL上でLinux向けツールを利用して開発します。WSLを利用するためにはWindows10以降が必要です。もしもWindows10よりも前のバージョンを利用している場合や、WSLのインストールがうまく行かないときには、 [RailsGirlsガイド インストール・レシピ](https://railsgirls.jp/install) のページにある「Windows 用セットアップ（WSLが使えない方向け）」を参考にしてみてください。
 
-WSLをインストールする方法は [Windows Subsystem for Linux Installation Guide for Windows 10 のページ](https://docs.microsoft.com/ja-jp/windows/wsl/install-win10) に書かれていますので、こちらの手順でインストールしてください。また、 [RailsGirlsガイド インストール・レシピ](https://railsgirls.jp/install) のページにも同様の手順がスクリーンショットをつかって丁寧に説明されています。インストールするLinuxを選ぶところでは好きなものを選んでもらって構いませんが、特になければデフォルトであるUbuntuを選択することをお勧めします。UbuntuのバージョンはUbuntu 20.04を想定しています。
+WSLをインストールする方法は [WSL を使用して Windows に Linux をインストールする方法](https://learn.microsoft.com/ja-jp/windows/wsl/install) に書かれていますので、こちらの手順でインストールしてください。また、 [RailsGirlsガイド インストール・レシピ](https://railsgirls.jp/install) のページにも同様の手順がスクリーンショットをつかって丁寧に説明されています。インストールするLinuxを選ぶところでは好きなものを選んでもらって構いませんが、特になければデフォルトであるUbuntuを選択することをお勧めします。
 
 WSLのインストール後、起動したアプリケーションはターミナルあるいはBashウィンドウと呼びます。ターミナルにはユーザー名とパスワードの入力を促す画面が表示されていますので、適当なユーザー名（半角英数小文字のみ）とパスワードを入力しましょう。パスワードは2回入力する必要があり、画面には表示されませんが正しく入力されています。
 
 ターミナルで以下のコマンドを実行してください。sudo apt installコマンド中のlibyaml-devの後ろとlibgdbm-devの後ろに表示上は改行をいれていますが、実行するときは次の行とつなげて1行のコマンドとして実行してください。
 
-なお、最初のコマンドを実行する際にパスワードの入力を求められますが、先程ターミナルに入力したパスワードを入力してください。Windowsのパスワードではないことに注意してください。 `sudo dpkg-reconfigure tzdata` を実行するとタイムゾーンを設定する画面が出ますので、「Asia」を矢印キーで移動して選択して、Tabキーを押してOkボタンに移動して、Enterキーを押してください。つづいて都市を選択する以下の画面が起動するので、「Tokyo」を矢印キーで移動して選択して、Tabキーを押してOkボタンに移動して、Enterキーを押してください。
+なお、最初のコマンドを実行するときにパスワードの入力を求められますが、先程ターミナルに入力したパスワードを入力してください。Windowsのパスワードではないことに注意してください。 `sudo dpkg-reconfigure tzdata` を実行するとタイムゾーンを設定する画面が出ますので、「Asia」を矢印キーで移動して選択して、Tabキーを押してOkボタンに移動して、Enterキーを押してください。つづいて都市を選択する以下の画面が起動するので、「Tokyo」を矢印キーで移動して選択して、Tabキーを押してOkボタンに移動して、Enterキーを押してください。
 
 ```console
 $ sudo dpkg-reconfigure tzdata
@@ -180,29 +176,18 @@ $ source ~/.bashrc
 
 これでRubyとRailsをインストールするための準備ができました。つづいて「RubyとRailsをインストールする」へ進んでください。
 
-もしも、Rails6.1以前のRailsをつかう場合や、JavaScriptのライブラリを利用する場合には、Webpackerと呼ばれるライブラリを利用することがあります。Webpackerをつかう場合には、以下の手順でyarnなどの必要なJavaScriptライブラリをインストールします。
-
-```console
-$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-$ source ~/.bashrc
-$ nvm install --lts
-$ nvm alias default lts/*
-$ nvm use default
-$ npm install --global yarn
-```
-
 ### RubyとRailsをインストールする
 
 rbenvを使ってRubyをインストールします。Rubyのバージョンは、より新しいものがあればそちらを利用して構いません。rbenvからインストール可能なRubyのバージョンは`rbenv install -l`で調べることができます。
 
 ```console
-$ rbenv install 3.2.2
+$ rbenv install 3.4.2
 ```
 
 インストールしたRubyを利用するように設定します。
 
 ```console
-$ rbenv global 3.2.2
+$ rbenv global 3.4.2
 ```
 
 以上でRubyのインストールは完了です。続いて、インストールしたRubyを使ってRailsをインストールします。
@@ -215,21 +200,57 @@ $ gem i rails
 
 ```console
 $ rails -v
-Rails 7.0.4.3
+Rails 8.0.2
 ```
 
 このようにインストールしたRailsのバージョンが表示されればインストール成功です。結果に表示されるバージョンの数字は、実行時の最新バージョンとなるため異なることがあります。
 
-Railsは最新バージョンのものをつかって問題ありませんが、もしも問題が出て進められなくなったときには、`gem i rails -v 7.0.4.3`のようにバージョンを指定して、本書の内容と揃えることもできます。そのときには、以降のページで出てくる`rails new アプリ名`コマンドを実行するときに、つかうバージョンを指定し`rails _7.0.4.3_ new アプリ名`とします。
+Railsは最新バージョンのものをつかって問題ありませんが、もしも問題が出て進められなくなったときには、`gem i rails -v 8.0.2` のようにバージョンを指定して、本書の内容と揃えることもできます。そのときには、以降のページで出てくる`rails new アプリ名`コマンドを実行するときに、つかうバージョンを指定し`rails _8.0.2_ new アプリ名`とします。
 
 ここまででRubyとRailsの開発環境構築ができました。次の章へ進んでください。
 
+### Visual Studio Codeでつかえる環境をつくる with Dev Container (仮)
+
+🌠TODO: 良さそうならこれを最初に持って行く
+
+ここまで説明した方法はRubyやRailsを自分のコンピュータへ直接インストールする方法でした。別の方法として、Dev Container環境でRailsアプリ開発環境をつくる方法もあります。Dev Container環境ではRubyやRailsを自分のコンピュータへ直接インストールせずに、RailsアプリケーションをDockerコンテナ上で実行します。Visual Studio Codeをつかうと、Dockerコンテナの起動やコンテナ内のターミナル操作などをエディタ上からかんたんに行えます。ただし、開発環境の動作を理解するためにはコンテナ技術に関する基礎知識が必要になります。
+
+最初にVisual Studio Code(以下VS Code)、Docker、rails-newをセットアップします。
+
+VS Codeはマイクロソフトによって開発されたオープンソースのエディタで、無料でつかうことができます。ライセンスはMITライセンスです。公式ページからダウンロードしてインストールします。また、あわせてdev container拡張機能をマーケットプレイスからダウンロードしてインストールしておきます。
+
+- [Visual Studio Code 公式ページ](https://code.visualstudio.com)
+- [Visual Studio Code マーケットプレイス dev container拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) 
+
+Dockerはコンテナと呼ばれる仮想環境パッケージをつかってアプリ実行環境（ここではRails開発環境）をつくることができるプラットフォームです。Docker Desktopなどをつかってインストールします。
+
+- Docker Desktop [https://docs.docker.com/desktop](https://docs.docker.com/desktop)
+
+rails-newはRubyがインストールされていなくても新規Railsアプリケーションをつくることができるツールです。rails-newを次の方法でインストールします。
+
+GitHubの[リリースページ](https://github.com/rails/rails-new/releases)から最新バージョンのAssets欄を表示して、つかっているプラットフォームのファイルをダウンロードしてください。Apple Silicon(たとえばM1など)のmacOSでは「rails-new-aarch64-apple-darwin.tar.gz」、Windowsでは「rails-new-x86_64-pc-windows-gnu.zip」となります。ダウンロード後に .tar.gz ファイルを解凍するとrails-new 実行可能ファイルを取得できます。このrails-newファイルをパスの通ったフォルダへ配置して、ターミナルから実行できるようにします。
+
+- Rails new リリースページ [https://github.com/rails/rails-new/releases](https://github.com/rails/rails-new/releases)
+
+macOSではターミナルからrails-newコマンドを実行すると「"rails-new"は、開発元を検証できないため開けません。」と表示されます。ターミナルでrails-newファイルが置いてあるフォルダへ移動して、次のコマンドで実行可能にすることができます。このコマンドは「（セキュリティ上の警告を確認して問題ないので）実行を許可します」という変更をコマンドファイルに行います。
+
+```bash
+$ xattr -d com.apple.quarantine ./rails-new
+```
+
+🌠このページに沿って説明を執筆中
+TODO: rails-newでサンプルファイルをrails newする。helloworldを題材にした方が良いか考える。
+
+https://railsguides.jp/getting_started_with_devcontainer.html
+
 ### Dockerをつかって開発環境をつくる
+
+🌠TODO: 書き換え、またはVSCodeの方へ寄せてしまって削除でも良いか確認。Ruby3.4対応が出ていないので、ひっこめた方がよさそう。
 
 Dockerをつかってかんたんに開発環境をつくる Docked Rails CLI がRailsコアチームより提供されています。あらかじめ、Docker DesktopなどでDocker環境をつくっておきます。
 
 - Docked Rails CLI [https://github.com/rails/docked](https://github.com/rails/docked)
-- Docker Desktop [https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)
+- Docker Desktop [https://docs.docker.com/desktop](https://docs.docker.com/desktop)
 
 この環境でつかわれるRubyとRailsのバージョンは[Docked Rails CLIリポジトリ Dockerfile](https://github.com/rails/docked/blob/main/Dockerfile)で確認できます。2023年5月1日現在、Rubyはv3.2.0、Railsは`gem install rails`でインストールされる最新バージョンv7.0.4.3がつかわれます。
 
