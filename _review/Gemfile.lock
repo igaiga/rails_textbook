@@ -1,20 +1,26 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    image_size (3.0.1)
+    csv (3.3.5)
+    image_size (3.4.0)
     md2review (1.12.1)
       redcarpet (> 2.0.0)
+    nkf (0.2.0)
     pastel (0.8.0)
       tty-color (~> 0.5)
-    rake (13.0.6)
-    redcarpet (3.5.1)
-    review (5.4.0)
+    rake (13.3.0)
+    redcarpet (3.6.1)
+    review (5.10.0)
+      csv
       image_size
+      nkf
+      rexml
       rouge
       rubyzip
       tty-logger
-    rouge (3.28.0)
-    rubyzip (2.3.2)
+    rexml (3.4.1)
+    rouge (4.5.2)
+    rubyzip (2.4.1)
     tty-color (0.6.0)
     tty-logger (0.6.0)
       pastel (~> 0.8)
@@ -29,4 +35,4 @@ DEPENDENCIES
   review
 
 BUNDLED WITH
-   2.2.33
+   2.6.9
