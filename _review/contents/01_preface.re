@@ -133,10 +133,8 @@ Use Ctrl-C to stop
 == 読者サポートページ
 
 
-「開発環境構築」と「正誤表」は次のURLにあります。開発環境構築は次の節で説明していますが、より新しい情報で更新することがあります。
+「正誤表」は次のURLにあります。
 
- * 開発環境構築
- ** @<href>{https://github.com/igaiga/rails_textbook/blob/master/documents/install.md,https://github.com/igaiga/rails_textbook/blob/master/documents/install.md}
  * 正誤表
  ** @<href>{https://github.com/igaiga/rails_textbook/blob/master/documents/errata.md,https://github.com/igaiga/rails_textbook/blob/master/documents/errata.md}
 

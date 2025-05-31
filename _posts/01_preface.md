@@ -91,10 +91,7 @@ Use Ctrl-C to stop
 
 ## 読者サポートページ
 
-「開発環境構築」と「正誤表」は次のURLにあります。開発環境構築は次の節で説明していますが、より新しい情報で更新することがあります。
-
-- 開発環境構築
-  - [`https://github.com/igaiga/rails_textbook/blob/master/documents/install.md`](https://github.com/igaiga/rails_textbook/blob/master/documents/install.md)
+「正誤表」は次のURLにあります。
 
 - 正誤表
   - [`https://github.com/igaiga/rails_textbook/blob/master/documents/errata.md`](https://github.com/igaiga/rails_textbook/blob/master/documents/errata.md)
@@ -110,8 +107,6 @@ Webアプリのプログラムを書くための道具として、ターミナ�
 エディタはプログラムを入力する道具です。エディタは好みのものがあればそれを利用してください。特にない場合は [Visual Studio Code](https://code.visualstudio.com/) をお勧めします。Visual Studio Codeは無料で使うことができます。ライセンスはMITライセンスです。
 
 ブラウザはつくったWebアプリへアクセスするための道具としてつかいます。お好きなものをご利用いただけますが、文中で説明につかわれている [Chrome](https://www.google.co.jp/chrome/browser/) を使うと分かりやすいです。
-
-また、今後のRubyおよびRailsなどのバージョンアップによってここに書いている内容では動かなくなることもあります。 [読者サポートページ](https://github.com/igaiga/rails_textbook) にある「環境構築」のページにより新しい情報があれば、そちらも参考にしてください。
 
 以降で開発環境のつくり方を説明しています。Macに環境をつくる場合は、「Macに開発環境をつくる」と「RubyとRailsをインストールする」を実行してください。Windowsに環境をつくる場合は、「Windowsに開発環境をつくる」と「RubyとRailsをインストールする」を実行してください。Dockerをつかって環境をつくる場合は、「Dockerをつかって開発環境をつくる」を実行してください。
 

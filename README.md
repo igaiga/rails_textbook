@@ -7,7 +7,6 @@
 
 - [サンプルコード](https://github.com/igaiga/rails_textbook_sample/)
 - [正誤表](/documents/errata.md)
-- [環境構築](/documents/install.md)
 
 ## 誤記などの報告方法
 - 以下のコントリビュートポリシーにご同意いただいて、IssuesまたはPull requestsを作成いただくか、igaigaまでご連絡ください。
