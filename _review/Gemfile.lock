@@ -18,7 +18,7 @@ GEM
       rouge
       rubyzip
       tty-logger
-    rexml (3.4.1)
+    rexml (3.4.2)
     rouge (4.5.2)
     rubyzip (2.4.1)
     tty-color (0.6.0)
